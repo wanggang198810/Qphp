@@ -16,12 +16,13 @@ if( !defined('APP_PATH')){
 //载入系统类库
 require ( FRAMEWORK_PATH . '/Common/Function.php');
 require ( FRAMEWORK_PATH . '/Common/Config.php');
-require ( FRAMEWORK_PATH . '/Common/Request.php');
-require ( FRAMEWORK_PATH . '/Common/Response.php');
+require ( FRAMEWORK_PATH . '/Core/Request.php');
+require ( FRAMEWORK_PATH . '/Core/Response.php');
 require ( FRAMEWORK_PATH . '/Core/Exception.php');
 require ( FRAMEWORK_PATH . '/Core/View.php');
 require ( FRAMEWORK_PATH . '/Core/Model.php');
-
+require ( FRAMEWORK_PATH . '/Core/Log.php');
+require ( FRAMEWORK_PATH . '/Core/Memory.php');
 //加载需要自动装载的类库
 if(file_exists( APP_PATH . '/Common/Config.php')){
     require_once (APP_PATH . '/Common/Config.php');

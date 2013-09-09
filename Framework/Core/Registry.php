@@ -6,7 +6,7 @@
  * 
  * @author Air
  */
-class Registry {
+class Q_Registry {
     //put your code here
     public static $instance;
     

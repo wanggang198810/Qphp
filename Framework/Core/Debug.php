@@ -6,7 +6,7 @@
  * 
  * @author Air
  */
-class Debug {
+class Q_Debug {
     //put your code here
     public static function output($debugInfo){
         
@@ -32,7 +32,7 @@ class Debug {
         <div class="trace-c01 <?php
             if( $this->_debugInfo['runTime'] > 1 ){
                 echo ' red';
-            }elseif( $this->_debugInfo['runTime'] > 700 ){
+            }elseif( $this->_debugInfo['runTime'] > 0.7 ){
                 echo ' orange';
             }else{
                 echo ' green';
@@ -40,6 +40,10 @@ class Debug {
         ?>"><?php echo $this->_debugInfo['runTime'];?></div>
     </div>
     
+    <div class="trace-item">
+        <div class="trace-t01">占用内存：</div>
+        <div class="trace-c01"><?php echo $this->_debugInfo['UageMemory']?>KB</div>
+    </div>
     <div class="trace-item">
         <div class="trace-t01">当前URL：</div>
         <div class="trace-c01"><?php echo $this->_debugInfo['currentUrl']?></div>

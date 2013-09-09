@@ -22,7 +22,7 @@ class Controller {
     const MODEL_SUFFIX = 'Model';
 
     public function __construct($controller) {
-        $this->_controller = $controller;
+        $this->_controller = get_class($this);
         $this->_request = Q_Request::getInstance();
         $this->_response = Q_Response::getInstance();
         $this->_config = get_config();

@@ -6,6 +6,8 @@
  */
 
 return array(
+    
+    'record_log' => true,
     'url_mode'=>1,
     
     'dbtype'=>'class',
@@ -21,7 +23,7 @@ return array(
     
     
     //默认控制器
-    'default_controller' => 'home',
+    'default_controller' => 'index',
     'default_action' => 'index',
     
     

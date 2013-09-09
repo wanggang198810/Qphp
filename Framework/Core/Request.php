@@ -51,6 +51,18 @@ class Q_Request {
 		return $_SERVER["REQUEST_URI"];
     }
     
+    
+    public function getSubDomain(){
+        $server = $_SERVER['HTTP_HOST'] ? $_SERVER['HTTP_HOST'] : ( $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : '');
+        $regUri = '/(.*?)\.[a-zA-Z0-9\-]\.[a-zA-Z0-9\-]+$/i';
+        $url = array();
+        if( preg_match( $regUri, $server, $matches) ){
+            $url = explode('.', $matches['1']);
+            $url = array_diff($url, array('www'));
+        }
+        return $url;
+    }
+    
     /**
 	 * 返回上一个页面的 URL 地址(来源)
 	 */

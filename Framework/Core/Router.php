@@ -21,15 +21,34 @@ class Router {
 	private function __clone(){}
     
     
-    public static function dispath($url){
+    public static function parseUri(){
+        $url = Q_Request::getInstance()->requestUri();
+        $router = array();
+        $script = $_SERVER['SCRIPT_NAME'] ? $_SERVER['SCRIPT_NAME'] : '';
+        $url = str_replace($script, '', $url);
         $url = trim($url, '/');
-        $pos = strpos($url, '?');
-        $url = substr($url, 0, $pos);
+        if(strpos($url, '?') !==false){
+            $pos = strpos($url, '?');
+            $url = substr($url, 0, $pos);
+        }
         $param = explode('/', $url);
         
-        $router['controller'] = ucfirst( ( isset($param['0']) && $url['0']!='?' ) ? $param['0'] : get_config('default_controller') );
-        $router['action'] = ucfirst( ( isset($param['1']) && $url['0']!='?' ) ? $param['1'] : get_config('default_action') );
-        hprint($router,1);
+        $subdomain = Q_Request::getInstance()->getSubDomain();
+        if( !empty($subdomain) && in_array( $subdomain['0'] , array_keys(Q::getConfig('subdomain') )) ){
+            $router['controller'] = $subdomain['0'];
+            $router['action'] = ( isset($param['0']) && $param['0'] && $url['0']!='?' ) ? $param['0'] : Q_Request::getInstance()->getGet( Q::getConfig('action_url_var'), Q::getConfig('default_action') );
+        }else{
+            $router['controller'] = ( isset($param['0']) && $param['0'] && $url['0']!='?' ) ? $param['0'] : Q_Request::getInstance()->getGet( Q::getConfig('controller_url_var'), Q::getConfig('default_controller') ) ;
+            $router['action'] = ( isset($param['1']) && $param['1'] && $url['0']!='?' ) ? $param['1'] : Q_Request::getInstance()->getGet( Q::getConfig('action_url_var'), Q::getConfig('default_action') );
+        }
+        $params = array_diff($param, $router);
+        $router['controller'] = ucfirst( $router['controller'] );
+        $router['action'] = ucfirst( $router['action'] );
+        $router['param'] = $params;
+        unset($params);
+        unset($param);
+        unset($url);
+        unset($script);
         return $router;
     }
 
