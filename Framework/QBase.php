@@ -24,6 +24,8 @@ require ( FRAMEWORK_PATH . '/Core/Model.php');
 require ( FRAMEWORK_PATH . '/Core/Log.php');
 require ( FRAMEWORK_PATH . '/Core/Memory.php');
 //加载需要自动装载的类库
+
+/*
 $_autoload = Q::getConfig('autoload');
 if( !empty($_autoload)){
     foreach ($_autoload as $k => $v){
@@ -34,7 +36,7 @@ if( !empty($_autoload)){
         }
     }
 }
-
+*/
 
 
 
