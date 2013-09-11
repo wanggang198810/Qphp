@@ -111,6 +111,7 @@ class Application {
         }
         //执行操作
         //$controller->$action();
+        
         call_user_func_array( array( $controller, $this->_action), $router['param'] );
     }
     

@@ -44,4 +44,10 @@ if(!function_exists('hprint')){
             exit;
     }
 }
+
+if(!function_exists('view_test')){
+    function view_test($a='', $b='', $c=''){
+        echo $a.' : '.$b ." : ". $c;
+    }
+}
 ?>

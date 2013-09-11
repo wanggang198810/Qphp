@@ -23,6 +23,7 @@ class Controller {
     const CONTRONLLER_SUFFIX = 'Controller';
 
     public function __construct($controller) {
+        
         $controller = get_class($this);
         $this->_controller = str_replace(self::CONTRONLLER_SUFFIX,'', $controller);
         $this->_request = Q_Request::getInstance();
@@ -60,7 +61,14 @@ class Controller {
         $file = View::getInstance($this->_controller)->render($file);
         ob_start();
         include $file;
-        $this->output( ob_get_clean() );
+        //$this->output( ob_get_clean() );
+        
+        if(!$this->_config['compile_template']){
+            echo ob_get_clean();
+        }else{
+            $tempfile = $this->templateCompile( ob_get_clean() );
+            include($tempfile);
+        }
     }
     
     
@@ -83,7 +91,9 @@ class Controller {
     public function templateCompile($html){
         require ( FRAMEWORK_PATH . '/Core/Template.php');
         $template = new Template();
-        return $template->compile($html);
+        $template->templateID = $this->_controller.  $this->_action;
+        $tmpfile = $template->compile($html);
+        return $tmpfile;
     }
 }
 
