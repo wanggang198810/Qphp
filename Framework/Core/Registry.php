@@ -9,8 +9,9 @@
 class Q_Registry {
     //put your code here
     public static $instance;
-    
-    
+    public static $_data;
+
+
     public function __construct() {
         $arrayObject = new ArrayObject();
     }

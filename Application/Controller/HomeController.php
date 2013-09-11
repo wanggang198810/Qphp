@@ -19,6 +19,8 @@ class HomeController extends Controller{
         }*/
         $data['title'] = 'Q php framework!';
         $data['info'] = 'Q php framework!';
+        $model = new HomeModel();
+        
         $this->render('',$data);
     }
     

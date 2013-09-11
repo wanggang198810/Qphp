@@ -10,13 +10,14 @@ return array(
     'record_log' => true,
     'url_mode'=>1,
     
-    'dbtype'=>'class',
+    /* 数据库 db
     'dbconfig' => array(
+        'dbtype'=>'mysql',
         'host'=>'loalhost',
         'username'=>'root',
         'password'=>'',
         'dbname'=>'test',
-    ),
+    ),*/
     
     'debug' => false,
     'compile_template' => false,

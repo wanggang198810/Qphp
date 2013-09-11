@@ -8,12 +8,17 @@
 return array(
     
     'url_mode'=>1,
-    'dbtype'=>'mysql',
+    
     'dbconfig' => array(
-        'host'=>'loalhost',
+        'dbtype'=>'mysql',
+        'host'=>'localhost',
         'username'=>'root',
         'password'=>'',
+        'pconnect'=> 0,
+        'port'=>3306,
         'dbname'=>'test',
+        'charset'=>'utf8', //注:没有减号-
+        'tablepre'=>'',
     ),
     
     'debug' => true,

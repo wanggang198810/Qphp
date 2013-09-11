@@ -9,8 +9,8 @@
 /**
  * 引入DB抽象类
  */
-
-class Q_Mysql extends Q_Db_Abstract{
+include ( FRAMEWORK_PATH . '/Db/Driver/Mysql/Abstract.php');
+class Mysql extends Q_Db_Abstract{
 	/**
 	 * 结果集的模式
 	 *
@@ -57,7 +57,12 @@ class Q_Mysql extends Q_Db_Abstract{
 		$this->_setCharset();
 	}
 	
-	/**
+    
+    public function table(){
+        
+    }
+
+    /**
 	 * 重载方法：执行 SQL
 	 *
 	 * @param unknown_type $sql

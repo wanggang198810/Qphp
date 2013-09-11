@@ -20,9 +20,11 @@ class Controller {
     public $_config;
     private $_autoloalmodel = true;
     const MODEL_SUFFIX = 'Model';
+    const CONTRONLLER_SUFFIX = 'Controller';
 
     public function __construct($controller) {
-        $this->_controller = get_class($this);
+        $controller = get_class($this);
+        $this->_controller = str_replace(self::CONTRONLLER_SUFFIX,'', $controller);
         $this->_request = Q_Request::getInstance();
         $this->_response = Q_Response::getInstance();
         $this->_config = get_config();

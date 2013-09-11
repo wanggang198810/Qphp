@@ -3,8 +3,8 @@
 /**
  * 引入视图接口和基类
  */
-require QUICKPHP_PATH . '/Db/Interface.php';
-require QUICKPHP_PATH . '/Db/Base.php';
+require FRAMEWORK_PATH . '/Db/Driver/Mysql/Interface.php';
+require FRAMEWORK_PATH . '/Db/Driver/Mysql/Base.php';
 
 abstract class Q_Db_Abstract extends Q_Db_Base implements Q_Db_Interface
 {
@@ -562,12 +562,13 @@ abstract class Q_Db_Abstract extends Q_Db_Base implements Q_Db_Interface
 	 */
 	protected function _DBError($errorMsg)
 	{
+        /*
 		// 如果显示错误则直接抛出异常
 		if($this->_showError){
 			throw new QP_Exception($errorMsg, QP_Exception::EXCEPTION_DB_ERROR);
 		}else{
 			// 否则就写日志
 			QP_Sys::log($errorMsg,'db');			
-		}
+		}*/
 	}
 }

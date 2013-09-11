@@ -6,8 +6,14 @@
  * @author Air
  */
 class HomeModel extends Model{
-    //put your code here
     
+    public $_rule = array(
+        
+    );
+    //put your code here
+    public function foo(){
+        echo 'ok';
+    }
 }
 
 ?>

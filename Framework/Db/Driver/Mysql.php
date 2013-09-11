@@ -10,7 +10,7 @@
  * 引入DB抽象类
  */
 
-class Q_Mysql extends Db_Abstract{
+class Mysql extends Db_Abstract{
 	/**
 	 * 结果集的模式
 	 *

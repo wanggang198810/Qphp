@@ -24,18 +24,17 @@ require ( FRAMEWORK_PATH . '/Core/Model.php');
 require ( FRAMEWORK_PATH . '/Core/Log.php');
 require ( FRAMEWORK_PATH . '/Core/Memory.php');
 //加载需要自动装载的类库
-if(file_exists( APP_PATH . '/Common/Config.php')){
-    require_once (APP_PATH . '/Common/Config.php');
-    if( !empty($_autoload)){
-        foreach ($_autoload as $k => $v){
-            if(file_exists( APP_PATH . 'Library/'.$v)){
-                require_once( APP_PATH . 'Library/'.$v .'.php');
-            }elseif( file_exists( FRAMEWORK_PATH . 'Library/'.$v) ){
-                require_once( FRAMEWORK_PATH . 'Library/'.$v .'.php');
-            }
+$_autoload = Q::getConfig('autoload');
+if( !empty($_autoload)){
+    foreach ($_autoload as $k => $v){
+        if(file_exists( APP_PATH . 'Library/'.$v)){
+            require_once( APP_PATH . 'Library/'.$v .'.php');
+        }elseif( file_exists( FRAMEWORK_PATH . 'Library/'.$v) ){
+            require_once( FRAMEWORK_PATH . 'Library/'.$v .'.php');
         }
     }
 }
+
 
 
 
