@@ -79,3 +79,53 @@
 [2013-09-13 11:59:20][ERROR] Url http://www.q.com/home4 Home4Controller NOT FOUND!
 [2013-09-13 11:59:20][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
 [2013-09-13 11:59:27][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 14:56:30][ERROR] Url http://www.q.com/home4 Home4Controller NOT FOUND!
+[2013-09-13 14:56:30][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 14:56:32][SUCCESS] Url http://www.q.com/home
+[2013-09-13 14:56:32][SUCCESS] Url http://www.q.com/home
+[2013-09-13 14:56:32][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 14:56:43][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 14:56:43][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 14:56:45][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 14:56:45][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 14:56:55][NOTICE] Url http://www.q.com/home/welcome/momo/25/china Undefined variable: title2 at file D:\wamp\www\phpis\iPHP\Application\Data\Runtime\1440a97b89febd14049faa8361721d7d.php(6)
+[2013-09-13 14:56:55][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:08:26][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 15:08:26][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:08:27][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 15:08:27][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:08:27][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 15:08:27][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:08:29][SUCCESS] Url http://www.q.com/index.php?m=home&a=indexd
+[2013-09-13 15:08:29][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:10:19][SUCCESS] Url http://www.q.com/index.php?m=home&a=indexd
+[2013-09-13 15:10:19][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:10:25][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 15:10:25][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:19:22][NOTICE] Url http://www.q.com/home/welcome/momo/25/china Undefined variable: title2 at file D:\wamp\www\phpis\iPHP\Application\Data\Runtime\1440a97b89febd14049faa8361721d7d.php(6)
+[2013-09-13 15:19:22][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 15:19:22][NOTICE] Url http://www.q.com/home/welcome/momo/25/china Undefined variable: title2 at file D:\wamp\www\phpis\iPHP\Application\Data\Runtime\1440a97b89febd14049faa8361721d7d.php(6)
+[2013-09-13 15:19:22][ERROR] Url http://www.q.com/favicon.ico Favicon.icoController NOT FOUND!
+[2013-09-13 16:03:25][NOTICE] Url http://www.q.com/home/welcome/momo/25/china Undefined variable: title2 at file D:\wamp\www\phpis\iPHP\Application\Data\Runtime\1440a97b89febd14049faa8361721d7d.php(6)
+[2013-09-13 16:03:25][ERROR] Url http://www.q.com/favicon.ico 1000: Favicon.ico
+[2013-09-13 16:03:27][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 16:03:27][ERROR] Url http://www.q.com/favicon.ico 1000: Favicon.ico
+[2013-09-13 16:03:30][ERROR] Url http://www.q.com/index.php?m=homed&a=index 1000: Homed
+[2013-09-13 16:03:30][ERROR] Url http://www.q.com/favicon.ico 1000: Favicon.ico
+[2013-09-13 16:13:55][ERROR] Url http://www.q.com/index.php?m=homed&a=index access
+[2013-09-13 16:13:55][ERROR] Url http://www.q.com/favicon.ico access
+[2013-09-13 16:14:21][ERROR] Url http://www.q.com/index.php?m=homed&a=index access
+[2013-09-13 16:14:21][ERROR] Url http://www.q.com/favicon.ico access
+[2013-09-13 16:17:04][ERROR] Url http://www.q.com/index.php?m=homed&a=index 未定义指定控制器/NOT FOUND CONTROLLER: Homed
+[2013-09-13 16:17:04][ERROR] Url http://www.q.com/favicon.ico 未定义指定控制器/NOT FOUND CONTROLLER: Favicon.ico
+[2013-09-13 16:17:37][ERROR] Url http://www.q.com/index.php?m=homed&a=index 未定义指定控制器/NOT FOUND CONTROLLER: Homed
+[2013-09-13 16:17:37][ERROR] Url http://www.q.com/favicon.ico 未定义指定控制器/NOT FOUND CONTROLLER: Favicon.ico
+[2013-09-13 16:29:48][ERROR] Url http://www.q.com/index.php?m=homed&a=index 未定义指定控制器/NOT FOUND CONTROLLER: Homed
+[2013-09-13 16:29:48][ERROR] Url http://www.q.com/favicon.ico 未定义指定控制器/NOT FOUND CONTROLLER: Favicon.ico
+[2013-09-13 16:29:52][ERROR] Url http://www.q.com/index.php?m=home&a=index4 未定义指定控制器方法/NOT FOUND CONTROLLER ACTION: Index4
+[2013-09-13 16:29:52][ERROR] Url http://www.q.com/favicon.ico 未定义指定控制器/NOT FOUND CONTROLLER: Favicon.ico
+[2013-09-13 16:38:44][ERROR] Url http://www.q.com/index.php?m=home&a=index4 未定义指定控制器方法/NOT FOUND CONTROLLER ACTION: Index4
+[2013-09-13 16:55:51][ERROR] Url http://www.q.com/index.php?m=home&a=index4 未定义指定控制器方法/NOT FOUND CONTROLLER ACTION: Index4
+[2013-09-13 16:55:58][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 17:13:38][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-13 17:14:07][NOTICE] Url http://www.q.com/home/welcome/momo/25/china Undefined variable: title2 at file D:\wamp\www\phpis\iPHP\Application\Data\Runtime\1440a97b89febd14049faa8361721d7d.php(6)

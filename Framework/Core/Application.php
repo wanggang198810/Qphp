@@ -41,13 +41,7 @@ class Application {
         if($this->_config['record_log']){
             Q_Log::log();
         }
-        //清空缓存区，禁止之前的内容输出;
-        //ob_clean();
-        //得到缓冲区内容，并删除.
-        //$content = ob_get_clean();
-        //$content = $controller->render();
-        //$this->output( $content );
-        
+
         $this->_trace('endTime',  microtime(true));
         if($this->_config['debug']){
             $this->_trace('currentUrl', $this->_request->currentUrl());
@@ -60,7 +54,6 @@ class Application {
             $this->_trace('endMemory', Q_Memory::getInstance()->get());
             $this->_trace('UageMemory', ($this->_debugInfo['endMemory'] - $this->_debugInfo['beginMemory']) / 1024 );
             require ( FRAMEWORK_PATH . '/Core/Debug.php');
-            
             Q_Debug::output($this->_debugInfo);
         }
     }
@@ -86,7 +79,8 @@ class Application {
             //注意此模式下，目录形式链接将失效 (www.xxx.com/home/index => ?m=home&a=index)
             //in this mode, the url like path doesn't work (www.xxx.com/home/index => ?m=home&a=index)
         }
-       
+        //载入当前控制器文件
+        //load current controller file
         if( !file_exists( APP_PATH . '/Controller/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php' )){
             $controllerfile =  APP_PATH . '/Controller/' . $this->_controller.'/'.$this->_controller . self::CONTROLLER_SUFFIX . '.php';
         }else{
@@ -95,13 +89,16 @@ class Application {
         if(file_exists($controllerfile)){
             require( $controllerfile );
         }
+        
+        //debuginfo
         if( ! class_exists($this->_controller. self::CONTROLLER_SUFFIX)){
-            Q_Registry::getInstance()->set('access', '['.date("Y-m-d H:i:s").'][ERROR] Url '.$this->_request->currentUrl() . ' '.$this->_controller. self::CONTROLLER_SUFFIX . ' NOT FOUND!');
-            Q_Log::log();
+            Q_Log::set( Q_Error::getError( Q_Error::$errorType['nocontroller'] ).': '.$this->_controller );
+            if($this->_config['record_log']){
+                Q_Log::log();
+            }
             if($this->_config['debug']){
-                throw new Q_Exception('控制器:'.$this->_controller. self::CONTROLLER_SUFFIX.'不存在' );
+                throw new Q_Exception( Q_Error::getError( Q_Error::$errorType['nocontroller'] ).': '.$this->_controller );
             }else{
-//                $this->_response->redirect('/');
                 $this->show_404();
                 return;
             }
@@ -109,54 +106,51 @@ class Application {
         $className = $this->_controller.self::CONTROLLER_SUFFIX;
         $controller = new $className($this->_controller) ;
         
-        //打开缓存区
-        ob_start();
+        //初始化controller
         $controller->init();
         $controller->_controller = $this->_controller;
         $action = $controller->_action = $this->_action;
         if( !method_exists($controller, $action) ){
-            Q_Log::log();
+            Q_Log::set( Q_Error::getError( Q_Error::$errorType['noaction'] ).': '.$action );
+            if($this->_config['record_log']){
+                Q_Log::log();
+            }
             if($this->_config['debug']){
-                throw new Q_Exception('控制器:'.get_class($controller).' 中未定义动作:'.$action );
+                throw new Q_Exception( Q_Error::getError( Q_Error::$errorType['noaction'] ).': '.$action );
             }else{
-//                $this->_response->redirect('/');
                 $this->show_404();
                 return;
             }
         }
         //执行操作
         //$controller->$action();
-        
         call_user_func_array( array( $controller, $this->_action), $router['param'] );
     }
     
     
-    private function _trace($name, $value){
+    protected function getDebugInfo(){
+        if($this->_config['debug']){
+            $this->_trace('currentUrl', $this->_request->currentUrl());
+            $this->_trace('refererUrl', $this->_request->refererUrl());
+            $this->_trace('controller', ucfirst( $this->_controller ) );
+            $this->_trace('action',ucfirst( $this->_action ) );
+            $this->_trace('get', $this->_request->getGet() );
+            $this->_trace('post', $this->_request->getPost() );
+            $this->_trace('runTime', ($this->_debugInfo['endTime'] - $this->_debugInfo['beginTime']) );
+            $this->_trace('endMemory', Q_Memory::getInstance()->get());
+            $this->_trace('UageMemory', ($this->_debugInfo['endMemory'] - $this->_debugInfo['beginMemory']) / 1024 );
+            require ( FRAMEWORK_PATH . '/Core/Debug.php');
+            Q_Debug::output($this->_debugInfo);
+        }
+    }
+
+
+    protected function _trace($name, $value){
         if($this->_config['debug']){
             $this->_debugInfo[$name] = $value;
         }
     }
-    
-    /**
-     * @deprecated 废弃
-     */
-    public function output($html){
-        if($this->_config['compile_template']){
-            echo $this->template($html);
-        }else{
-            echo $html;
-        }
-    }
-    
-    /**
-     * @deprecated 废弃
-     */
-    public function template($html){
-        require ( FRAMEWORK_PATH . '/Core/Template.php');
-        $template = new Template();
-        return $template->compile($html);
-    }
-    
+        
     
     public function show_404(){
         echo '<center><h1>404</h1></center>';

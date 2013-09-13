@@ -8,6 +8,8 @@
 class Template {
     //put your code here
     public $templateID;
+    
+    
     //模板引擎解析
     public function compile($content){
         /*

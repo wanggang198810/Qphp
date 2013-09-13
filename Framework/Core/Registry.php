@@ -31,8 +31,8 @@ class Q_Registry {
 	 */
 	public function set($key,$value=''){
 		if (is_array($key)){
-			foreach ($key as $k=>$v){
-				self::$_data[$k] = $v;
+			foreach ($value as $k=>$v){
+				self::$_data[$key][$k] = $v;
 			}
 		}else{
 			self::$_data[$key] = $value;

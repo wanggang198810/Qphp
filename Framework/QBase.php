@@ -24,6 +24,8 @@ require ( FRAMEWORK_PATH . '/Core/Model.php');
 require ( FRAMEWORK_PATH . '/Core/Log.php');
 require ( FRAMEWORK_PATH . '/Core/Memory.php');
 require ( FRAMEWORK_PATH . '/Core/Registry.php');
+require ( FRAMEWORK_PATH . '/Core/Error.php');
+require ( FRAMEWORK_PATH . '/Core/Lang.php');
 //加载需要自动装载的类库
 
 /*

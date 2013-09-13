@@ -22,8 +22,7 @@ class Controller {
     const MODEL_SUFFIX = 'Model';
     const CONTRONLLER_SUFFIX = 'Controller';
 
-    public function __construct($controller) {
-        
+    public function __construct() {
         $controller = get_class($this);
         $this->_controller = str_replace(self::CONTRONLLER_SUFFIX,'', $controller);
         $this->_request = Q_Request::getInstance();
@@ -62,8 +61,6 @@ class Controller {
         }
         $file = View::getInstance($this->_controller)->render($file);
         ob_start();
-        
-        //$this->output( ob_get_clean() );
         
         if(!$this->_config['compile_template']){
             include $file;
