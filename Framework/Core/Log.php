@@ -9,6 +9,12 @@ class Q_Log {
     //put your code here
     public static function log(){
         $logFile = self::_getLogFileName();
+        $log = Q_Registry::getInstance()->get('access');
+        if( empty($log)){
+            $log = sprintf("[%s][SUCCESS] Url %s",date("Y-m-d H:i:s"),  Q_Request::getInstance()->currentUrl() );
+        }
+        $fp = @fopen($logFile, "ab+");
+        @fwrite($fp, $log."\r\n");
     }
     
     
@@ -51,6 +57,17 @@ class Q_Log {
     private static function _getPath(){
         return FRAMEWORK_PATH .'/Data/Log/';
     }
+    
+    
+    
 }
+
+
+
+   
+
+
+
+
 
 ?>

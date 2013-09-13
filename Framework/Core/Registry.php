@@ -13,10 +13,10 @@ class Q_Registry {
 
 
     public function __construct() {
-        $arrayObject = new ArrayObject();
+      
     }
     
-    public function getInstance(){
+    public static function getInstance(){
         if( null === self::$instance){
             self::$instance = new self();
         }
@@ -29,14 +29,13 @@ class Q_Registry {
 	 * @param string $key
 	 * @param mixed $value
 	 */
-	public function set($key,$value='')
-	{
+	public function set($key,$value=''){
 		if (is_array($key)){
 			foreach ($key as $k=>$v){
-				self::$_data->offsetSet($k,$v);
+				self::$_data[$k] = $v;
 			}
 		}else{
-			self::$_data->offsetSet($key,$value);
+			self::$_data[$key] = $value;
 		}
 	}
 
@@ -46,9 +45,8 @@ class Q_Registry {
 	 * @param string $key :键名
 	 * @return mixed
 	 */
-	public function get($key, $default=null)
-	{
-		return $this->keyExists($key) ? self::$_data->offsetGet($key) : $default;
+	public function get($key, $default=null){
+		return $this->keyExists($key) ? self::$_data[$key] : $default;
 	}
 
 	/**
@@ -56,9 +54,8 @@ class Q_Registry {
 	 *
 	 * @param string $key
 	 */
-	public function keyExists($key)
-	{
-		return self::$_data->offsetExists($key);
+	public function keyExists($key){
+		return isset(self::$_data[$key]);
 	}
 
 	/**
@@ -66,10 +63,9 @@ class Q_Registry {
 	 *
 	 * @param string $key
 	 */
-	public function remove($key)
-	{
+	public function remove($key){
 		if($this->keyExists($key)){
-			self::$_data->offsetUnset($key);
+			unset(self::$_data[$key]);
 			return true;
 		}else{
 			return false;

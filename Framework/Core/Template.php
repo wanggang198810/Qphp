@@ -17,7 +17,9 @@ class Template {
         preg_match('/\{\$(.*?)\|(.*?)=(.*?)\,{0,}###\}/i', $content, $matches);
         //hprint($matches,1);
         //'"<a href=\"".parseurl("$1","$addflag","$lxt")."\">$2"'
-        
+        $content = str_replace(array('<?php','<?='), array(' ',' '), $content);
+        $content = str_replace('?>', '', $content);
+        //echo $content;exit;
         $content = preg_replace('/\{\$(.*?)\|(.*?)\=(.*?)\,{1,}###\}/i', '<?php echo $2($3,$$1);?>', $content);
         $content = preg_replace('/\{\$(.*?)\|(.*?)\=###\}/i', '<?php echo $2($$1);?>', $content);
         
@@ -28,7 +30,17 @@ class Template {
         return $filename;
     }
     
-    public function parseParam($str){
+    
+    
+    public function _parseFunc($str){
+        
+    }
+
+    public function _parseTag(){
+        
+    }
+
+    public static function parseParam($str){
         //echo $str;exit;
         $str = explode(',', $str);
         $paramStr = '';

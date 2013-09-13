@@ -9,7 +9,7 @@ class Q_Memory {
     //put your code here
     public static $instance;
     
-    public function getInstance(){
+    public static function getInstance(){
         if( null === self::$instance){
             self::$instance = new self();
         }

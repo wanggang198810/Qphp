@@ -57,17 +57,21 @@ class Controller {
         if( empty($file) ){
             $file = $this->_action;
         }
-        extract($data);
+        if(!empty($data)){
+            extract($data);
+        }
         $file = View::getInstance($this->_controller)->render($file);
         ob_start();
-        include $file;
+        
         //$this->output( ob_get_clean() );
         
         if(!$this->_config['compile_template']){
+            include $file;
             echo ob_get_clean();
         }else{
-            $tempfile = $this->templateCompile( ob_get_clean() );
-            include($tempfile);
+            $content = file_get_contents($file);
+            $cachefile = $this->templateCompile( $content );
+            include($cachefile);
         }
     }
     

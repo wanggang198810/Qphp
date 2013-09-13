@@ -35,6 +35,9 @@ class HomeController extends Controller{
         echo '...<Br />';
         echo '...<Br />';
         echo $name.': I\'m '.$age.', from '.$where.'.' ;
+        $data=array();
+        $data['title'] = 'welcome!';
+        $this->render('',$data);
     }
 }
 

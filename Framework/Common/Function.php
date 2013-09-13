@@ -35,6 +35,7 @@ if( !function_exists('import')){
     }
 }
 
+//打印
 if(!function_exists('hprint')){
     function hprint($input, $exit=0){
         echo '<pre>';
@@ -48,6 +49,19 @@ if(!function_exists('hprint')){
 if(!function_exists('view_test')){
     function view_test($a='', $b='', $c=''){
         echo $a.' : '.$b ." : ". $c;
+    }
+}
+
+//跟踪程序错误信息
+if(!function_exists('q_error_handler')){
+    function q_error_handler($error, $error_string, $filename, $line, $symbols){
+         $error_no_arr = array(1=>'ERROR', 2=>'WARNING', 4=>'PARSE', 8=>'NOTICE', 16=>'CORE_ERROR', 32=>'CORE_WARNING', 64=>'COMPILE_ERROR', 128=>'COMPILE_WARNING', 256=>'USER_ERROR', 512=>'USER_WARNING', 1024=>'USER_NOTICE', 2047=>'ALL', 2048=>'STRICT');
+        
+        if(in_array($error,array_keys($error_no_arr) )){
+            $time = date("Y-m-d H:i:s");
+            $msg = sprintf("[%s][%s] Url %s %s at file %s(%s)",$time, $error_no_arr[$error], Q_Request::getInstance()->currentUrl() ,$error_string, $filename, $line);
+            Q_Registry::getInstance()->set('access',$msg);
+        }
     }
 }
 ?>

@@ -21,6 +21,12 @@ class Application {
         $this->_request = Q_Request::getInstance();
         $this->_response = Q_Response::getInstance();
         $this->_config = Q::getConfig();
+        if($this->_config['debug']){
+            error_reporting(E_ERROR | E_WARNING | E_PARSE);
+            set_error_handler('q_error_handler');//自定义错误
+        }else{
+            error_reporting(0);
+        }
     }
     
     
@@ -90,7 +96,15 @@ class Application {
             require( $controllerfile );
         }
         if( ! class_exists($this->_controller. self::CONTROLLER_SUFFIX)){
-            echo ' NOT FOUND THE '.$this->_controller.' CONTROLLER FILE';
+            Q_Registry::getInstance()->set('access', '['.date("Y-m-d H:i:s").'][ERROR] Url '.$this->_request->currentUrl() . ' '.$this->_controller. self::CONTROLLER_SUFFIX . ' NOT FOUND!');
+            Q_Log::log();
+            if($this->_config['debug']){
+                throw new Q_Exception('控制器:'.$this->_controller. self::CONTROLLER_SUFFIX.'不存在' );
+            }else{
+//                $this->_response->redirect('/');
+                $this->show_404();
+                return;
+            }
         }
         $className = $this->_controller.self::CONTROLLER_SUFFIX;
         $controller = new $className($this->_controller) ;
@@ -101,6 +115,7 @@ class Application {
         $controller->_controller = $this->_controller;
         $action = $controller->_action = $this->_action;
         if( !method_exists($controller, $action) ){
+            Q_Log::log();
             if($this->_config['debug']){
                 throw new Q_Exception('控制器:'.get_class($controller).' 中未定义动作:'.$action );
             }else{
