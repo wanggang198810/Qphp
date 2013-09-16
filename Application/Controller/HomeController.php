@@ -17,6 +17,7 @@ class HomeController extends Controller{
         for ($i = 0; $i < 200000; $i++) {
             $array []= md5($i);
         }*/
+        
         $data['title'] = 'Q php framework!';
         $data['info'] = 'Q php framework!';
         $model = new HomeModel();
