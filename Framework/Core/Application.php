@@ -79,6 +79,7 @@ class Application {
             //注意此模式下，目录形式链接将失效 (www.xxx.com/home/index => ?m=home&a=index)
             //in this mode, the url like path doesn't work (www.xxx.com/home/index => ?m=home&a=index)
         }
+        
         //载入当前控制器文件
         //load current controller file
         if( !file_exists( APP_PATH . '/Controller/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php' )){
