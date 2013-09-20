@@ -129,16 +129,3 @@
 [2013-09-13 16:55:58][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
 [2013-09-13 17:13:38][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
 [2013-09-13 17:14:07][NOTICE] Url http://www.q.com/home/welcome/momo/25/china Undefined variable: title2 at file D:\wamp\www\phpis\iPHP\Application\Data\Runtime\1440a97b89febd14049faa8361721d7d.php(6)
-[2013-09-13 17:51:31][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:52:20][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:52:39][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:55:15][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:55:32][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:56:18][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:56:43][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:58:24][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 17:58:38][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
-[2013-09-13 18:19:48][NOTICE] Url http://www.q.com/index.php?m=home&a=index Undefined index: nihao at file D:\wamp\www\phpis\iPHP\Application\Controller\HomeController.php(24)
-[2013-09-13 18:19:50][NOTICE] Url http://www.q.com/index.php?m=home&a=index Undefined index: nihao at file D:\wamp\www\phpis\iPHP\Application\Controller\HomeController.php(24)
-[2013-09-13 18:20:24][NOTICE] Url http://www.q.com/index.php?m=home&a=index Undefined index: nihao at file D:\wamp\www\phpis\iPHP\Application\Controller\HomeController.php(24)
-[2013-09-13 18:21:11][SUCCESS] Url http://www.q.com/index.php?m=home&a=index

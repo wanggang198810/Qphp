@@ -8,7 +8,7 @@
 return array(
     
     'url_mode'=>1,
-    'compile_template'=>false,
+    'compile_template'=>true,
     
     'dbconfig' => array(
         'dbtype'=>'mysql',

@@ -19,9 +19,5 @@
     Hello,this is a App based on Q php framework !
     
     <a href="index.php?m=home&a=index">aa</a>
-    <script>
-        var html = 'item '+  "<?php echo $title;?>"  + ' ok'; 
-        //alert(html);
-    </script>
 </body>
 </html>
