@@ -12,7 +12,7 @@ class Db_Base {
      * 解析where条件，允许直接传入字符串格式和数据格式
      * 
      */
-    public function parseWhere($data){
+    public function _parseWhere($data){
         if(is_array($data)){
             return $this->_parseData($data, 'and');
         }else{
@@ -24,17 +24,29 @@ class Db_Base {
      * 解析要更新的字段
      * @param Array $data
      */
-    public function parseUpdate($data){
+    public function _parseUpdate($data){
         return $this->_parseData($data, ',');
     }
     
     /**
      * 
      */
-    public function parseInsert($data){
+    public function _parseInsert($data){
         return $this->_parseData($data, ',');
     }
     
+    protected function _parseInsertSet($data){
+        $result = array();
+        $gas = '';
+        foreach ($data as $key => $val){
+            $result['field'] .= $gas . $this->_parseField($key);
+            $result['value'] .= $gas ."'".$this->_parseValue($val)."'";
+            $gas = ',';
+        }
+        return $result;
+    }
+
+
     /**
      * 解析数据
      */

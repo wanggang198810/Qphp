@@ -17,7 +17,7 @@ return array(
         'password'=>'',
         'pconnect'=> 0,
         'port'=>3306,
-        'dbname'=>'test',
+        'dbname'=>'r',
         'charset'=>'utf8', //注:没有减号-
         'tablepre'=>'',
     ),

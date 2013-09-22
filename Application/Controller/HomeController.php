@@ -40,6 +40,11 @@ class HomeController extends Controller{
         $data['title'] = 'welcome!';
         $this->render('',$data);
     }
+    
+    public function select(){
+        $model = new HomeModel();
+        
+    }
 }
 
 ?>

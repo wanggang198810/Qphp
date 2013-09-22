@@ -50,7 +50,7 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
      */
     public function __construct($config=array(), $debug=0) {
         if( !empty($config) ){
-            $this->config = $config;
+            $this->_config = $config;
         }
         $this->debug = $debug;
     }
@@ -60,6 +60,31 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
      */
     public function execute($sql){
         return $this->_query = mysql_query($sql, $this->_link);
+    }
+    
+    public function insert($table,$data,$replaceInto=false){
+		$ret = $this->_parseInsertSet($data);
+		$func = $replaceInto ? 'REPLACE' : 'INSERT';
+		$sql = sprintf("%s INTO %s(%s) VALUES(%s)",$func,$this->table( $table),$ret['field'],$ret['value']);
+		return $this->execute($sql);
+	}
+    
+    
+    public function delete($table, $where, $limit=1){
+        $this->_where = $this->_parseWhere($where);
+        $limit = ($limit > 0)? " LIMIT {$limit}" : "";
+        $sql = "DELETE FROM ".$this->table($table)." WHERE ".$this->_where.$limit;
+        return $this->execute($sql);
+    }
+    
+    public function update($table, $data, $where='', $order='', $limit='', $group=''){
+        $data = $this->_parseData($data);
+		$sql = sprintf("UPDATE %s SET %s",$this->table( $table ),$data);
+        if ($where != '') $sql .= ' WHERE '.$this->_parseWhere($where);
+		if ($order != '') $sql .= ' ORDER BY '.$order;
+		if ($group != '') $sql .= ' GROUP BY '.$group;
+		if ($limit != '') $sql .= ' LIMIT '.$limit;
+        return $this->execute($sql);
     }
 
 
@@ -101,12 +126,6 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
         return mysql_affected_rows($this->_link);
     }
     
-    public function insert($table,$data,$replaceInto=false){
-		$ret = $this->_parseInsertSet($data);
-		$func = $replaceInto ? 'REPLACE' : 'INSERT';
-		$sql = sprintf("%s INTO %s(%s) VALUES(%s)",$func,$table,$ret['key'],$ret['val']);
-		return $this->execute($sql);
-	}
     
     public function beginTransaction(){
         $bool = $this->query('SET AUTOCOMMIT=0');
@@ -174,12 +193,12 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
     }
 
     
-    public function table($tablename){
-        return $this->_tablePrefix . $tablename;
+    public function table($table){
+        return "`".$this->_tablePrefix . $table."`";
     }
     
     public function setWhere($data){
-        $this->_where = $this->parseWhere($data);
+        $this->_where = $this->_parseWhere($data);
     }
     
     public function setGroup($groupStr){

@@ -5,7 +5,7 @@
  * 
  * @author Air
  */
-include( FRAMEWORK_PATH .'/Db/Driver/Mysql/Abstract.php' );
+require( FRAMEWORK_PATH .'/Db/Driver/Mysql/Abstract.php' );
 class Mysql extends Db_Abstract{
     
     public function __construct($config, $debug=0) {
@@ -21,11 +21,11 @@ class Mysql extends Db_Abstract{
     //连接数据库
     public function connect(){
         $func = $this->_config['pconnect'] ? 'mysql_pconnect' : 'mysql_connect';
-        $this->_link = $func($this->_config['host'].$this->_config['port'], $this->_config['username'], $this->_config['password']);
+        $this->_link = $func($this->_config['host'].":".$this->_config['port'], $this->_config['username'], $this->_config['password']);
         if (! $this->_link ){
             die( '数据库连接失败，请检查你的数据库配置是否正确:'.@mysql_error());
         }
-        mysql_select_db($this->_config['name']);
+        mysql_select_db($this->_config['dbname']);
         $this->_setCharset();
     }
     
@@ -45,7 +45,7 @@ class Mysql extends Db_Abstract{
 		// 函数执行一条 MySQL 查询。返回查询结果
 		//如果没有打开的连接，本函数会尝试无参数调用 mysql_connect() 函数来建立一个连接并使用之。
 		$func = $type == 'UNBUFFERED' && function_exists ( 'mysql_unbuffered_query' ) ? 'mysql_unbuffered_query' : 'mysql_query';
-        $this->_query = $func($sql, $this->_link);
+        $this->_query = $func($sql, $this->_link)or die(mysql_error());
     }
     
     
@@ -54,6 +54,7 @@ class Mysql extends Db_Abstract{
      * 获取单条记录
      */
     public function fetch($sql, $type = MYSQL_ASSOC){
+        $this->query($sql);
         return mysql_fetch_array($this->_query, $type);
     }
 
