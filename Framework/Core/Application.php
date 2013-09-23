@@ -52,7 +52,10 @@ class Application {
             $this->_trace('post', $this->_request->getPost() );
             $this->_trace('runTime', ($this->_debugInfo['endTime'] - $this->_debugInfo['beginTime']) );
             $this->_trace('endMemory', Q_Memory::getInstance()->get());
-            $this->_trace('UageMemory', ($this->_debugInfo['endMemory'] - $this->_debugInfo['beginMemory']) / 1024 );
+            $this->_trace('uageMemory', ($this->_debugInfo['endMemory'] - $this->_debugInfo['beginMemory']) / 1024 );
+            $this->_trace('includeFile', Q::getIncludeFiles() );
+            $this->_trace('header', Q::getAllHeaders() );
+            $this->_trace('response', Q::getResonse() );
             require ( FRAMEWORK_PATH . '/Core/Debug.php');
             Q_Debug::output($this->_debugInfo);
         }

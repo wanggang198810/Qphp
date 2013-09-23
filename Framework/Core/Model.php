@@ -75,8 +75,7 @@ class Model {
         foreach($this->_auto as $k => $v){
             switch ($v[3]) {
                 case 'function':
-                    call_user_func_array($v[4], $data);
-
+                    call_user_func_array($data[$v[4]], $v[5]);
                     break;
 
                 case 'string':

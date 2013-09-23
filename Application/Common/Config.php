@@ -22,6 +22,11 @@ return array(
         'tablepre'=>'',
     ),
     
+    'dbmap' => array(
+        
+        
+    ),
+    
     'debug' => true,
     
     

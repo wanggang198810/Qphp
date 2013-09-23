@@ -41,9 +41,11 @@ class HomeController extends Controller{
         $this->render('',$data);
     }
     
-    public function select(){
-        $model = new HomeModel();
-        
+    public function header(){
+        hprint(getallheaders());
+        hprint(get_headers('http://www.baidu.com/'));
+        $r = Q::getIncludeFiles();
+        Q::printf($r);
     }
 }
 

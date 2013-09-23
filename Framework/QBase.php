@@ -45,14 +45,18 @@ if( !empty($_autoload)){
 
 
 class QBase {
-    //put your code here
     
     
-
+    /**
+     * 创建应用
+     */
     public static function createApplication(){
         return new Application();
     }
     
+    /**
+     * 导入类库文件
+     */
     public static function import($pathname){
         if(strpos($pathname, '.php') === false){
             $pathname .= '.php';    
@@ -64,6 +68,9 @@ class QBase {
         }
     }
     
+    /**
+     * 获取配置信息
+     */
     public static function getConfig($key=''){
         $_config = include( FRAMEWORK_PATH . '/Common/Config.php');
         if(file_exists( APP_PATH . '/Common/Config.php' )){
@@ -72,9 +79,79 @@ class QBase {
             $config = array();
         }
         $config = array_merge( $_config, $config);
+        unset($_config);
         return $key ? (isset($config[$key]) ? $config[$key] : 'index' ) : $config;
     }
     
+    /**
+     * 获取include的文件
+     */
+    public static function getIncludeFiles(){
+        return get_included_files();
+    }
+    
+    
+    /**
+     * 获取include目录
+     */
+    public static function getIncludePath(){
+        return get_include_path();
+    }
+
+
+    /**
+     * 格式输出
+     */
+    public static function printf($input, $exit=0){
+        echo '<pre>';
+        print_r($input);
+        echo '</pre>';
+        if( $exit)
+            exit;
+    }
+    
+    /**
+     * 获取浏览器信息
+     */
+    public static function getBrowser($user_agent=null, $return_array=true){
+		return get_browser($user_agent,$return_array);
+	}
+	
+	/**
+	 * 获取服务器响应一个 HTTP 请求所发送的所有标头
+	 * */
+	public static function getHeaders($url, $fromat=''){
+		return get_headers($url);
+	}
+	
+    /**
+     * 获取服务器响应所有请求所发送的标头
+     */
+    public static function getAllHeaders(){
+		return getallheaders();
+	}
+    
+    /**
+     * 获取HTTP 响应头
+     */
+    public static function getResonse(){
+        return $http_response_header;
+    }
+   
+    /**
+     * 获取上一个错误信息
+     */
+    public static function error(){
+        return $php_errormsg;
+    }
+     
+    /**
+     * 是否是搜索引擎访问
+     */
+    public static function isSearchEngine(){
+        $isSearchEngine=preg_match("/(Googlebot|Msnbot|YodaoBot|Sosospider|baiduspider|google|baidu|yahoo|sogou|bing|coodir|soso|youdao|zhongsou|slurp|ia_archiver|scooter|spider|webcrawler|OutfoxBot)/i", $_SERVER['HTTP_USER_AGENT']);
+        return $isSearchEngine;
+    }
 }
 
 ?>

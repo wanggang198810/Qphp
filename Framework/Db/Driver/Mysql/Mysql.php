@@ -21,7 +21,7 @@ class Mysql extends Db_Abstract{
     //连接数据库
     public function connect(){
         $func = $this->_config['pconnect'] ? 'mysql_pconnect' : 'mysql_connect';
-        $this->_link = $func($this->_config['host'].":".$this->_config['port'], $this->_config['username'], $this->_config['password']);
+        $this->links[] = $this->_link = $func($this->_config['host'].":".$this->_config['port'], $this->_config['username'], $this->_config['password']);
         if (! $this->_link ){
             die( '数据库连接失败，请检查你的数据库配置是否正确:'.@mysql_error());
         }

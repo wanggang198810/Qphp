@@ -87,6 +87,14 @@ class Q_Http{
 		return get_headers($url);
 	}
 	
+    
+    public static function getAllHeaders(){
+		return getallheaders();
+	}
+    
+    public static function getResonse(){
+        return $http_response_header;
+    }
 	/**
 	* 发送HTTP状态头
 	*/

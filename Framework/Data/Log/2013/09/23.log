@@ -1,0 +1,40 @@
+[2013-09-23 14:30:25][SUCCESS] Url http://www.q.com/
+[2013-09-23 14:30:26][SUCCESS] Url http://www.q.com/home
+[2013-09-23 14:30:34][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 14:30:52][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 14:30:53][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 14:30:53][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 14:30:53][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 14:30:54][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 14:30:54][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 14:44:46][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 16:22:21][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 16:33:05][SUCCESS] Url http://www.q.com/index.php?m=home&a=index
+[2013-09-23 16:33:09][SUCCESS] Url http://www.q.com/home
+[2013-09-23 16:33:13][ERROR] Url http://www.q.com/home/head 未定义指定控制器方法/NOT FOUND CONTROLLER ACTION: Head
+[2013-09-23 16:33:16][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 16:33:41][WARNING] Url http://www.q.com/home/header get_headers() expects at least 1 parameter, 0 given at file D:\wamp\www\phpis\iPHP\Application\Controller\HomeController.php(46)
+[2013-09-23 16:33:42][WARNING] Url http://www.q.com/home/header get_headers() expects at least 1 parameter, 0 given at file D:\wamp\www\phpis\iPHP\Application\Controller\HomeController.php(46)
+[2013-09-23 16:33:44][WARNING] Url http://www.q.com/home/header get_headers() expects at least 1 parameter, 0 given at file D:\wamp\www\phpis\iPHP\Application\Controller\HomeController.php(46)
+[2013-09-23 16:34:09][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:03:21][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:05:16][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:08:33][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:11:54][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:12:29][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:12:58][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:19:28][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:20:21][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:22:05][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:25:38][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:25:57][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:26:12][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:26:30][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:27:02][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:35:32][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:35:54][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:35:55][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:37:07][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:40:21][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:41:02][SUCCESS] Url http://www.q.com/home/header
+[2013-09-23 17:41:40][SUCCESS] Url http://www.q.com/home/header
