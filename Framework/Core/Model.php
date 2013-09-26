@@ -8,8 +8,8 @@
 class Model {
     //put your code here
     protected $db;
-    protected $table;
-    protected $tablePrex='';
+    protected $_table;
+    protected $_tablePrex='';
     protected $_config;
     protected $_sql;
     protected $_validate       = array();  // 自动验证定义
@@ -22,22 +22,27 @@ class Model {
         $db = $this->_config['dbtype'];
         //$name= get_class($this);
         if($name){
-            $this->tablePrex = $this->_config['tablePrex'];
-            $this->db->table = $this->table = $this->tablePrex . $name;
+            $this->_tablePrex = $this->_config['tablePrex'];
+            $this->db->table = $this->_table = $this->tablePrex . $name;
         }
         $filename = FRAMEWORK_PATH . '/Db/Driver/'.$db.'/'.$db.'.php';
         if(file_exists($filename)){
             include( $filename);
+            $this->db = new $db($this->_config);
+        }else{
+            exit( $db . "数据库驱动不存在!");
         }
-        
-        $this->db = new $db($this->_config);
-     
+  
         $this->db->table = $name;
         $this->db->tablePrex = $this->tablePrex ;
         //$this->table = $this->tablePrex.$this->db->table($name);
-        $this->table = $name;
+        $this->_table = $name;
     }
     
+    
+    public function table($name){
+        return $this->db->table($name);
+    }
     
     /**
      * 使用正则验证数据
@@ -91,7 +96,7 @@ class Model {
     }
     
     public function fetch(){
-        $this->_sql = "select * from ".$this->db->table( $this->table )." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder() . " LIMIT 1";
+        $this->_sql = "select * from ".$this->db->table( $this->_table )." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder() . " LIMIT 1";
         return $this->db->fetch( $this->_sql );
     }
     public function find(){
@@ -99,7 +104,7 @@ class Model {
     }
     
     public function fetchArray(){
-        $this->_sql = "select * from ".$this->db->table( $this->table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving." ".$this->db->getOrder();
+        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving." ".$this->db->getOrder();
         return $this->db->fetchArray($this->_sql);
     }
     public function getAll(){
@@ -107,7 +112,7 @@ class Model {
     }
     
     public function page($page=1, $pageSize=10, $total=0){
-        $this->_sql = "select * from ".$this->db->table($this->table) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
+        $this->_sql = "select * from ".$this->db->table($this->_table) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
         return $this->db->page($this->_sql, $page, $pageSize, $total);
     }
     
@@ -115,7 +120,7 @@ class Model {
         if(empty($data)){
             return false;
         }
-        return $this->db->insert($this->table,$data);
+        return $this->db->insert($this->_table,$data);
     }
     
     public function insert($data){
@@ -123,18 +128,18 @@ class Model {
     }
     
     public function update($data){
-        return $this->db->update($this->table,$data, $this->db->getWhere());
+        return $this->db->update($this->_table,$data, $this->db->getWhere());
     }
     
     
     public function count($countStr = 'count(*)'){
-        $this->_sql = "select {$countStr} from ".$this->db->table($this->table) ." where ".$this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving." ".$this->db->getOrder();
+        $this->_sql = "select {$countStr} from ".$this->db->table($this->_table) ." where ".$this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving." ".$this->db->getOrder();
         return $this->db->query($this->_sql);
     }
 
 
     public function delete(){
-        return $this->db->delete($this->table,$this->db->getWhere());
+        return $this->db->delete($this->_table,$this->db->getWhere());
     }
     
     public function where($data){

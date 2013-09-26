@@ -49,6 +49,31 @@ class Controller {
         }
     }
     
+    
+    /**
+     * 导入模型文件
+     */
+    public static function loadModel($name){
+        if(strpos($name, '.php') === false){
+            $name .= self::MODEL_SUFFIX.'.php';    
+        }
+        if(false === strpos($name,'/')){
+            $filename = APP_PATH .'Application/Model/'.$name;
+        }else{
+            $path = '';
+            $pathArr =  explode('/', $name);
+            array_pop($pathArr);
+            foreach ($pathArr as $k => $v){
+                $path .= $v.'/';
+            }
+            $filename = APP_PATH .'Application/Model/'.$path .$name;
+        }
+        if(file_exists($filename)){
+            include($filename);
+        }
+    }
+    
+    
     /**
      * 
      */

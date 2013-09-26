@@ -68,6 +68,7 @@ class QBase {
         }
     }
     
+    
     /**
      * 获取配置信息
      */
@@ -149,7 +150,7 @@ class QBase {
      * 是否是搜索引擎访问
      */
     public static function isSearchEngine(){
-        $isSearchEngine=preg_match("/(Googlebot|Msnbot|YodaoBot|Sosospider|baiduspider|google|baidu|yahoo|sogou|bing|coodir|soso|youdao|zhongsou|slurp|ia_archiver|scooter|spider|webcrawler|OutfoxBot)/i", $_SERVER['HTTP_USER_AGENT']);
+        $isSearchEngine=preg_match("/(Googlebot|Msnbot|YodaoBot|Sosospider|baiduspider|google|baidu|yahoo|sogou|bing|coodir|soso|youdao|zhongsou|slurp|ia_archiver|scooter|spider|webcrawler|OutfoxBot|360)/i", $_SERVER['HTTP_USER_AGENT']);
         return $isSearchEngine;
     }
 }

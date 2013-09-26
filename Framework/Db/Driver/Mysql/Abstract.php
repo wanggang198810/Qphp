@@ -62,12 +62,27 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
         return $this->_query = mysql_query($sql, $this->_link);
     }
     
-    public function insert($table,$data,$replaceInto=false){
+    public function insert($table,$data,$lastInsertid=false,$replaceInto=false){
 		$ret = $this->_parseInsertSet($data);
 		$func = $replaceInto ? 'REPLACE' : 'INSERT';
 		$sql = sprintf("%s INTO %s(%s) VALUES(%s)",$func,$this->table( $table),$ret['field'],$ret['value']);
-		return $this->execute($sql);
+		$result = $this->execute($sql);
+        if($lastInsertid){
+            $this->lastInsertId();
+        }
+        return $result;
 	}
+    
+    public function multiInsert($table,$data){
+        $values = $gas = '';
+        foreach ($data as $k => $v){
+            $ret = $this->_parseInsertSet($v);
+            $values .= $gas.'('.$ret['value'].')';
+            $gas = ',';
+        }
+        $sql = sprintf("INSERT INTO %s (%s) VALUES %s",$table, $ret['field'], $values);
+        return $this->execute($sql);
+    }
     
     
     public function delete($table, $where, $limit=1){
