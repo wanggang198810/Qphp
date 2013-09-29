@@ -30,7 +30,7 @@ class Controller {
         $this->_request = Q_Request::getInstance();
         $this->_response = Q_Response::getInstance();
         $this->_config = Q::getConfig();
-        $this->autoLoadModel( APP_PATH.'/Model/'.$this->_controller .self::MODEL_SUFFIX . '.php');
+        $this->autoLoadModel( APP_PATH.'/Models/'.$this->_controller .self::MODEL_SUFFIX . '.php');
         
     }
     
@@ -63,7 +63,7 @@ class Controller {
             $name .= self::MODEL_SUFFIX.'.php';    
         }
         if(false === strpos($name,'/')){
-            $filename = APP_PATH .'Application/Model/'.$name;
+            $filename = APP_PATH .'Application/Models/'.$name;
         }else{
             $path = '';
             $pathArr =  explode('/', $name);
@@ -71,7 +71,7 @@ class Controller {
             foreach ($pathArr as $k => $v){
                 $path .= $v.'/';
             }
-            $filename = APP_PATH .'Application/Model/'.$path .$name;
+            $filename = APP_PATH .'Application/Models/'.$path .$name;
         }
         if(file_exists($filename)){
             include($filename);

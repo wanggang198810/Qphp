@@ -85,10 +85,10 @@ class Application {
         
         //载入当前控制器文件
         //load current controller file
-        if( !file_exists( APP_PATH . '/Controller/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php' )){
-            $controllerfile =  APP_PATH . '/Controller/' . $this->_controller.'/'.$this->_controller . self::CONTROLLER_SUFFIX . '.php';
+        if( !file_exists( APP_PATH . '/Controllers/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php' )){
+            $controllerfile =  APP_PATH . '/Controllers/' . $this->_controller.'/'.$this->_controller . self::CONTROLLER_SUFFIX . '.php';
         }else{
-            $controllerfile =  APP_PATH . '/Controller/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php';
+            $controllerfile =  APP_PATH . '/Controllers/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php';
         }
         if(file_exists($controllerfile)){
             require( $controllerfile );

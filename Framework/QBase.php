@@ -21,6 +21,7 @@ require ( FRAMEWORK_PATH . '/Core/Response.php');
 require ( FRAMEWORK_PATH . '/Core/Exception.php');
 require ( FRAMEWORK_PATH . '/Core/View.php');
 require ( FRAMEWORK_PATH . '/Core/Model.php');
+require ( FRAMEWORK_PATH . '/Core/Layout.php');
 require ( FRAMEWORK_PATH . '/Core/Log.php');
 require ( FRAMEWORK_PATH . '/Core/Memory.php');
 require ( FRAMEWORK_PATH . '/Core/Registry.php');

@@ -14,7 +14,7 @@ class View {
     public $ext = '.php';
     public $viewBasePath;
     
-    public function __construct($controller) {
+    public function __construct($controller='') {
         $this->viewBasePath = $this->getViewPath($controller);
     }
 
@@ -25,13 +25,20 @@ class View {
         return self::$instance;
     }
     
-    function render($file){
+    public function render($file){
         
         return $this->viewBasePath . '/' . ucfirst( $file ) . $this->ext;
     }
     
-    function getViewPath($controller){
-        return APP_PATH.'/View/'.$controller;
+    public function getViewPath($controller){
+        return APP_PATH.'/Views/'.$controller;
+    }
+    
+    /**
+     * 设置视图层目录
+     */
+    public function setPath($controller){
+        $this->viewBasePath = APP_PATH.'/Views/'.$controller;
     }
 }
 
