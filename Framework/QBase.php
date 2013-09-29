@@ -6,7 +6,7 @@
  */
 
 if( !defined('FRAMEWORK_PATH')){
-    define('FRAMEWORK_PATH', './Framework/');
+    define('FRAMEWORK_PATH', './Framework');
 }
 
 if( !defined('APP_PATH')){
@@ -46,6 +46,7 @@ if( !empty($_autoload)){
 
 class QBase {
     
+    const VERSION='1.0';
     
     /**
      * 创建应用
@@ -133,7 +134,7 @@ class QBase {
 	}
     
     /**
-     * 获取HTTP 响应头
+     * 获取HTTP 响应头， 同get_headers();
      */
     public static function getResonse(){
         return $http_response_header;

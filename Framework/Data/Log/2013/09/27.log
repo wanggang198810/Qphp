@@ -1,0 +1,4 @@
+[2013-09-27 09:52:16][SUCCESS] Url http://www.q.com/
+[2013-09-27 09:52:17][NOTICE] Url http://www.q.com/home Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-27 09:52:27][SUCCESS] Url http://www.q.com/
+[2013-09-27 09:52:27][NOTICE] Url http://www.q.com/home Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)

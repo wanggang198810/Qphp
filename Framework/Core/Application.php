@@ -132,7 +132,10 @@ class Application {
     }
     
     
-    protected function getDebugInfo(){
+    /**
+     * 获取debug信息
+     */
+    public function getDebugInfo(){
         if($this->_config['debug']){
             $this->_trace('currentUrl', $this->_request->currentUrl());
             $this->_trace('refererUrl', $this->_request->refererUrl());

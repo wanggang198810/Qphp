@@ -17,7 +17,9 @@ class Controller {
     public $_controller;
     public $request;
     public $response;
-    public $_config;
+    protected $_config;
+    public $data;
+    public $autoLayout = true;
     private $_autoloalmodel = true;
     const MODEL_SUFFIX = 'Model';
     const CONTRONLLER_SUFFIX = 'Controller';
@@ -27,12 +29,15 @@ class Controller {
         $this->_controller = str_replace(self::CONTRONLLER_SUFFIX,'', $controller);
         $this->_request = Q_Request::getInstance();
         $this->_response = Q_Response::getInstance();
-        $this->_config = get_config();
+        $this->_config = Q::getConfig();
         $this->autoLoadModel( APP_PATH.'/Model/'.$this->_controller .self::MODEL_SUFFIX . '.php');
         
     }
     
-    public function setAutoLoadModel($flag ){
+    /**
+     * 是否自动加载模型
+     */
+    public function setAutoLoadModel($flag){
         $this->_autoloalmodel = $flag;
     }
 
@@ -75,17 +80,19 @@ class Controller {
     
     
     /**
-     * 
+     * 加载视图层
      */
-    public function render($file='', $data=array()){
+    public function render($file=''){
         if( empty($file) ){
             $file = $this->_action;
         }
-        if(!empty($data)){
-            extract($data);
+        if(!empty($this->data)){
+            extract($this->data);
         }
         $file = View::getInstance($this->_controller)->render($file);
         ob_start();
+        $layout = new Q_Layout();
+        
         
         if(!$this->_config['compile_template']){
             include $file;
@@ -94,6 +101,21 @@ class Controller {
             $content = file_get_contents($file);
             $cachefile = $this->templateCompile( $content );
             include($cachefile);
+        }
+    }
+    
+    /**
+     * 分配视图变量
+     */
+    public function assign($key, $value=''){
+        if(is_array($key)){
+            if (!empty($this->data)){
+                $this->data = array_merge($this->data, $key);
+            }else{
+                $this->data = $key;
+            }
+        }else{
+            $this->data[$key] = $value;
         }
     }
     

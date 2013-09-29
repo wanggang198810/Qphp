@@ -16,7 +16,16 @@ class Q_Error {
     
     public static $error;
     
-    public function getError($type){
+    public static $instance;
+    
+    public static function getInstance($controller){
+        if( null === self::$instance){
+            self::$instance = new self($controller);
+        }
+        return self::$instance;
+    }
+    
+    public static function getError($type){
         switch ($type){
             case 1000:
                 return Q_Lang::$systemError['1000'];
@@ -25,12 +34,14 @@ class Q_Error {
                 return Q_Lang::$systemError['1001'];
                 break;
             default:
-                return Q_Lang::$systemError['1111'];;
+                return Q_Lang::$systemError['1111'];
                 break;
         }
     }
     
-    
+    public static function show(){
+        
+    }
     
     
 }

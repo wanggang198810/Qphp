@@ -20,9 +20,11 @@ class HomeController extends Controller{
         
         $data['title'] = 'Q php framework!';
         $data['info'] = 'Q php framework!';
+        $data['a'] = 'aaaa';
         $model = new HomeModel();
-        
-        $this->render('',$data);
+        $this->assign($data);
+        $this->assign('c', 'ccc');
+        $this->render();
     }
     
     public function welcome($name='', $age=0, $where='china'){

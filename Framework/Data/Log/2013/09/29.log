@@ -1,0 +1,34 @@
+[2013-09-29 09:44:08][SUCCESS] Url http://www.q.com/
+[2013-09-29 09:44:08][NOTICE] Url http://www.q.com/home Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 10:58:23][SUCCESS] Url http://www.q.com/
+[2013-09-29 10:58:23][NOTICE] Url http://www.q.com/home Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 10:58:28][NOTICE] Url http://www.q.com/index.php?m=home&a=index Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 10:58:33][ERROR] Url http://www.q.com/index.php?m=home&a=indexa 未定义指定控制器方法/NOT FOUND CONTROLLER ACTION: Indexa
+[2013-09-29 10:58:36][NOTICE] Url http://www.q.com/index.php?m=home&a=index Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 10:59:08][NOTICE] Url http://www.q.com/index.php?m=home&a=index Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 10:59:35][SUCCESS] Url http://welcome.q.com/
+[2013-09-29 11:04:52][NOTICE] Url http://www.q.com/home Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 11:05:18][NOTICE] Url http://www.q.com/home Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 11:05:19][NOTICE] Url http://www.q.com/home Undefined property: HomeModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(37)
+[2013-09-29 11:06:19][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:06:20][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:06:46][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:06:47][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:06:48][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:06:48][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:06:49][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:06:49][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:08:45][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:09:06][NOTICE] Url http://www.q.com/home Use of undefined constant dd - assumed 'dd' at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(15)
+[2013-09-29 11:09:07][NOTICE] Url http://www.q.com/home Use of undefined constant dd - assumed 'dd' at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(15)
+[2013-09-29 11:09:17][NOTICE] Url http://www.q.com/home Undefined variable: a at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(15)
+[2013-09-29 11:09:18][NOTICE] Url http://www.q.com/home Undefined variable: a at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(15)
+[2013-09-29 11:14:18][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(26)
+[2013-09-29 11:14:19][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(26)
+[2013-09-29 11:45:50][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(26)
+[2013-09-29 11:45:52][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(26)
+[2013-09-29 11:46:58][NOTICE] Url http://www.q.com/home Undefined variable: a at file D:\wamp\www\phpis\iPHP\Application\View\Home\index.php(15)
+[2013-09-29 11:47:31][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:47:32][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:48:11][SUCCESS] Url http://www.q.com/home
+[2013-09-29 11:48:35][SUCCESS] Url http://www.q.com/home

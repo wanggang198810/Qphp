@@ -6,6 +6,9 @@
  */
 
 return array(
+    
+    'layout'=> true,
+    
     //是否记录程序运行log
     'record_log' => true,
     

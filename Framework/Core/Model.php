@@ -34,7 +34,7 @@ class Model {
         }
   
         $this->db->table = $name;
-        $this->db->tablePrex = $this->tablePrex ;
+        $this->db->tablePrex = $this->_tablePrex ;
         //$this->table = $this->tablePrex.$this->db->table($name);
         $this->_table = $name;
     }

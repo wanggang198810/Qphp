@@ -208,7 +208,7 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
     }
 
     
-    public function table($table){
+    public function table($table, $tableid){
         return "`".$this->_tablePrefix . $table."`";
     }
     

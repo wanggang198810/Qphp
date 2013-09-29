@@ -12,8 +12,8 @@ class Mysql extends Db_Abstract{
         $beginTime = microtime(true);
         parent::__construct($config, $debug);
         $this->connect();
-        $endTime = microtime(true);
         if($this->_debug){
+            $endTime = microtime(true);
             $this->_tace('链接数据库时间:'.($endTime-$beginTime));
         }
     }

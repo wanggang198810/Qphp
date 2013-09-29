@@ -22,11 +22,46 @@ return array(
         'tablepre'=>'',
     ),
     
+    /*
     'dbmap' => array(
+        0=>array(
+            'serverid'=>0,
+            'dbtype'=>'mysql',
+            'host'=>'localhost',
+            'username'=>'root',
+            'password'=>'',
+            'pconnect'=> 0,
+            'port'=>3306,
+            'dbname'=>'r',
+            'charset'=>'utf8', //注:没有减号-
+            'tablepre'=>'',),
         
+        array(
+            'serverid'=>1,
+            'dbtype'=>'mysql',
+            'host'=>'localhost',
+            'username'=>'root',
+            'password'=>'',
+            'pconnect'=> 0,
+            'port'=>3306,
+            'dbname'=>'test',
+            'charset'=>'utf8',
+            'tablepre'=>'',),
+        
+        array(
+            'serverid'=>2,
+            'dbtype'=>'mysql',
+            'host'=>'localhost',
+            'username'=>'root',
+            'password'=>'',
+            'pconnect'=> 0,
+            'port'=>3306,
+            'dbname'=>'test',
+            'charset'=>'utf8',
+            'tablepre'=>'',),
         
     ),
-    
+    */
     'debug' => true,
     
     
