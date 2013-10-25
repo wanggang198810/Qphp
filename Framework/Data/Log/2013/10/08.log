@@ -1,0 +1,22 @@
+[2013-10-08 10:06:46][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-08 10:07:33][STRICT] Url http://www.q.com/user Creating default object from empty value at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(26)
+[2013-10-08 10:59:02][STRICT] Url http://www.q.com/user Creating default object from empty value at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(26)
+[2013-10-08 10:59:02][STRICT] Url http://www.q.com/user Creating default object from empty value at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(26)
+[2013-10-08 11:02:07][NOTICE] Url http://www.q.com/user Undefined property: UserModel::$tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(35)
+[2013-10-08 11:02:53][NOTICE] Url http://www.q.com/user Undefined index: tablePrex at file D:\wamp\www\phpis\iPHP\Framework\Core\Model.php(34)
+[2013-10-08 11:03:33][SUCCESS] Url http://www.q.com/user
+[2013-10-08 11:22:58][SUCCESS][Time:0.049050] Url http://www.q.com/user
+[2013-10-08 11:23:18][SUCCESS][Time:0.023695] Url http://www.q.com/user
+[2013-10-08 11:23:19][SUCCESS][Time:0.021919] Url http://www.q.com/user
+[2013-10-08 11:23:19][SUCCESS][Time:0.032887] Url http://www.q.com/user
+[2013-10-08 11:23:20][SUCCESS][Time:0.021738] Url http://www.q.com/user
+[2013-10-08 11:24:03][SUCCESS][Time:0.044418] Url http://www.q.com/user
+[2013-10-08 11:24:33][SUCCESS][Time:0.032728] Url http://www.q.com/user
+[2013-10-08 11:24:35][SUCCESS][Time:0.042304] Url http://www.q.com/user
+[2013-10-08 11:24:35][SUCCESS][Time:0.021087] Url http://www.q.com/user
+[2013-10-08 11:24:36][SUCCESS][Time:0.029271] Url http://www.q.com/user
+[2013-10-08 11:24:36][SUCCESS][Time:0.032266] Url http://www.q.com/user
+[2013-10-08 11:24:37][SUCCESS][Time:0.020095] Url http://www.q.com/user
+[2013-10-08 16:34:59][WARNING] Url http://www.q.com/user/test2 get_browser() [<a href='function.get-browser'>function.get-browser</a>]: browscap ini directive not set at file D:\wamp\www\phpis\iPHP\Application\Controllers\User\UserController.php(43)
+[2013-10-08 16:35:30][WARNING] Url http://www.q.com/user/test2 get_browser() [<a href='function.get-browser'>function.get-browser</a>]: browscap ini directive not set at file D:\wamp\www\phpis\iPHP\Application\Controllers\User\UserController.php(43)
+[2013-10-08 16:35:30][WARNING] Url http://www.q.com/user/test2 get_browser() [<a href='function.get-browser'>function.get-browser</a>]: browscap ini directive not set at file D:\wamp\www\phpis\iPHP\Application\Controllers\User\UserController.php(43)

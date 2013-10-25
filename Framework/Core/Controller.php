@@ -30,7 +30,9 @@ class Controller {
         $this->_request = Q_Request::getInstance();
         $this->_response = Q_Response::getInstance();
         $this->_config = Q::getConfig();
-        $this->autoLoadModel( APP_PATH.'/Models/'.$this->_controller .self::MODEL_SUFFIX . '.php');
+        if($this->_autoloalmodel){
+            $this->autoLoadModel( APP_PATH.'/Models/'.$this->_controller .self::MODEL_SUFFIX . '.php');
+        }
         
     }
     
@@ -47,10 +49,8 @@ class Controller {
     }
     
     public function autoLoadModel($model){
-        if($this->_autoloalmodel){
-            if(file_exists($model)){
-                require ($model);
-            }
+        if(file_exists($model)){
+            require ($model);
         }
     }
     
@@ -58,12 +58,12 @@ class Controller {
     /**
      * 导入模型文件
      */
-    public static function loadModel($name){
+    public function loadModel($name){
         if(strpos($name, '.php') === false){
             $name .= self::MODEL_SUFFIX.'.php';    
         }
         if(false === strpos($name,'/')){
-            $filename = APP_PATH .'Application/Models/'.$name;
+            $filename = APP_PATH .'/Models/'.$name;
         }else{
             $path = '';
             $pathArr =  explode('/', $name);
@@ -71,7 +71,7 @@ class Controller {
             foreach ($pathArr as $k => $v){
                 $path .= $v.'/';
             }
-            $filename = APP_PATH .'Application/Models/'.$path .$name;
+            $filename = APP_PATH .'/Models/'.$path .$name;
         }
         if(file_exists($filename)){
             include($filename);

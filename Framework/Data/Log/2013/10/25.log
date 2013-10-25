@@ -1,0 +1,2 @@
+[2013-10-25 09:38:32][SUCCESS][Time:0.358101] Url http://www.q.com/
+[2013-10-25 09:38:32][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)

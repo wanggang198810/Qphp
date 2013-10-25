@@ -1,0 +1,28 @@
+[2013-10-12 09:23:36][SUCCESS][Time:0.086388] Url http://www.q.com/
+[2013-10-12 09:23:36][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 10:58:07][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 10:58:33][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 16:01:39][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 16:01:47][SUCCESS][Time:0.026675] Url http://www.q.com/mongo
+[2013-10-12 16:30:55][SUCCESS][Time:0.017085] Url http://www.q.com/
+[2013-10-12 16:30:55][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:37:58][SUCCESS][Time:0.014416] Url http://www.q.com/test/t2
+[2013-10-12 16:39:53][SUCCESS][Time:0.019872] Url http://www.q.com/
+[2013-10-12 16:39:53][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:40:55][SUCCESS][Time:0.025969] Url http://www.q.com/
+[2013-10-12 16:40:55][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:41:36][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:41][SUCCESS][Time:0.017637] Url http://www.q.com/
+[2013-10-12 16:42:41][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:41][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:41][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:42][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:42][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:42][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:42][NOTICE] Url http://www.q.com/home Undefined variable: title at file D:\wamp\www\phpis\iPHP\Application\Views\Home\index.php(3)
+[2013-10-12 16:42:56][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 16:42:57][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 17:25:02][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 18:28:50][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 18:28:51][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)
+[2013-10-12 18:28:51][NOTICE] Url http://www.q.com/test/t3 Undefined offset: 10 at file D:\wamp\www\phpis\iPHP\Application\Controllers\TestController.php(27)

@@ -6,7 +6,7 @@
  */
 
 return array(
-    
+    /*
     'url_mode'=>1,
     'compile_template'=>false,
     
@@ -61,7 +61,7 @@ return array(
             'tablepre'=>'',),
         
     ),
-    */
+    
     'debug' => true,
     
     
@@ -70,7 +70,7 @@ return array(
         // controller => subDomain ( don't support the third subdomain or more)
         'welcome'=>'welcome',
     ),
-    
+    */
     
 );
 ?>

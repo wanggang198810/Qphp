@@ -21,10 +21,7 @@ class Model {
         $this->_config = Q::getConfig('dbconfig');
         $db = $this->_config['dbtype'];
         //$name= get_class($this);
-        if($name){
-            $this->_tablePrex = $this->_config['tablePrex'];
-            $this->db->table = $this->_table = $this->tablePrex . $name;
-        }
+        
         $filename = FRAMEWORK_PATH . '/Db/Driver/'.$db.'/'.$db.'.php';
         if(file_exists($filename)){
             include( $filename);
@@ -33,10 +30,15 @@ class Model {
             exit( $db . "数据库驱动不存在!");
         }
   
-        $this->db->table = $name;
-        $this->db->tablePrex = $this->_tablePrex ;
-        //$this->table = $this->tablePrex.$this->db->table($name);
-        $this->_table = $name;
+        if($name){
+            $this->_tablePrex = $this->_config['tableprex'];
+            $this->db->table = $this->_table = $this->_tablePrex . $name;
+            $this->db->table = $name;
+            $this->db->tablePrex = $this->_tablePrex ;
+            //$this->table = $this->tablePrex.$this->db->table($name);
+            $this->_table = $name;
+        }
+        
     }
     
     
@@ -170,6 +172,17 @@ class Model {
         return $this;
     }
     
+    public function beginTransaction(){
+        $this->db->beginTransaction();
+    }
+    
+    public function commit(){
+        $this->db->commit();
+    }
+    
+    public function rollback(){
+        $this->db->rollBack();
+    }
     
 }
 

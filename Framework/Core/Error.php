@@ -39,8 +39,9 @@ class Q_Error {
         }
     }
     
-    public static function show(){
-        
+    public static function show($msg){
+        echo '<div style="text-align:center; font-size:30px; color:#666; padding-top:40px; font-family:微软雅黑;">'.$msg.'</div>';
+        //exit;
     }
     
     

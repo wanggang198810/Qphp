@@ -163,7 +163,7 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
 		if(! $bool){
 			return false;
 		}
-		return $this->query('SET AUTOCOMMIT=1');;
+		return $this->query('SET AUTOCOMMIT=1');
     }
 
 

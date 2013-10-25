@@ -8,8 +8,11 @@
 //定义框架目录
 define('FRAMEWORK_PATH', './Framework');
 define('APP_PATH', './Application');
-require_once (FRAMEWORK_PATH.'/Q.php');
 
-Q::createApplication()->go();
+//载入框架核心类库
+require(FRAMEWORK_PATH.'/Q.php');
+
+//运行系统
+Q::createApplication()->run();
 
 ?>

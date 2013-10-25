@@ -17,7 +17,7 @@ return array(
     //example:  /index/index/param1/param2 => controller / public function index($param1, $param2); 
     'url_mode'=>1,
     
-    /* 数据库 db
+    //数据库 db
     'dbconfig' => array(
         'dbtype'=>'mysql',
         'host'=>'localhost',
@@ -25,13 +25,15 @@ return array(
         'password'=>'',
         'pconnect'=> 0,
         'port'=>3306,
-        'dbname'=>'test',
+        'dbname'=>'r',
         'charset'=>'utf8', //注:没有减号-
-        'tablepre'=>'',
-    ),*/
+        'tableprex'=>'',
+    ),
     
     //调试模式
-    'debug' => false,
+    'debug' => true,
+    //错误模式，0为抛出错误，1为使用自定义错误提示
+    'error_mode' => 1,
     
     //启用模板引擎(启用用则不能在view层写原生php代码)
     'compile_template' => false,
@@ -46,12 +48,13 @@ return array(
     
     'charset' => 'utf-8',
     
+    /*
     //二级域名配置
     'subdomain'=>array(
         // 控制器 => 二级域名 (暂不支持三级或三级以上的子域名.)
         // controller => subDomain ( don't support the third subdomain or more)
         'welcome'=>'welcome',
-    ),
+    ),*/
 
 );
 

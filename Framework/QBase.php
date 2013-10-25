@@ -5,6 +5,8 @@
  * @author Air
  */
 
+global $_Sys;
+$_Sys['beginTime'] = microtime(true);
 if( !defined('FRAMEWORK_PATH')){
     define('FRAMEWORK_PATH', './Framework');
 }

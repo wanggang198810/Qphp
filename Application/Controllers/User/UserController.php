@@ -23,8 +23,8 @@ class UserController extends Controller{
             echo '未登录.';
         }
         
-        exit;
-        $r = $this->userDao->where( array('uid'=>1) )->find();
+        //exit;
+        //$r = $this->userDao->where( array('uid'=>1) )->find();
         //hprint($r);
     }
     
@@ -36,6 +36,17 @@ class UserController extends Controller{
             }
         }
         exit;
+    }
+    
+    public function test2(){
+        echo $_SERVER['HTTP_USER_AGENT'];
+        $r = get_browser(null,true);
+        Q::printf($r);exit;
+    }
+    
+    
+    public function verified(){
+        
     }
     
     

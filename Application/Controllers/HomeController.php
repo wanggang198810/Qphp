@@ -18,12 +18,12 @@ class HomeController extends Controller{
             $array []= md5($i);
         }*/
         
-        $data['title'] = 'Q php framework!';
-        $data['info'] = 'Q php framework!';
-        $data['a'] = 'aaaa';
-        $model = new HomeModel();
-        $this->assign($data);
-        $this->assign('c', 'ccc');
+        //$data['title'] = 'Q php framework!';
+        //$data['info'] = 'Q php framework!';
+        //$data['a'] = 'aaaa';
+        //$model = new HomeModel();
+        //$this->assign($data);
+        //$this->assign('c', 'ccc');
         $this->render();
     }
     
@@ -48,6 +48,22 @@ class HomeController extends Controller{
         hprint(get_headers('http://www.baidu.com/'));
         $r = Q::getIncludeFiles();
         Q::printf($r);
+    }
+    
+    public function db(){
+        $db = new HomeModel('db_100w');
+        $db->beginTransaction();
+        $data = array('title'=>'测试数据','content'=>'测试内容','typeid' => 2);
+        $data2 = array('uid'=>2,'title'=>'测试数据','content'=>'测试内容','typeid' => 2);
+        $r1 = $db->add($data);
+        $r2 = $db->add($data2);
+        if ( $r && $r2){
+            $db->commit();
+            echo 'ok';
+        }else{
+            $db->rollback();
+            echo 'rollback';
+        }
     }
 }
 
