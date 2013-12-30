@@ -5,7 +5,7 @@
  * 
  * @author Air
  */
-class Q_Response {
+class Response {
     //put your code here
     public static $instance;
     public $_params;
@@ -18,7 +18,7 @@ class Q_Response {
     }
     
     
-    public function redirect($url){
+    public static function redirect($url){
         header("Location:".$url);
     }
 }

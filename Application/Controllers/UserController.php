@@ -14,18 +14,6 @@ class UserController extends Controller{
 
     public function index(){
         
-        if( !empty($_COOKIE['uid'])){
-            echo 'uid:'.base64_decode($_COOKIE['uid']);
-            hprint($_COOKIE);
-            hprint($_POST);
-            exit;
-        }else{
-            echo '未登录.';
-        }
-        
-        //exit;
-        //$r = $this->userDao->where( array('uid'=>1) )->find();
-        //hprint($r);
     }
     
     public function login(){

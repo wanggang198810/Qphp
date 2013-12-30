@@ -19,21 +19,7 @@ if( !function_exists('get_config')){
         return $key ? (isset($config[$key]) ? $config[$key] : 'index' ) : $config;
     }
 }
-/**
- * 载入文件
- */
-if( !function_exists('import')){
-    function import($pathname){
-        if(strpos($pathname, '.php') === false){
-            $pathname .= '.php';    
-        }
-        if(file_exists( APP_PATH . $pathname)){
-            require_once ( APP_PATH . $pathname);
-        }elseif( file_exists( FRAMEWORK_PATH . $pathname) ){
-            require_once ( FRAMEWORK_PATH . $pathname);
-        }
-    }
-}
+
 
 //打印
 if(!function_exists('hprint')){
@@ -61,6 +47,35 @@ if(!function_exists('q_error_handler')){
             $time = date("Y-m-d H:i:s");
             $msg = sprintf("[%s][%s] Url %s %s at file %s(%s)",$time, $error_no_arr[$error], Q_Request::getInstance()->currentUrl() ,$error_string, $filename, $line);
             Q_Registry::getInstance()->set('access',$msg);
+        }
+    }
+}
+
+
+
+//导入类库文件
+if(!function_exists('import')){
+    function import($filename, $modules=''){
+        $type = 'Libraries/';
+        
+        $config = Q::getConfig();
+        if( false !== strpos($filename, '.')){
+            list($type, $filename) = explode('.', $filename);
+            $type = Q::checkPath( ucfirst($type));
+        }
+        $filename = ucfirst($filename);
+        if(strpos($filename, '.php') === false){
+            $filename .= '.php';
+        }
+        if($config['hmvc'] && false === strpos($type, 'Libraries')){
+            $filepath = APP_PATH . Q::checkPath( $config['hmvc_dir'] ) .Q::checkPath( $modules ) . $type . $filename ;
+        }else{
+            $filepath = APP_PATH . $type . $filename;
+        }
+        if( file_exists( $filepath ) ){
+            require_once ( $filepath );
+        }elseif( file_exists( FRAMEWORK_PATH . $type . $filename) ){
+            require_once ( FRAMEWORK_PATH . $type . $filename);
         }
     }
 }

@@ -1,0 +1,27 @@
+[2013-12-28 15:25:48][SUCCESS][Time:0.024667] Url http://www.q.com/user
+[2013-12-28 15:26:00][SUCCESS][Time:0.028211] Url http://www.q.com/user
+[2013-12-28 15:27:45][SUCCESS][Time:0.017429] Url http://www.q.com/user/login
+[2013-12-28 15:27:45][SUCCESS][Time:0.019701] Url http://www.q.com/user
+[2013-12-28 15:27:52][SUCCESS][Time:0.022175] Url http://www.q.com/user
+[2013-12-28 15:27:58][SUCCESS][Time:0.024708] Url http://www.q.com/user/login
+[2013-12-28 15:27:58][SUCCESS][Time:0.019286] Url http://www.q.com/user
+[2013-12-28 15:56:48][ERROR] Url http://www.q.com/home 未定义指定控制器/NOT FOUND CONTROLLER: Home
+[2013-12-28 15:57:15][ERROR] Url http://www.q.com/home 未定义指定控制器/NOT FOUND CONTROLLER: Home
+[2013-12-28 15:57:28][ERROR] Url http://www.q.com/home 未定义指定控制器/NOT FOUND CONTROLLER: Home
+[2013-12-28 15:57:30][ERROR] Url http://www.q.com/home 未定义指定控制器/NOT FOUND CONTROLLER: Home
+[2013-12-28 17:41:18][ERROR] Url http://www.q.com/home 未定义指定控制器/NOT FOUND CONTROLLER: Home
+[2013-12-28 18:06:52][SUCCESS][Time:0.014717] Url http://www.q.com/user
+[2013-12-28 18:08:37][SUCCESS][Time:0.016995] Url http://www.q.com/user
+[2013-12-28 18:09:57][SUCCESS][Time:0.024075] Url http://www.q.com/user
+[2013-12-28 18:13:02][SUCCESS][Time:0.033997] Url http://www.q.com/user
+[2013-12-28 18:13:03][SUCCESS][Time:0.029459] Url http://www.q.com/user
+[2013-12-28 18:13:03][SUCCESS][Time:0.020819] Url http://www.q.com/user
+[2013-12-28 18:13:06][ERROR] Url http://www.q.com/post 未定义指定控制器方法/NOT FOUND CONTROLLER ACTION: Index
+[2013-12-28 18:13:08][ERROR] Url http://www.q.com/post 未定义指定控制器方法/NOT FOUND CONTROLLER ACTION: Index
+[2013-12-28 18:13:21][SUCCESS][Time:0.014629] Url http://www.q.com/post
+[2013-12-28 19:43:52][NOTICE] Url http://www.q.com/post/save Undefined index: value at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Base.php(43)
+[2013-12-28 19:44:09][NOTICE] Url http://www.q.com/post/save Undefined index: value at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Base.php(43)
+[2013-12-28 19:46:51][SUCCESS][Time:0.018321] Url http://www.q.com/post/save
+[2013-12-28 19:47:18][SUCCESS][Time:0.018236] Url http://www.q.com/post/save
+[2013-12-28 19:47:56][SUCCESS][Time:0.020800] Url http://www.q.com/post/save
+[2013-12-28 19:47:56][SUCCESS][Time:0.010956] Url http://www.q.com/post

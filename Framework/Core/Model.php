@@ -24,21 +24,23 @@ class Model {
         
         $filename = FRAMEWORK_PATH . '/Db/Driver/'.$db.'/'.$db.'.php';
         if(file_exists($filename)){
-            include( $filename);
+            require_once ( $filename);
             $this->db = new $db($this->_config);
         }else{
             exit( $db . "数据库驱动不存在!");
         }
   
-        if($name){
-            $this->_tablePrex = $this->_config['tableprex'];
-            $this->db->table = $this->_table = $this->_tablePrex . $name;
-            $this->db->table = $name;
-            $this->db->tablePrex = $this->_tablePrex ;
-            //$this->table = $this->tablePrex.$this->db->table($name);
-            $this->_table = $name;
+        if(empty($name)){
+            $model = get_class($this);
+            $name = str_replace( 'Model','', $model);
         }
         
+        $this->_tablePrex = $this->_config['tableprex'];
+        $this->db->table = $this->_table = $this->_tablePrex . $name;
+        $this->db->table = $name;
+        $this->db->tablePrex = $this->_tablePrex ;
+        //$this->table = $this->tablePrex.$this->db->table($name);
+        $this->_table = $name;
     }
     
     
@@ -129,6 +131,17 @@ class Model {
         return $this->add($data);
     }
     
+    public function multiInsert($data){
+        if(empty($data)){
+            return false;
+        }
+        return $this->db->multiInsert($this->_table,$data);
+    }
+    
+    public function lastInsertId(){
+        return $this->db->lastInsertId();
+    }
+    
     public function update($data){
         return $this->db->update($this->_table,$data, $this->db->getWhere());
     }
@@ -186,4 +199,4 @@ class Model {
     
 }
 
-?>
+

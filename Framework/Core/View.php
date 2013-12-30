@@ -10,12 +10,13 @@ class View {
     public static $instance;
     
     public $_params;
-    
+    public $controller;
     public $ext = '.php';
     public $viewBasePath;
     
     public function __construct($controller='') {
-        $this->viewBasePath = $this->getViewPath($controller);
+        $this->controller = $controller;
+        $this->viewBasePath = $this->getPath($controller);
     }
 
     public static function getInstance($controller){
@@ -25,13 +26,19 @@ class View {
         return self::$instance;
     }
     
-    public function render($file){
-        
+    public function render($file=''){
+        if(empty($file)){ $file = $this->controller;}
         return $this->viewBasePath . '/' . ucfirst( $file ) . $this->ext;
     }
     
-    public function getViewPath($controller){
-        return APP_PATH.'/Views/'.$controller;
+    public function getPath($controller){
+        $config = Q::getConfig();
+        if($config['hmvc']){
+            $filename = APP_PATH . Q::checkPath( $config['hmvc_dir'] ) .$controller . '/Views' ;
+        }else{
+            $filename =  APP_PATH .'/Views/'.$controller;
+        }
+        return $filename;
     }
     
     /**
@@ -42,4 +49,4 @@ class View {
     }
 }
 
-?>
+

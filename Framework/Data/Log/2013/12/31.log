@@ -1,0 +1,19 @@
+[2013-12-31 01:03:03][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2013-12-31 01:03:03][ERROR] Url http://www.q.com/bootstrap.js 未定义指定控制器/NOT FOUND CONTROLLER: Bootstrap.js
+[2013-12-31 01:03:03][ERROR] Url http://www.q.com/bootstrap.js 未定义指定控制器/NOT FOUND CONTROLLER: Bootstrap.js
+[2013-12-31 01:03:06][SUCCESS][Time:0.028482] Url http://www.q.com/user/login
+[2013-12-31 01:03:09][SUCCESS][Time:0.029395] Url http://www.q.com/user/login
+[2013-12-31 01:10:37][SUCCESS][Time:0.027655] Url http://www.q.com/user/login
+[2013-12-31 01:11:06][NOTICE] Url http://www.q.com/user/login Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\User\Views\Login.php(4)
+[2013-12-31 01:11:07][SUCCESS][Time:0.019832] Url http://www.q.com/user/bootstrap.js
+[2013-12-31 01:11:07][NOTICE] Url http://www.q.com/u Undefined variable: id at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(15)
+[2013-12-31 01:11:07][SUCCESS][Time:0.018719] Url http://www.q.com/u/rgss
+[2013-12-31 01:11:09][NOTICE] Url http://www.q.com/user/login Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\User\Views\Login.php(4)
+[2013-12-31 01:11:09][SUCCESS][Time:0.028988] Url http://www.q.com/user
+[2013-12-31 01:11:09][NOTICE] Url http://www.q.com/u Undefined variable: id at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(15)
+[2013-12-31 01:11:09][SUCCESS][Time:0.030630] Url http://www.q.com/u/rgss
+[2013-12-31 01:11:09][SUCCESS][Time:0.015158] Url http://www.q.com/u/bootstrap.js
+[2013-12-31 01:13:34][SUCCESS][Time:0.349704] Url http://www.q.com/post
+[2013-12-31 01:13:36][SUCCESS][Time:0.027058] Url http://www.q.com/post
+[2013-12-31 01:14:10][SUCCESS][Time:0.034976] Url http://www.q.com/post
+[2013-12-31 01:14:11][SUCCESS][Time:0.023845] Url http://www.q.com/post

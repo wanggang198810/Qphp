@@ -6,6 +6,23 @@
  */
 
 return array(
+    'dbconfig' => array(
+        'dbtype'=>'mysql',
+        'host'=>'localhost',
+        'dbname'=>'rgsscn_rgssblog',
+        'username'=>'root',
+        'password'=>'',
+        'pconnect'=> 0,
+        'port'=>3306,
+        'charset'=>'utf8', //注:没有减号-
+        'tableprex'=>'',
+        
+    ),
+    'autoload' => array(
+        'Request', 'Response',
+    ),
+    
+    'debug' => 0,
     /*
     'url_mode'=>1,
     'compile_template'=>false,

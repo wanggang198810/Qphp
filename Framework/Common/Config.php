@@ -15,7 +15,13 @@ return array(
     //url模式，为1时采用链接形式. 如/controller/action。  否则:?m=controller&a=action
     //注: 采用模式为1的时候，action里的方法支持直接在链接中表示.
     //example:  /index/index/param1/param2 => controller / public function index($param1, $param2); 
-    'url_mode'=>1,
+    'url_mode' => 1,
+    
+    'hmvc' => 1,
+    'hmvc_dir' => 'Modules/',//hmvc应用路径
+    
+    'timezone' => 'PRC',
+    
     
     //数据库 db
     'dbconfig' => array(
@@ -33,7 +39,7 @@ return array(
     //调试模式
     'debug' => true,
     //错误模式，0为抛出错误，1为使用自定义错误提示
-    'error_mode' => 1,
+    'error_mode' => 0,
     
     //启用模板引擎(启用用则不能在view层写原生php代码)
     'compile_template' => false,
@@ -61,4 +67,4 @@ return array(
 
 
 
-?>
+

@@ -76,4 +76,3 @@ function parseParam($str=''){
     }
     return $paramStr;
 }
-?>
