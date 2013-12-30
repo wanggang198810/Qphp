@@ -1,19 +1,110 @@
-[2013-12-31 01:03:03][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\Index\Views\Index.php(4)
-[2013-12-31 01:03:03][ERROR] Url http://www.q.com/bootstrap.js 未定义指定控制器/NOT FOUND CONTROLLER: Bootstrap.js
-[2013-12-31 01:03:03][ERROR] Url http://www.q.com/bootstrap.js 未定义指定控制器/NOT FOUND CONTROLLER: Bootstrap.js
-[2013-12-31 01:03:06][SUCCESS][Time:0.028482] Url http://www.q.com/user/login
-[2013-12-31 01:03:09][SUCCESS][Time:0.029395] Url http://www.q.com/user/login
-[2013-12-31 01:10:37][SUCCESS][Time:0.027655] Url http://www.q.com/user/login
-[2013-12-31 01:11:06][NOTICE] Url http://www.q.com/user/login Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\User\Views\Login.php(4)
-[2013-12-31 01:11:07][SUCCESS][Time:0.019832] Url http://www.q.com/user/bootstrap.js
-[2013-12-31 01:11:07][NOTICE] Url http://www.q.com/u Undefined variable: id at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(15)
-[2013-12-31 01:11:07][SUCCESS][Time:0.018719] Url http://www.q.com/u/rgss
-[2013-12-31 01:11:09][NOTICE] Url http://www.q.com/user/login Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\User\Views\Login.php(4)
-[2013-12-31 01:11:09][SUCCESS][Time:0.028988] Url http://www.q.com/user
-[2013-12-31 01:11:09][NOTICE] Url http://www.q.com/u Undefined variable: id at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(15)
-[2013-12-31 01:11:09][SUCCESS][Time:0.030630] Url http://www.q.com/u/rgss
-[2013-12-31 01:11:09][SUCCESS][Time:0.015158] Url http://www.q.com/u/bootstrap.js
-[2013-12-31 01:13:34][SUCCESS][Time:0.349704] Url http://www.q.com/post
-[2013-12-31 01:13:36][SUCCESS][Time:0.027058] Url http://www.q.com/post
-[2013-12-31 01:14:10][SUCCESS][Time:0.034976] Url http://www.q.com/post
-[2013-12-31 01:14:11][SUCCESS][Time:0.023845] Url http://www.q.com/post
+[2013-12-31 02:17:47][NOTICE] Url http://www.q.com/post Undefined property: Mysql::$getHaving at file E:\wamp\www\Qphp\Framework\Core\Model.php(111)
+[2013-12-31 02:20:37][NOTICE] Url http://www.q.com/post Undefined property: Mysql::$getHaving at file E:\wamp\www\Qphp\Framework\Core\Model.php(111)
+[2013-12-31 02:20:38][NOTICE] Url http://www.q.com/post Undefined property: Mysql::$getHaving at file E:\wamp\www\Qphp\Framework\Core\Model.php(111)
+[2013-12-31 02:21:59][NOTICE] Url http://www.q.com/post Undefined property: Mysql::$getHaving at file E:\wamp\www\Qphp\Framework\Core\Model.php(111)
+[2013-12-31 02:22:46][SUCCESS][Time:0.035505] Url http://www.q.com/post
+[2013-12-31 02:26:32][SUCCESS][Time:0.027781] Url http://www.q.com/post
+[2013-12-31 02:27:20][SUCCESS][Time:0.023741] Url http://www.q.com/post
+[2013-12-31 02:28:37][SUCCESS][Time:0.029508] Url http://www.q.com/post
+[2013-12-31 02:28:44][SUCCESS][Time:0.027570] Url http://www.q.com/post
+[2013-12-31 02:29:50][SUCCESS][Time:0.027972] Url http://www.q.com/post
+[2013-12-31 02:29:55][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:29:55][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:30:09][SUCCESS][Time:0.015152] Url http://www.q.com/post
+[2013-12-31 02:30:09][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:30:09][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:31:43][SUCCESS][Time:0.029738] Url http://www.q.com/post
+[2013-12-31 02:31:43][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:31:43][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:32:06][SUCCESS][Time:0.029134] Url http://www.q.com/post
+[2013-12-31 02:32:06][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:32:06][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:33:20][SUCCESS][Time:0.029145] Url http://www.q.com/post
+[2013-12-31 02:33:21][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:33:21][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:33:30][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:33:30][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:34:52][SUCCESS][Time:0.037947] Url http://www.q.com/post
+[2013-12-31 02:34:53][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:34:53][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:35:13][SUCCESS][Time:0.031073] Url http://www.q.com/post
+[2013-12-31 02:35:13][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:35:13][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:35:44][SUCCESS][Time:0.039324] Url http://www.q.com/post
+[2013-12-31 02:35:44][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:35:44][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:35:53][SUCCESS][Time:0.036721] Url http://www.q.com/post
+[2013-12-31 02:35:53][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:35:53][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:36:35][SUCCESS][Time:0.026885] Url http://www.q.com/post
+[2013-12-31 02:36:42][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:36:42][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:37:27][SUCCESS][Time:0.024402] Url http://www.q.com/post
+[2013-12-31 02:37:27][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:37:27][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:37:55][SUCCESS][Time:0.026719] Url http://www.q.com/post
+[2013-12-31 02:38:22][SUCCESS][Time:0.030579] Url http://www.q.com/post
+[2013-12-31 02:38:23][SUCCESS][Time:0.030905] Url http://www.q.com/post
+[2013-12-31 02:38:30][SUCCESS][Time:0.033705] Url http://www.q.com/post
+[2013-12-31 02:38:31][SUCCESS][Time:0.024553] Url http://www.q.com/post
+[2013-12-31 02:38:48][SUCCESS][Time:0.034597] Url http://www.q.com/post
+[2013-12-31 02:38:53][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:38:53][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:39:21][SUCCESS][Time:0.025400] Url http://www.q.com/post
+[2013-12-31 02:39:21][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:39:21][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:39:31][SUCCESS][Time:0.033957] Url http://www.q.com/post
+[2013-12-31 02:39:42][ERROR] Url http://www.q.com/message 未定义指定控制器/NOT FOUND CONTROLLER: Message
+[2013-12-31 02:39:42][ERROR] Url http://www.q.com/message 未定义指定控制器/NOT FOUND CONTROLLER: Message
+[2013-12-31 02:39:45][ERROR] Url http://www.q.com/group 未定义指定控制器/NOT FOUND CONTROLLER: Group
+[2013-12-31 02:39:45][ERROR] Url http://www.q.com/group 未定义指定控制器/NOT FOUND CONTROLLER: Group
+[2013-12-31 02:40:02][SUCCESS][Time:0.028178] Url http://www.q.com/post
+[2013-12-31 02:40:15][SUCCESS][Time:0.027383] Url http://www.q.com/post
+[2013-12-31 02:42:50][SUCCESS][Time:0.025525] Url http://www.q.com/post
+[2013-12-31 02:43:20][SUCCESS][Time:0.029764] Url http://www.q.com/post
+[2013-12-31 02:43:22][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:43:22][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:43:51][SUCCESS][Time:0.016487] Url http://www.q.com/post
+[2013-12-31 02:43:51][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:43:51][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:08][SUCCESS][Time:0.018979] Url http://www.q.com/post
+[2013-12-31 02:44:08][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:08][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:20][SUCCESS][Time:0.024147] Url http://www.q.com/post
+[2013-12-31 02:44:21][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:21][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:30][SUCCESS][Time:0.023905] Url http://www.q.com/post
+[2013-12-31 02:44:30][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:30][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:39][SUCCESS][Time:0.023739] Url http://www.q.com/post
+[2013-12-31 02:44:39][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:44:39][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:45:39][SUCCESS][Time:0.024719] Url http://www.q.com/post
+[2013-12-31 02:45:40][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:45:40][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:45:59][SUCCESS][Time:0.036856] Url http://www.q.com/post
+[2013-12-31 02:46:22][SUCCESS][Time:0.035549] Url http://www.q.com/post
+[2013-12-31 02:46:33][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:46:33][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:47:22][SUCCESS][Time:0.032664] Url http://www.q.com/post
+[2013-12-31 02:47:22][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:47:22][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:47:59][SUCCESS][Time:0.018104] Url http://www.q.com/post
+[2013-12-31 02:48:03][SUCCESS][Time:0.034576] Url http://www.q.com/post
+[2013-12-31 02:48:04][SUCCESS][Time:0.037355] Url http://www.q.com/post
+[2013-12-31 02:48:12][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:48:12][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:49:19][SUCCESS][Time:0.035668] Url http://www.q.com/post
+[2013-12-31 02:49:33][SUCCESS][Time:0.039909] Url http://www.q.com/post
+[2013-12-31 02:49:39][SUCCESS][Time:0.022740] Url http://www.q.com/post
+[2013-12-31 02:49:54][SUCCESS][Time:0.026438] Url http://www.q.com/post
+[2013-12-31 02:49:54][SUCCESS][Time:0.039077] Url http://www.q.com/post
+[2013-12-31 02:50:14][SUCCESS][Time:0.018777] Url http://www.q.com/post
+[2013-12-31 02:50:24][SUCCESS][Time:0.020250] Url http://www.q.com/post
+[2013-12-31 02:51:31][SUCCESS][Time:0.024937] Url http://www.q.com/post
+[2013-12-31 02:51:53][SUCCESS][Time:0.025360] Url http://www.q.com/post
+[2013-12-31 02:53:15][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:53:15][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:55:18][SUCCESS][Time:0.016044] Url http://www.q.com/post
+[2013-12-31 02:55:18][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 02:55:18][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public

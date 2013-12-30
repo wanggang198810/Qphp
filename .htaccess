@@ -1,6 +1,7 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 !^(index\.php|robots\.txt|public|data)
 RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
 
 

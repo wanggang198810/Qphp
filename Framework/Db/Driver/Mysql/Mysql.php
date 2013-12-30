@@ -76,8 +76,13 @@ class Mysql extends Db_Abstract{
     /**
      * 获取多条数据
      */
-    public function fetchArray($sql){
-        
+    public function fetchArray($sql, $type = MYSQL_ASSOC){
+        $result = array();
+		$this->execute($sql);
+		while ($row = @mysql_fetch_array($this->_query, $type)){
+			$result[current($row)] = $row;
+		}
+		return $result;
     }
 
 

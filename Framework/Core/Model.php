@@ -108,7 +108,7 @@ class Model {
     }
     
     public function fetchArray(){
-        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving." ".$this->db->getOrder();
+        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
         return $this->db->fetchArray($this->_sql);
     }
     public function getAll(){

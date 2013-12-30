@@ -34,6 +34,7 @@ class UserController extends BaseController{
         if(Request::isPostSubmit()){
             $username = trim($this->request->getPost('username'));
             $password = trim($this->request->getPost('password'));
+
             if(empty($username) || empty($password)){
                 return false;
             }
@@ -53,7 +54,6 @@ class UserController extends BaseController{
         if(Request::isPostSubmit()){
             $username = trim($this->request->getPost('username'));
             $password = trim($this->request->getPost('password'));
-
 
             if(empty($username) || empty($password)){
                 return false;

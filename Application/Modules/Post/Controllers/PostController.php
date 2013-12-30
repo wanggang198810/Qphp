@@ -10,11 +10,18 @@ class PostController extends BaseController{
     
     public function __construct() {
         parent::__construct();
-        $this->uid = $this->checkLogin(1);
     }
     
+
+    
     public function index(){
-        echo '发布文章';
+        $this->checkLogin(1);
+        $this->loadModel('Category');
+        $cateDao = new CategoryModel();
+        $this->data['categories'] = $cateDao->getCategoryByUid($this->uid);
+        
+        
+        $this->render('Post');
     }
     
     
@@ -27,7 +34,7 @@ class PostController extends BaseController{
             
             $data['title'] = trim(Request::getPost('title'));
             $data['content'] = htmlspecialchars( Request::getPost('content') );
-            $data['cid'] = Request::getPost('cid');
+            $data['cid'] = Request::getPost('category');
             $data['groupid'] = Request::getPost('groupid');
             $data['url'] = trim(Request::getPost('url'));
             $data['tag'] = trim(Request::getPost('tag'));

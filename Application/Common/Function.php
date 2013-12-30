@@ -11,7 +11,7 @@ function load_js($filename){
         $filename .= '.js';
     }
     
-    echo '<script src="'.$filename.'"></script>';
+    echo '<script src="/Public/js/'.$filename.'"></script>';
 }
 
 function load_css($filename){
@@ -45,4 +45,33 @@ function load_view($filename){
     }elseif( file_exists( FRAMEWORK_PATH . $type . $filename) ){
         require_once ( FRAMEWORK_PATH . $type . $filename);
     }
+
+}
+
+
+function load_form( $url = '' , $data= array() ){
+    $html =<<< EOD
+		<script charset="utf-8" src="/Public/js/kindeditor/kindeditor.js"></script>
+		<script charset="utf-8" src="/Public/js/kindeditor/zh_CN.js"></script>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					resizeType : 1,
+					allowPreviewEmoticons : false,
+					allowImageUpload : false,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				});
+			});
+		</script>
+		<form action="{action}">
+			<textarea name="content" style="width:700px;height:200px;visibility:hidden;">KindEditor</textarea>
+		</form>
+EOD;
+    
+  $html = str_replace('{action}', $url , $html);
+  echo $html;
 }

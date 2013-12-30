@@ -53,7 +53,11 @@ class Db_Base {
     protected function _parseData($data, $gas=','){
         $temp = '';
         foreach ($data as $k => $v){
-            $temp .= $this->_parseField( $k ) . " = '".$this->_parseValue( $v ) . "' " . $gas.' ';
+            if(is_numeric($v)){
+                $temp .= $this->_parseField( $k ) . " = ".$this->_parseValue( $v ) . " " . $gas.' ';
+            }else{
+                $temp .= $this->_parseField( $k ) . " = '".$this->_parseValue( $v ) . "' " . $gas.' ';
+            }
         }
         return trim($temp, $gas.' ');
     }
