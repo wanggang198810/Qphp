@@ -32,8 +32,8 @@ class UserController extends BaseController{
     function login(){
         
         if(Request::isPostSubmit()){
-            $username = trim($this->request->getPost('username'));
-            $password = trim($this->request->getPost('password'));
+            $username = trim($this->request->getPost('username', 'air'));
+            $password = trim($this->request->getPost('password', '123456'));
             if(empty($username) || empty($password)){
                 return false;
             }
@@ -51,10 +51,9 @@ class UserController extends BaseController{
     public function register(){
         
         if(Request::isPostSubmit()){
-            $username = trim($this->request->getPost('username'));
-            $password = trim($this->request->getPost('password'));
-
-
+            $username = trim($this->request->getPost('username', 'air'));
+            $password = trim($this->request->getPost('password', '123456'));
+            
             if(empty($username) || empty($password)){
                 return false;
             }

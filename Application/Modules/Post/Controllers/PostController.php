@@ -10,11 +10,11 @@ class PostController extends BaseController{
     
     public function __construct() {
         parent::__construct();
-        $this->uid = $this->checkLogin(1);
+        
     }
     
     public function index(){
-        echo '发布文章';
+        $this->render('Post');
     }
     
     
