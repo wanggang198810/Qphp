@@ -86,4 +86,3 @@ class Q_Layout {
 	}
 }
 
-?>

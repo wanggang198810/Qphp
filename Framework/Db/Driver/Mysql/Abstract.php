@@ -175,7 +175,7 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
 		 * 可以在 SQL 查询中用 MySQL 内部的 SQL 函数 LAST_INSERT_ID() 来替代。
 		 * 
 		 */
-		$id = $this->fetchOne('select last_insert_id()');
+		$id = $this->fetchFirstCol('select last_insert_id()');
 		return $id ? $id : 0;
     }
     
@@ -208,12 +208,16 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
     }
 
     
-    public function table($table, $tableid){
+    public function table($table, $tableid = ''){
         return "`".$this->_tablePrefix . $table."`";
     }
     
     public function setWhere($data){
-        $this->_where = $this->_parseWhere($data);
+        if(is_array($data)){
+            $this->_where = $this->_parseWhere($data);
+        }else{
+            $this->_where = $data;
+        }
     }
     
     public function setGroup($groupStr){

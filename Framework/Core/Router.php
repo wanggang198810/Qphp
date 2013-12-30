@@ -27,7 +27,7 @@ class Router {
         $script = $_SERVER['SCRIPT_NAME'] ? $_SERVER['SCRIPT_NAME'] : '';
         $url = str_replace($script, '', $url);
         $url = trim($url, '/');
-        if(strpos($url, '?') !==false){
+        if(strpos($url, '?') !== false){
             $pos = strpos($url, '?');
             $url = substr($url, 0, $pos);
         }
@@ -41,14 +41,13 @@ class Router {
             $router['controller'] = ( isset($param['0']) && $param['0'] && $url['0']!='?' ) ? $param['0'] : Q_Request::getInstance()->getGet( Q::getConfig('controller_url_var'), Q::getConfig('default_controller') ) ;
             $router['action'] = ( isset($param['1']) && $param['1'] && $url['0']!='?' ) ? $param['1'] : Q_Request::getInstance()->getGet( Q::getConfig('action_url_var'), Q::getConfig('default_action') );
         }
-        $params = array_diff($param, $router);
+        
+        //$params = array_diff($param, $router);
+        if(isset($param['0'])){ unset($param[0]);}
+        if(isset($param['1'])){ unset($param[1]);}
         $router['controller'] = ucfirst( $router['controller'] );
         $router['action'] = ucfirst( $router['action'] );
-        $router['param'] = $params;
-        unset($params);
-        unset($param);
-        unset($url);
-        unset($script);
+        $router['param'] = $param;
         return $router;
     }
 
@@ -148,4 +147,4 @@ class Router {
 	
 }
 
-?>
+

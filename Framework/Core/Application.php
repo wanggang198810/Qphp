@@ -23,13 +23,17 @@ class Application {
         //初始化系统配置项
         $this->_config = Q::getConfig();
         
+        
+        date_default_timezone_set( $this->_config['timezone']);
+        
         //设置系统错误级别
         if($this->_config['debug']){
             error_reporting(E_ERROR | E_WARNING | E_PARSE);
         }else{
             error_reporting(0);
+            set_error_handler('q_error_handler');//自定义错误
         }
-        set_error_handler('q_error_handler');//自定义错误
+        
     }
     
     
@@ -38,7 +42,7 @@ class Application {
         $this->_trace('beginMemory', Q_Memory::getInstance()->get());
         
         $this->_setSystemHeader();
-        $this->_getController();
+        $this->_getController2();
    
         //记录日志
         //record log
@@ -51,6 +55,91 @@ class Application {
             $this->_trace('endTime',  microtime(true));
             $this->_setDebugInfo();
         }
+    }
+    
+    
+    
+    private function _getController2(){
+        //get controller
+        if($this->_config['url_mode'] == 1){
+            include(FRAMEWORK_PATH.'/Core/Router.php');
+            $router = Router::parseUri();
+            $this->_controller = $router['controller'];
+            $this->_action = $router['action'];
+        }elseif($this->_config['url_mode'] == 0){
+            $subdomain = $this->_request->getSubDomain();
+            if( !empty($subdomain) && in_array( $subdomain['0'] , array_keys(Q::getConfig('subdomain') )) ){
+                $this->_controller = $subdomain['0'];
+            }else{
+                $this->_controller = $this->_request->getGet( $this->_config['controller_url_var'], $this->_config['default_controller']);
+            }
+            $this->_action = $this->_request->getGet( $this->_config['action_url_var'], $this->_config['default_action'] );
+            $this->_controller = ucfirst( $this->_controller );
+            $router['param']=array();
+            //注意此模式下，目录形式链接将失效 (www.xxx.com/home/index => ?m=home&a=index)
+            //in this mode, the url like path doesn't work (www.xxx.com/home/index => ?m=home&a=index)
+        }
+        //载入当前控制器文件
+        //load current controller file
+        if( !file_exists( APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller .'/Controllers/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php' )){
+            $controllerfile =  APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller . '/Controllers/' . $this->_controller.'/'.$this->_controller . self::CONTROLLER_SUFFIX . '.php';
+        }else{
+            $controllerfile =  APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller . '/Controllers/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php';
+        }
+        if(file_exists($controllerfile)){
+            require( $controllerfile );
+        }
+        //debuginfo
+        if( ! class_exists($this->_controller. self::CONTROLLER_SUFFIX)){
+            if($this->_config['record_log']){
+                Q_Log::set( Q_Error::getError( Q_Error::$errorType['nocontroller'] ).': '.$this->_controller );
+                Q_Log::log();
+            }
+            if($this->_config['debug']){
+                if($this->_config['error_mode']==1){
+                    Q_Error::show(Q_Error::getError( Q_Error::$errorType['nocontroller'] ).': '.$this->_controller);
+                }else{
+                    throw new Q_Exception( Q_Error::getError( Q_Error::$errorType['nocontroller'] ).': '.$this->_controller );
+                }
+                return;
+            }else{
+                $this->show_404();
+                return;
+            }
+        }
+        $className = $this->_controller.self::CONTROLLER_SUFFIX;
+        $controller = new $className() ;
+        
+        //初始化controller
+        $controller->init();
+        //$controller->_controller = $this->_controller;
+        //$controller->_action = $action = $this->_action;
+        $action = $this->_action;
+        if( !method_exists($controller, $this->_action) ){
+            $this->_action = $this->_config['default_action'];
+            $router['param'] = array($action) + $router['param'];
+        }
+        
+        if( !method_exists($controller, $this->_action) ){
+            if($this->_config['record_log']){
+                Q_Log::set( Q_Error::getError( Q_Error::$errorType['noaction'] ).': '.$this->_action );
+                Q_Log::log();
+            }
+            if($this->_config['debug']){
+                if($this->_config['error_mode']==1){
+                    Q_Error::show(Q_Error::getError( Q_Error::$errorType['noaction'] ).': '.$this->_action);
+                }else{
+                    throw new Q_Exception( Q_Error::getError( Q_Error::$errorType['noaction'] ).': '.$this->_action );
+                }
+                return;
+            }else{
+                $this->show_404();
+                return;
+            }
+        }
+        //执行操作
+        //$controller->$action();
+        call_user_func_array( array( $controller, $this->_action), $router['param'] );
     }
     
     
@@ -162,7 +251,7 @@ class Application {
         header("Content-type:text/html; charset=".$this->_config['charset']);
         //header("Transfer-Encoding: chunked");
         //header("Content-Encoding:gzip");
-        header('Server: Apache');
+        //header('Server: Apache');
         header('X-Powered-By: Qphp ' .Q::VERSION);
     }
 
@@ -178,4 +267,4 @@ class Application {
     }
 }
 
-?>
+

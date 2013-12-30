@@ -6,8 +6,8 @@
  */
 
 //定义框架目录
-define('FRAMEWORK_PATH', './Framework');
-define('APP_PATH', './Application');
+define('FRAMEWORK_PATH', './Framework/');
+define('APP_PATH', './Application/');
 
 //载入框架核心类库
 require(FRAMEWORK_PATH.'/Q.php');

@@ -47,4 +47,3 @@ class Q_Error {
     
 }
 
-?>

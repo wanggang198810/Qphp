@@ -9,7 +9,7 @@ class Q_Exception extends Exception{
     //put your code here
     
     public function __construct($message, $code=0, $previous=null) {
-        //parent::__construct($message, $code);
+        parent::__construct($message, $code);
     }
     
     
@@ -18,4 +18,4 @@ class Q_Exception extends Exception{
     }
 }
 
-?>
+

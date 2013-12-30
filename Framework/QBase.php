@@ -7,12 +7,17 @@
 
 global $_Sys;
 $_Sys['beginTime'] = microtime(true);
+
 if( !defined('FRAMEWORK_PATH')){
     define('FRAMEWORK_PATH', './Framework');
 }
 
 if( !defined('APP_PATH')){
     define('APP_PATH', './');
+}
+
+if(is_file(APP_PATH . '/Common/Function.php')){
+    require ( APP_PATH . '/Common/Function.php');
 }
 
 //载入系统类库
@@ -29,20 +34,21 @@ require ( FRAMEWORK_PATH . '/Core/Memory.php');
 require ( FRAMEWORK_PATH . '/Core/Registry.php');
 require ( FRAMEWORK_PATH . '/Core/Error.php');
 require ( FRAMEWORK_PATH . '/Core/Lang.php');
-//加载需要自动装载的类库
 
-/*
-$_autoload = Q::getConfig('autoload');
-if( !empty($_autoload)){
-    foreach ($_autoload as $k => $v){
-        if(file_exists( APP_PATH . 'Library/'.$v)){
-            require_once( APP_PATH . 'Library/'.$v .'.php');
-        }elseif( file_exists( FRAMEWORK_PATH . 'Library/'.$v) ){
-            require_once( FRAMEWORK_PATH . 'Library/'.$v .'.php');
+
+//加载需要自动装载的类库
+$autoload = QBase::getConfig('autoload');
+if( !empty($autoload)){
+    foreach ($autoload as $k => $v){
+        $v = ucfirst($v);
+        if(file_exists( APP_PATH . 'Libraries/'.$v .'.php')){
+            require_once( APP_PATH . 'Libraries/'.$v .'.php');
+        }elseif( file_exists( FRAMEWORK_PATH . 'Libraries/'.$v) ){
+            require_once( FRAMEWORK_PATH . 'Libraries/'.$v .'.php');
         }
     }
 }
-*/
+
 
 
 
@@ -61,14 +67,30 @@ class QBase {
     /**
      * 导入类库文件
      */
-    public static function import($pathname){
-        if(strpos($pathname, '.php') === false){
-            $pathname .= '.php';    
+    public static function import($filename, $modules=''){
+        $type = 'Libraries/';
+        
+        $config = self::getConfig();
+        if( false !== strpos($filename, '.')){
+            list($type, $filename) = explode('.', $filename);
+            $type = self::checkPath( ucfirst($type));
         }
-        if(file_exists( APP_PATH . $pathname)){
-            require_once ( APP_PATH . $pathname);
-        }elseif( file_exists( FRAMEWORK_PATH . $pathname) ){
-            require_once ( FRAMEWORK_PATH . $pathname);
+        
+        $filename = ucfirst($filename);
+        if(strpos($filename, '.php') === false){
+            $filename .= '.php';
+        }
+        
+        if($config['hmvc'] && false === strpos($type, 'Libraries')){
+            $filepath = APP_PATH . self::checkPath( $config['hmvc_dir'] ) .self::checkPath( $modules ) . $type . $filename ;
+        }else{
+            $filepath = APP_PATH . $type . $filename;
+        }
+        
+        if( file_exists( $filepath ) ){
+            require_once ( $filepath );
+        }elseif( file_exists( FRAMEWORK_PATH . $type . $filename) ){
+            require_once ( FRAMEWORK_PATH . $type . $filename);
         }
     }
     
@@ -86,6 +108,37 @@ class QBase {
         $config = array_merge( $_config, $config);
         unset($_config);
         return $key ? (isset($config[$key]) ? $config[$key] : 'index' ) : $config;
+    }
+    
+    
+    /**
+     * 导入模型文件
+     */
+    public static function loadModel($name){
+        
+        $module = $name = ucfirst($name);
+        if(strpos($name, 'Model.php') === false){
+            $name .= 'Model.php';    
+        }
+        $config = self::getConfig();
+        if($config['hmvc']){
+            $filename = APP_PATH . Q::checkPath( $config['hmvc_dir'] ) .$module . '/Models/'. $name ;
+        }else{
+            $filename =  APP_PATH .'/Models/'.$name;
+        }
+        if(file_exists($filename)){
+            require_once ($filename);
+        }
+        return true;
+    }
+    
+    
+    /**
+     * 检测路径，结尾一律以 / 结尾
+     */
+    public static function checkPath($path){
+        if(empty($path)) return '';
+        return '/' !== substr($path, -1) ? $path.'/' : $path;
     }
     
     /**
@@ -159,4 +212,4 @@ class QBase {
     }
 }
 
-?>
+

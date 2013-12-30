@@ -20,18 +20,20 @@ class Controller {
     protected $_config;
     public $data;
     public $autoLayout = true;
-    private $_autoloalmodel = true;
+    private $_autoloalmodel = false;
     const MODEL_SUFFIX = 'Model';
     const CONTRONLLER_SUFFIX = 'Controller';
 
     public function __construct() {
         $controller = get_class($this);
-        $this->_controller = str_replace(self::CONTRONLLER_SUFFIX,'', $controller);
-        $this->_request = Q_Request::getInstance();
-        $this->_response = Q_Response::getInstance();
+        $controller = str_replace( self::CONTRONLLER_SUFFIX , '', $controller);
+        $controller = str_replace( 'controller' , '', $controller);
+        $this->_controller = $controller;
+        $this->request = Q_Request::getInstance();
+        $this->response = Q_Response::getInstance();
         $this->_config = Q::getConfig();
         if($this->_autoloalmodel){
-            $this->autoLoadModel( APP_PATH.'/Models/'.$this->_controller .self::MODEL_SUFFIX . '.php');
+            self::loadModel($this->_controller);
         }
         
     }
@@ -50,7 +52,7 @@ class Controller {
     
     public function autoLoadModel($model){
         if(file_exists($model)){
-            require ($model);
+            self::loadModel($model);
         }
     }
     
@@ -59,43 +61,28 @@ class Controller {
      * 导入模型文件
      */
     public function loadModel($name){
-        if(strpos($name, '.php') === false){
-            $name .= self::MODEL_SUFFIX.'.php';    
-        }
-        if(false === strpos($name,'/')){
-            $filename = APP_PATH .'/Models/'.$name;
-        }else{
-            $path = '';
-            $pathArr =  explode('/', $name);
-            array_pop($pathArr);
-            foreach ($pathArr as $k => $v){
-                $path .= $v.'/';
-            }
-            $filename = APP_PATH .'/Models/'.$path .$name;
-        }
-        if(file_exists($filename)){
-            include($filename);
-        }
+        Q::loadModel($name);
     }
     
     
     /**
      * 加载视图层
      */
-    public function render($file=''){
+    public function render($file='', $data = array()){
         if( empty($file) ){
             $file = $this->_action;
         }
-        if(!empty($this->data)){
+        if(!empty($data)){
+            extract($data);
+        }elseif(!empty($this->data)){
             extract($this->data);
         }
         $file = View::getInstance($this->_controller)->render($file);
         ob_start();
-        $layout = new Q_Layout();
-        
-        
+        //$layout = new Q_Layout();
+       
         if(!$this->_config['compile_template']){
-            include $file;
+            require( $file );
             echo ob_get_clean();
         }else{
             $content = file_get_contents($file);
@@ -145,4 +132,4 @@ class Controller {
     }
 }
 
-?>
+

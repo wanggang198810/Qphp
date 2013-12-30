@@ -73,4 +73,3 @@ class Q_Registry {
 	}
 }
 
-?>
