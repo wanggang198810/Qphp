@@ -64,7 +64,7 @@
             <div class="left" style="margin-top: 30px;">
                 
             </div>
-            
+            <!--
             <div class="right radius-5" style=" width: 400px; background: #FFF; height: 310px; margin-top: 30px; padding: 20px;">
                 <ul class="recomm">
                     <li><a href="">在 App 里，遇到告警或者提示用户，「确定」按钮应该放在？</a></li>
@@ -76,7 +76,7 @@
                     <li><a href="">户，「确定」按钮应该放在左边右边？</a></li>
                     <li><a href="">在 App 里，遇到告警或者按钮应该放在左边还是右边？</a></li>
                 </ul>
-            </div>
+            </div>-->
         </div>
     </div>
     

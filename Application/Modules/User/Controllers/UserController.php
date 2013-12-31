@@ -30,7 +30,9 @@ class UserController extends BaseController{
     
     // 登录
     function login(){
-        
+        if($this->uid > 0){
+            $this->response->redirect('/u');
+        }
         if(Request::isPostSubmit()){
             $username = trim($this->request->getPost('username'));
             $password = trim($this->request->getPost('password'));

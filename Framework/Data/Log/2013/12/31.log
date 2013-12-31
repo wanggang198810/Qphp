@@ -108,3 +108,59 @@
 [2013-12-31 02:55:18][SUCCESS][Time:0.016044] Url http://www.q.com/post
 [2013-12-31 02:55:18][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
 [2013-12-31 02:55:18][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:08:41][SUCCESS][Time:0.024648] Url http://www.q.com/post
+[2013-12-31 13:12:21][SUCCESS][Time:0.016140] Url http://www.q.com/post
+[2013-12-31 13:14:05][SUCCESS][Time:0.025347] Url http://www.q.com/post
+[2013-12-31 13:14:20][SUCCESS][Time:0.022209] Url http://www.q.com/post
+[2013-12-31 13:14:44][SUCCESS][Time:0.028042] Url http://www.q.com/post
+[2013-12-31 13:15:07][SUCCESS][Time:0.014157] Url http://www.q.com/post
+[2013-12-31 13:15:27][SUCCESS][Time:0.021636] Url http://www.q.com/post
+[2013-12-31 13:15:28][SUCCESS][Time:0.021604] Url http://www.q.com/post
+[2013-12-31 13:15:53][SUCCESS][Time:0.018776] Url http://www.q.com/post
+[2013-12-31 13:16:06][SUCCESS][Time:0.017587] Url http://www.q.com/post
+[2013-12-31 13:16:15][SUCCESS][Time:0.019495] Url http://www.q.com/post
+[2013-12-31 13:16:35][SUCCESS][Time:0.012806] Url http://www.q.com/post
+[2013-12-31 13:17:30][SUCCESS][Time:0.019894] Url http://www.q.com/post
+[2013-12-31 13:18:07][SUCCESS][Time:0.032971] Url http://www.q.com/post
+[2013-12-31 13:18:58][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/link/link.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:18:58][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/link/link.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:02][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/image/image.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:02][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/image/image.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:07][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:07][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:10][SUCCESS][Time:0.023775] Url http://www.q.com/post
+[2013-12-31 13:19:10][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:10][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:27][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/image/image.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:27][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/image/image.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:28][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/emoticons/emoticons.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:28][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/emoticons/emoticons.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:28][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/link/link.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:19:28][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/link/link.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2013-12-31 13:20:09][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\Air\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2013-12-31 13:20:16][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\Air\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2013-12-31 13:20:55][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\Air\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2013-12-31 13:20:58][SUCCESS][Time:0.022783] Url http://www.q.com/user/login
+[2013-12-31 13:20:58][NOTICE] Url http://www.q.com/u Undefined variable: id at file E:\Air\Qphp\Application\Modules\U\Controllers\UController.php(15)
+[2013-12-31 13:20:58][SUCCESS][Time:0.009134] Url http://www.q.com/u/rgss
+[2013-12-31 13:21:00][SUCCESS][Time:0.018982] Url http://www.q.com/u/rgss
+[2013-12-31 13:21:01][SUCCESS][Time:0.018900] Url http://www.q.com/u/rgss
+[2013-12-31 13:21:03][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\Air\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2013-12-31 13:21:05][SUCCESS][Time:0.018353] Url http://www.q.com/u/rgss
+[2013-12-31 13:21:06][ERROR] Url http://www.q.com/explode 未定义指定控制器/NOT FOUND CONTROLLER: Explode
+[2013-12-31 13:21:06][ERROR] Url http://www.q.com/explode 未定义指定控制器/NOT FOUND CONTROLLER: Explode
+[2013-12-31 13:21:07][SUCCESS][Time:0.025663] Url http://www.q.com/u/rgss
+[2013-12-31 13:21:08][ERROR] Url http://www.q.com/game 未定义指定控制器/NOT FOUND CONTROLLER: Game
+[2013-12-31 13:21:08][ERROR] Url http://www.q.com/game 未定义指定控制器/NOT FOUND CONTROLLER: Game
+[2013-12-31 13:21:09][ERROR] Url http://www.q.com/game 未定义指定控制器/NOT FOUND CONTROLLER: Game
+[2013-12-31 13:21:09][ERROR] Url http://www.q.com/game 未定义指定控制器/NOT FOUND CONTROLLER: Game
+[2013-12-31 13:21:10][SUCCESS][Time:0.021064] Url http://www.q.com/u/rgss
+[2013-12-31 13:21:11][ERROR] Url http://www.q.com/group 未定义指定控制器/NOT FOUND CONTROLLER: Group
+[2013-12-31 13:21:11][ERROR] Url http://www.q.com/group 未定义指定控制器/NOT FOUND CONTROLLER: Group
+[2013-12-31 13:21:13][SUCCESS][Time:0.017051] Url http://www.q.com/u/rgss
+[2013-12-31 13:21:22][ERROR] Url http://www.q.com/message 未定义指定控制器/NOT FOUND CONTROLLER: Message
+[2013-12-31 13:21:22][ERROR] Url http://www.q.com/message 未定义指定控制器/NOT FOUND CONTROLLER: Message
+[2013-12-31 14:18:14][SUCCESS][Time:0.023094] Url http://www.q.com/u/rgss
+[2013-12-31 14:18:14][SUCCESS][Time:0.023259] Url http://www.q.com/u/rgss
+[2013-12-31 14:18:17][SUCCESS][Time:0.017768] Url http://www.q.com/u/rgss
+[2013-12-31 14:42:39][SUCCESS][Time:0.024501] Url http://www.q.com/u/rgss

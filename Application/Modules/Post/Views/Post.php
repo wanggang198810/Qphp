@@ -63,29 +63,29 @@
 <div style=" width: 980px; margin: 70px auto 0;">
     <form action="/post/save" method="post">
     
-        <div style="float:left;">
+        <div style="float:left; width: 740px; background: #fff; padding: 20px;" class="radius-5">
             
                 <div class="form-group">
                     <label for="title">标题</label>
-                    <input type="text" style=" width: 762px; padding: 7px 9px;" class="form-control" id="title" name="title" placeholder="标题">
+                    <input type="text" style=" width: 702px; padding: 7px 9px;" class="form-control" id="title" name="title" placeholder="标题">
                 </div>
 
                 <div class="form-group">
                     <label for="content">内容</label>
-                    <textarea name="content" id="content" style="width:780px; height:500px; visibility:hidden;"></textarea>
+                    <textarea name="content" id="content" style="width:720px; height:500px; visibility:hidden;"></textarea>
                 </div>
                 <div class="form-group" style="padding:20px 0;">
                 <button type="submit" class="btn btn-default">保存</button>
                 </div>
             
         </div>    
-        <div style="float: right; width: 197px;background: #CCC;border: 1px solid #000;border-left: none;">
+        <div style="float: right; width: 169px; padding: 15px; background: #CCC;border: 1px solid #ddd;border-left: none; margin-top: 20px;">
             <div>
                 <label for="category">分类</label>
                 <div class="btn-group">
                     <input type="hidden" name="category" id="category"  value="0"/>
-                    <button style="width:180px; padding: 5px 9px;" class="btn dropdown-toggle" data-toggle="dropdown"><span id="category-name">默认分类</span> <span class="caret"></span></button>
-                    <ul class="dropdown-menu" style="min-width: 177px;">
+                    <button style="width:170px; padding: 5px 9px;" class="btn dropdown-toggle" data-toggle="dropdown"><span id="category-name">默认分类</span> <span class="caret"></span></button>
+                    <ul class="dropdown-menu" style="min-width: 167px;">
                         <li><a class="cate" href="javascript:;" id="0">默认分类</a></li>
                       <?php
                         foreach($categories as $k => $v){
@@ -99,11 +99,11 @@
                 </div>
             </div>
             <div style="margin-top:50px;">
-                <label for="url">分类</label>
-                <input style="width:165px;" id="url" name="url" type="text" placeholder="hello-url">
+                <label for="url">url</label>
+                <input style="width:155px;" id="url" name="url" type="text" placeholder="hello-url">
 
                 <label for="tag">标签</label>
-                <input style="width:165px;" id="tag" name="tag" type="text" placeholder="hello-url">
+                <input style="width:155px;" id="tag" name="tag" type="text" placeholder="tag">
             </div>
         </div>
         
