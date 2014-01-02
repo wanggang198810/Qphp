@@ -127,3 +127,50 @@ function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
 	$html .= '</div>';
 	return $html;
 }
+
+
+function user_space( $url ){
+    return '/u/'.$url;
+}
+
+
+function topic_url($id, $url=''){
+    if(!empty($url)){
+        return '/topic/'.$id.'-'.$url;
+    }
+    return '/topic/'.$id;
+}
+
+function filter_content($str){
+    return $str;
+}
+
+
+/**
+ * 人性化时间转换    只转换一周内的时间
+ * @param object $time  int or string  时间戳或者 Y-m-d H:i:s格式
+ * @param string $format 时间格式 默认 Y-m-d H:i:s
+ */
+function dgmdate($time, $format = 'Y-m-d H:i') {
+	if (! is_int ( $time )) {
+		$time = ValueHelper::DeUnixtime ( $time );
+	}
+	$timespan = time () - $time;
+	$days = intval ( $timespan / 86400 );
+	if ($days == 0) {
+		if ($timespan > 3600) {
+			return intval ( $timespan / 3600 ) . "小时前";
+		} elseif ($timespan > 1800) {
+			return "半小时前";
+		} elseif ($timespan > 60) {
+			return intval ( $timespan / 60 ) . "分前";
+		} elseif ($timespan > 0) {
+			return $timespan . "秒前";
+		} elseif ($time <= 0) {
+			return "刚刚";
+		}
+	} elseif ($days >= 0 && $days < 7) {
+		return $days . "天前";
+	}
+	return date ( $format, $time );
+}

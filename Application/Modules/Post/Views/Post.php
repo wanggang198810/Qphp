@@ -67,19 +67,19 @@
             
                 <div class="form-group">
                     <label for="title">标题</label>
-                    <input type="text" style=" width: 702px; padding: 7px 9px;" class="form-control" id="title" name="title" placeholder="标题">
+                    <input type="text" style=" width: 720px; padding: 7px 9px;" class="form-control" id="title" name="title" placeholder="标题">
                 </div>
 
                 <div class="form-group">
                     <label for="content">内容</label>
-                    <textarea name="content" id="content" style="width:720px; height:500px; visibility:hidden;"></textarea>
+                    <textarea name="content" id="content" style="width:737px; height:500px; visibility:hidden;"></textarea>
                 </div>
                 <div class="form-group" style="padding:20px 0;">
                 <button type="submit" class="btn btn-default">保存</button>
                 </div>
             
         </div>    
-        <div style="float: right; width: 169px; padding: 15px; background: #CCC;border: 1px solid #ddd;border-left: none; margin-top: 20px;">
+        <div style="float: right; width: 169px; padding: 15px; background: #DDD;border: 1px solid #ddd;border-left: none; margin-top: 20px;">
             <div>
                 <label for="category">分类</label>
                 <div class="btn-group">

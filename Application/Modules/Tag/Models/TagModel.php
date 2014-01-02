@@ -10,7 +10,7 @@ class TagModel extends Model{
     /**
      * 添加标签
      */
-    public function add($topicid , $tagStr){
+    public function addTag($topicid , $tagStr){
         $tag = explode(',', $tagStr);
         foreach($tag as $k => $v){
             if(empty($v)){

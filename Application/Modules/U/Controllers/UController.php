@@ -44,7 +44,13 @@ class UController extends BaseController{
     }
     
     private function home(){
-        $this->assign('title', '空间');
+        $this->loadModel('Topic');
+        $topicModel = new TopicModel();
+        $topics = $topicModel->getTopicList($this->uid);
+        $this->data['user'] = $this->user;
+        $this->data['title'] = $this->user['username'];
+        $this->data['topics'] = $topics['list'];
+        
         $this->render();
     }
     

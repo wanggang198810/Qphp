@@ -20,12 +20,12 @@ class PostController extends BaseController{
         $cateDao = new CategoryModel();
         $this->data['categories'] = $cateDao->getCategoryByUid($this->uid);
         
-        
         $this->render('Post');
     }
     
     
     public function save(){
+        $this->checkLogin(1);
         
         if(Request::isPostSubmit()){
             $this->loadModel('Topic');
@@ -34,28 +34,30 @@ class PostController extends BaseController{
             
             $data['title'] = trim(Request::getPost('title'));
             $data['content'] = htmlspecialchars( Request::getPost('content') );
-            $data['cid'] = Request::getPost('category');
-            $data['groupid'] = Request::getPost('groupid');
+            $data['shortcontent'] = substr(htmlspecialchars( Request::getPost('content') ), 0, 70);
+            $data['cid'] = Request::getIntPost('category');
+            $data['gid'] = Request::getIntPost('groupid');
+            $data['type'] = Request::getIntPost('type',1);
             $data['url'] = trim(Request::getPost('url'));
             $data['tag'] = trim(Request::getPost('tag'));
             
             
-            $data['title'] = '测试文章' . rand(10000,99999);
-            $data['content'] = '测试内容' . rand(10000,99999);
-            $data['cid'] = 1;
-            $data['groupid'] = 1;
-            $data['url'] = 'go-hero';
-            $data['tag'] = '测试,go';
-            
+            if( strlen($data['title']) <= 0 && strlen( trim($data['content']) ) <= 20){
+                return false;
+            }
             
             $data['time'] = time();
             $data['uid'] = $this->uid;
+            
             $result = $postModel->post($data);
-            if($result){
-                $this->loadModel('Tag');
-                $tagModel = new TagModel('Tag'); 
-                $result = $tagModel->add($result, $data['tag']);
-                hprint($result);
+            if($result > 0){
+                if(!empty($data['tag'])){
+                    $this->loadModel('Tag');
+                    $tagModel = new TagModel('Tag'); 
+                    $result = $tagModel->addTag($result, $data['tag']);
+                }
+                $this->response->redirect(user_space($this->user['blogname']));
+                return;
             }
         }
         $this->response->redirect('/post');

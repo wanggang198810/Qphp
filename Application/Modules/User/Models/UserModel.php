@@ -42,6 +42,10 @@ class UserModel extends Model{
     }
     
     
+    public function getUser($uid){
+        return $this->where( array('uid' => $uid))->fetch();
+    }
+    
     public function getUserById($uid){
         $uid = intval($uid);
         if($uid <= 0){ return false;}

@@ -15,6 +15,11 @@ class User {
         Cookie::set('UID', $value, $time);
     }
     
+    public static function clearCookie(){
+        Q::import('Cookie');
+        Cookie::set('UID', '', -3600);
+    }
+    
     
     // 获取登录用户id
     public static function getUserId(){

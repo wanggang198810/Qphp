@@ -32,7 +32,7 @@ class Model {
   
         if(empty($name)){
             $model = get_class($this);
-            $name = str_replace( 'Model','', $model);
+            $name = strtolower( str_replace( 'Model','', $model) );
         }
         
         $this->_tablePrex = $this->_config['tableprex'];
@@ -120,15 +120,15 @@ class Model {
         return $this->db->page($this->_sql, $page, $pageSize, $total);
     }
     
-    public function add($data){
+    public function add($data, $lastInsert){
         if(empty($data)){
             return false;
         }
-        return $this->db->insert($this->_table,$data);
+        return $this->db->insert($this->_table,$data, $lastInsert);
     }
     
-    public function insert($data){
-        return $this->add($data);
+    public function insert($data, $lastInsert){
+        return $this->add($data, $lastInsert);
     }
     
     public function multiInsert($data){
@@ -154,7 +154,7 @@ class Model {
 
 
     public function delete(){
-        return $this->db->delete($this->_table,$this->db->getWhere());
+        return $this->db->delete($this->_table,$this->db->getWhere(), 1);
     }
     
     public function where($data){

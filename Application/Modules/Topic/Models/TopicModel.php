@@ -8,17 +8,17 @@ class TopicModel extends Model{
     
     
     public function post($data){
-        $result = $this->insert($data);
+        $result = $this->insert($data, 1);
         if($result){
-            return $this->lastInsertId();
+            return $result;
         }
         return false;
     }
     
     
     
-    public function getList($page = 1, $pageSize = 20 , $total = 0){
-        return $this->page($page, $pageSize, $total);
+    public function getTopicList($uid, $page = 1, $pageSize = 20 , $total = 0){
+        return $this->where( array('uid'=>$uid) )->page($page, $pageSize, $total);
     }
     
     
@@ -27,7 +27,7 @@ class TopicModel extends Model{
     }
     
     
-    public function get($id){
+    public function getTopic($id){
         if( intval($id) <= 0 ){ return false; }
         return $this->where( array('id' => intval($id) ) )->fetch();
     }
@@ -36,7 +36,7 @@ class TopicModel extends Model{
     /**
      * 修改
      */
-    public function edit($id, $uid, $data){
+    public function editTopic($id, $uid, $data){
         $id = intval($id);
         if($id <= 0 || empty($data)){
             return false;
@@ -51,7 +51,7 @@ class TopicModel extends Model{
     /**
      * 删除
      */
-    public function delete($id, $uid) {
+    public function deleteTopic($id, $uid) {
         $id = intval($id);
         if($id <= 0){
             return false;

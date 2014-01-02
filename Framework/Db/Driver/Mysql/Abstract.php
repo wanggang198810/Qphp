@@ -68,7 +68,7 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
 		$sql = sprintf("%s INTO %s(%s) VALUES(%s)",$func,$this->table( $table),$ret['field'],$ret['value']);
 		$result = $this->execute($sql);
         if($lastInsertid){
-            $this->lastInsertId();
+            return $this->lastInsertId();
         }
         return $result;
 	}
