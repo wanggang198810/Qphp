@@ -129,7 +129,6 @@ function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
 }
 
 
-<<<<<<< HEAD
 function user_space( $url , $type = '' ){
     if(!empty($type)){
         $type = '/'.$type;
@@ -155,22 +154,6 @@ function topic_url($id, $url='', $type = 1){
 
 function filter_content($str){
     return htmlspecialchars_decode($str);
-=======
-function user_space( $url ){
-    return '/u/'.$url;
-}
-
-
-function topic_url($id, $url=''){
-    if(!empty($url)){
-        return '/topic/'.$id.'-'.$url;
-    }
-    return '/topic/'.$id;
-}
-
-function filter_content($str){
-    return $str;
->>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
 }
 
 
@@ -181,12 +164,7 @@ function filter_content($str){
  */
 function dgmdate($time, $format = 'Y-m-d H:i') {
 	if (! is_int ( $time )) {
-<<<<<<< HEAD
-        hprint($time,1);
 		$time = strtotime($time);
-=======
-		$time = ValueHelper::DeUnixtime ( $time );
->>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
 	}
 	$timespan = time () - $time;
 	$days = intval ( $timespan / 86400 );

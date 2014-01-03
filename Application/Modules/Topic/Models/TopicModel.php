@@ -28,7 +28,6 @@ class TopicModel extends Model{
         return $this->where( array('type'=>$type) )->limit( $limitSql )->order(' order by id desc')->fetchArray();
     }
     
-<<<<<<< HEAD
     
     public function getTopicList($uid, $type=1, $page = 1, $pageSize = 20 , $total = 0){
         if( $type != 0 ){
@@ -36,10 +35,7 @@ class TopicModel extends Model{
         }
         $where['uid'] = $uid;
         return $this->where( $where )->order( " order by id DESC")->page($page, $pageSize, $total);
-=======
-    public function getTopicList($uid, $page = 1, $pageSize = 20 , $total = 0){
-        return $this->where( array('uid'=>$uid) )->page($page, $pageSize, $total);
->>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
+
     }
     
     

@@ -156,7 +156,6 @@ class Model {
 
     public function delete(){
         return $this->db->delete($this->_table,$this->db->getWhere(), 1);
-<<<<<<< HEAD
     }
     
     public function limit($str){
@@ -164,8 +163,6 @@ class Model {
             $this->db->setLimit( $str );
         }
         return $this;
-=======
->>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
     }
     
     public function where($data){
