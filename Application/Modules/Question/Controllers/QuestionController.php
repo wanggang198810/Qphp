@@ -21,6 +21,9 @@ class QuestionController  extends BaseController{
         $this->loadModel('Topic');
         $topicModel = new TopicModel('Topic');
         $this->data['topic'] = $topicModel->getTopic($int_id);
+        if( !empty($this->data['topic']['tag'])){
+            $this->data['topic']['tag'] = explode(',', $this->data['topic']['tag']);
+        }
         if($id != $this->data['topic']['id']. '-' . $this->data['topic']['url'] && $id != $this->data['topic']['id']){
             $this->show_404();
             return;
@@ -34,6 +37,12 @@ class QuestionController  extends BaseController{
             $this->show_404();
         }
         $this->render();
+    }
+    
+    
+    public function tag($name){
+        $name = filter( urldecode($name) );
+        echo $name;
     }
     
 }

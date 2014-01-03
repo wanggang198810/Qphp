@@ -152,6 +152,10 @@ function topic_url($id, $url='', $type = 1){
     return '/'.$typeurl.'/'.$id;
 }
 
+function qtag_url($tagname){
+    return '/question/tag/'.$tagname;
+}
+
 function filter_content($str){
     return htmlspecialchars_decode($str);
 }
@@ -185,3 +189,5 @@ function dgmdate($time, $format = 'Y-m-d H:i') {
 	}
 	return date ( $format, $time );
 }
+
+

@@ -349,3 +349,92 @@
 [2014-01-03 01:14:12][SUCCESS][Time:0.024213] Url http://www.q.com/topic/16-go-hero
 [2014-01-03 01:14:42][SUCCESS][Time:0.028413] Url http://www.q.com/topic/16-go-hero
 >>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
+[2014-01-03 22:23:10][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2014-01-03 22:23:15][NOTICE] Url http://www.q.com/user/register Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\User\Views\Register.php(4)
+[2014-01-03 22:23:15][NOTICE] Url http://www.q.com/u/rgss Undefined variable: user at file E:\wamp\www\Qphp\Application\Modules\Common\Views\UserSide.php(8)
+[2014-01-03 22:27:51][NOTICE] Url http://www.q.com/u/rgss Undefined variable: user at file E:\wamp\www\Qphp\Application\Modules\Common\Views\UserSide.php(8)
+[2014-01-03 22:28:57][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 22:29:15][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 22:29:23][NOTICE] Url http://www.q.com/u/rgss/articles Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(102)
+[2014-01-03 22:29:25][NOTICE] Url http://www.q.com/u/rgss/questions Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(102)
+[2014-01-03 22:29:27][NOTICE] Url http://www.q.com/u/rgss/articles Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(102)
+[2014-01-03 22:29:31][NOTICE] Url http://www.q.com/u/rgss/like Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 22:30:47][SUCCESS][Time:0.027007] Url http://www.q.com/u/rgss/like
+[2014-01-03 22:30:57][NOTICE] Url http://www.q.com/u/rgss/questions Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:30:57][SUCCESS][Time:0.030499] Url http://www.q.com/u/rgss/music
+[2014-01-03 22:30:59][NOTICE] Url http://www.q.com/u/rgss/articles Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:30:59][NOTICE] Url http://www.q.com/u/rgss/articles Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:30:59][NOTICE] Url http://www.q.com/u/rgss/questions Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:31:01][NOTICE] Url http://www.q.com/u/rgss/articles Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:31:04][SUCCESS][Time:0.041071] Url http://www.q.com/topic/32-live-meng-second
+[2014-01-03 22:31:09][NOTICE] Url http://www.q.com/u/rgss/articles Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:49:45][NOTICE] Url http://www.q.com/u/rgss/questions Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:50:47][NOTICE] Url http://www.q.com/u/rgss/questions Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:51:02][NOTICE] Url http://www.q.com/u/rgss/questions Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(97)
+[2014-01-03 22:52:53][SUCCESS][Time:0.027414] Url http://www.q.com/question/24
+[2014-01-03 22:52:55][SUCCESS][Time:0.021328] Url http://www.q.com/question/24
+[2014-01-03 22:52:55][SUCCESS][Time:0.011301] Url http://www.q.com/question/24
+[2014-01-03 22:52:55][SUCCESS][Time:0.022791] Url http://www.q.com/question/24
+[2014-01-03 22:57:45][SUCCESS][Time:0.029656] Url http://www.q.com/question/24
+[2014-01-03 23:02:11][SUCCESS][Time:0.029948] Url http://www.q.com/question/24
+[2014-01-03 23:02:16][SUCCESS][Time:0.034762] Url http://www.q.com/question/24
+[2014-01-03 23:12:03][SUCCESS][Time:0.024892] Url http://www.q.com/question/24
+[2014-01-03 23:16:38][SUCCESS][Time:0.023321] Url http://www.q.com/question/24
+[2014-01-03 23:17:05][SUCCESS][Time:0.033859] Url http://www.q.com/question/24
+[2014-01-03 23:17:55][NOTICE] Url http://www.q.com/u/rgss/questions Undefined variable: questions at file E:\wamp\www\Qphp\Application\Modules\U\Controllers\UController.php(95)
+[2014-01-03 23:17:56][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:17:58][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:19:18][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:20:09][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:20:34][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:20:51][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:21:52][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:22:41][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:22:42][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:23:00][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:23:41][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:24:30][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:25:02][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:27:11][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:27:23][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:28:45][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:28:58][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:29:28][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:32:32][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:32:38][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:34:08][NOTICE] Url http://www.q.com/question/17-go-hero Undefined variable: tag at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(37)
+[2014-01-03 23:34:44][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:35:19][WARNING] Url http://www.q.com/question/17-go-hero Invalid argument supplied for foreach() at file E:\wamp\www\Qphp\Application\Modules\Question\Views\Question.php(28)
+[2014-01-03 23:35:42][SUCCESS][Time:0.023329] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:36:07][WARNING] Url http://www.q.com/question/17-go-hero implode(): Invalid arguments passed at file E:\wamp\www\Qphp\Application\Modules\Question\Controllers\QuestionController.php(25)
+[2014-01-03 23:36:07][WARNING] Url http://www.q.com/question/17-go-hero implode(): Invalid arguments passed at file E:\wamp\www\Qphp\Application\Modules\Question\Controllers\QuestionController.php(25)
+[2014-01-03 23:36:20][WARNING] Url http://www.q.com/question/17-go-hero implode(): Invalid arguments passed at file E:\wamp\www\Qphp\Application\Modules\Question\Controllers\QuestionController.php(25)
+[2014-01-03 23:36:20][WARNING] Url http://www.q.com/question/17-go-hero implode(): Invalid arguments passed at file E:\wamp\www\Qphp\Application\Modules\Question\Controllers\QuestionController.php(25)
+[2014-01-03 23:38:43][SUCCESS][Time:0.030338] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:38:49][ERROR] Url http://www.q.com/tag/go 未定义指定控制器/NOT FOUND CONTROLLER: Tag
+[2014-01-03 23:38:49][ERROR] Url http://www.q.com/tag/go 未定义指定控制器/NOT FOUND CONTROLLER: Tag
+[2014-01-03 23:40:07][SUCCESS][Time:0.035836] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:40:10][SUCCESS][Time:0.031668] Url http://www.q.com/question/tag/%E6%B5%8B%E8%AF%95
+[2014-01-03 23:40:36][SUCCESS][Time:0.023292] Url http://www.q.com/question/tag/%E6%B5%8B%E8%AF%95
+[2014-01-03 23:40:51][SUCCESS][Time:0.019867] Url http://www.q.com/question/tag/%E6%B5%8B%E8%AF%95
+[2014-01-03 23:41:10][SUCCESS][Time:0.017503] Url http://www.q.com/question/tag/%E6%B5%8B%E8%AF%95
+[2014-01-03 23:41:20][SUCCESS][Time:0.025999] Url http://www.q.com/question/tag/%E6%B5%8B%E8%AF%95
+[2014-01-03 23:41:24][SUCCESS][Time:0.033283] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:45:18][SUCCESS][Time:0.024848] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:45:43][SUCCESS][Time:0.019572] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:45:57][SUCCESS][Time:0.028467] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:46:11][SUCCESS][Time:0.018933] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:46:19][SUCCESS][Time:0.036036] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:52:37][SUCCESS][Time:0.033425] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:53:23][SUCCESS][Time:0.017585] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:53:24][SUCCESS][Time:0.031397] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:53:41][SUCCESS][Time:0.014383] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:54:35][SUCCESS][Time:0.020159] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:54:44][SUCCESS][Time:0.028912] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:55:36][SUCCESS][Time:0.027862] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:57:07][SUCCESS][Time:0.021853] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:57:23][SUCCESS][Time:0.025812] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:57:59][SUCCESS][Time:0.041145] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:58:09][SUCCESS][Time:0.019226] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:58:34][SUCCESS][Time:0.025335] Url http://www.q.com/question/17-go-hero
+[2014-01-03 23:59:06][SUCCESS][Time:0.029202] Url http://www.q.com/question/17-go-hero

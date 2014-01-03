@@ -12,7 +12,8 @@ root {
 
 
 body {
-  background-color: #fcfcfc; font: Helvetica,Arial,sans-serif; font-size: 14px; font-family: 微软雅黑,宋体;
+  background-color: #fcfcfc; font: Helvetica,Arial,sans-serif; font-size: 14px; /*font-family: 微软雅黑,宋体;*/
+  font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
   /*background: #DF5D5D;*/
 }
 .left{ float: left;}
@@ -26,6 +27,17 @@ body {
     -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
+}
+
+.radius-2{
+    -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+.radius-3{
+    -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
 }
 .form-signin {
   position: relative;
@@ -115,3 +127,20 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
 
 .main a{ }
 .label-warning a{ color: #fff; font-weight: normal; }
+
+.tag{ border: 1px solid #ccc; padding: 5px 8px; margin-right: 5px; -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;}
+
+.up, .down{ text-align: center; width: 38px; background: #eff6fa; cursor: pointer; padding-bottom: 2px;}
+.up{ margin-bottom: 5px;}
+.answer-item .active, .up:hover, .down:hover{background: #698ebf; color: #FFF;}
+
+.answer-box{ line-height: 1.7;}
+.answer-item{ font-size: 13px;}
+.answer-agree, .answer-agree a{ color: #999;}
+.answer-head a{ color: #005580}
+.answer-head a:hover{ text-decoration: underline;}
+.answer-bottom{ color: #999; font-size: 13px; padding: 5px 0; border-bottom: 1px solid #eee; margin-bottom: 20px;}
+.answer-bottom a{ color: #999; margin-right: 5px;}
+.answer-bottom a:hover{ color: #698ebf; text-decoration: underline;}

@@ -64,13 +64,6 @@ class UController extends BaseController{
         $this->data['title'] = $this->view_user['username'];
         $this->data['topics'] = $articles;
         $this->data['questions'] = $questions;
-
-        $this->loadModel('Topic');
-        $topicModel = new TopicModel();
-        $topics = $topicModel->getTopicList($this->uid);
-        $this->data['user'] = $this->user;
-        $this->data['title'] = $this->user['username'];
-        $this->data['topics'] = $topics['list'];
         
         $this->render();
     }
