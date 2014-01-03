@@ -21,12 +21,19 @@ class TopicController extends BaseController {
             $this->show_404();
             return;
         }
+<<<<<<< HEAD
         $this->data['type'] = 1;
         
         $this->loadModel('Topic');
         $topicModel = new TopicModel('Topic');
         $this->data['topic'] = $topicModel->getTopic($int_id);
         if($id != $this->data['topic']['id']. '-' . $this->data['topic']['url'] && $id != $this->data['topic']['id']){
+=======
+        $this->loadModel('Topic');
+        $topicModel = new TopicModel('Topic');
+        $this->data['topic'] = $topicModel->getTopic($int_id);
+        if($id != $this->data['topic']['id']. '-' . $this->data['topic']['url']){
+>>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
             $this->show_404();
             return;
         }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2014-01-03 13:25:20][SUCCESS][Time:0.024700] Url http://www.q.com/topic/23-qi-xiang-rgss
 [2014-01-03 13:25:49][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\Air\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
 [2014-01-03 13:26:11][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\Air\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
@@ -217,3 +218,134 @@
 [2014-01-03 20:17:17][NOTICE] Url http://www.q.com/post Undefined property: Mysql::$_limit at file E:\Air\Qphp\Framework\Db\Driver\Mysql\Abstract.php(259)
 [2014-01-03 20:17:30][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/image/image.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
 [2014-01-03 20:17:30][ERROR] Url http://www.q.com/Public/js/kindeditor/plugins/image/image.js?ver=4.1.10%20(2013-11-23) 未定义指定控制器/NOT FOUND CONTROLLER: Public
+=======
+[2014-01-03 00:05:27][SUCCESS][Time:0.038683] Url http://www.q.com/topic/29
+[2014-01-03 00:06:18][SUCCESS][Time:0.014427] Url http://www.q.com/topic/29
+[2014-01-03 00:06:49][SUCCESS][Time:0.040956] Url http://www.q.com/topic/29
+[2014-01-03 00:11:27][SUCCESS][Time:0.030511] Url http://www.q.com/topic/29
+[2014-01-03 00:12:02][SUCCESS][Time:0.031992] Url http://www.q.com/topic/29
+[2014-01-03 00:12:26][SUCCESS][Time:0.022175] Url http://www.q.com/topic/29
+[2014-01-03 00:12:44][SUCCESS][Time:0.022976] Url http://www.q.com/topic/29
+[2014-01-03 00:12:59][SUCCESS][Time:0.024057] Url http://www.q.com/topic/29
+[2014-01-03 00:13:39][NOTICE] Url http://www.q.com/topic/29 Undefined index: writetime at file E:\wamp\www\Qphp\Application\Modules\Topic\Views\Topic.php(43)
+[2014-01-03 00:13:42][NOTICE] Url http://www.q.com/topic/29 Undefined index: writetime at file E:\wamp\www\Qphp\Application\Modules\Topic\Views\Topic.php(43)
+[2014-01-03 00:13:48][NOTICE] Url http://www.q.com/topic/29 Undefined index: writetime at file E:\wamp\www\Qphp\Application\Modules\Topic\Views\Topic.php(43)
+[2014-01-03 00:14:03][SUCCESS][Time:0.021037] Url http://www.q.com/topic/29
+[2014-01-03 00:15:08][SUCCESS][Time:0.031327] Url http://www.q.com/topic/29
+[2014-01-03 00:15:23][SUCCESS][Time:0.018060] Url http://www.q.com/topic/29
+[2014-01-03 00:16:00][SUCCESS][Time:0.029856] Url http://www.q.com/topic/29
+[2014-01-03 00:16:10][SUCCESS][Time:0.035423] Url http://www.q.com/topic/29
+[2014-01-03 00:16:27][SUCCESS][Time:0.027613] Url http://www.q.com/topic/29
+[2014-01-03 00:16:46][SUCCESS][Time:0.028864] Url http://www.q.com/topic/29
+[2014-01-03 00:16:58][SUCCESS][Time:0.023478] Url http://www.q.com/topic/29
+[2014-01-03 00:18:39][SUCCESS][Time:0.030483] Url http://www.q.com/topic/29
+[2014-01-03 00:21:31][SUCCESS][Time:0.034051] Url http://www.q.com/topic/29
+[2014-01-03 00:21:45][SUCCESS][Time:0.025728] Url http://www.q.com/topic/29
+[2014-01-03 00:23:15][SUCCESS][Time:0.032960] Url http://www.q.com/topic/29
+[2014-01-03 00:23:18][ERROR] Url http://www.q.com/question 未定义指定控制器/NOT FOUND CONTROLLER: Question
+[2014-01-03 00:23:18][ERROR] Url http://www.q.com/question 未定义指定控制器/NOT FOUND CONTROLLER: Question
+[2014-01-03 00:23:41][SUCCESS][Time:0.030899] Url http://www.q.com/topic/29
+[2014-01-03 00:24:09][SUCCESS][Time:0.024302] Url http://www.q.com/topic/29
+[2014-01-03 00:25:52][SUCCESS][Time:0.031720] Url http://www.q.com/topic/29
+[2014-01-03 00:25:53][SUCCESS][Time:0.033514] Url http://www.q.com/topic/29
+[2014-01-03 00:25:54][ERROR] Url http://www.q.com/question 未定义指定控制器/NOT FOUND CONTROLLER: Question
+[2014-01-03 00:25:54][ERROR] Url http://www.q.com/question 未定义指定控制器/NOT FOUND CONTROLLER: Question
+[2014-01-03 00:25:56][NOTICE] Url http://www.q.com/u Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:25:56][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:25:58][SUCCESS][Time:0.027376] Url http://www.q.com/topic/21
+[2014-01-03 00:26:19][SUCCESS][Time:0.031087] Url http://www.q.com/topic/21
+[2014-01-03 00:26:20][SUCCESS][Time:0.022229] Url http://www.q.com/topic/21
+[2014-01-03 00:26:20][SUCCESS][Time:0.024301] Url http://www.q.com/topic/21
+[2014-01-03 00:26:23][NOTICE] Url http://www.q.com/u Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:26:23][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:30:29][ERROR] Url http://www.q.com/question 未定义指定控制器/NOT FOUND CONTROLLER: Question
+[2014-01-03 00:30:29][ERROR] Url http://www.q.com/question 未定义指定控制器/NOT FOUND CONTROLLER: Question
+[2014-01-03 00:30:45][ERROR] Url http://www.q.com/share 未定义指定控制器/NOT FOUND CONTROLLER: Share
+[2014-01-03 00:30:45][ERROR] Url http://www.q.com/share 未定义指定控制器/NOT FOUND CONTROLLER: Share
+[2014-01-03 00:34:59][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:36:27][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:36:28][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:36:29][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:38:58][NOTICE] Url http://www.q.com/u Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:38:58][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:39:15][SUCCESS][Time:0.040961] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 00:39:19][SUCCESS][Time:0.027907] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 00:39:20][SUCCESS][Time:0.027501] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 00:39:21][SUCCESS][Time:0.031242] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 00:39:21][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2014-01-03 00:39:24][SUCCESS][Time:0.034032] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 00:39:59][SUCCESS][Time:0.023766] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 00:40:01][SUCCESS][Time:0.027859] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 00:40:02][NOTICE] Url http://www.q.com/u Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:40:02][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:40:06][SUCCESS][Time:0.143004] Url http://www.q.com/post
+[2014-01-03 00:40:06][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2014-01-03 00:40:06][ERROR] Url http://www.q.com/Public/js/jquery.min.map 未定义指定控制器/NOT FOUND CONTROLLER: Public
+[2014-01-03 00:40:59][NOTICE] Url http://www.q.com/post/save Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:40:59][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:41:02][SUCCESS][Time:0.033950] Url http://www.q.com/topic/32-live-meng-second
+[2014-01-03 00:41:36][SUCCESS][Time:0.029129] Url http://www.q.com/topic/32-live-meng-second
+[2014-01-03 00:41:39][NOTICE] Url http://www.q.com/u Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:41:39][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:48:24][SUCCESS][Time:0.030152] Url http://www.q.com/topic/21
+[2014-01-03 00:48:30][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:48:31][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:48:31][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 00:58:23][SUCCESS][Time:0.029702] Url http://www.q.com/topic/19-go-hero
+[2014-01-03 00:59:50][SUCCESS][Time:0.029321] Url http://www.q.com/topic/19-go-hero
+[2014-01-03 01:00:59][SUCCESS][Time:0.034018] Url http://www.q.com/topic/19-go-hero
+[2014-01-03 01:01:03][SUCCESS][Time:0.032686] Url http://www.q.com/topic/19-go-herod.
+[2014-01-03 01:01:05][SUCCESS][Time:0.032523] Url http://www.q.com/topic/19-go-herod.34
+[2014-01-03 01:01:10][SUCCESS][Time:0.027463] Url http://www.q.com/topic/19-go-herod
+[2014-01-03 01:01:13][SUCCESS][Time:0.020560] Url http://www.q.com/topic/19-go-her
+[2014-01-03 01:02:41][NOTICE] Url http://www.q.com/topic/19-go-her Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(26)
+[2014-01-03 01:02:42][NOTICE] Url http://www.q.com/topic/19-go-her Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(26)
+[2014-01-03 01:02:57][NOTICE] Url http://www.q.com/topic/19-go-her Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:02:58][NOTICE] Url http://www.q.com/topic/19-go-her Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:00][NOTICE] Url http://www.q.com/topic/19-go-here Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:02][NOTICE] Url http://www.q.com/topic/19-go-hero Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:03][NOTICE] Url http://www.q.com/topic/19-go-hero Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:05][NOTICE] Url http://www.q.com/topic/19-go-herod Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:06][NOTICE] Url http://www.q.com/topic/19-go-herod Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:08][NOTICE] Url http://www.q.com/topic/19-go-herod.34 Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:08][NOTICE] Url http://www.q.com/topic/19-go-herod.34 Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:11][NOTICE] Url http://www.q.com/topic/32-live-meng-second Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:12][NOTICE] Url http://www.q.com/topic/32-live-meng-second Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:13][NOTICE] Url http://www.q.com/u/rgss Undefined variable: bind at file E:\wamp\www\Qphp\Framework\Db\Driver\Mysql\Mysql.php(111)
+[2014-01-03 01:03:15][NOTICE] Url http://www.q.com/topic/16-go-hero Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:03:16][NOTICE] Url http://www.q.com/topic/16-go-hero Undefined index: url at file E:\wamp\www\Qphp\Application\Modules\Topic\Controllers\TopicController.php(27)
+[2014-01-03 01:04:20][SUCCESS][Time:0.025977] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:04:23][SUCCESS][Time:0.025364] Url http://www.q.com/topic/16-go-herof
+[2014-01-03 01:04:24][SUCCESS][Time:0.035728] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:04:56][SUCCESS][Time:0.030405] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:04:57][SUCCESS][Time:0.034041] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:04:57][NOTICE] Url http://www.q.com/ Undefined variable: title at file E:\wamp\www\Qphp\Application\Modules\Index\Views\Index.php(4)
+[2014-01-03 01:05:09][SUCCESS][Time:0.033037] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:05:21][SUCCESS][Time:0.024899] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:07:45][SUCCESS][Time:0.029932] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:08:27][SUCCESS][Time:0.032420] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:08:28][SUCCESS][Time:0.023359] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:08:39][SUCCESS][Time:0.029035] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:09:08][SUCCESS][Time:0.021863] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:09:22][SUCCESS][Time:0.021871] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:09:27][SUCCESS][Time:0.032963] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:09:57][SUCCESS][Time:0.024135] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:10:01][SUCCESS][Time:0.028451] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:10:32][SUCCESS][Time:0.028979] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:10:33][SUCCESS][Time:0.032108] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:11:22][SUCCESS][Time:0.031329] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:11:23][SUCCESS][Time:0.034052] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:11:54][SUCCESS][Time:0.029002] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:11:55][SUCCESS][Time:0.028425] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:11:56][SUCCESS][Time:0.021659] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:12:08][SUCCESS][Time:0.019830] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:12:09][SUCCESS][Time:0.035861] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:12:12][SUCCESS][Time:0.029956] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:12:35][SUCCESS][Time:0.027126] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:13:05][SUCCESS][Time:0.025065] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:13:06][SUCCESS][Time:0.028991] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:13:42][SUCCESS][Time:0.032992] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:13:54][SUCCESS][Time:0.024497] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:14:12][SUCCESS][Time:0.024213] Url http://www.q.com/topic/16-go-hero
+[2014-01-03 01:14:42][SUCCESS][Time:0.028413] Url http://www.q.com/topic/16-go-hero
+>>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99

@@ -111,6 +111,10 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
 .recomm-tag span.badge{ margin-right: 10px; background-color: #B8B8B8;}
 .recomm-tag span.badge:hover{ background-color: #999;}
 
+<<<<<<< HEAD
 .label-warning a{ color: #fff; font-weight: normal; }
 
 .main a{ }
+=======
+.label-warning a{ color: #fff; font-weight: normal; }
+>>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99

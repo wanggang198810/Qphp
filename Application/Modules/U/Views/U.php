@@ -47,6 +47,7 @@
     
     
     <div  class="main">
+<<<<<<< HEAD
         <div style="position: fixed; "></div>
         <div class="uside" style="position: fixed;">
             
@@ -67,6 +68,15 @@
         </div>
         
         <div class="" style="width: 720px; float: right; margin-top: 70px;">
+=======
+        <div><h2 style=" font-size: 35px; padding: 20px 0 5px; font-weight: normal;"><?php echo $user['username'];?></h2></div>
+        <div class="uside">
+            <div style=" background: #FFF; width: 198px; border: 1px solid #EEE; margin-bottom: 10px; text-align: center; padding: 10px 0; border-radius: 5px;"><img src="/Public/image/default_avatar.jpg"></div>
+            <?php load_view('userSide');?>
+        </div>
+        
+        <div class="" style="width: 720px; float: right;">
+>>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
             <div class="user-info">简介：<?php echo !empty($user['info']) ? $user['info'] : '这家伙很懒，还没有写简介.';?></div>
             <div class="recomm-tag">
                 <span class="badge"><a href="">二货</a></span>  
@@ -75,6 +85,7 @@
             </div>
             
             <div style=" padding-top: 30px;">
+<<<<<<< HEAD
                 <div style=" color: #85C155; font-size: 15px; padding: 5px; background: #DDD;" >
                     <span style="display:inline-block; cursor: pointer;">我的文字</span> 
                     <span class="label label-warning right" style=""><a href="/post">分享文字</a></span>
@@ -121,6 +132,20 @@
                     }
                 ?>
                 </ul>
+=======
+                <div style=" color: #85C155; font-size: 15px; padding: 5px; background: #DDD;" class="jianb">
+                    <span style="display:inline-block; cursor: pointer;">我的文字</span> 
+                    <span class="label label-warning right" style=""><a href="/post">分享文字</a></span>
+                </div>
+                
+                <?php
+                    foreach($topics as $k => $v){
+                ?>
+                    <li><a href="<?php echo topic_url($v['id'], $v['url']);?>"><?php echo $v['title']?></a></li>
+                <?php
+                    }
+                ?>
+>>>>>>> 257d6ebf320fee03f8d133cac1d86294d574ef99
             </div>
         </div>
         
