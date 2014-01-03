@@ -32,7 +32,7 @@ class Model {
   
         if(empty($name)){
             $model = get_class($this);
-            $name = str_replace( 'Model','', $model);
+            $name = strtolower( str_replace( 'Model','', $model) );
         }
         
         $this->_tablePrex = $this->_config['tableprex'];
@@ -108,27 +108,28 @@ class Model {
     }
     
     public function fetchArray(){
-        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
+        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
         return $this->db->fetchArray($this->_sql);
     }
     public function getAll(){
         return $this->fetchArray();
     }
     
+    
     public function page($page=1, $pageSize=10, $total=0){
         $this->_sql = "select * from ".$this->db->table($this->_table) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
         return $this->db->page($this->_sql, $page, $pageSize, $total);
     }
     
-    public function add($data){
+    public function add($data, $lastInsert){
         if(empty($data)){
             return false;
         }
-        return $this->db->insert($this->_table,$data);
+        return $this->db->insert($this->_table,$data, $lastInsert);
     }
     
-    public function insert($data){
-        return $this->add($data);
+    public function insert($data, $lastInsert){
+        return $this->add($data, $lastInsert);
     }
     
     public function multiInsert($data){
@@ -154,7 +155,14 @@ class Model {
 
 
     public function delete(){
-        return $this->db->delete($this->_table,$this->db->getWhere());
+        return $this->db->delete($this->_table,$this->db->getWhere(), 1);
+    }
+    
+    public function limit($str){
+        if( !empty($str)){
+            $this->db->setLimit( $str );
+        }
+        return $this;
     }
     
     public function where($data){

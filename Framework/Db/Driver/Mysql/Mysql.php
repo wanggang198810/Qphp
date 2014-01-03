@@ -66,7 +66,7 @@ class Mysql extends Db_Abstract{
      */
     public function fetchAll($sql, $type = MYSQL_ASSOC) {
         $result = array();
-		$this->execute($sql);
+		$this->query($sql);
 		while ($row = @mysql_fetch_array($this->_query, $type)){
 			$result[current($row)] = $row;
 		}
@@ -78,7 +78,7 @@ class Mysql extends Db_Abstract{
      */
     public function fetchArray($sql, $type = MYSQL_ASSOC){
         $result = array();
-		$this->execute($sql);
+		$this->query($sql);
 		while ($row = @mysql_fetch_array($this->_query, $type)){
 			$result[current($row)] = $row;
 		}

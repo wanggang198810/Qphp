@@ -430,6 +430,9 @@
 	text-align: left;
 	overflow: hidden;
 	zoom: 1;
+      background: white; /* 为较旧的或者不支持的浏览器设置备用属性 */
+background: -moz-linear-gradient(top, #dedede, white 100%);
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
 }
 .ke-toolbar-icon {
 	background-repeat: no-repeat;

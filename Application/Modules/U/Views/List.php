@@ -74,30 +74,7 @@
                 <span class="badge"><a href="">酱油控</a></span>
             </div>
             
-            <div style=" padding-top: 30px;">
-                <div style=" color: #85C155; font-size: 15px; padding: 5px; background: #DDD;" >
-                    <span style="display:inline-block; cursor: pointer;">我的文字</span> 
-                    <span class="label label-warning right" style=""><a href="/post">分享文字</a></span>
-                </div>
-                <ul>
-                <?php
-                    foreach($topics as $k => $v){
-                ?>
-                    <li style="border-bottom: 1px dotted #ccc; padding: 10px 0;">
-                        <a href="<?php echo topic_url($v['id'], $v['url']);?>"><?php echo $v['title']?></a><Br>
-                            <div style=" color: #999; font-size: 12px; padding-top: 10px;">
-                                <?php echo $v['shortcontent']?>
-                            </div>
-                            <div style=" color: #999; font-size: 12px; padding-top: 5px;">
-                                发表于：<?php echo dgmdate( intval($v['time']) );?>. 
-                                <a href="<?php echo topic_url($v['id'],$v['url'])?>">查看全文</a> 
-                            </div>
-                    </li>
-                <?php
-                    }
-                ?>
-                </ul>
-                
+            <div style=" padding-top: 30px;">                
                 
                 <div style=" color: #85C155; font-size: 15px; padding: 5px; margin-top: 10px; border-bottom: 1px solid #ddd; background: #DDD;">
                     <span style="display:inline-block; cursor: pointer;">我的问答</span> 
@@ -105,16 +82,16 @@
                 </div>
                 <ul>
                 <?php
-                    foreach($questions as $k => $v){
+                    foreach($topics as $k => $v){
                 ?>
                     <li style="border-bottom: 1px dotted #ccc; padding: 10px 0;">
-                        <a href="<?php echo topic_url($v['id'], $v['url']);?>"><?php echo $v['title']?></a><Br>
+                        <a href="<?php echo topic_url($v['id'],$v['url'], $type);?>"><?php echo $v['title']?></a><Br>
                             <div style=" color: #999; font-size: 12px; padding-top: 10px;">
                                 <?php echo $v['shortcontent']?>
                             </div>
                             <div style=" color: #999; font-size: 12px; padding-top: 5px;">
                                 提问于：<?php echo dgmdate( intval($v['time']) );?>. 
-                                <a href="<?php echo topic_url($v['id'],$v['url'])?>">查看全文</a> 
+                                <a href="<?php echo topic_url($v['id'],$v['url'], $type);?>">查看全文</a> 
                             </div>
                     </li>
                 <?php
@@ -122,6 +99,9 @@
                 ?>
                 </ul>
             </div>
+            
+            <div><?php echo $page_html;?></div>
+            
         </div>
         
         

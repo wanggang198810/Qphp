@@ -68,7 +68,7 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
 		$sql = sprintf("%s INTO %s(%s) VALUES(%s)",$func,$this->table( $table),$ret['field'],$ret['value']);
 		$result = $this->execute($sql);
         if($lastInsertid){
-            $this->lastInsertId();
+            return $this->lastInsertId();
         }
         return $result;
 	}
@@ -220,6 +220,13 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
         }
     }
     
+    public function setLimit($str){
+        if(!empty($str)){
+            $this->_limit = $str;
+        }
+    }
+    
+    
     public function setGroup($groupStr){
         $this->_group = $groupStr;
     }
@@ -246,6 +253,10 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
     
     public function getOrder(){
         return $this->_order;
+    }
+    
+    public function getLimit(){
+        return $this->_limit;
     }
     
 }

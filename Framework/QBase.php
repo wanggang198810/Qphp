@@ -56,6 +56,7 @@ if( !empty($autoload)){
 class QBase {
     
     const VERSION='1.0';
+    static $config_data;
     
     /**
      * 创建应用
@@ -99,14 +100,24 @@ class QBase {
      * 获取配置信息
      */
     public static function getConfig($key=''){
-        $_config = include( FRAMEWORK_PATH . '/Common/Config.php');
+        if(isset(self::$config_data)){
+            if(isset(self::$config_data[$key])){
+                return self::$config_data[$key];
+            }
+            return self::$config_data;
+        }
+        $_config = require( FRAMEWORK_PATH . '/Common/Config.php');
         if(file_exists( APP_PATH . '/Common/Config.php' )){
-           $config = include( APP_PATH . '/Common/Config.php'); 
+           $config = require( APP_PATH . '/Common/Config.php'); 
         }else{
+            $config = array();
+        }
+        if(!isset($config)){
             $config = array();
         }
         $config = array_merge( $_config, $config);
         unset($_config);
+        self::$config_data = $config;
         return $key ? (isset($config[$key]) ? $config[$key] : 'index' ) : $config;
     }
     

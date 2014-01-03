@@ -14,7 +14,7 @@ class CategoryModel extends Model{
     }
     
     
-    public function get($id){
+    public function getCategory($id){
         if( intval($id) <= 0 ){ return false; }
         return $this->where( array('id' => intval($id) ) )->fetch();
     }
@@ -23,7 +23,7 @@ class CategoryModel extends Model{
     /**
      * 添加
      */
-    public function add($name, $uid, $url = ''){
+    public function addCategory($name, $uid, $url = ''){
         if(empty($name) || intval($uid) <= 0 ){
             return false;
         }
@@ -34,7 +34,7 @@ class CategoryModel extends Model{
     /**
      * 修改
      */
-    public function edit($id, $uid, $data){
+    public function editCategory($id, $uid, $data){
         $id = intval($id);
         if($id <= 0 || empty($data)){
             return false;
@@ -49,7 +49,7 @@ class CategoryModel extends Model{
     /**
      * 删除
      */
-    public function delete($id, $uid) {
+    public function deleteCategory($id, $uid) {
         $id = intval($id);
         if($id <= 0){
             return false;

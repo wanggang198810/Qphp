@@ -30,14 +30,16 @@ class UserController extends BaseController{
     
     // 登录
     function login(){
+        //echo date('YW N w o c z' , strtotime('2013-12-31T00:00:00+00:00'));exit;
         if($this->uid > 0){
-            $this->response->redirect('/u');
+            $this->response->redirect('/u/'.$this->user['blogname']);
         }
         if(Request::isPostSubmit()){
             $username = trim($this->request->getPost('username'));
             $password = trim($this->request->getPost('password'));
 
             if(empty($username) || empty($password)){
+                $this->render('Login');
                 return false;
             }
             $result = $this->userModel->login($username, $password);
@@ -52,6 +54,9 @@ class UserController extends BaseController{
     
     // 注册
     public function register(){
+        if($this->uid > 0){
+            $this->response->redirect('/u/'.$this->user['blogname']);
+        }
         
         if(Request::isPostSubmit()){
             $username = trim($this->request->getPost('username'));
@@ -93,8 +98,9 @@ class UserController extends BaseController{
     }
 
     public function logout(){
-            CUser::logout();
-            redirect("/user/login");
+        Q::import('Helpers.user', 'User');
+        User::setCookie();
+        $this->response->redirect('/');
     }
 
 

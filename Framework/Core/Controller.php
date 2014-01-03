@@ -80,7 +80,9 @@ class Controller {
         $file = View::getInstance($this->_controller)->render($file);
         ob_start();
         //$layout = new Q_Layout();
-       
+        if( !is_file($file)){
+            echo 'no '. $file;exit;
+        }
         if(!$this->_config['compile_template']){
             require( $file );
             echo ob_get_clean();

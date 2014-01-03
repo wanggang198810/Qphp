@@ -42,10 +42,21 @@ class UserModel extends Model{
     }
     
     
+    public function getUser($uid){
+        return $this->where( array('uid' => $uid))->fetch();
+    }
+    
     public function getUserById($uid){
         $uid = intval($uid);
         if($uid <= 0){ return false;}
         return $this->where( array('uid'=> $uid) )->fetch();
+    }
+    
+    
+    public function getUserByBlogname($url){
+        $url = filter($url);
+        if(empty($url)){ return false;}
+        return $this->where( array('blogname'=> $url) )->fetch();
     }
     
     //是否已存在

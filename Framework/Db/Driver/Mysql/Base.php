@@ -38,6 +38,8 @@ class Db_Base {
     protected function _parseInsertSet($data){
         $result = array();
         $gas = '';
+        $result['field'] = '';
+        $result['value'] = '';
         foreach ($data as $key => $val){
             $result['field'] .= $gas . $this->_parseField($key);
             $result['value'] .= $gas ."'".$this->_parseValue($val)."'";

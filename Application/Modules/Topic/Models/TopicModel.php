@@ -8,17 +8,33 @@ class TopicModel extends Model{
     
     
     public function post($data){
-        $result = $this->insert($data);
+        $result = $this->insert($data, 1);
         if($result){
-            return $this->lastInsertId();
+            return $result;
         }
         return false;
     }
     
     
+    public function getTopics($uid, $type=1, $limit = 5, $start=''){
+        $type = intval($type);
+        $uid = intval($uid);
+        if($uid <= 0 ){ return false; }
+        if( !empty($start)){
+            $limitSql = " LIMIT {$start}, $limit";
+        }else{
+            $limitSql = " LIMIT {$limit}";
+        }
+        return $this->where( array('type'=>$type) )->limit( $limitSql )->order(' order by id desc')->fetchArray();
+    }
     
-    public function getList($page = 1, $pageSize = 20 , $total = 0){
-        return $this->page($page, $pageSize, $total);
+    
+    public function getTopicList($uid, $type=1, $page = 1, $pageSize = 20 , $total = 0){
+        if( $type != 0 ){
+           $where['type'] = $type;
+        }
+        $where['uid'] = $uid;
+        return $this->where( $where )->order( " order by id DESC")->page($page, $pageSize, $total);
     }
     
     
@@ -27,7 +43,7 @@ class TopicModel extends Model{
     }
     
     
-    public function get($id){
+    public function getTopic($id){
         if( intval($id) <= 0 ){ return false; }
         return $this->where( array('id' => intval($id) ) )->fetch();
     }
@@ -36,7 +52,7 @@ class TopicModel extends Model{
     /**
      * 修改
      */
-    public function edit($id, $uid, $data){
+    public function editTopic($id, $uid, $data){
         $id = intval($id);
         if($id <= 0 || empty($data)){
             return false;
@@ -51,7 +67,7 @@ class TopicModel extends Model{
     /**
      * 删除
      */
-    public function delete($id, $uid) {
+    public function deleteTopic($id, $uid) {
         $id = intval($id);
         if($id <= 0){
             return false;
