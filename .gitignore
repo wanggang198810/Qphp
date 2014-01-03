@@ -1,2 +1,3 @@
-nbprjoect
-#
+nbproject/
+.settings/
+*.log
