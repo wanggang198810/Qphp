@@ -6,7 +6,7 @@
  */
 class GroupModel extends Model{
     
-    public function get($id){
+    public function getGroup($id){
         if( intval($id) <= 0 ){ return false; }
         return $this->where( array('id' => intval($id) ) )->fetch();
     }
@@ -22,7 +22,7 @@ class GroupModel extends Model{
     /**
      * 添加
      */
-    public function add($name, $uid, $url = ''){
+    public function addGroup($name, $uid, $url = ''){
         if(empty($name) || intval($uid) <= 0 ){
             return false;
         }
@@ -33,7 +33,7 @@ class GroupModel extends Model{
     /**
      * 修改
      */
-    public function edit($id, $uid, $data){
+    public function editGroup($id, $uid, $data){
         $id = intval($id);
         if($id <= 0 || empty($data)){
             return false;
@@ -48,7 +48,7 @@ class GroupModel extends Model{
     /**
      * 删除
      */
-    public function delete($id, $uid) {
+    public function deleteGroup($id, $uid) {
         $id = intval($id);
         if($id <= 0){
             return false;

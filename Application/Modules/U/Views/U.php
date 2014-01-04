@@ -110,12 +110,12 @@
                     foreach($questions as $k => $v){
                 ?>
                     <li style="border-bottom: 1px dotted #ccc; padding: 10px 0;">
-                        <a href="<?php echo topic_url($v['id'], $v['url']);?>"><?php echo $v['title']?></a><Br>
+                        <a href="<?php echo topic_url($v['id'], $v['url'], 2);?>"><?php echo $v['title']?></a><Br>
                             <div style=" color: #999; font-size: 12px; padding-top: 10px;">
                                 <?php echo $v['shortcontent']?>
                             </div>
                             <div style=" color: #999; font-size: 12px; padding-top: 5px;">
-                                提问于：<?php echo dgmdate( intval($v['time']) );?>. 
+                                提问于：<?php echo dgmdate( intval($v['time'], 2) );?>. 
                                 <a href="<?php echo topic_url($v['id'],$v['url'])?>">查看全文</a> 
                             </div>
                     </li>

@@ -9,10 +9,12 @@ class GroupController extends BaseController{
     
     public function __construct() {
         parent::__construct();
-        $this->groupModel = new GroupModel();
+        
     }
     
     public function index($url = ''){
+        //$this->groupModel = new GroupModel();
+        
         $url = filter($url);
         if(empty($url) ){
            $this->_home();
@@ -29,7 +31,7 @@ class GroupController extends BaseController{
     }
     
     private function _home(){
-        
+        $this->render('Home');
     }
     
 }

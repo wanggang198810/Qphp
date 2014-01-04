@@ -9,6 +9,10 @@ class QuestionController  extends BaseController{
     
     
     public function index($id){
+        if(empty($id)){
+            $this->home();
+            return;
+        }
         $int_id = intval($id);
         list($id0) = explode('-', $id);
         if($id0 != $int_id){
@@ -35,10 +39,15 @@ class QuestionController  extends BaseController{
         
         if(empty( $this->data['topic'])){
             $this->show_404();
+            return;
         }
         $this->render();
     }
     
+    
+    public function home(){
+        $this->render('Home');
+    }
     
     public function tag($name){
         $name = filter( urldecode($name) );

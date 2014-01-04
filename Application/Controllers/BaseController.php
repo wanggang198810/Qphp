@@ -14,7 +14,7 @@ class BaseController extends Controller{
         Q::import('Helpers.User', 'User/');
         $this->uid = User::getUserId();
         if( $this->uid > 0 ){
-            $this->user = User::getUser( $this->uid );
+            $this->data['user'] = $this->user = User::getUser( $this->uid );
         }
     }
     

@@ -29,7 +29,7 @@ class Model {
         }else{
             exit( $db . "数据库驱动不存在!");
         }
-  
+        
         if(empty($name)){
             $model = get_class($this);
             $name = strtolower( str_replace( 'Model','', $model) );
