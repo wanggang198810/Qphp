@@ -11,11 +11,11 @@
 class UserModel extends Model{
     
     // 登录
-    public function login($username, $password){
+    public function login($username, $password, $colum='*'){
         if(empty($username) || empty($password)){
             return false;
         }
-        $data = $this->where(array( 'username' => $username ))->fetch();
+        $data = $this->setColumField( $colum )->where(array( 'username' => $username ))->fetch();
         if(empty($data)){
             return -1;
         }
@@ -42,21 +42,21 @@ class UserModel extends Model{
     }
     
     
-    public function getUser($uid){
-        return $this->where( array('uid' => $uid))->fetch();
+    public function getUser($uid, $colum = '*'){
+        return $this->setColumField( $colum )->where( array('uid' => $uid))->fetch();
     }
     
-    public function getUserById($uid){
+    public function getUserById($uid, $colum = '*'){
         $uid = intval($uid);
         if($uid <= 0){ return false;}
-        return $this->where( array('uid'=> $uid) )->fetch();
+        return $this->setColumField( $colum )->where( array('uid'=> $uid) )->fetch();
     }
     
     
-    public function getUserByBlogname($url){
+    public function getUserByBlogname($url, $colum = '*'){
         $url = filter($url);
         if(empty($url)){ return false;}
-        return $this->where( array('blogname'=> $url) )->fetch();
+        return $this->setColumField( $colum )->where( array('blogname'=> $url) )->fetch();
     }
     
     //是否已存在

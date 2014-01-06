@@ -16,24 +16,76 @@ class TopicModel extends Model{
     }
     
     
-    public function getTopics($uid, $type=1, $limit = 5, $start=''){
+    public function getHotTopics($uid=0, $type=1, $limit = 5, $start=''){
+        $where = '';
         $type = intval($type);
         $uid = intval($uid);
-        if($uid <= 0 ){ return false; }
+        if( $type > 0 ){
+            $where['type'] = $type;
+        }
+        if($uid > 0){
+            $where['uid'] = $uid;
+        }
+        
         if( !empty($start)){
             $limitSql = " LIMIT {$start}, $limit";
         }else{
             $limitSql = " LIMIT {$limit}";
         }
-        return $this->where( array('type'=>$type) )->limit( $limitSql )->order(' order by id desc')->fetchArray();
+        return $this->where( $where )->limit( $limitSql )->order(' order by replynum desc')->fetchArray();
     }
     
     
-    public function getTopicList($uid, $type=1, $page = 1, $pageSize = 20 , $total = 0){
-        if( $type != 0 ){
+    public function getRecomTopics($uid=0, $type=1, $limit = 5, $start=''){
+        $where = '`top` > 0';
+        $type = intval($type);
+        $uid = intval($uid);
+        if( $type > 0 ){
+           $where .= ' and `type` = '.$type;
+        }
+        if($uid > 0){
+            $where .= ' and `uid` = '.$uid;
+        }
+        
+        if( !empty($start)){
+            $limitSql = " LIMIT {$start}, $limit";
+        }else{
+            $limitSql = " LIMIT {$limit}";
+        }
+        return $this->where( $where )->limit( $limitSql )->order(' order by top desc')->fetchArray();
+    }
+    
+    
+    public function getTopics($uid=0, $type=1, $limit = 5, $start=''){
+        $where = '';
+        $type = intval($type);
+        $uid = intval($uid);
+        if( $type > 0 ){
            $where['type'] = $type;
         }
-        $where['uid'] = $uid;
+        if($uid > 0){
+            $where['uid'] = $uid;
+        }
+        
+        if( !empty($start)){
+            $limitSql = " LIMIT {$start}, $limit";
+        }else{
+            $limitSql = " LIMIT {$limit}";
+        }
+        return $this->where( $where )->limit( $limitSql )->order(' order by id desc')->fetchArray();
+    }
+    
+    
+    public function getTopicList($uid=0, $type=1, $page = 1, $pageSize = 20 , $total = 0){
+        $where = '';
+        $type = intval($type);
+        $uid = intval($uid);
+        if( $type > 0 ){
+           $where['type'] = $type;
+        }
+        if($uid > 0){
+            $where['uid'] = $uid;
+        }
         return $this->where( $where )->order( " order by id DESC")->page($page, $pageSize, $total);
 
     }

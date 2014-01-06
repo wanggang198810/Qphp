@@ -94,7 +94,7 @@ class Mysql extends Db_Abstract{
 	public function fetchCol($sql, $type = MYSQL_ASSOC)
 	{
 		$result = array();
-		$this->execute($sql);
+		$this->query($sql);
 		while ($row = @mysql_fetch_array($this->_query, $type)){
 			$result[] = current($row);
 		}
@@ -108,7 +108,7 @@ class Mysql extends Db_Abstract{
 	 */
 	public function fetchFirstCol($sql, $type = MYSQL_ASSOC) {
        
-		$this->execute($sql,$bind);
+		$this->query($sql);
 		$row = @mysql_fetch_array($this->_query, $type);
 		if($row){
 			return current($row);
@@ -165,7 +165,7 @@ class Mysql extends Db_Abstract{
         $sql = $sql . ' limit ' . (($page - 1) * $pageSize) . ',' . $pageSize;
 		$data = $this->queryToArray ( mysql_unbuffered_query ( $sql, $this->_link ) );
         if(!empty( $data )){
-            $pageInfo = array ( 'success' => 1,'page' => $page, 'totalPage' => $totalPage, 'total' => $total, 'message' => '' );
+            $pageInfo = array ( 'success' => 1,'page' => $page, 'totalPage' => $totalPage, 'pageSize'=>$pageSize, 'total' => $total, 'message' => '' );
             return array ('list' => $data, 'pageinfo' => $pageInfo );
         }else{
             $pageInfo = array ( 'success' => 0,'page' => $page, 'totalPage' => 0, 'total' => 0, 'message' => '分页失败' );

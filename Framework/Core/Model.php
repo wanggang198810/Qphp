@@ -6,7 +6,7 @@
  * @author Air
  */
 class Model {
-    //put your code here
+
     protected $db;
     protected $_table;
     protected $_tablePrex='';
@@ -14,9 +14,8 @@ class Model {
     protected $_sql;
     protected $_validate       = array();  // 自动验证定义
     protected $_auto         = array();  // 自动完成定义
+    protected $_columField = '*';
 
-
-    
     public function __construct($name='') {
         $this->_config = Q::getConfig('dbconfig');
         $db = $this->_config['dbtype'];
@@ -115,6 +114,23 @@ class Model {
         return $this->fetchArray();
     }
     
+    public function setColumField($data = '*'){
+        $colum_str = '';
+        if( is_array($data)){
+            foreach($data as $k => $v){
+                $colum_str .= '`' . $v . '`,';
+            }
+            $this->_columField = trim( $colum_str , ',');
+        }else{
+            $this->_columField = $data;
+        }
+        
+        return $this;
+    }
+    
+    public function getColumField(){
+        return $this->_columField;
+    }
     
     public function page($page=1, $pageSize=10, $total=0){
         $this->_sql = "select * from ".$this->db->table($this->_table) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();

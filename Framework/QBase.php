@@ -126,16 +126,21 @@ class QBase {
      * 导入模型文件
      */
     public static function loadModel($name){
-        
-        $module = $name = ucfirst($name);
+        $module = $name . '/';
+        if( false !== strpos($name, '.')){
+            list($module, $name) = explode('.', $name);
+            $module = self::checkPath( ucfirst($module));
+        }
+        $module = ucfirst($module);
+        $name = ucfirst($name);
         if(strpos($name, 'Model.php') === false){
             $name .= 'Model.php';    
         }
         $config = self::getConfig();
         if($config['hmvc']){
-            $filename = APP_PATH . Q::checkPath( $config['hmvc_dir'] ) .$module . '/Models/'. $name ;
+            $filename = APP_PATH . Q::checkPath( $config['hmvc_dir'] ) .$module . 'Models/'. $name ;
         }else{
-            $filename =  APP_PATH .'/Models/'.$name;
+            $filename =  APP_PATH .'/Models/'.$module .$name;
         }
         if(file_exists($filename)){
             require_once ($filename);

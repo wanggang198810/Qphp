@@ -27,6 +27,7 @@ class Q_Debug {
 .clear{ clear: both;}
 .qsys-cr{ /*text-shadow: 0px -1px  #bbb,0 1px #fff;color:#e3e1e1;*/ text-shadow: 1px 1px #40730e; color: #92bf30; text-align: center; padding-top: 20px;}
 </style>
+<div style="clear:both"></div>
 <div id="qsys-trace" class="qsys-trace">
     <div id="qsys-trace-title" class="qsys-trace-title">System Run qsys-trace</div>
     

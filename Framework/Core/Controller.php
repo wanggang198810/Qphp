@@ -20,7 +20,7 @@ class Controller {
     protected $_config;
     public $data;
     public $autoLayout = true;
-    private $_autoloalmodel = false;
+    public $_autoloalmodel = true;
     const MODEL_SUFFIX = 'Model';
     const CONTRONLLER_SUFFIX = 'Controller';
 
@@ -89,7 +89,7 @@ class Controller {
         }else{
             $content = file_get_contents($file);
             $cachefile = $this->templateCompile( $content );
-            include($cachefile);
+            require ($cachefile);
         }
     }
     
@@ -115,6 +115,19 @@ class Controller {
     
     public function show_404(){
         echo '<center><h1>404</h1></center>';
+    }
+    
+    public function show_success( $type='', $url=''){
+        
+        if(!empty($url)){
+            Response::redirect($url);
+        }
+    }
+    
+    public function show_error($type='', $url=''){
+        if(!empty($url)){
+            Response::redirect($url);
+        }
     }
     
     public function output($html){

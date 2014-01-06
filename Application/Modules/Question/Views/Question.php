@@ -9,7 +9,8 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('bootstrap');
+        load_js('jquery');
+        load_js('rgss.js');
     ?>
 </head>
 <body>
@@ -41,64 +42,80 @@
             </div>
             
             <div class="answer-box" style="">
-                <div style="font-size:12px; color:#999; padding-bottom: 5px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">13个回答</div>
-                <div style="position: relative">
-                    <div class="answer-item">
-                        <div class="" style="  position: absolute; margin-left: -50px;">
-                            <div class="up radius-5 active" style="">
-                                <i class="icon-chevron-up"></i><br />
-                                <span>12</span>
-                            </div>
-                            <div class="down radius-5" style="">
-                                <i class="icon-chevron-down"></i><br />
-                            </div>
-                        </div>
-                        <div class="answer-head"><a href="">二锅头</a>, 同能游戏爱好者</div>
-                        <div class="answer-agree">ddddddddddd阿飞阿斯蒂芬ddddd</div>
-                        <div class="answer-con">ddddddddddd阿飞阿斯蒂芬ddddd</div>
-                        <div class="answer-bottom"><a href="">2014-05-12</a> <a href="">添加评论</a></div>
-                    </div>
-                    
-                    
-                    <div class="answer-item">
-                        <div class="" style="  position: absolute; margin-left: -50px;">
-                            <div class="up radius-5 active" style="">
-                                <i class="icon-chevron-up"></i><br />
-                                <span>12</span>
-                            </div>
-                            <div class="down radius-5" style="">
-                                <i class="icon-chevron-down"></i><br />
-                            </div>
-                        </div>
-                        <div class="answer-head"><a href="">二锅头</a>, 同能游戏爱好者</div>
-                        <div class="answer-agree">ddddddddddd阿飞阿斯蒂芬ddddd</div>
-                        <div class="answer-con">ddddddddddd阿飞阿撒旦风格撒旦告诉对方告诉对方告诉对方告诉对方告诉对方公司的风格撒旦风格撒旦风格撒旦法告诉对方个斯蒂芬ddddd</div>
-                        <div class="answer-bottom"><a href="">2014-05-12</a> <a href="">添加评论</a></div>
-                    </div>
-                    
-                    
+                <div style="font-size:12px; color:#999; padding-bottom: 5px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                    <?php echo $pageinfo['total'];?>个回答
                 </div>
-                <form method="post">
+                <div style="position: relative">
+                    <!-- 回复列表 -->
+                    <?php
+                        foreach($replys as $k => $reply){
+                    ?>
+                        <div class="answer-item" replyid="<?php echo $reply['id'];?>" topicid="<?php echo $reply['topicid'];?>">
+                            <div class="" style="  position: absolute; margin-left: -50px;">
+                                <div class="up radius-5 active" style="">
+                                    <i class="icon-chevron-up"></i><br />
+                                    <span><?php echo $reply['agree'];?></span>
+                                </div>
+                                <div class="down radius-5" style="">
+                                    <i class="icon-chevron-down"></i><br />
+                                    <?php if($reply['disagree'] > 0){?>
+                                    <span><?php echo $reply['agree'];?></span>
+                                    <?php }?>
+                                </div>
+                            </div>
+                            <div class="answer-head">
+                                <a href="<?php echo user_space($reply['reply_user']['blogname']);?>">
+                                    <?php echo $reply['reply_user']['username'];?>
+                                </a>
+                                <?php echo ', ',$reply['reply_user']['honorname'];?>
+                            </div>
+                            
+                            <div class="answer-agree">ddddddddddd阿飞阿斯蒂芬ddddd</div>
+                            <div class="answer-con"><?php echo filter_content( $reply['content'] );?></div>
+                            <div class="answer-bottom">
+                                <a href="javascript:;"><?php echo dgmdate($reply['time'])?></a> 
+                                <a href="javascript:;" replyid="<?php echo $reply['id']?>" openreply="0" class="add-reply">添加评论</a>
+                                <div id="sub-reply-box-<?php echo $reply['id'];?>"  class="sub-reply-box radius-5">
+                                    <form method="post" action="<?php echo topic_url($topic['id'], $topic['url'], 2) . '/answer';?>">
+                                        <input type="hidden" name="topicid" id="topicid" value="<?php echo $reply['topicid'];?>" />
+                                        <input type="hidden" name="replyid" id="replyid" value="<?php echo $reply['id'];?>" />
+                                        <textarea name="reply_content" id="reply_content" style=" width: 605px;"></textarea>
+                                        <button type="submit" class="btn btn-success" style="float: right;">回复</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                        }
+                    ?>
+                    <!-- 回复列表 -->
+                </div>
+                
+                
+                <form method="post" action="<?php echo topic_url($topic['id'], $topic['url'], 2) . '/answer';?>">
                     <div style="color: #005580; font-weight: 600; font-size: 14px; padding: 10px 0;">添加回答</div>
-                    <textarea name="reply" id="reply" style=" width: 636px; height: 70px;"></textarea>
+                    <input type="hidden" name="topicid" id="topicid" value="<?php echo $topic['id'];?>" />
+                    <input type="hidden" name="replyid" id="replyid" value="0" />
+                    <textarea name="reply_content" id="reply_content" style=" width: 636px; height: 70px; resize: none;"></textarea>
                     <button type="submit" class="btn btn-success" style="float: right;">回复</button>
                 </form>
             </div>
         </div>
         
         
-        <div class="" style="float: right; width: 270px; margin-top: 30px;">
-            <div>
-                <a href="<?php echo user_space($user['blogname'])?>"><img src="http://www.q.com/Public/image/default_avatar.jpg" style="border-radius:40px; width: 80px; height: 80px;" /></a>
-                <div style=" padding:10px 20px 5px;"><a href="<?php echo user_space($user['blogname'])?>"><?php echo $user['username']?></a></div>
-                <div style=" font-size: 12px; color: #666;"><?php echo $user['honorname']?></div>
-                
-                <div style=" font-size: 12px; color: #999; padding-top: 15px; border-top: 1px solid #ccc; margin-top: 25px; ">发表于<br><?php echo date( "Y-m-d H:i" , $topic['time']);?></div>
+        <div class="right side270 mt30">
+            <div class="topic-user">
+                <a class="user-avatar" href="<?php echo user_space($view_user['blogname'])?>">
+                    <img src="http://www.q.com/Public/image/default_avatar.jpg" />
+                </a>
+                <div class="blogname" style=""><a href="<?php echo user_space($view_user['blogname'])?>"><?php echo $view_user['username']?></a></div>
+                <div class="honorname"><?php echo $view_user['honorname']?></div>
+                <div class="reply-time">发表于<br><?php echo date( "Y-m-d H:i" , $topic['time']);?></div>
             </div>
         </div>
         
     </div>
     
-    
+<?php load_view('Footer');?>  
 </body>
 </html>

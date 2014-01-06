@@ -12,7 +12,7 @@ root {
 
 
 body {
-  background-color: #fcfcfc; font: Helvetica,Arial,sans-serif; font-size: 14px; /*font-family: 微软雅黑,宋体;*/
+  background-color: #fefefe; font-size: 13px; /*font-family: 微软雅黑,宋体;*/
   font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
   /*background: #DF5D5D;*/
 }
@@ -22,6 +22,7 @@ body {
 .point{ cursor:pointer;}
 .h20{ line-height: 20px;}
 .mt20{ margin-top: 20px;}
+.mt30{ margin-top: 30px;}
 .pt20{ padding-top: 20px;}
 .radius-5{
     -webkit-border-radius: 5px;
@@ -105,8 +106,8 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
 }
 
 .sub-nav{ font-size: 14px;}
-.sub-nav li{ float: left;  margin-right: 16px;}
-.sub-nav li a{ float: left; line-height: 35px; width: 80px; text-align: center; color: #85C155;}
+.sub-nav li{ float: left;  margin-right: 16px; font-family: 微软雅黑; font-size: 17px;}
+.sub-nav li a{ float: left; line-height: 35px; width: 80px; text-align: center; color: #666;}
 .sub-nav li a.active, .sub-nav li a:hover{ background: #85C155; color: #FFF;}
            
 .uside{ width: 200px;  float: left;}
@@ -141,6 +142,86 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
 .answer-agree, .answer-agree a{ color: #999;}
 .answer-head a{ color: #005580}
 .answer-head a:hover{ text-decoration: underline;}
-.answer-bottom{ color: #999; font-size: 13px; padding: 5px 0; border-bottom: 1px solid #eee; margin-bottom: 20px;}
+.answer-bottom{ color: #999; font-size: 13px; padding: 5px 0; padding-bottom: 25px; border-bottom: 1px solid #eee; margin-bottom: 20px;}
 .answer-bottom a{ color: #999; margin-right: 5px;}
 .answer-bottom a:hover{ color: #698ebf; text-decoration: underline;}
+textarea{ resize: none;}
+.sub-reply-box{padding:15px; border: 1px solid #ccc; margin: 10px 0; background: #f1f1f1; display: none;}
+.appear{ display: block;}
+.side270{ width: 270px;}
+
+.content-box{width: 650px; float: left; line-height: 2; font-size: 15px;  padding-bottom: 50px;}
+.content-white{min-height: 300px; background: #FFF; padding: 10px;}
+
+.reply-box{}
+.reply-box .reply-num{ font-size:12px; color:#999; padding-bottom: 5px;}
+.reply-textarea{ width: 636px; height: 70px;}
+
+.topic-user{}
+.topic-user .user-avatar img{border-radius:40px; width: 80px; height: 80px;}
+.topic-user .honorname{ font-size: 12px; color: #666;}
+.topic-user .blogname{ padding:10px 20px 5px;}
+.topic-user .reply-time{ font-size: 12px; color: #999; padding-top: 15px; border-top: 1px solid #ccc; margin-top: 25px;}
+.font12{ font-size: 12px;}
+.color666{ color: #666;}
+.color999{ color: #999;}
+
+.title-h1, .post-title-h1{ font-size: 30px; padding: 20px 0 5px; font-weight: normal;}
+.title-h1 a, .post-title-h1 a{color:#333;}
+.title-h3{ font-weight: normal; word-wrap: break-word;
+          padding: 0; margin: 0; font-size: 14px; line-height: 22px; float: left; width: 450px; margin-right: 20px; }
+
+.post-title-h1{ font-size: 20px; padding-top: 0px;}
+
+.topic-title{ padding:10px 0;}
+
+.main-left{
+    width: 650px; float: left;
+}
+
+.main-right{ width: 270px; float: right}
+.main_title, .main_title2{ 
+    font-size: 17px; 
+    font-family: 微软雅黑; 
+    color: #4ba733; 
+    padding: 30px 0 10px 0;
+    border-bottom: 1px solid #e4e4e4;
+    overflow: hidden; 
+}
+.main_title2{ font-size: 15px; border: 0;} 
+
+.forum-list{}
+.forum-li{ width: 650px; overflow: hidden; padding: 7px 0; border-bottom: 1px dashed #ddd;}
+.forum-li a{ color: #0078b6}
+.forum-li a:hover{ text-decoration: underline;}
+.forum-author{ float: left;}
+.forum-reply-num{ float: right; }
+
+
+.post-user{ line-height:1; padding-bottom: 12px;}
+.post-avatar{width: 48px; height: 48px; float: left; margin-right: 12px; text-align: center; color: #ccc}
+.post-content{ width: 590px; overflow: hidden}
+
+.apply-group-title{
+    font-family: 微软雅黑; 
+    font-size: 22px;
+    height: 36px;
+    line-height: 36px;
+    color: #333;
+    font-weight: 500;
+}
+.apply-form-box{
+    color: #999;margin-bottom: 15px; margin-top: 25px;
+}
+.apply-form-left{display: block; float: left; width: 60px; margin-right: 14px; line-height: 30px;}
+.apply-form-right{
+    margin-left: 74px;line-height: 30px;
+}
+.apply-form-right label{display: inline; font-size: 12px; color: #333;float: none;}
+.group-name{ width: 300px;}
+.group-info{ width: 298px; height: 100px;}
+
+#totop{position:fixed;bottom:40px;right:10px;z-index:999;width:71px; cursor:pointer; display:none;}
+*html #totop{position:absolute;cursor:pointer;right:10px; display:none;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight)-112+"px")}
+#totop a{display:block;width:71px;height:24px;padding-top:48px;background:url(/Public/image/toTop.gif) no-repeat;text-align:center;color:#888}
+#totop a.cur{background-position:-88px 0;text-decoration:none;color:#3a9}

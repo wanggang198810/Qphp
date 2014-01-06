@@ -6,6 +6,14 @@
  */
 class GroupModel extends Model{
     
+    public function getHotGroups($limit = 5){
+        return $this->where( " `status` > 0" )->limit(" LIMIT {$limit}")->order( " order by num desc ")->fetchArray();
+    }
+    
+    public function getNewGroups($limit = 3){
+        return $this->where( " `status` > 0 " )->limit(" LIMIT {$limit}")->order( " order by id desc ")->fetchArray();
+    }
+    
     public function getGroup($id){
         if( intval($id) <= 0 ){ return false; }
         return $this->where( array('id' => intval($id) ) )->fetch();

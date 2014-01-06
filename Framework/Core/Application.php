@@ -30,7 +30,7 @@ class Application {
         if($this->_config['debug']){
             error_reporting(E_ERROR | E_WARNING | E_PARSE);
         }else{
-            error_reporting(0);
+            error_reporting(E_ERROR | E_WARNING | E_PARSE);
             set_error_handler('q_error_handler');//自定义错误
         }
         

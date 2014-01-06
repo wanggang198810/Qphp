@@ -4,23 +4,48 @@
  *
  * @author air
  */
-require( APP_PATH ."Modules/Common/Controllers/BaseController.php" );
-class PostController extends BaseController{
+require( APP_PATH ."Modules/Topic/Controllers/BaseTopicController.php" );
+class PostController extends BaseTopicController{
     
+    
+    public $topictype = 3;
     
     public function __construct() {
         parent::__construct();
+        
+        $this->loadModel('Topic');
+        $this->topicModel = new TopicModel('Topic');
     }
     
 
     
-    public function index(){
+    public function index($id='', $type=''){
+        if( !empty($id)){
+            Q::import('Helpers.Topic', 'Topic/');
+            $this->view($id, $type);
+            $this->render('Post');
+            return ;
+        }
+        
         $this->checkLogin(1);
         $this->loadModel('Category');
         $cateDao = new CategoryModel();
         $this->data['categories'] = $cateDao->getCategoryByUid($this->uid);
         
         $this->render('Post');
+    }
+    
+    
+    public function answer($id){
+        $result = $this->postAnswer($id);
+        if($result){
+            $data = $this->topicModel->getTopic( intval($id));
+            Response::redirect(topic_url(intval($id), $data['url'], $this->topictype));
+            $this->show_success();
+        }else{
+            $this->show_error();
+        }
+        
     }
     
     

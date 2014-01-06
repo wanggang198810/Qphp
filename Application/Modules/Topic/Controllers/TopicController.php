@@ -5,42 +5,49 @@
  *
  * @author air
  */
-require( APP_PATH ."Modules/Common/Controllers/BaseController.php" );
-class TopicController extends BaseController {
+require( APP_PATH ."Modules/Topic/Controllers/BaseTopicController.php" );
+class TopicController extends BaseTopicController {
+    
+    public $topictype = 1;
     
     public function __construct() {
         parent::__construct();
-        
-    }
 
-
-    public function index($id){
-        $int_id = intval($id);
-        list($id0) = explode('-', $id);
-        if($id0 != $int_id){
-            $this->show_404();
-            return;
-        }
-        $this->data['type'] = 1;
-        
         $this->loadModel('Topic');
-        $topicModel = new TopicModel('Topic');
-        $this->data['topic'] = $topicModel->getTopic($int_id);
-        if($id != $this->data['topic']['id']. '-' . $this->data['topic']['url'] && $id != $this->data['topic']['id']){
-            $this->show_404();
+        $this->topicModel = new TopicModel('Topic');
+    }
+    
+    public function index($id = '', $type = ''){
+        if(empty($id)){
+            $this->home();
             return;
         }
-        
-        $this->loadModel('User');
-        $userModel = new UserModel('User');
-        $this->data['user'] = $userModel->getUser($this->data['topic']['uid']);
-        
-        if(empty( $this->data['topic'])){
-            $this->show_404();
-        }
+        $this->view($id,$type);
         $this->render();
     }
     
+    
+    public function home(){
+        $this->render('Home');
+    }
+    
+    public function tag($name){
+        $name = filter( urldecode($name) );
+        echo $name;
+    }
+    
+    
+    public function answer($id){
+        $result = $this->postAnswer($id);
+        if($result){
+            $data = $this->topicModel->getTopic( intval($id));
+            Response::redirect(topic_url(intval($id), $data['url'], $this->topictype));
+            $this->show_success();
+        }else{
+            $this->show_error();
+        }
+        
+    }
     
     
 }

@@ -2,7 +2,7 @@
 
 
 function filter($str){
-    return htmlspecialchars( trim($str));
+    return htmlspecialchars( trim($str) );
 }
 
 
@@ -136,11 +136,26 @@ function user_space( $url , $type = '' ){
     return '/u/'.$url.$type;
 }
 
+function avatar($uid){
+    return '/Public/image/default_avatar.png';
+}
+
+
+function group_url($id, $url=''){
+    
+    if(!empty($url)){
+        return '/group/'.$id.'-'.$url;
+    }
+    return '/group/'.$id;
+}
 
 function topic_url($id, $url='', $type = 1){
     switch ($type){
         case 2:
             $typeurl = 'question';
+            break;
+        case 3:
+            $typeurl = 'post';
             break;
         default :
             $typeurl = 'topic';
@@ -167,7 +182,7 @@ function filter_content($str){
  * @param string $format 时间格式 默认 Y-m-d H:i:s
  */
 function dgmdate($time, $format = 'Y-m-d H:i') {
-	if (! is_int ( $time )) {
+	if (!is_numeric ( $time )) {
 		$time = strtotime($time);
 	}
 	$timespan = time () - $time;
