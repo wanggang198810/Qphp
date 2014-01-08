@@ -12,7 +12,7 @@ class GroupController extends BaseController{
         $this->groupModel = new GroupModel();
     }
     
-    public function index($url = ''){
+    public function index($url = '', $type=''){
         //$this->groupModel = new GroupModel();
         
         $url = filter($url);
@@ -20,14 +20,42 @@ class GroupController extends BaseController{
            $this->_home();
            return;
         }
+  
         
-        $this->data['groupinfo'] = $this->groupModel->getGroupByUrl($url);
-        if(empty($this->data['groupinfo'])){
+        $this->data['group'] = $this->groupModel->getGroupByUrl($url);
+        if(empty($this->data['group'])){
             $this->response->redirect('/group');
         }
-        $this->data['tags'] = $this->groupModel->getTagList($this->data['groupinfo']['id']);
         
-        $this->render();
+        $type = filter($type);
+        if(!empty($type)){
+            switch ($type){
+                case 'members':
+                    $this->_members( $this->data['group']['id']);
+                    break;
+                
+            }
+            return;
+        }
+        
+        
+        //$this->data['tags'] = $this->groupModel->getTagList($this->data['group']['id']);
+        $page = Request::getIntGet('page',1);
+        $this->loadModel('Topic.Topic');
+        $topicModel = new TopicModel();
+        $result = $topicModel->getTopicByGid( $this->data['group']['id'], $page, 10);
+        $this->data['topics'] = $result['list'];
+        foreach($this->data['topics'] as $k => $v){
+            $this->data['topics'][$k]['group'] = $this->groupModel->getGroup($v['gid']);
+        }
+        
+        $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
+        
+        $page = Request::getIntGet('page', 1);
+        
+        $this->data['members'] = $this->groupModel->getRecentGroupMembers($this->data['group']['id']);
+        
+        $this->render('List');
     }
     
     private function _home(){
@@ -53,8 +81,77 @@ class GroupController extends BaseController{
     
     
     
+    private function _members($gid){
+        $page = Request::getIntGet('page');
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $result = $groupuserModel->getGroupMembers($gid, $page, 20);
+        
+        $this->data['members'] = $result['list'];
+        $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
+        $this->render('Member');
+    }
+
+
     public function apply(){
-        hprint($_POST,1);
+        
+        if(Request::isPostSubmit('group_name') && Request::isPostSubmit('group_info') && Request::isPostSubmit('group_url')){
+            $status = Request::getIntPost('group_type');
+            $name = filter( Request::getPost('group_name') );
+            $info = filter( Request::getPost('group_info') );
+            $url = filter( Request::getPost('group_url') );
+            $time = time();
+            $result = $this->groupModel->addGroup($name, $info, $this->uid, $status, $time, $url);
+            if($result){
+                Response::redirect('/group/'.$result);
+            }else{
+                Response::redirect('/group');
+            }
+        }
         $this->render('Apply');
+    }
+    
+    
+    public function mine(){
+        $page = Request::getIntGet('page',1);
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $this->data['groups'] = $groupuserModel->getGroupInfoByUid($this->uid );
+        foreach($this->data['groups'] as $k => $v){
+            $groups[] = $v['id'];
+        }
+        
+        $this->loadModel('Topic.Topic');
+        $topicModel = new TopicModel();
+        $result = $topicModel->getTopicByGids( $groups, $page, 10);
+        $this->data['topics'] = $result['list'];
+        foreach($this->data['topics'] as $k => $v){
+            $this->data['topics'][$k]['group'] = $this->groupModel->getGroup($v['gid']);
+        }
+        
+        $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
+        $this->render('Mine');
+    }
+    
+    
+    public function rank(){
+        $page = Request::getIntGet('page',1);
+        $result = $this->groupModel->getGroupList();
+        $this->data['groups'] = $result['list'];
+        $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
+        
+        
+        if($this->uid){
+            $this->loadModel('Group.GroupUser');
+            $groupuserModel = new GroupUserModel();
+            $groups = $groupuserModel->getGroupsByUid( $this->uid );
+            foreach($groups as $k => $v){
+                $groupArr[] = $v['gid'];
+            }
+        }else{
+            $groupArr =array();
+        }
+        $this->data['usergroup'] = $groupArr;
+        $this->render('Rank');
     }
 }

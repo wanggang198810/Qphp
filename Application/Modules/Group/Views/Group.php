@@ -15,7 +15,7 @@
 <body>
 <?php
     load_view ('Common.header');
-    load_view ('SubMenu');
+    load_view ('SubGroupMenu');
 ?> 
 
     <div  class="main">

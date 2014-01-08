@@ -24,36 +24,29 @@
             <div class="main_title">精华推荐</div>
             <ul class="forum-list">
             <?php
-                foreach ($recom_topics as $k => $v){
+                foreach ($groups as $k => $v){
             ?>
                 <li class="forum-li">
-                    <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
+                    <h3 class="title-h3"><a href="<?php echo group_url($v['id'], $v['url']);?>"><?php echo $v['name'];?></a></h3>
                     <div class="forum-author">
-                        <a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>
+                        <?php echo $v['num']?>人已加入
                     </div>
-                    <div class="forum-reply-num"><?php echo dgmdate( $v['num'] );?></div>
+                    <div class="forum-reply-num">
+                        <?php 
+                            if( in_array($v['id'], $usergroup) ){
+                                echo '已加入';
+                            }else{
+                                echo '未加入';
+                            }
+                        ?>
+                    </div>
                 </li>
             
             <?php }?>
             </ul>
             
             
-            <div class="main_title">精华推荐</div>
-            
-            <ul class="forum-list">
-            <?php
-                foreach ($hot_topics as $k => $v){
-            ?>
-                <li class="forum-li">
-                    <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
-                    <div class="forum-author">
-                        <a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>
-                    </div>
-                    <div class="forum-reply-num"><?php echo dgmdate( $v['num'] );?></div>
-                </li>
-            
-            <?php }?>
-            </ul>
+           
         </div>
         
         

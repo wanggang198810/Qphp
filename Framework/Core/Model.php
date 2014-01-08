@@ -110,8 +110,36 @@ class Model {
         $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
         return $this->db->fetchArray($this->_sql);
     }
+    
+    public function fetchCol(){
+        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+        return $this->db->fetchCol($this->_sql);
+    }
+    
+    public function fetchLocateCol($field){
+        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+        return $this->db->fetchLocateCol($this->_sql, $field);
+    }
+    
     public function getAll(){
         return $this->fetchArray();
+    }
+    
+    public function fetchArrayBySql($sql){
+        if( empty($sql)){ return false;}
+        return $this->db->fetchArray($sql);
+    }
+    
+    public function getSql(){
+        return $this->_sql;
+    }
+    
+    public function setSql($sql=''){
+        if( empty($sql)){
+            $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+        }else{
+            $this->_sql;
+        }
     }
     
     public function setColumField($data = '*'){

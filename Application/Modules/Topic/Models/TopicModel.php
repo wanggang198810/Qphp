@@ -95,6 +95,11 @@ class TopicModel extends Model{
         return $this->where( array('gid'=>$gid) )->page($page, $pageSize, $total);
     }
     
+    public function getTopicByGids($gid , $page = 1, $pageSize = 20 , $total = 0){
+        $gidstr = implode(',', $gid);
+        return $this->where( " gid in ({$gidstr})" )->page($page, $pageSize, $total);
+    }
+    
     
     public function getTopic($id){
         if( intval($id) <= 0 ){ return false; }

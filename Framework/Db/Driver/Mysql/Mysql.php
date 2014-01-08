@@ -100,6 +100,22 @@ class Mysql extends Db_Abstract{
 		}
 		return $result;	
 	}
+    
+    
+    /**
+	 * @param string $sql
+	 * @param array $bind
+	 * @return array
+	 */
+	public function fetchLocateCol($sql, $field, $type = MYSQL_ASSOC)
+	{
+		$result = array();
+		$this->query($sql);
+		while ($row = @mysql_fetch_array($this->_query, $type)){
+            $result[] = $row[$field];
+		}
+		return $result;	
+	}
 
 	/**
 	 * 获取第一条数据的第一列

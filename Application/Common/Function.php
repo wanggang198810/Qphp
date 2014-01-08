@@ -106,23 +106,24 @@ function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
 		unset($par['header_tips']);
 	}
 	$url_str = http_build_query($par);
-	
+	$url_str = empty($url_str) ? '' : '&'.$url_str;
+    
 	$pre_page = ($page - 1) <= 0 ? 1: $page-1; 
-	$pre_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $pre_page;
-	$html .= '<a href="'.$pre_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1;">上一页</a>';
+	$pre_url = $url['path'] . '?' .$url_str . $param. '=' . $pre_page;
+	$html .= '<a href="'.$pre_url.'">上一页</a>';
 	
 	for ($i = $start; $i <= $end; $i++){
-		$a_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $i;
+		$a_url = $url['path'] . '?' .$url_str . $param. '=' . $i;
 		if($i==$page){
 			$html .= '<span style="font-weight:bold; padding:0 5px;">'.$i.'</span>';
 		}else{
-			$html .= '<a href="' . $a_url . '" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1; margin:0 5px;">'.$i.'</a>';
+			$html .= '<a href="' . $a_url . '" >'.$i.'</a>';
 		}
 	}
 	
 	$next_page = ($page+1) > $totalPage ? $totalPage: $page+1;
-	$next_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $next_page;
-	$html .= '<a href="'.$next_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1;">下一页</a>';
+	$next_url = $url['path'] . '?' . $url_str . $param. '=' . $next_page;
+	$html .= '<a href="'.$next_url.'">下一页</a>';
 	
 	$html .= '</div>';
 	return $html;
@@ -144,9 +145,16 @@ function avatar($uid){
 function group_url($id, $url=''){
     
     if(!empty($url)){
-        return '/group/'.$id.'-'.$url;
+        return '/group/'.$url.'/';
     }
     return '/group/'.$id;
+}
+
+function group_logo($url){
+    if(empty($url)){
+        return '/Public/image/default_group.png';
+    }
+    return $url;
 }
 
 function topic_url($id, $url='', $type = 1){

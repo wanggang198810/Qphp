@@ -18,6 +18,10 @@ class GroupModel extends Model{
         if( intval($id) <= 0 ){ return false; }
         return $this->where( array('id' => intval($id) ) )->fetch();
     }
+    
+    public function getGroupList($page=1, $pageSize=20, $total=0){
+        return $this->where( " `status` > 0" )->order(" order by num desc")->page($page, $pageSize, $total);
+    }
 
     public function getGroupByUrl($url){
         $url = filter($url);
@@ -26,15 +30,20 @@ class GroupModel extends Model{
         }
         return $this->where( array('url' => $url ) )->fetch();
     }
+    
+    public function getGroupByUid($uid){
+        if( intval($uid) <= 0 ){ return false; }
+        return $this->table('groupuser')->where( array('uid' => intval($uid) ) )->fetchArray();
+    }
 
     /**
      * 添加
      */
-    public function addGroup($name, $uid, $url = ''){
-        if(empty($name) || intval($uid) <= 0 ){
+    public function addGroup($name, $info, $creator, $status, $time, $url = '', $logo = ''){
+        if(empty($name) || intval($creator) <= 0 ){
             return false;
         }
-        return $this->insert( array('name' => $name, 'uid' => intval($uid), 'url'=> $url) );
+        return $this->insert( array('name' => trim( $name ), 'info'=> trim( $info ), 'creator' => intval($creator), 'status' => $status , 'time' => $time , 'url'=> $url ,'logo' => $logo) , 1);
     }
     
     
@@ -85,5 +94,19 @@ class GroupModel extends Model{
             return false;
         }
         return $this->where( array('gid' => intval($id) ) )->fetchArray();
+    }
+    
+    
+    public function getRecentGroupMembers($gid){
+        $gid = intval($gid);
+        if($gid <= 0){ return false;}
+        $sql = "select b.uid, b.username, b.blogname from groupuser a LEFT JOIN user b on a.uid = b.uid where gid = {$gid} order by id desc limit 12";
+        return $this->fetchArrayBySql($sql);
+    }
+    
+    public function getGroupMembers($gid, $page=1, $pageSize=20, $total=0){
+        $gid = intval($gid);
+        if($gid <= 0){ return false;}
+        $this->page();
     }
 }

@@ -106,9 +106,10 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
 }
 
 .sub-nav{ font-size: 14px;}
-.sub-nav li{ float: left;  margin-right: 16px; font-family: 微软雅黑; font-size: 17px;}
+.sub-nav li{ float: left;  margin-right: 16px; font-family: 微软雅黑; font-size: 16px;}
 .sub-nav li a{ float: left; line-height: 35px; width: 80px; text-align: center; color: #666;}
-.sub-nav li a.active, .sub-nav li a:hover{ background: #85C155; color: #FFF;}
+.sub-nav li a.active{ color: #85C155; }
+.sub-nav li a:hover{ background: #85C155; color: #FFF;}
            
 .uside{ width: 200px;  float: left;}
 .uside .item{box-shadow: 0px 0px 3px #d9d9d9;-webkit-box-shadow: 0px 1px 3px #d9d9d9;-moz-box-shadow: 0px 0px 3px #d9d9d9; border: 1px solid #eee; border-radius: 0px; overflow: hidden;}
@@ -169,7 +170,7 @@ textarea{ resize: none;}
 .title-h1, .post-title-h1{ font-size: 30px; padding: 20px 0 5px; font-weight: normal;}
 .title-h1 a, .post-title-h1 a{color:#333;}
 .title-h3{ font-weight: normal; word-wrap: break-word;
-          padding: 0; margin: 0; font-size: 14px; line-height: 22px; float: left; width: 450px; margin-right: 20px; }
+          padding: 0; margin: 0; font-size: 13px; line-height: 22px; float: left; width: 450px; margin-right: 20px; }
 
 .post-title-h1{ font-size: 20px; padding-top: 0px;}
 
@@ -181,7 +182,7 @@ textarea{ resize: none;}
 
 .main-right{ width: 270px; float: right}
 .main_title, .main_title2{ 
-    font-size: 17px; 
+    font-size: 20px; 
     font-family: 微软雅黑; 
     color: #4ba733; 
     padding: 30px 0 10px 0;
@@ -191,7 +192,7 @@ textarea{ resize: none;}
 .main_title2{ font-size: 15px; border: 0;} 
 
 .forum-list{}
-.forum-li{ width: 650px; overflow: hidden; padding: 7px 0; border-bottom: 1px dashed #ddd;}
+.forum-li{ width: 650px; overflow: hidden; padding: 9px 0; border-bottom: 1px dashed #ddd;}
 .forum-li a{ color: #0078b6}
 .forum-li a:hover{ text-decoration: underline;}
 .forum-author{ float: left;}
@@ -221,7 +222,20 @@ textarea{ resize: none;}
 .group-name{ width: 300px;}
 .group-info{ width: 298px; height: 100px;}
 
+.active-member-box{}
+.active-member-box ul{}
+.active-member-box ul li{float: left; margin-right: 18px; width: 48px;  color: #999; font-size: 13px; text-align: center; margin-bottom: 20px;}
+.active-member-box ul li img{ border: 1px solid #EEE; padding: 1px; width: 48px; height: 48px;}
+.active-member-box ul li.mr0{ margin-right: 0px;}
+
+
+
+
 #totop{position:fixed;bottom:40px;right:10px;z-index:999;width:71px; cursor:pointer; display:none;}
 *html #totop{position:absolute;cursor:pointer;right:10px; display:none;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight)-112+"px")}
 #totop a{display:block;width:71px;height:24px;padding-top:48px;background:url(/Public/image/toTop.gif) no-repeat;text-align:center;color:#888}
 #totop a.cur{background-position:-88px 0;text-decoration:none;color:#3a9}
+
+.page{ margin-top: 50px; height: 30px; width: 650px; text-align: center;}
+.page a, .page span{ padding: 0 5px; margin: 0 10px;}
+.clear{ clear: both;}

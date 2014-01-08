@@ -15,7 +15,7 @@
 <body>
 <?php
     load_view ('Common.header');
-    load_view ('SubMenu');
+    load_view ('SubGroupMenu');
 ?> 
 
     <div  class="main">
@@ -28,10 +28,10 @@
                 <div class="apply-form-box">
                     <div class="apply-form-left">小组类型:</div>
                     <div class="apply-form-right">
-                        <input checked="checked" type="radio" name="group-type" style="margin-top: -2px;" id="public-group" value="1" />
+                        <input checked="checked" type="radio" name="group_type" style="margin-top: -2px;" id="public-group" value="1" />
                         <label for="public-group">公开小组</label>
 
-                        <input type="radio" name="group-type" style=" margin-left: 30px; margin-top: -2px;" id="private-group" value="0" />
+                        <input type="radio" name="group_type" style=" margin-left: 30px; margin-top: -2px;" id="private-group" value="0" />
                         <label for="private-group">私密小组</label>
                     </div>
                 </div>
@@ -40,14 +40,21 @@
                 <div class="apply-form-box">
                     <div class="apply-form-left">小组名称:</div>
                     <div class="apply-form-right">
-                        <input type="text" name="group-name" id="group-name" class="group-name" value="" />
+                        <input type="text" name="group_name" id="group-name" class="group-name" value="" />
+                    </div>
+                </div>
+                
+                <div class="apply-form-box">
+                    <div class="apply-form-left">小组域名:</div>
+                    <div class="apply-form-right">
+                        <input type="text" name="group_url" id="group-url" class="group-name" value="" />
                     </div>
                 </div>
                 
                 <div class="apply-form-box">
                     <div class="apply-form-left">小组简介:</div>
                     <div class="apply-form-right">
-                        <textarea name="group-info" id="group-info" class="group-info"></textarea>
+                        <textarea name="group_info" id="group-info" class="group-info"></textarea>
                     </div>
                 </div>
                 

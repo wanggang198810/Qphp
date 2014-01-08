@@ -25,6 +25,8 @@ class PostController extends BaseTopicController{
             $this->view($id, $type);
             $this->render('Post');
             return ;
+        }else{
+            Response::redirect('/group');
         }
         
         $this->checkLogin(1);
