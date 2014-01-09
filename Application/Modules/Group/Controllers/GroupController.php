@@ -33,7 +33,9 @@ class GroupController extends BaseController{
                 case 'members':
                     $this->_members( $this->data['group']['id']);
                     break;
-                
+                case 'post':
+                    $this->_post( $this->data['group']['id']);
+                    break;
             }
             return;
         }
@@ -92,6 +94,17 @@ class GroupController extends BaseController{
         $this->render('Member');
     }
 
+    private function _post($gid){
+        
+        if(Request::isPostSubmit('title') && Request::isPostSubmit('content')){
+            hprint($_POST,1);
+        }
+        
+        $this->loadModel('Group.GroupTag');
+        $grouptagModel = new GroupTagModel();
+        $this->data['tags'] = $grouptagModel->getTagsByGid($gid);
+        $this->render('Post');
+    }
 
     public function apply(){
         
@@ -154,4 +167,8 @@ class GroupController extends BaseController{
         $this->data['usergroup'] = $groupArr;
         $this->render('Rank');
     }
+    
+    
+    
+    
 }

@@ -142,12 +142,12 @@ function avatar($uid){
 }
 
 
-function group_url($id, $url=''){
+function group_url($url, $type =''){
     
-    if(!empty($url)){
-        return '/group/'.$url.'/';
+    if(!empty($type)){
+        return '/group/'.$url.'/'.$type;
     }
-    return '/group/'.$id;
+    return '/group/'.$url;
 }
 
 function group_logo($url){

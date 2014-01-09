@@ -29,7 +29,7 @@
                 <li class="forum-li">
                     <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
                     <div class="forum-author">
-                        <a href="<?php echo group_url( $v['gid'], $v['group']['url']);?>"><?php echo $v['group']['name'];?></a>
+                        <a href="<?php echo group_url($v['group']['url']);?>"><?php echo $v['group']['name'];?></a>
                     </div>
                     <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
@@ -51,12 +51,12 @@
                 ?>
                 <div class="group-item" style=" width: 270px; height: 50px; margin-bottom: 20px;">
                     <div class="left" style="width: 48px; height: 48px; background: #eee;">
-                        <a href="<?php echo group_url($v['id'], $v['url'])?>">
+                        <a href="<?php echo group_url($v['url'])?>">
                             <img src="<?php echo group_logo($v['logo']);?>" title="<?php echo $v['name'];?>" />
                         </a>
                     </div>
                     <div class="right" style=" float: right; border: 1px solid #EEE; padding: 5px; width: 200px; height: 38px; color: #999; font-size: 13px;">
-                        <a href="<?php echo group_url($v['id'], $v['url'])?>"><?php echo $v['name'];?></a> 
+                        <a href="<?php echo group_url($v['url'])?>"><?php echo $v['name'];?></a> 
                         <span><?php echo $v['num']?>人加入</span>
                         <p><?php echo $v['info'];?></p>
                     </div>

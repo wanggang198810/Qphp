@@ -22,6 +22,8 @@
         
         <div class="main-left">
             <div class="main_title"><?php echo $group['name'];?></div>
+            
+            <div class=""><a href="<?php echo group_url($group['url'], 'post');?>">发帖</a></div>
             <ul class="forum-list">
             <?php
                 foreach ($topics as $k => $v){
@@ -29,7 +31,7 @@
                 <li class="forum-li">
                     <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
                     <div class="forum-author">
-                        <a href="<?php echo group_url( $v['gid'], $v['group']['url']);?>"><?php echo $v['group']['name'];?></a>
+                        <a href="<?php echo group_url($v['group']['url']);?>"><?php echo $v['group']['name'];?></a>
                     </div>
                     <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>

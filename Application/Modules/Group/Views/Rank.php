@@ -27,7 +27,7 @@
                 foreach ($groups as $k => $v){
             ?>
                 <li class="forum-li">
-                    <h3 class="title-h3"><a href="<?php echo group_url($v['id'], $v['url']);?>"><?php echo $v['name'];?></a></h3>
+                    <h3 class="title-h3"><a href="<?php echo group_url( $v['url']);?>"><?php echo $v['name'];?></a></h3>
                     <div class="forum-author">
                         <?php echo $v['num']?>人已加入
                     </div>
