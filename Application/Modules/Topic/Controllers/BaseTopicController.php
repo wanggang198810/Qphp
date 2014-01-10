@@ -88,6 +88,46 @@ class BaseTopicController extends BaseController{
         
     }
     
+    public function save(){
+        $this->checkLogin(1);
+        if(Request::isPostSubmit()){
+            $this->loadModel('Topic');
+            $postModel = new TopicModel();
+            
+            
+            $data['title'] = trim(Request::getPost('title'));
+            $data['content'] = htmlspecialchars( Request::getPost('content') );
+            $data['shortcontent'] = substr(htmlspecialchars( Request::getPost('content') ), 0, 256);
+            $data['cid'] = Request::getIntPost('category');
+            $data['gid'] = Request::getIntPost('groupid');
+            $data['tid'] = Request::getIntPost('tagid');
+            $data['type'] = Request::getIntPost('type',1);
+            $data['url'] = trim(Request::getPost('url'));
+            $data['tag'] = trim(Request::getPost('tag'));
+            
+            hprint($data,1);
+            
+            if( strlen($data['title']) <= 0 && strlen( trim($data['content']) ) <= 20){
+                return false;
+            }
+            
+            $data['time'] = time();
+            $data['uid'] = $this->uid;
+            
+            $result = $postModel->post($data);
+            if($result > 0){
+                if(!empty($data['tag'])){
+                    $this->loadModel('Tag');
+                    $tagModel = new TagModel('Tag'); 
+                    $result = $tagModel->addTag($result, $data['tag']);
+                }
+                $this->response->redirect(user_space($this->user['blogname']));
+                return;
+            }
+        }
+        $this->response->redirect('/post');
+    }
+    
     public function postAnswer($id){
         if( Request::isPostSubmit('topicid')){
             $data['topicid'] = Request::getIntPost('topicid');

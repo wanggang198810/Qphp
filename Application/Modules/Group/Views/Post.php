@@ -81,12 +81,12 @@
         </div>    
         <div style="float: right; width: 169px; padding: 15px; background: #DDD;border: 1px solid #ddd;border-left: none; margin-top: 20px;">
             <div>
-                <label for="category">小组标签</label>
+                <label for="tagid">小组标签</label>
                 <div class="btn-group">
-                    <input type="hidden" name="category" id="category"  value="0"/>
+                    <input type="hidden" name="groupid" id="groupid"  value="<?php echo $group['id'];?>"/>
+                    <input type="hidden" name="tagid" id="tagid"  value="0"/>
                     <button style="width:170px; padding: 5px 9px;" class="btn dropdown-toggle" data-toggle="dropdown"><span id="category-name">默认分类</span> <span class="caret"></span></button>
                     <ul class="dropdown-menu" style="min-width: 167px;">
-                        <li><a class="cate" href="javascript:;" id="0">默认分类</a></li>
                       <?php
                         foreach($tags as $k => $v){
                       ?>
