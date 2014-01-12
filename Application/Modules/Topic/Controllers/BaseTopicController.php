@@ -41,12 +41,27 @@ class BaseTopicController extends BaseController{
         $page = Request::getIntGet('page',1);
         $this->loadModel('Topic.Reply');
         $replyModel = new ReplyModel();
-        $replys = $replyModel->getReplysByTopic( intval($id), $page, 20, 0);
+        $replys = $replyModel->getReplysByTopic( intval($id), $page, 15, 0);
         
         foreach($replys['list'] as $k => $v){
             $replys['list'][$k]['reply_user'] = $userModel->getUser($v['uid']);
+            if($v['replyid'] != 0){
+                $replyid = -1;
+                foreach($replys['list'] as $key => $val){
+                    if($val['id'] == $v['replyid']){
+                        $replyid = $key;
+                        break;
+                    }
+                }
+                //hprint($replyid,1);
+                if($replyid != -1){
+                    $replys['list'][$k]['reply'] = $replys['list'][$replyid];
+                }else{
+                    $replys['list'][$k]['reply'] = $replyModel->getReplyByRid($v['id']);
+                }
+            }
         }
-        
+        //hprint($replys['list'],1);
         $this->data['replys'] = $replys['list'];
         $this->data['pageinfo'] = $replys['pageinfo'];
         $this->data['page_html'] = to_page_html($page, $replys['pageinfo']['totalPage']);
@@ -101,11 +116,10 @@ class BaseTopicController extends BaseController{
             $data['cid'] = Request::getIntPost('category');
             $data['gid'] = Request::getIntPost('groupid');
             $data['tid'] = Request::getIntPost('tagid');
-            $data['type'] = Request::getIntPost('type',1);
+            $data['type'] = $this->topictype;//Request::getIntPost('type',1);
             $data['url'] = trim(Request::getPost('url'));
             $data['tag'] = trim(Request::getPost('tag'));
             
-            hprint($data,1);
             
             if( strlen($data['title']) <= 0 && strlen( trim($data['content']) ) <= 20){
                 return false;

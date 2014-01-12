@@ -30,6 +30,10 @@ class Topic {
             $html .= '<div class="post-user">
                         <a href="'.user_space($reply['reply_user']['blogname']).'">'. $reply['reply_user']['username'].'</a>，'. $reply['reply_user']['honorname'].'</div><div class="answer-head"></div><div class="answer-agree"></div>';
             
+            if(isset( $reply['reply'] )){
+                $html .= '<blockquote>引用<a href="'.  user_space($reply['reply_user']['blogname']) .'">@' . $reply['reply_user']['username'].'</a>的话：' . $reply['reply']['content'].'</blockquote>';
+            }
+            
             $html .= '<div class="answer-con">'.filter_content( $reply['content'] ).'</div>';
             
             $html .= '<div class="answer-bottom">
@@ -39,7 +43,7 @@ class Topic {
                             <form method="post" action="'.topic_url($topic['id'], $topic['url'], $topictype) . '/answer">
                                 <input type="hidden" name="topicid" id="topicid" value="' . $reply['topicid'] . '" />
                                 <input type="hidden" name="replyid" id="replyid" value="'. $reply['id'] .' " />
-                                <textarea name="reply_content" id="reply_content" style=" width: 545px;"></textarea>
+                                <textarea name="reply_content" class="sub-reply-content"></textarea>
                                 <button type="submit" class="btn btn-success" style="float: right;">回复</button>
                             </form>
                         </div>

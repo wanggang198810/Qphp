@@ -181,7 +181,7 @@ textarea{ resize: none;}
 }
 
 .main-right{ width: 270px; float: right}
-.main_title, .main_title2{ 
+.main_title, .main_title2, .group-title{ 
     font-size: 20px; 
     font-family: 微软雅黑; 
     color: #4ba733; 
@@ -191,12 +191,33 @@ textarea{ resize: none;}
 }
 .main_title2{ font-size: 15px; border: 0;} 
 
+.group-info-box{ border: 1px solid #eee; padding: 15px; margin-top: 30px; background: #F5F5F5}
+.group-title{ border-bottom: 1px dashed #ccc; padding-top: 10px;}
+.group-title .group-logo{ float: left; margin-right: 20px;}
+.group-title2{ float: left; padding-top: 5px;}
+.group-num{ font-size: 12px; color: #999; margin-left: 15px;}
+.group-join-status{ float: right; color: #999; font-size: 13px; margin-top: 5px; line-height: 28px;}
+.group-join-status a.join-group{ background: #88c932; color: #FFF; padding: 5px 8px;}
+.group-join-status a.join-group:hover{background: #50a200; color: #FFF;}
+.group-info{ padding-top: 10px; color: #999;}
+.group-menu{ padding-bottom: 20px; border-bottom: 1px solid #ddd}
+.group-menu a{ padding: 5px 15px; background: #eee;}
+.group-menu a.active{ color: #88c932}
+.group-menu a.group-post-btn{ background: #88c932; color: #FFF;  float: right;}
+a.group-post-btn:hover{background: #50a200; color: #FFF;}
+ 
 .forum-list{}
-.forum-li{ width: 650px; overflow: hidden; padding: 9px 0; border-bottom: 1px dashed #ddd;}
+.forum-li{ width: 650px; overflow: hidden; padding: 10px 0; border-bottom: 1px dashed #ddd;}
 .forum-li a{ color: #0078b6}
 .forum-li a:hover{ text-decoration: underline;}
 .forum-author{ float: left;}
 .forum-reply-num{ float: right; }
+
+.member-list{ }
+.member-list li{ float: left; width: 50px; height: 80px; overflow: hidden; margin-right: 20px; text-align: center; margin-top: 20px;}
+.member-list li .mr0{ margin-right: 0;}
+.member-list li .member-avatar{ float: left; width: 50px; height: 50px;}
+.member-list li .member-avatar img{ width: 48px; height: 48px; margin: 0; padding: 0;}
 
 
 .post-user{ line-height:1; padding-bottom: 12px;}
@@ -228,6 +249,14 @@ textarea{ resize: none;}
 .active-member-box ul li img{ border: 1px solid #EEE; padding: 1px; width: 48px; height: 48px;}
 .active-member-box ul li.mr0{ margin-right: 0px;}
 
+.sub-reply-content{ width: 559px; margin-bottom: 10px;}
+blockquote {
+color: #999;
+line-height: 20px;
+border-left: 1px solid #d5d5d5;
+margin: 0 0 10px 5px;
+padding: 0 0 0 9px;
+}
 
 
 
@@ -236,7 +265,7 @@ textarea{ resize: none;}
 #totop a{display:block;width:71px;height:24px;padding-top:48px;background:url(/Public/image/toTop.gif) no-repeat;text-align:center;color:#888}
 #totop a.cur{background-position:-88px 0;text-decoration:none;color:#3a9}
 
-.page{ margin-top: 50px; height: 30px; width: 650px; text-align: center;}
+.page{ margin: 30px 0; height: 30px; width: 650px; text-align: center;}
 .page a, .page span{ padding: 0 5px; margin: 0 10px;}
 .clear{ clear: both;}
 input, textarea{ margin: 0; padding: 0}

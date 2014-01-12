@@ -21,20 +21,20 @@
     <div  class="main">
         
         <div class="main-left">
-            <div class="main_title"><?php echo $group['name'];?></div>
-            <ul class="forum-list">
+            <div class="main_title"><?php echo $group['name'];?>小组成员</div>
+            <ul class="member-list">
             <?php
-                foreach ($topics as $k => $v){
+                foreach ($members as $k => $v){
+                    $i = 1;
             ?>
-                <li class="forum-li">
-                    <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
-                    <div class="forum-author">
-                        <a href="<?php echo group_url( $v['gid'], $v['group']['url']);?>"><?php echo $v['group']['name'];?></a>
+                <li>
+                    <div class="member-avatar"><a href="<?php echo user_space($v['blogname']);?>"><img width="30" height="30" src="<?php echo avatar($v['uid']);?>" /></a> </div>
+                    <div class="member-author">
+                        <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
                     </div>
-                    <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
             
-            <?php }?>
+            <?php   $i ++ ; }?>
             </ul>
             
             <div class="page"><?php echo $page_html;?></div>
@@ -57,30 +57,7 @@
                     <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
                 </li>
                 
-                <li>
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
-                </li>
                 
-                <li>
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
-                </li>
-                
-                <li class="mr0">
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
-                </li>
-                
-                <li>
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
-                </li>
-                
-                <li>
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
-                </li>
                 <?php 
                     $i ++ ;
                 }?>

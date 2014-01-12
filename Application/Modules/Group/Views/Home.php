@@ -9,7 +9,9 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('bootstrap');
+        load_js('jquery');
+        load_js('rgss');
+        //load_js('bootstrap');
     ?>
 </head>
 <body>
@@ -31,14 +33,14 @@
                     <div class="forum-author">
                         <a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>
                     </div>
-                    <div class="forum-reply-num"><?php echo dgmdate( $v['num'] );?></div>
+                    <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
             
             <?php }?>
             </ul>
             
             
-            <div class="main_title">精华推荐</div>
+            <div class="main_title">最新帖子</div>
             
             <ul class="forum-list">
             <?php
@@ -49,7 +51,7 @@
                     <div class="forum-author">
                         <a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>
                     </div>
-                    <div class="forum-reply-num"><?php echo dgmdate( $v['num'] );?></div>
+                    <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
             
             <?php }?>

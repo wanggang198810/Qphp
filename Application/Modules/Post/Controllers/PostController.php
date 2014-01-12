@@ -53,7 +53,7 @@ class PostController extends BaseTopicController{
     
     public function save(){
         $result = parent::save();
-        retur;
+        return;
         $this->checkLogin(1);
         
         if(Request::isPostSubmit()){

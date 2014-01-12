@@ -51,38 +51,8 @@
         
         
         <div class="main-right">
-            <div class="main_title2">最新热门小组</div>
-            <div class="recom-group-box" style=" margin-top: 10px;">
-                <?php
-                    foreach($hot_groups as $k => $v){
-                ?>
-                <div class="group-item" style=" width: 270px; height: 50px; margin-bottom: 20px;">
-                    <div class="left" style="width: 48px; height: 48px; background: #eee;"><img /></div>
-                    <div class="right" style=" float: right; border: 1px solid #EEE; padding: 5px; width: 200px; height: 38px; color: #999; font-size: 13px;">
-                        <a href="<?php echo group_url($v['id'], $v['url'])?>"><?php echo $v['name'];?></a> 
-                        <span><?php echo $v['num']?>人加入</span>
-                        <p><?php echo $v['info'];?></p>
-                    </div>
-                </div>
-                <?php }?>
-            </div>
+            <div class="main_title2"></div>
             
-            
-            <div class="main_title2">新创建的小组</div>
-            <div class="recom-group-box" style=" margin-top: 10px;">
-                <?php
-                    foreach($new_groups as $k => $v){
-                ?>
-                <div class="group-item" style=" width: 270px; height: 50px; margin-bottom: 20px;">
-                    <div class="left" style="width: 48px; height: 48px; background: #eee;"><img /></div>
-                    <div class="right" style=" float: right; border: 1px solid #EEE; padding: 5px; width: 200px; height: 38px;">
-                        <a href="<?php echo group_url($v['id'], $v['url'])?>"><?php echo $v['name'];?></a> 
-                        <span><?php echo $v['num']?>人加入</span>
-                        <p><?php echo $v['info'];?></p>
-                    </div>
-                </div>
-                <?php }?>
-            </div>
         </div>
         
         

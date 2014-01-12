@@ -9,7 +9,7 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('bootstrap');
+        //load_js('bootstrap');
     ?>
         <style>
            

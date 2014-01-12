@@ -107,6 +107,10 @@ class GroupModel extends Model{
     public function getGroupMembers($gid, $page=1, $pageSize=20, $total=0){
         $gid = intval($gid);
         if($gid <= 0){ return false;}
-        $this->page();
+        $sql = "select b.uid, b.username, b.blogname from groupuser a LEFT JOIN user b on a.uid = b.uid where gid = {$gid} order by id desc";
+        return $this->page($page, $pageSize, $total, $sql);
     }
+    
+    
+    
 }

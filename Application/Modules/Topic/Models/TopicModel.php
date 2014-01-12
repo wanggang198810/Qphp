@@ -97,7 +97,7 @@ class TopicModel extends Model{
     
     public function getTopicByGids($gid , $page = 1, $pageSize = 20 , $total = 0){
         $gidstr = implode(',', $gid);
-        return $this->where( " gid in ({$gidstr})" )->page($page, $pageSize, $total);
+        return $this->where( " gid in ({$gidstr})" )->order(" order by id desc")->page($page, $pageSize, $total);
     }
     
     

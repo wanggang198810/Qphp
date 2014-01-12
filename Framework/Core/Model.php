@@ -160,8 +160,12 @@ class Model {
         return $this->_columField;
     }
     
-    public function page($page=1, $pageSize=10, $total=0){
-        $this->_sql = "select * from ".$this->db->table($this->_table) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
+    public function page($page=1, $pageSize=10, $total=0, $sql =''){
+        if(!empty($sql)){
+            $this->_sql = $sql;
+        }else{
+            $this->_sql = "select * from ".$this->db->table($this->_table) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
+        }
         return $this->db->page($this->_sql, $page, $pageSize, $total);
     }
     

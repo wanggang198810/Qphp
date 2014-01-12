@@ -201,7 +201,7 @@ function dgmdate($time, $format = 'Y-m-d H:i') {
 		} elseif ($timespan > 1800) {
 			return "半小时前";
 		} elseif ($timespan > 60) {
-			return intval ( $timespan / 60 ) . "分前";
+			return intval ( $timespan / 60 ) . "分钟前";
 		} elseif ($timespan > 0) {
 			return $timespan . "秒前";
 		} elseif ($time <= 0) {

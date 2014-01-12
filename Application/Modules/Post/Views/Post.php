@@ -10,7 +10,7 @@
         load_css('bootstrap');
         load_css('style');
         load_js('jquery');
-        load_js('rgss.js');
+        load_js('rgss');
     ?>
         <style>
            
@@ -57,7 +57,7 @@
                 <?php
                     echo Topic::outputReply($topic, $replys, 3, $pageinfo);
                 ?>
-                
+                <div class="page"><?php echo $page_html;?></div>
                
                 
                 
@@ -65,7 +65,7 @@
                     <div style="color: #005580; font-weight: 600; font-size: 14px; padding: 10px 0;">添加评论</div>
                     <input type="hidden" name="topicid" id="topicid" value="<?php echo $topic['id'];?>" />
                     <input type="hidden" name="replyid" id="replyid" value="0" />
-                    <textarea name="reply_content" id="reply_content" style=" width: 636px; height: 70px; resize: none;"></textarea>
+                    <textarea name="reply_content" id="reply_content" style=" width: 650px; height: 70px; resize: none; margin-bottom: 20px;"></textarea>
                     <button type="submit" class="btn btn-success" style="float: right;">回复</button>
                 </form>
             </div>
