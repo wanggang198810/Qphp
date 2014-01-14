@@ -28,7 +28,7 @@
         <div style="float:left; width: 650px;">
             <div class="" style=" border-bottom: 1px solid #eee; padding: 25px 0 15px;">
                 <a href="/group">小组</a> > 
-                <a href="<?php echo group_url($group['id'], $group['url'])?>"><?php echo $group['name']?></a> > 
+                <a href="<?php echo group_url($group['url'])?>"><?php echo $group['name']?></a> > 
                 <a href="<?php echo topic_url($topic['id'], $topic['url'], 3);?>"><?php echo $topic['title'];?></a></div>
             
             <div class="topic-title">

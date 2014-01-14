@@ -269,3 +269,11 @@ padding: 0 0 0 9px;
 .page a, .page span{ padding: 0 5px; margin: 0 10px;}
 .clear{ clear: both;}
 input, textarea{ margin: 0; padding: 0}
+
+.reply-textarea{width: 650px;
+height: 70px;
+resize: none;
+margin-bottom: 20px;}
+
+.sub-reply-textarea{width: 559px;
+margin-bottom: 10px;}

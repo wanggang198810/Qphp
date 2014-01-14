@@ -69,7 +69,7 @@
                                         <form method="post" action="<?php echo topic_url($topic['id'], $topic['url'], 2) . '/answer';?>">
                                             <input type="hidden" name="topicid" id="topicid" value="<?php echo $reply['topicid'];?>" />
                                             <input type="hidden" name="replyid" id="replyid" value="<?php echo $reply['id'];?>" />
-                                            <textarea name="reply_content" id="reply_content" style="  width: 545px;"></textarea>
+                                            <textarea name="reply_content" id="reply_content" class="sub-reply-textarea"></textarea>
                                             <button type="submit" class="btn btn-success" style="float: right;">回复</button>
                                         </form>
                                     </div>
@@ -87,7 +87,7 @@
                     <div style="color: #005580; font-weight: 600; font-size: 14px; padding: 10px 0;">添加评论</div>
                     <input type="hidden" name="topicid" id="topicid" value="<?php echo $topic['id'];?>" />
                     <input type="hidden" name="replyid" id="replyid" value="0" />
-                    <textarea name="reply_content" id="reply_content" style=" width: 636px; height: 70px; resize: none;"></textarea>
+                    <textarea name="reply_content" id="reply_content" class="reply-textarea"></textarea>
                     <button type="submit" class="btn btn-success" style="float: right;">回复</button>
                 </form>
             </div>
