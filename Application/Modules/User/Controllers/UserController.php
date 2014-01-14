@@ -82,39 +82,34 @@ class UserController extends BaseController{
         User::setCookie($uid);
     }
 
-
-    public function doLogin(){
-
-        $username=Request::getPost('username');
-        $password=Request::getPost('password');
-        $result=$this->MUser->login($username,$password);
-        if($result){
-                echo '登录成功';
-                redirect("/");
-        }else{
-                echo 'no';
-                //redirect("/user/login");
-        }
-    }
-
+    /**
+     * 退出
+     */
     public function logout(){
         Q::import('Helpers.user', 'User');
         User::setCookie();
         $this->response->redirect('/');
     }
 
-
-
-
-    public function doRegister(){
-            $username=Request::getPost('username');
-            $password=Request::getPost('password');
-            $result=$this->MUser->register($username,$password);
+    public function settings(){
+        $this->checkLogin(1);
+        if( Request::isPostSubmit()){
+            $data = array();
+            $data['sex'] = Request::getIntPost('sex');
+            $data['info'] = filter( Request::getPost('info') );
+            $data['honorname'] = filter( Request::getPost('honorname') );
+            $result = $this->userModel->editProfile($this->uid, $data);
             if($result){
-                    echo '注册成功<a href="/">返回</a>';
+                $this->show_success();
+            }else{
+                $this->show_error();
             }
-
+        }
+        $this->data['userinfo'] = $this->user;
+        $this->render('Settings');
     }
+
+
     
     
 }

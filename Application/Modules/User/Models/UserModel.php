@@ -15,11 +15,12 @@ class UserModel extends Model{
         if(empty($username) || empty($password)){
             return false;
         }
-        $data = $this->setColumField( $colum )->where(array( 'username' => $username ))->fetch();
+        $data = $this->setColumField( $colum )->where( array( 'username' => $username ))->fetch();
         if(empty($data)){
             return -1;
         }
         if(strcasecmp($data['password'] , md5($password) ) === 0){
+            $this->where( array( 'uid'=>$data['uid']))->update( array('lastlogin' => date("Y-m-d H:i:s")));
             return $data['uid'];
         }
         return 0;
@@ -66,6 +67,13 @@ class UserModel extends Model{
             return true;
         }
         return false;
+    }
+    
+    
+    public function editProfile($uid, $data){
+        $uid = intval($uid);
+        if($uid <= 0){return false;}
+        return $this->where( array('uid'=>$uid) )->update($data);
     }
 }
 
