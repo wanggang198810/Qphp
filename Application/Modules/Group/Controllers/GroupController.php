@@ -80,7 +80,7 @@ class GroupController extends BaseController{
             $this->data['recom_topics'][$k]['topic_user'] = $userModel->getUser($v['uid']);
         }
         
-        $this->data['hot_topics'] = $topicModel->getHotTopics(0, 3, 15);
+        $this->data['hot_topics'] = $topicModel->getTopics(0, 3, 15);
         foreach($this->data['hot_topics'] as $k => $v){
             $this->data['hot_topics'][$k]['topic_user'] = $userModel->getUser($v['uid']);
         }

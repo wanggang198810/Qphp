@@ -134,7 +134,7 @@ function user_space( $url , $type = '' ){
     if(!empty($type)){
         $type = '/'.$type;
     }
-    return '/u/'.$url.$type;
+    return '/u/'.$url.$type.'/';
 }
 
 function avatar($uid){
@@ -145,9 +145,9 @@ function avatar($uid){
 function group_url($url, $type =''){
     
     if(!empty($type)){
-        return '/group/'.$url.'/'.$type;
+        return '/group/'.$url.'/'.$type.'/';
     }
-    return '/group/'.$url;
+    return '/group/'.$url.'/';
 }
 
 function group_logo($url){

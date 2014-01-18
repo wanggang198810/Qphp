@@ -14,11 +14,12 @@ class QuestionController  extends BaseTopicController{
 
         $this->loadModel('Topic');
         $this->topicModel = new TopicModel('Topic');
+        $this->questionModel = new QuestionModel('topic');
     }
     
     public function index($id = '', $type = ''){
         if(empty($id)){
-            $this->home();
+            $this->_home();
             return;
         }
         
@@ -27,7 +28,14 @@ class QuestionController  extends BaseTopicController{
     }
     
     
-    public function home(){
+    private function _home(){
+        
+        $this->data['new_topics'] = $this->questionModel->getNewQuestions(8);
+        $result = $this->questionModel->getHotQuestions(1, 8, 10);
+        $this->data['hot_topics'] = $result['list']; 
+        $result = $this->questionModel->getRecomQuestions(1, 8, 10);
+        $this->data['recom_topics'] = $result['list']; 
+        //hprint($this->data['hot_topics'],1);
         $this->render('Home');
     }
     
