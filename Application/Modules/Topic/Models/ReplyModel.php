@@ -39,6 +39,10 @@ class ReplyModel extends Model{
         if( $replyid <= 0){ return false;}
         
     }
+    
+    public function getReplysByType($type, $page=1, $pageSize=20, $total=0){
+        return $this->page($page, $pageSize, $total);
+    }
 }
 
 ?>

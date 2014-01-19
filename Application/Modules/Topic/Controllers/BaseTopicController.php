@@ -66,6 +66,8 @@ class BaseTopicController extends BaseController{
         $this->data['pageinfo'] = $replys['pageinfo'];
         $this->data['page_html'] = to_page_html($page, $replys['pageinfo']['totalPage']);
         
+        $this->data['relative_topics'] = $this->getRelativedTopics($this->data['topic']['tag']);
+        
         
         $this->data['view_user'] = $userModel->getUser($this->data['topic']['uid']);
         
@@ -78,6 +80,11 @@ class BaseTopicController extends BaseController{
         if(empty( $this->data['topic'])){
             $this->show_404(); return;
         }
+    }
+    
+    //
+    public function getRelativedTopics($tags){
+        
     }
     
     

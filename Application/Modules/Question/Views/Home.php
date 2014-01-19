@@ -42,38 +42,42 @@
             </div>
             
             
-            <div>
-                <div class="main_title">热门问答</div>
+            <div class="mt20">
+                
+                <div style=" width: 300px; float: left; overflow-x: hidden;">
+                    <div class="question-title">热门问答</div>
+                    <ul class="">
+                    <?php
+                        foreach ($hot_topics as $k => $v){
+                    ?>
+                        <li class="hot-q-li">
+                            <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 2);?>"><?php echo $v['title'];?></a></h3>
+                        </li>
 
-                <ul class="forum-list">
-                <?php
-                    foreach ($hot_topics as $k => $v){
-                ?>
-                    <li class="forum-li">
-                        <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 2);?>"><?php echo $v['title'];?></a></h3>
-                    </li>
+                    <?php }?>
+                    </ul>
+                </div>
 
-                <?php }?>
-                </ul>
+                <div style=" width: 300px; float: right; overflow-x: hidden;overflow-x: hidden;">
+                    <div class="question-title">精彩问答</div>
 
-                <div class="main_title">精彩问答</div>
+                    <ul class="">
+                    <?php
+                        foreach ($recom_topics as $k => $v){
+                    ?>
+                        <li class="hot-q-li">
+                            <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 2);?>"><?php echo $v['title'];?></a></h3>
+                        </li>
 
-                <ul class="forum-list">
-                <?php
-                    foreach ($recom_topics as $k => $v){
-                ?>
-                    <li class="forum-li">
-                        <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 2);?>"><?php echo $v['title'];?></a></h3>
-                    </li>
-
-                <?php }?>
-                </ul>
+                    <?php }?>
+                    </ul>
+                </div>
             </div>
         </div>
         
         
         <div class="main-right">
-            <div class="main_title2">最新热门小组</div>
+            <div class="main_title2">新增答案</div>
             <div class="recom-group-box" style=" margin-top: 10px;">
                 <?php
                     foreach($hot_groups as $k => $v){
@@ -90,7 +94,7 @@
             </div>
             
             
-            <div class="main_title2">新创建的小组</div>
+            <div class="main_title2">新增答案</div>
             <div class="recom-group-box" style=" margin-top: 10px;">
                 <?php
                     foreach($new_groups as $k => $v){
