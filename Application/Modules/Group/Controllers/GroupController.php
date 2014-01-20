@@ -158,14 +158,14 @@ class GroupController extends BaseController{
     
 
     public function apply(){
-        
+        $this->checkLogin(1);
         if(Request::isPostSubmit('group_name') && Request::isPostSubmit('group_info') && Request::isPostSubmit('group_url')){
             $status = Request::getIntPost('group_type');
             $name = filter( Request::getPost('group_name') );
             $info = filter( Request::getPost('group_info') );
             $url = filter( Request::getPost('group_url') );
             $time = time();
-            $result = $this->groupModel->addGroup($name, $info, $this->uid, $status, $time, $url);
+            $result = $this->groupModel->createGroup($name, $info, $this->uid, $status, $time, $url);
             if($result){
                 Response::redirect('/group/'.$result);
             }else{
@@ -185,6 +185,8 @@ class GroupController extends BaseController{
             $groups[] = $v['id'];
         }
         
+        $r = $this->groupModel->getGroupsByCreator($this->uid);
+        hprint($r,1);
         $this->loadModel('Topic.Topic');
         $topicModel = new TopicModel();
         $result = $topicModel->getTopicByGids( $groups, $page, 10);

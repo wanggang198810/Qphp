@@ -44,7 +44,8 @@
         
         
         <div class="main-right">
-            <div class="main_title2 mt20">我加入的小组</div>
+            <div class="mt40"><a href="/group/apply/">申请创建小组>></a></div>
+            <div class="main_title2" style=" padding-top: 20px;">我加入的小组</div>
             <div class="recom-group-box" style=" margin-top: 10px;">
                 <?php
                     foreach($groups as $k => $v){

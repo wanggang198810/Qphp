@@ -106,8 +106,12 @@ class Model {
         return $this->fetch();
     }
     
-    public function fetchArray(){
-        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+    public function fetchArray($sql = ''){
+        if(!empty($sql)){
+            $this->_sql = $sql;
+        }else{
+            $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+        }
         return $this->db->fetchArray($this->_sql);
     }
     

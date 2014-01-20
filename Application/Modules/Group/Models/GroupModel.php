@@ -39,7 +39,7 @@ class GroupModel extends Model{
     /**
      * 添加
      */
-    public function addGroup($name, $info, $creator, $status, $time, $url = '', $logo = ''){
+    public function createGroup($name, $info, $creator, $status, $time, $url = '', $logo = ''){
         if(empty($name) || intval($creator) <= 0 ){
             return false;
         }
@@ -111,6 +111,24 @@ class GroupModel extends Model{
         return $this->page($page, $pageSize, $total, $sql);
     }
     
+    public function getGroupsbyUid($uid, $iscreator=0){
+        $uid = intval($uid);
+        if($uid <= 0){ return false;}
+        $sql = "select b.id, b.name, b.url from `groupuser` a LEFT JOIN `group` b on a.gid = b.id where a.uid = {$uid} and b.status > 0";
+        if($iscreator){
+            $sql .= ' and a.uid = b.creator ';
+        }
+        $result = $this->fetchArray($sql);
+        return $result;
+    }
+    
+    public function getGroupsByCreator($uid){
+        $uid = intval($uid);
+        if($uid <= 0){ return false;}
+        $sql = "select `name`, `url`, `info`, `logo`, `top`, `num`, `time` from `group` where creator = {$uid} and status > 0";
+        $result = $this->fetchArray($sql);
+        return $result;
+    }
     
     
 }
