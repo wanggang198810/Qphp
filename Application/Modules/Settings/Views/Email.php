@@ -47,34 +47,14 @@
     
     
     <div  class="main">
+        <div style="position: fixed; "></div>
         <?php load_view('Settings.LeftSide');?>
         
         <div class="" style="width: 720px; float: right; margin-top: 0px;">
-            <div class="main_title"><?php echo $user['username'];?>的资料</div>
+            <div class="main_title"><?php echo $user['username'];?>的邮箱</div>
             
-            <form class="mt20" method="post" action="/settings/profile/">
+            <form class="mt20" method="post" action="/settings/email/">
                 <input type="hidden" id="action" name="action" value="edit-profile" />
-                <div class="form-item">
-                    <label for="username" class="item-label text-right">帐号：</label>
-                    <div class="item-input">
-                        <?php echo $user['username'];?>
-                    </div>
-                </div>
-                
-                <div class="form-item">
-                    <label for="" class="item-label text-right">域名：</label>
-                    <div class="item-input">
-                        <?php echo $user['blogname'];?>
-                    </div>
-                </div>
-                
-                <div class="form-item">
-                    <label for="honorname" class="item-label text-right">名号：</label>
-                    <div class="item-input">
-                        <input type="text" class="form-control" name="honorname" id="honorname" value="<?php echo $user['honorname'];?>">
-                    </div>
-                </div>
-                
                 
                 <div class="form-item">
                     <label for="email" class="item-label text-right">登录邮箱：</label>
@@ -85,25 +65,20 @@
                 
                 
                 <div class="form-item">
-                    <label for="info" class="item-label text-right">简介：</label>
+                    <label for="email" class="item-label text-right">修改邮箱：</label>
                     <div class="item-input">
-                        <textarea id="info" name="info" style="width: 300px; height: 80px;"><?php echo $user['info'];?></textarea>
-                    </div>
-                </div>
-                
-                
-                <div class="form-item">
-                    <label for="info" class="item-label text-right">标签：</label>
-                    <div class="item-input">
-                        <div class="recomm-tag">
-                            <span class="badge"><a href="">二货</a></span>  
-                            <span class="badge"><a href="">酱油控</a></span>  
-                            <span class="badge"><a href="">酱油控</a></span>
-                        </div>
+                        <input type="email" class="form-control" name="email" id="email" value="">
                     </div>
                 </div>
                 
                 <div class="form-item">
+                    <label for="honorname" class="item-label text-right">密 码：</label>
+                    <div class="item-input">
+                        <input type="password" class="form-control" name="password" id="password" value="">
+                    </div>
+                </div>
+     
+                <div class="form-item mt10">
                     <label for="" class="item-label text-right"></label>
                     <div class="item-input">
                         <input type="submit" class="btn btn-success">

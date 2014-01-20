@@ -19,7 +19,7 @@ class UserModel extends Model{
         if(empty($data)){
             return -1;
         }
-        if(strcasecmp($data['password'] , md5($password) ) === 0){
+        if(strcasecmp($data['password'] , self::encryptPassword($password) ) === 0){
             $this->where( array( 'uid'=>$data['uid']))->update( array('lastlogin' => date("Y-m-d H:i:s")));
             return $data['uid'];
         }
@@ -35,7 +35,7 @@ class UserModel extends Model{
         if( $this->exist($username) ){
             return array(__LINE__, '用户名已被注册');
         }
-        $result = $this->insert( array('username'=>$username, 'password' => md5($password), 'time'=>time() ));
+        $result = $this->insert( array('username'=>$username, 'password' => self::encryptPassword($password), 'time'=>time() ));
         if($result){
             return $this->lastInsertId();
         }
@@ -47,6 +47,9 @@ class UserModel extends Model{
         return $this->setColumField( $colum )->where( array('uid' => $uid))->fetch();
     }
     
+    /**
+     * $colum = array('uid', 'username')
+     */
     public function getUserById($uid, $colum = '*'){
         $uid = intval($uid);
         if($uid <= 0){ return false;}
@@ -72,8 +75,34 @@ class UserModel extends Model{
     
     public function editProfile($uid, $data){
         $uid = intval($uid);
-        if($uid <= 0){return false;}
+        if($uid <= 0 || empty($data)){return false;}
         return $this->where( array('uid'=>$uid) )->update($data);
+    }
+    
+    public function editEmail($uid, $email, $password){
+        $uid = intval($uid);
+        if($uid <= 0 || empty($email) || empty($password)){return false;}
+        $data = $this->getUserById($uid,array('password'));
+        $password = self::encryptPassword($password);
+        if(strcasecmp($data['password'], $password) != 0){
+            return false;
+        }
+        return $this->editProfile($uid, array( 'email'=> $email ));
+    }
+    
+    public function editPassword($uid, $password, $old_password){
+        $uid = intval($uid);
+        if($uid <= 0 || empty($password) || empty($old_password)){return false;}
+        $data = $this->getUserById($uid,array('password'));
+        if(strcasecmp($data['password'], self::encryptPassword($old_password)) != 0){
+            return false;
+        }
+        return $this->editProfile($uid, array( 'password'=> self::encryptPassword($password) ));
+    }
+    
+    
+    public static function encryptPassword($password){
+        return md5($password);
     }
 }
 

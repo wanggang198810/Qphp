@@ -8,10 +8,12 @@ class BaseController extends Controller{
     
     private $needLogin = true;
     public $uid;
-    
+    public $data;
+
+
     public function __construct() {
         parent::__construct();
-        Q::import('Helpers.User', 'User/');
+        Q::import('Helpers.User', 'User');
         $this->uid = User::getUserId();
         if( $this->uid > 0 ){
             $this->data['user'] = $this->user = User::getUser( $this->uid );

@@ -18,7 +18,7 @@ class Model {
 
     public function __construct($name='') {
         $this->_config = Q::getConfig('dbconfig');
-        $db = $this->_config['dbtype'];
+        $db = ucfirst( $this->_config['dbtype'] );
         //$name= get_class($this);
         
         $filename = FRAMEWORK_PATH . '/Db/Driver/'.$db.'/'.$db.'.php';
@@ -33,7 +33,7 @@ class Model {
             $model = get_class($this);
             $name = strtolower( str_replace( 'Model','', $model) );
         }
-        
+        $name = strtolower($name);
         $this->_tablePrex = $this->_config['tableprex'];
         $this->db->table = $this->_table = $this->_tablePrex . $name;
         $this->db->table = $name;

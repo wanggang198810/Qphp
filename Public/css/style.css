@@ -253,8 +253,8 @@ a.group-post-btn:hover{background: #50a200; color: #FFF;}
 .active-member-box ul li img{ border: 1px solid #EEE; padding: 1px; width: 48px; height: 48px;}
 .active-member-box ul li.mr0{ margin-right: 0px;}
 
-.sub-reply-content{ width: 559px; margin-bottom: 10px;}
-.question-reply .sub-reply-content{ width: 617px;}
+.sub-reply-content{ width: 547px; margin-bottom: 10px;}
+.question-reply .sub-reply-content{ width: 605px;}
 .reply-content{width: 650px;
 height: 70px;
 resize: none;
@@ -277,17 +277,22 @@ padding: 0 0 0 9px;
 .page{ margin: 30px 0; height: 30px; width: 650px; text-align: center;}
 .page a, .page span{ padding: 0 5px; margin: 0 10px;}
 .clear{ clear: both;}
-input, textarea{ margin: 0; padding: 0}
+input, textarea{ margin: 0; }
 
 .reply-textarea{width: 650px;
 height: 70px;
 resize: none;
 margin-bottom: 20px;}
 
-.sub-reply-textarea{width: 559px;
+.sub-reply-textarea{width: 545px;
 margin-bottom: 10px;}
 
 .new-question{}
 #questions-box  a { color: #666; font-size: 14px;}
 .hot-q-li{ overflow: hidden;padding: 10px 0;border-bottom: 1px dashed #ddd; white-space: nowrap;}
 .reply-time{ font-size: 12px; color: #999; padding-top: 15px; margin-top: 25px;}
+
+.form-item{ display: block; width: 500px; clear: both;}
+.item-label{ float: left; line-height: 30px; margin-right: 10px; width: 70px; font-size: 12px; color: #006600;}
+.text-right{ text-align: right;}
+.item-input{line-height: 30px;}

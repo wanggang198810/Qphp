@@ -15,4 +15,3 @@ require(FRAMEWORK_PATH.'/Q.php');
 //运行系统
 Q::createApplication()->run();
 
-?>

@@ -10,7 +10,7 @@
 #============================================================
 require(dirname(__FILE__).'/Core/Application.php');
 require(dirname(__FILE__).'/Core/Controller.php');
-require(dirname(__FILE__).'./QBase.php');
+require(dirname(__FILE__).'/QBase.php');
 
 class Q extends QBase{
     
