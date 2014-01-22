@@ -43,6 +43,9 @@ class GroupModel extends Model{
         if(empty($name) || intval($creator) <= 0 ){
             return false;
         }
+        if(!$this->createPermission($creator)){
+            return false;
+        }
         return $this->insert( array('name' => trim( $name ), 'info'=> trim( $info ), 'creator' => intval($creator), 'status' => $status , 'time' => $time , 'url'=> $url ,'logo' => $logo) , 1);
     }
     
@@ -88,6 +91,14 @@ class GroupModel extends Model{
         return false;
     }
     
+    public function createPermission($uid){
+        $num = $this->getGroupNumByCreator($uid);
+        if($num < Q::getConfig('max_create_group')){
+            return true;
+        }
+        return false;
+    }
+    
     
     public function getTagList($id){
         if(intval($id) <= 0){
@@ -128,6 +139,17 @@ class GroupModel extends Model{
         $sql = "select `name`, `url`, `info`, `logo`, `top`, `num`, `time` from `group` where creator = {$uid} and status > 0";
         $result = $this->fetchArray($sql);
         return $result;
+    }
+    
+    public function getGroupNumByCreator($uid){
+        $uid = intval($uid);
+        if($uid <= 0){ return false;}
+        $sql = "select count(*) as `total` from `group` where `creator` = {$uid} and `status` > 0";
+        $result = $this->fetch($sql);
+        if($result){
+            return $result['total'];
+        }
+        return 0;
     }
     
     

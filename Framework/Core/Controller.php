@@ -118,7 +118,8 @@ class Controller {
     }
     
     public function show_success( $type='', $url=''){
-        
+        $this->render('Common.Success');
+        sleep(3);
         if(!empty($url)){
             Response::redirect($url);
         }

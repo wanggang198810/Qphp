@@ -98,12 +98,16 @@ class Model {
         
     }
     
-    public function fetch(){
-        $this->_sql = "select * from ".$this->db->table( $this->_table )." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder() . " LIMIT 1";
+    public function fetch($sql=''){
+        if(!empty($sql)){
+            $this->_sql = $sql;
+        }else{
+            $this->_sql = "select * from ".$this->db->table( $this->_table )." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder();
+        }
         return $this->db->fetch( $this->_sql );
     }
-    public function find(){
-        return $this->fetch();
+    public function find($sql=''){
+        return $this->fetch($sql);
     }
     
     public function fetchArray($sql = ''){

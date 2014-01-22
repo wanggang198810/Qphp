@@ -6,6 +6,16 @@
  */
 
 return array(
+    
+    /**
+     * 业务级别配置
+     */
+    'max_create_group' => 2,
+    
+    
+    
+    
+    //系统级别配置
     'dbconfig' => array(
         'dbtype'=>'mysql',
         'host'=>'localhost',

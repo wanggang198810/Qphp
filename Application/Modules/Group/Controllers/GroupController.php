@@ -159,6 +159,12 @@ class GroupController extends BaseController{
 
     public function apply(){
         $this->checkLogin(1);
+        $permission = $this->groupModel->createPermission($this->uid);
+        if(!$permission){
+            $this->show_success();
+            echo '没有权限';exit;
+        }
+        
         if(Request::isPostSubmit('group_name') && Request::isPostSubmit('group_info') && Request::isPostSubmit('group_url')){
             $status = Request::getIntPost('group_type');
             $name = filter( Request::getPost('group_name') );
@@ -185,8 +191,8 @@ class GroupController extends BaseController{
             $groups[] = $v['id'];
         }
         
-        $r = $this->groupModel->getGroupsByCreator($this->uid);
-        hprint($r,1);
+        //$r = $this->groupModel->getGroupsByCreator($this->uid);
+        //hprint($r,1);
         $this->loadModel('Topic.Topic');
         $topicModel = new TopicModel();
         $result = $topicModel->getTopicByGids( $groups, $page, 10);
