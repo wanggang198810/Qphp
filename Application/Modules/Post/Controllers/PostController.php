@@ -21,9 +21,10 @@ class PostController extends BaseTopicController{
     
     public function index($id='', $type=''){
         if( !empty($id)){
-            Q::import('Helpers.Topic', 'Topic/');
+            
             $is_ok = $this->view($id, $type);
             if($is_ok){
+                Q::import('Helpers.Topic', 'Topic/');
                 $this->render();
             }
             return ;

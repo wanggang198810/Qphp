@@ -23,8 +23,10 @@ class QuestionController  extends BaseTopicController{
             return;
         }
         
-        $this->view($id,$type);
-        $this->render();
+        $is_ok = $this->view($id,$type);
+        if($is_ok){
+            $this->render();
+        }
     }
     
     

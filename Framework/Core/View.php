@@ -30,6 +30,7 @@ class View {
         if( false !== strpos($file, '.')){
             list($controller, $file) = explode('.', $file);
             $this->controller = $controller;
+            $file = str_replace('.', '/', $file);
         }
         $this->viewBasePath = $this->getPath($this->controller);
         return $this->viewBasePath . '/' . ucfirst( $file ) . $this->ext;

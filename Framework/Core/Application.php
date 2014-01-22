@@ -81,7 +81,11 @@ class Application {
         }
         //载入当前控制器文件
         //load current controller file
-        if( !file_exists( APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller .'/Controllers/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php' )){
+        if( file_exists( APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller .'/' . $this->_action . '/Controllers/' . $this->_action . self::CONTROLLER_SUFFIX . '.php' )){
+            $controllerfile =  APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller  .'/'. $this->_action . '/Controllers/' . $this->_action . self::CONTROLLER_SUFFIX . '.php';
+            $this->_controller = $this->_action;
+            $this->_action = array_shift($router['param']);
+        }elseif( file_exists( APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller .'/Controllers/' . $this->_controller .'/'.$this->_controller . self::CONTROLLER_SUFFIX . '.php' )){
             $controllerfile =  APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller . '/Controllers/' . $this->_controller.'/'.$this->_controller . self::CONTROLLER_SUFFIX . '.php';
         }else{
             $controllerfile =  APP_PATH . Q::checkPath( $this->_config['hmvc_dir'] ) . $this->_controller . '/Controllers/' . $this->_controller . self::CONTROLLER_SUFFIX . '.php';

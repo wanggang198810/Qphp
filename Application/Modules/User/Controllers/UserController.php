@@ -17,7 +17,6 @@ class UserController extends BaseController{
     }
     
     
-    
     public function index(){
         $this->checkLogin(1);
         $this->response->redirect('/u');
@@ -87,7 +86,7 @@ class UserController extends BaseController{
      */
     public function logout(){
         Q::import('Helpers.user', 'User');
-        User::setCookie();
+        User::clearCookie();
         $this->response->redirect('/');
     }
 

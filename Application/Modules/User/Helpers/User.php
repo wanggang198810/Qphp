@@ -9,15 +9,17 @@ class User {
     
     
     
-    public static function setCookie($value,$time=31536000){
+    public static function setCookie($value,$time=31536000,$admin=0){
         Q::import('Cookie');
         $value = strtoupper( md5($value) ) . '.' . base64_encode($value) . '.UID_'.  mt_rand(10000, 99999);
-        Cookie::set('UID', $value, $time);
+        $key = !$admin ? 'UID' : 'ADMINUID';
+        Cookie::set($key, $value, $time);
     }
     
-    public static function clearCookie(){
+    public static function clearCookie($admin=0){
         Q::import('Cookie');
-        Cookie::set('UID', '', -3600);
+        $key = !$admin ? 'UID' : 'ADMINUID';
+        Cookie::set($key, '', -3600);
     }
     
     

@@ -41,13 +41,12 @@ class Router {
             $router['controller'] = ( isset($param['0']) && $param['0'] && $url['0']!='?' ) ? $param['0'] : Q_Request::getInstance()->getGet( Q::getConfig('controller_url_var'), Q::getConfig('default_controller') ) ;
             $router['action'] = ( isset($param['1']) && $param['1'] && $url['0']!='?' ) ? $param['1'] : Q_Request::getInstance()->getGet( Q::getConfig('action_url_var'), Q::getConfig('default_action') );
         }
-        
         //$params = array_diff($param, $router);
         if(isset($param['0'])){ unset($param[0]);}
         if(isset($param['1'])){ unset($param[1]);}
         $router['controller'] = ucfirst( $router['controller'] );
         $router['action'] = ucfirst( $router['action'] );
-        $router['param'] = $param;
+        $router['param'] = array_values($param);
         return $router;
     }
 
