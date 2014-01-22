@@ -101,7 +101,7 @@ class QBase {
      */
     public static function getConfig($key=''){
         if(isset(self::$config_data)){
-            if(isset(self::$config_data[$key])){
+            if(!empty($key) && isset(self::$config_data[$key])){
                 return self::$config_data[$key];
             }
             return self::$config_data;

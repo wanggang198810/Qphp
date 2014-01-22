@@ -22,19 +22,15 @@ class PostController extends BaseTopicController{
     public function index($id='', $type=''){
         if( !empty($id)){
             Q::import('Helpers.Topic', 'Topic/');
-            $this->view($id, $type);
-            $this->render('Post');
+            $is_ok = $this->view($id, $type);
+            if($is_ok){
+                $this->render();
+            }
             return ;
         }else{
             Response::redirect('/group');
         }
         
-        $this->checkLogin(1);
-        $this->loadModel('Category');
-        $cateDao = new CategoryModel();
-        $this->data['categories'] = $cateDao->getCategoryByUid($this->uid);
-        
-        $this->render('Post');
     }
     
     

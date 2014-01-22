@@ -27,6 +27,7 @@
             <div class="new-question">
             <ul class="forum-list">
             <?php
+            if(!empty($new_topics)){
                 foreach ($new_topics as $k => $v){
             ?>
                 <li class="forum-li">
@@ -37,7 +38,7 @@
                     <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
             
-            <?php }?>
+            <?php }}?>
             </ul>
             </div>
             
@@ -63,13 +64,14 @@
 
                     <ul class="">
                     <?php
+                       if(!empty($recom_topics)){
                         foreach ($recom_topics as $k => $v){
                     ?>
                         <li class="hot-q-li">
                             <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 2);?>"><?php echo $v['title'];?></a></h3>
                         </li>
 
-                    <?php }?>
+                        <?php }}?>
                     </ul>
                 </div>
             </div>
@@ -80,6 +82,7 @@
             <div class="main_title2">新增答案</div>
             <div class="recom-group-box" style=" margin-top: 10px;">
                 <?php
+                if(!empty($hot_groups)){
                     foreach($hot_groups as $k => $v){
                 ?>
                 <div class="group-item" style=" width: 270px; height: 50px; margin-bottom: 20px;">
@@ -90,25 +93,12 @@
                         <p><?php echo $v['info'];?></p>
                     </div>
                 </div>
-                <?php }?>
+                <?php }}?>
             </div>
             
             
-            <div class="main_title2">新增答案</div>
-            <div class="recom-group-box" style=" margin-top: 10px;">
-                <?php
-                    foreach($new_groups as $k => $v){
-                ?>
-                <div class="group-item" style=" width: 270px; height: 50px; margin-bottom: 20px;">
-                    <div class="left" style="width: 48px; height: 48px; background: #eee;"><img /></div>
-                    <div class="right" style=" float: right; border: 1px solid #EEE; padding: 5px; width: 200px; height: 38px;">
-                        <a href="<?php echo group_url($v['url'])?>"><?php echo $v['name'];?></a> 
-                        <span><?php echo $v['num']?>人加入</span>
-                        <p><?php echo $v['info'];?></p>
-                    </div>
-                </div>
-                <?php }?>
-            </div>
+            
+            
         </div>
         
         

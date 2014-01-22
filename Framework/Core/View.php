@@ -16,7 +16,6 @@ class View {
     
     public function __construct($controller='') {
         $this->controller = $controller;
-        $this->viewBasePath = $this->getPath($controller);
     }
 
     public static function getInstance($controller){
@@ -27,7 +26,12 @@ class View {
     }
     
     public function render($file=''){
-        if(empty($file)){ $file = $this->controller;}
+        if(empty($file)){ $file = 'Index';}
+        if( false !== strpos($file, '.')){
+            list($controller, $file) = explode('.', $file);
+            $this->controller = $controller;
+        }
+        $this->viewBasePath = $this->getPath($this->controller);
         return $this->viewBasePath . '/' . ucfirst( $file ) . $this->ext;
     }
     

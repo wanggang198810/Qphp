@@ -32,7 +32,7 @@ return array(
         'Request', 'Response',
     ),
     
-    'debug' => 0,
+    'debug' => 2,
     /*
     'url_mode'=>1,
     'compile_template'=>false,

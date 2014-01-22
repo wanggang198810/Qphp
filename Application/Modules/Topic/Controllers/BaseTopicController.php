@@ -80,6 +80,7 @@ class BaseTopicController extends BaseController{
         if(empty( $this->data['topic'])){
             $this->show_404(); return;
         }
+        return true;
     }
     
     //

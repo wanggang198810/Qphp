@@ -114,7 +114,7 @@ class Controller {
     }
     
     public function show_404(){
-        echo '<center><h1>404</h1></center>';
+        $this->render('Common.404');
     }
     
     public function show_success( $type='', $url=''){
