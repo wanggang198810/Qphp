@@ -103,9 +103,9 @@ class GroupController extends BaseController{
     }
 
     private function _post($gid){
-        
+        $this->checkLogin(1);
         if(Request::isPostSubmit('title') && Request::isPostSubmit('content')){
-            hprint($_POST,1);
+            return ;
         }
         
         $this->loadModel('Group.GroupTag');

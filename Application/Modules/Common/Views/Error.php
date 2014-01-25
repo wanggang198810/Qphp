@@ -6,7 +6,7 @@
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
     <meta name="Author" content="Rgss.inc">
-    <meta http-equiv="refresh" content="3; url=<?php echo $url;?>" />
+    <meta http-equiv="refresh" content="5; url=<?php echo $url;?>" />
     <?php
         load_css('bootstrap');
         load_css('style');

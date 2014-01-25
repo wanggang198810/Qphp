@@ -60,5 +60,17 @@ class QuestionController  extends BaseTopicController{
     }
     
     
+    public function post(){
+        $this->checkLogin(1);
+        if(Request::isPostSubmit('title') && Request::isPostSubmit('content')){
+            return ;
+        }
+        
+        $this->loadModel('Group.GroupTag');
+        $grouptagModel = new GroupTagModel();
+        $this->data['tags'] = $grouptagModel->getTagsByGid($gid);
+        $this->render('Post');
+    }
+    
     
 }

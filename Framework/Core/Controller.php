@@ -118,7 +118,9 @@ class Controller {
     }
     
     public function show_success( $type='', $url=''){
+        $this->data['url'] = $url;
         $this->render('Common.Success');
+        return;
         sleep(3);
         if(!empty($url)){
             Response::redirect($url);
@@ -126,6 +128,10 @@ class Controller {
     }
     
     public function show_error($type='', $url=''){
+        $this->data['url'] = $url;
+        $this->render('Common.Error');
+        return;
+        sleep(3);
         if(!empty($url)){
             Response::redirect($url);
         }

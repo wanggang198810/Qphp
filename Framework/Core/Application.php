@@ -121,9 +121,9 @@ class Application {
         $action = $this->_action;
         if( !method_exists($controller, $this->_action) ){
             $this->_action = $this->_config['default_action'];
-            $router['param'] = array($action) + $router['param'];
+            $router['param'] = array_merge( array($action), $router['param']);
         }
-        
+
         if( !method_exists($controller, $this->_action) ){
             if($this->_config['record_log']){
                 Q_Log::set( Q_Error::getError( Q_Error::$errorType['noaction'] ).': '.$this->_action );

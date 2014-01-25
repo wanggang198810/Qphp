@@ -117,7 +117,6 @@ class BaseTopicController extends BaseController{
             $this->loadModel('Topic');
             $postModel = new TopicModel();
             
-            
             $data['title'] = trim(Request::getPost('title'));
             $data['content'] = htmlspecialchars( Request::getPost('content') );
             $data['shortcontent'] = substr(htmlspecialchars( Request::getPost('content') ), 0, 256);
@@ -128,14 +127,12 @@ class BaseTopicController extends BaseController{
             $data['url'] = trim(Request::getPost('url'));
             $data['tag'] = trim(Request::getPost('tag'));
             
-            
             if( strlen($data['title']) <= 0 && strlen( trim($data['content']) ) <= 20){
                 return false;
             }
             
             $data['time'] = time();
             $data['uid'] = $this->uid;
-            
             $result = $postModel->post($data);
             if($result > 0){
                 if(!empty($data['tag'])){
@@ -143,11 +140,13 @@ class BaseTopicController extends BaseController{
                     $tagModel = new TagModel('Tag'); 
                     $result = $tagModel->addTag($result, $data['tag']);
                 }
-                $this->response->redirect(user_space($this->user['blogname']));
-                return;
+                //$this->response->redirect(user_space($this->user['blogname']));
+                return true;
+            }else{
+                return false;
             }
         }
-        $this->response->redirect('/post');
+        $this->response->redirect('/');
     }
     
     public function postAnswer($id){
