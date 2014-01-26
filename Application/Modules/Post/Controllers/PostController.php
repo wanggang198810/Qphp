@@ -49,9 +49,19 @@ class PostController extends BaseTopicController{
     
     
     public function save(){
-        $result = parent::save();
-        return;
         $this->checkLogin(1);
+        $result = parent::save();
+        if($result){
+            $url = Request::refererUrl();
+            $url = parse_url( $url );
+            $url = explode('/', trim($url['path'], '/'));
+            $group_url = $url[1];
+            $this->show_success('', group_url($group_url));
+        }else{
+            $this->show_error('', '/');
+        }
+        return;
+        
         
         if(Request::isPostSubmit()){
             $this->loadModel('Topic');

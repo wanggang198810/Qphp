@@ -92,7 +92,7 @@ class TopicModel extends Model{
     
     
     public function getTopicByGid($gid , $page = 1, $pageSize = 20 , $total = 0){
-        return $this->where( array('gid'=>$gid) )->page($page, $pageSize, $total);
+        return $this->where( array('gid'=>$gid) )->order(" ORDER BY id DESC")->page($page, $pageSize, $total);
     }
     
     public function getTopicByGids($gid , $page = 1, $pageSize = 20 , $total = 0){
