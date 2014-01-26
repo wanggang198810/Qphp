@@ -138,6 +138,10 @@ class Model {
         return $this->db->fetchArray($sql);
     }
     
+    public function increment($field, $where){
+        return $this->db->increment($field, $where, $this->_table);
+    }
+    
     public function getSql(){
         return $this->_sql;
     }

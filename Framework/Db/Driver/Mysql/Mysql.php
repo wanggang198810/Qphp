@@ -191,7 +191,11 @@ class Mysql extends Db_Abstract{
     
     
        
-    
+    public function increment($field, $where, $table){
+        $where = $this->_parseWhere($where);
+        $sql = "update {$table} set {$field} = {$field} + 1 where {$where}";
+        return $this->query($sql);
+    }
     
 }
 

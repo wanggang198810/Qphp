@@ -195,7 +195,7 @@ textarea{ resize: none;}
     overflow: hidden; 
 }
 .question-title{ border: 0;}
-.main_title2{ font-size: 15px; border: 0;} 
+.main_title2{ font-size: 15px; border: 0; padding-top: 10px;} 
 
 .group-info-box{ border: 1px solid #eee; padding: 15px; margin-top: 30px; background: #F5F5F5}
 .group-title{ border-bottom: 1px dashed #ccc; padding-top: 10px;}
@@ -298,3 +298,6 @@ margin-bottom: 10px;}
 .item-label{ float: left; line-height: 30px; margin-right: 10px; width: 70px; font-size: 12px; color: #006600;}
 .text-right{ text-align: right;}
 .item-input{line-height: 30px;}
+
+
+.ask-btn{padding: 9px 20px; background: #08c; display: block; color: #FFF; text-align: center;}

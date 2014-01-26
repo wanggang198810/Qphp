@@ -61,7 +61,7 @@
     load_view('header');
 ?>
 <div style=" width: 980px; margin: 70px auto 0;">
-    <form action="/post/save/" method="post">
+    <form action="/question/post/" method="post">
     
         <div style="float:left; width: 740px; background: #fff; padding: 20px;" class="radius-5">
             

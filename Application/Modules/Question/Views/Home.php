@@ -79,6 +79,9 @@
         
         
         <div class="main-right">
+            <div class="main_title2" style="margin-top: 50px;">
+                <a href="/question/post" class="ask-btn">我要提问</a>
+            </div>
             <div class="main_title2">新增答案</div>
             <div class="recom-group-box" style=" margin-top: 10px;">
                 <?php

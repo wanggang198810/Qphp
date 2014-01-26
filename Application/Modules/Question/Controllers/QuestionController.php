@@ -63,6 +63,12 @@ class QuestionController  extends BaseTopicController{
     public function post(){
         $this->checkLogin(1);
         if(Request::isPostSubmit('title') && Request::isPostSubmit('content')){
+            $result = $this->save();
+            if($result){
+                $this->show_success('', '/question');
+            }else{
+                $this->show_error('','/');
+            }
             return ;
         }
         
@@ -72,5 +78,34 @@ class QuestionController  extends BaseTopicController{
         $this->render('Post');
     }
     
+    
+    public function answerAgree(){
+        $this->checkLogin(1);
+        $data = array('success'=>0, 'msg' => 'failure');
+        if(Request::isPostSubmit('aid')){
+            $result = $this->postReplyAgree();
+            if($result){
+                $data = array('success'=>1, 'msg' => '支持成功');
+            }
+            echo json_encode($data) ;
+            return;
+        }
+        echo json_encode($data) ;
+    }
+    
+    
+    public function answerDisagree(){
+        $this->checkLogin(1);
+        $data = array('success'=>0, 'msg' => 'failure');
+        if(Request::isPostSubmit('aid')){
+            $result = $this->postReplyAgree();
+            if($result){
+                $data = array('success'=>1, 'msg' => '支持成功');
+            }
+            echo json_encode($data) ;
+            return;
+        }
+        echo json_encode($data) ;
+    }
     
 }

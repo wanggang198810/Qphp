@@ -126,7 +126,10 @@ class BaseTopicController extends BaseController{
             $data['type'] = $this->topictype;//Request::getIntPost('type',1);
             $data['url'] = trim(Request::getPost('url'));
             $data['tag'] = trim(Request::getPost('tag'));
-            
+           
+            if(!empty($data['url']) && strlen($data['url']) < 5){
+                return false;
+            }
             if( strlen($data['title']) <= 0 && strlen( trim($data['content']) ) <= 20){
                 return false;
             }
@@ -171,7 +174,6 @@ class BaseTopicController extends BaseController{
             $data['time'] = time();
             $this->loadModel('Topic.Reply');
             $replyModel = new ReplyModel();
-            
             $result = $replyModel->addReply($data);
             if($result){
                 return true;
@@ -181,6 +183,20 @@ class BaseTopicController extends BaseController{
         
     }
     
+    
+    
+    public function postReplyAgree($agree){
+        $rid = Request::getIntPost('rid');
+        $agree = intval($agree) > 0 ? 1 : 0;
+        if($rid <= 0){ return false;}
+        $this->loadModel('Topic.Reply');
+        $replyModel = new ReplyModel();
+        $result = $replyModel->agreeReply($data);
+        if($result){
+            return true;
+        }
+        return false;
+    }
     
 }
 

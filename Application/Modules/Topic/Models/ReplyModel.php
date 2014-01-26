@@ -43,6 +43,18 @@ class ReplyModel extends Model{
     public function getReplysByType($type, $page=1, $pageSize=20, $total=0){
         return $this->page($page, $pageSize, $total);
     }
+    
+    public function agreeReply($replyid){
+        $replyid = intval($replyid);
+        if( $replyid <= 0){ return false;}
+        return $this->increment('agree', array('id'=> $replyid));
+    }
+    
+    public function disagreeReply($replyid){
+        $replyid = intval($replyid);
+        if( $replyid <= 0){ return false;}
+        return $this->increment('disagree', array('id'=> $replyid));
+    }
 }
 
 ?>
