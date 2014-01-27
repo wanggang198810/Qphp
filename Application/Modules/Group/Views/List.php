@@ -43,7 +43,9 @@
             
             <div class="group-menu mt30">
                 <a class="active" href="">全部帖子</a>  <!--<a href="">精华</a>-->
+                <?php if($is_in_group){?>
                 <a class="group-post-btn" href="<?php echo group_url($group['url'], 'post');?>">发帖</a>
+                <?php }?>
             </div>
             
             <ul class="forum-list">

@@ -49,6 +49,20 @@ class TopicController extends BaseTopicController {
         
     }
     
+    public function post(){
+        $this->checkLogin(1);
+        
+        if(Request::isPostSubmit()){
+            $result = parent::save();
+            if($result){
+                $this->show_success('分享文字成功', user_space($this->user['blogname'], 'topic'));
+            }else{
+                $this->show_error('系统繁忙', '/');
+            }
+            return;
+        }
+        $this->render('/Post');
+    }
     
 }
 

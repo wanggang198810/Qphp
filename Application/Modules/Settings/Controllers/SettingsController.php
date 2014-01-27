@@ -29,8 +29,10 @@ class SettingsController extends BaseController{
             $result = $userModel->editProfile($this->uid, $data);
             if($result){
                 $this->show_success('', '/settings/profile/');
+                return;
             }else{
                 $this->show_error('', '/settings/profile/');
+                return;
             }
         }
         $this->render('Profile');

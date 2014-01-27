@@ -82,7 +82,7 @@ class QuestionController  extends BaseTopicController{
     public function answerAgree(){
         $this->checkLogin(1);
         $data = array('success'=>0, 'msg' => 'failure');
-        if(Request::isPostSubmit('aid')){
+        if(Request::isPostSubmit('replyid')){
             $result = $this->postReplyAgree();
             if($result){
                 $data = array('success'=>1, 'msg' => '支持成功');
@@ -91,6 +91,7 @@ class QuestionController  extends BaseTopicController{
             return;
         }
         echo json_encode($data) ;
+        return;
     }
     
     

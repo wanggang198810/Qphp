@@ -50,6 +50,14 @@ class PostController extends BaseTopicController{
     
     public function save(){
         $this->checkLogin(1);
+        $gid = Request::getIntPost('groupid');
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $is_in_group = $groupuserModel->isInGroup($gid, $this->uid);
+        if(!$is_in_group){
+            $this->show_error('不能在未加入的群组发帖', '/group/');
+            return;
+        }
         $result = parent::save();
         if($result){
             $url = Request::refererUrl();

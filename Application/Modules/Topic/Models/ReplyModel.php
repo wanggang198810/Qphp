@@ -6,6 +6,9 @@
  */
 class ReplyModel extends Model{
     
+    protected $_hasReplyed = false;
+
+
     /**
      * 添加回复
      */
@@ -44,17 +47,65 @@ class ReplyModel extends Model{
         return $this->page($page, $pageSize, $total);
     }
     
-    public function agreeReply($replyid){
+    public function agreeReply($replyid, $uid, $topicid){
         $replyid = intval($replyid);
         if( $replyid <= 0){ return false;}
-        return $this->increment('agree', array('id'=> $replyid));
+        $result = $this->hasReplyed($replyid, $uid);
+        if($result){
+            return false;
+        }
+        $this->setTable('reply');
+        $result = $this->increment('agree', array('id'=> $replyid));
+        if($result){
+            return $this->addAgreeRecord($replyid, $uid, 1, $topicid);
+        }
+        return false;
     }
     
-    public function disagreeReply($replyid){
+    public function disagreeReply($replyid, $uid, $topicid){
         $replyid = intval($replyid);
         if( $replyid <= 0){ return false;}
-        return $this->increment('disagree', array('id'=> $replyid));
+        $result = $this->hasReplyed($replyid, $uid);
+        if($result){
+            return false;
+        }
+        $this->setTable('reply');
+        $result = $this->increment('disagree', array('id'=> $replyid));
+        if($result){
+            return $this->addAgreeRecord($replyid, $uid, 0, $topicid);
+        }
+        return false;
+    }
+    
+    public function dealReply($replyid, $uid, $agree, $topicid=0){
+        if($agree > 0){
+            return $this->agreeReply($replyid, $uid, $topicid);
+        }else{
+            return $this->disagreeReply($replyid, $uid, $topicid);
+        }
+    }
+    
+    
+    public function addAgreeRecord($replyid, $uid, $agree, $topicid=0){
+        $this->setTable('replyagree');
+        return $this->insert( array('replyid'=> $replyid, 'uid' => $uid, 'agree'=> $agree, 'topicid'=>$topicid) );
+    }
+    
+    public function hasReplyed($replyid, $uid){
+        if($this->_hasReplyed === -1){
+            return false;
+        }elseif($this->_hasReplyed === 1){
+            return true;
+        }
+        $this->setTable('replyagree');
+        $result = $this->where( array('replyid'=> $replyid, 'uid' => $uid))->fetch();
+        if(empty($result)){
+            $this->_hasReplyed = -1;
+            return false;
+        }
+        $this->_hasReplyed = 1;
+        return true;
     }
 }
 
-?>
+

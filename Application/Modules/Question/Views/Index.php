@@ -55,17 +55,17 @@
                     <?php
                         foreach($replys as $k => $reply){
                     ?>
-                        <div class="answer-item" replyid="<?php echo $reply['id'];?>" topicid="<?php echo $reply['topicid'];?>">
+                        <div class="answer-item" id="reply-<?php echo $reply['id'];?>" replyid="<?php echo $reply['id'];?>" topicid="<?php echo $reply['topicid'];?>">
                             <div class="" style="  position: absolute; margin-left: -50px;">
-                                <div class="up radius-5 active" style="">
+                                <div class="up radius-5 active reply-up" replyid="<?php echo $reply['id'];?>" topicid="<?php echo $reply['topicid'];?>">
                                     <i class="icon-chevron-up"></i><br />
-                                    <span><?php echo $reply['agree'];?></span>
+                                    <span id="up-<?php echo $reply['id'];?>"><?php echo $reply['agree'];?></span>
                                 </div>
-                                <div class="down radius-5" style="">
+                                <div class="down radius-5 reply-down" replyid="<?php echo $reply['id'];?>" topicid="<?php echo $reply['topicid'];?>">
                                     <i class="icon-chevron-down"></i><br />
-                                    <?php if($reply['disagree'] > 0){?>
-                                    <span><?php echo $reply['agree'];?></span>
-                                    <?php }?>
+                                    
+                                    <span style="<?php if($reply['disagree'] <= 0){ echo "display:none";}?>"  id="down-<?php echo $reply['id'];?>"><?php echo $reply['disagree'];?></span>
+                                    
                                 </div>
                             </div>
                             <div class="answer-head">
@@ -75,7 +75,7 @@
                                 <?php echo ', ',$reply['reply_user']['honorname'];?>
                             </div>
                             
-                            <div class="answer-agree">ddddddddddd阿飞阿斯蒂芬ddddd</div>
+                            <div class="answer-agree"></div>
                             <div class="answer-con"><?php echo filter_content( $reply['content'] );?></div>
                             <div class="answer-bottom">
                                 <a href="javascript:;"><?php echo dgmdate($reply['time'])?></a> 
@@ -95,7 +95,7 @@
                     ?>
                     <!-- 回复列表 -->
                 </div>
-                
+                <div class="page"><?php echo $page_html;?></div>
                 
                 <form method="post" action="<?php echo topic_url($topic['id'], $topic['url'], 2) . '/answer';?>">
                     <div style="color: #005580; font-weight: 600; font-size: 14px; padding: 10px 0;">添加回答</div>
@@ -114,6 +114,46 @@
         
     </div>
     
-<?php load_view('Footer');?>  
+<?php load_view('Footer');?>
+<script>
+
+$(function(){
+   $('.reply-up').live('click', function(){
+       var replyid = $(this).attr("replyid");
+       var topicid = $(this).attr("topicid");
+       var num = $(this).find("span").text();
+       $.post('/question/answerAgree/', {"replyid":replyid, "topicid" : topicid, "agree":1}, function(r){
+           r = eval( "(" + r + ")");
+           num = parseInt(num) + 1;
+           if(r.success == 1){
+               //$(this).find("span").html( num );
+               $("#up-" + replyid).text(num);;
+               return ;
+           }else{
+               //alert(r.msg);
+           }
+       });
+   }); 
+   
+   
+   $('.reply-down').live('click', function(){
+       var replyid = $(this).attr("replyid");
+       var topicid = $(this).attr("topicid");
+       var num = $(this).find("span").text();
+       $.post('/question/answerAgree/', {"replyid":replyid, "topicid" : topicid, "agree":0 }, function(r){
+           r = eval( "(" + r + ")");
+           num = parseInt(num) + 1;
+           if(r.success == 1){
+               $("#down-" + replyid).show();
+               $("#down-" + replyid).text(num);;
+               return ;
+           }else{
+               //alert(r.msg);
+           }
+       });
+   }); 
+});
+
+</script>
 </body>
 </html>

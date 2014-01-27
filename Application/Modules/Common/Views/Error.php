@@ -22,7 +22,7 @@
         
         <div style="position: relative; padding: 50px; width: 500px; height: 200px; left: 50%; top: 50%; margin-left: -300px; margin-top: 100px; background: #ddd; border: 1px solid #ccc; border-radius: 5px; ">
             <div class="title" style="text-align: center; color: red;">
-                <h1>Error, 页面跳转中<span id="timer">5</span>...</h1>
+                <h1><?php echo $msg;?><span id="timer">5</span>...</h1>
             </div>
             
             <div style=" padding-top: 30px;  font-size: 17px; color: #333; text-align: center;">

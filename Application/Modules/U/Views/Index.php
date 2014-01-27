@@ -77,9 +77,9 @@
             
             <div style=" padding-top: 30px;">
 
-                <div style=" color: #85C155; font-size: 15px; padding: 5px; background: #DDD;" >
+                <div style=" color: #85C155; font-size: 15px; padding: 5px; background: #F5FCEF;" >
                     <span style="display:inline-block; cursor: pointer;">我的文字</span> 
-                    <span class="label label-warning right" style=""><a href="/post">分享文字</a></span>
+                    <span class="label label-warning right" style=""><a href="/topic/post/">分享文字</a></span>
                 </div>
                 <ul>
                 <?php
@@ -101,9 +101,9 @@
                 </ul>
                 
                 
-                <div style=" color: #85C155; font-size: 15px; padding: 5px; margin-top: 10px; border-bottom: 1px solid #ddd; background: #DDD;">
+                <div style=" color: #85C155; font-size: 15px; padding: 5px; margin-top: 10px; border-bottom: 1px solid #ddd; background: #F5FCEF;">
                     <span style="display:inline-block; cursor: pointer;">我的问答</span> 
-                    <span class="label right" style=""><a style="color: #FFF" href="/post">分享文字</a></span>
+                    <span class="label right" style=""><a style="color: #FFF" href="/question/post/">提问</a></span>
                 </div>
                 <ul>
                 <?php

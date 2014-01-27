@@ -47,6 +47,10 @@ class Model {
         return $this->db->table($name);
     }
     
+    public function setTable($name){
+        return $this->_table = $name;
+    }
+    
     /**
      * 使用正则验证数据
      * @access public

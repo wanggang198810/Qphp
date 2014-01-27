@@ -185,13 +185,17 @@ class BaseTopicController extends BaseController{
     
     
     
-    public function postReplyAgree($agree){
-        $rid = Request::getIntPost('rid');
+    public function postReplyAgree(){
+        $this->checkLogin(1);
+        $rid = Request::getIntPost('replyid');
+        $agree = Request::getIntPost('agree');
+        $topicid = Request::getIntPost('topicid');
         $agree = intval($agree) > 0 ? 1 : 0;
+        
         if($rid <= 0){ return false;}
         $this->loadModel('Topic.Reply');
         $replyModel = new ReplyModel();
-        $result = $replyModel->agreeReply($data);
+        $result = $replyModel->dealReply($rid, $this->uid, $agree, $topicid);
         if($result){
             return true;
         }
