@@ -78,11 +78,13 @@ class GroupController extends BaseController{
         $this->data['recom_topics'] = $topicModel->getRecomTopics(0, 3, 8);
         foreach($this->data['recom_topics'] as $k => $v){
             $this->data['recom_topics'][$k]['topic_user'] = $userModel->getUser($v['uid']);
+            $this->data['recom_topics'][$k]['group'] = $this->groupModel->getGroup($v['gid']);
         }
         
         $this->data['hot_topics'] = $topicModel->getTopics(0, 3, 15);
         foreach($this->data['hot_topics'] as $k => $v){
             $this->data['hot_topics'][$k]['topic_user'] = $userModel->getUser($v['uid']);
+            $this->data['hot_topics'][$k]['group'] = $this->groupModel->getGroup($v['gid']);
         }
         
         $this->render('Home');

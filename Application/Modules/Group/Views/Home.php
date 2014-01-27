@@ -31,7 +31,8 @@
                 <li class="forum-li">
                     <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
                     <div class="forum-author">
-                        <a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>
+                        <a href="<?php echo group_url( $v['group']['url']);?>"><?php echo $v['group']['name'];?></a>
+                        <!--<a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>-->
                     </div>
                     <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
@@ -49,7 +50,8 @@
                 <li class="forum-li">
                     <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
                     <div class="forum-author">
-                        <a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>
+                        <a href="<?php echo group_url( $v['group']['url']);?>"><?php echo $v['group']['name'];?></a>
+                        <!--<a href="<?php echo user_space( $v['topic_user']['blogname']);?>"><?php echo $v['topic_user']['username'];?></a>-->
                     </div>
                     <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>

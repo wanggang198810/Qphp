@@ -15,8 +15,8 @@
                 </ul>
                 <div class="pull-right">
                     <ul class="nav">
-                        <li><a href="/message">消息</a></li>
-                        <li><a href="/u">我的帐号</a></li>
+                        <li><a href="/message/">消息</a></li>
+                        <li><a href="/u/">我的帐号</a></li>
                         <li><a href="/user/logout">退出</a></li>
                       </ul>
                 </div>
