@@ -6,17 +6,59 @@
  */
 class MessageModel extends Model{
 
-    public function getMessageList(){
-        
+    
+    public function getMessage($id, $uid){
+        $id = intval($id);
+        $uid = intval($uid);
+        if($id <= 0 || $uid <= 0){ return false;}
+        $sql = "SELECT * FROM ".$this->table('message') . " WHERE `id` = {$id} and ( touid = {$uid} or fromuid = {$uid})";
+        return $this->fetch($sql);
+        //return $this->where( array( 'id'=>$id, 'touid'=>$uid) )->fetch();
     }
     
-    public function getSystemMessageList(){
-        
+    public function getMessageRecord($id){
+        $id = intval($id);
+        if($id <= 0){ return false;}
+        return $this->where( array( 'msgid'=>$id ) )->fetch();
     }
     
+    public function getMessageList($uid, $system=0, $status=1, $page=1, $pageSize=20, $total=0){
+        $uid = intval($uid);
+        if($uid <= 0){ return false;}
+        $where = array('touid'=>$uid, 'status'=>$status, 'system'=>$system);
+        return $this->where($where)->order(" ORDER BY id DESC")->page($page, $pageSize, $total);
+    }
     
-    public function sendMsg($to_uid, $from_uid, $content, $temp_id=0){
-        
+    public function getMessageCount($uid){
+        $uid = intval($uid);
+        if($uid <= 0){ return false;}
+        $sql = "SELECT count(*) as total from `message` where touid = {$uid} and status = 1";
+        $result = $this->fetch($sql);
+        if($result){
+            return $result['total'];
+        }
+        return false;
+    }
+
+    public function updateMessageStatus($id, $uid) {
+        $id = intval($id);
+        $uid = intval($uid);
+        if($id <= 0 || $uid <= 0){ return false;}
+        return $this->where( array( 'id'=>$id, 'touid'=>$uid) )->update( array('status' => 0));
+    }
+
+    
+    public function sendMsg($to_uid, $from_uid, $content, $msgid=0, $temp_id=0){
+        if(strlen($content) < 5){return false;}
+        $data = array(
+            'touid' => $to_uid,
+            'fromuid' => $from_uid,
+            'content' => $content,
+            'msgid' => $msgid,
+            'tempid' => $temp_id,
+            'time' => time(),
+        );
+        return $this->insert($data);
     }
     
     public function addMsg(){

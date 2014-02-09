@@ -18,6 +18,7 @@ class QuestionController  extends BaseTopicController{
     }
     
     public function index($id = '', $type = ''){
+        
         if(empty($id)){
             $this->_home();
             return;

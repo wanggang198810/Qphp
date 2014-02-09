@@ -14,7 +14,10 @@ class BaseController extends Controller{
         Q::import('Helpers.User', 'User/');
         $this->uid = User::getUserId();
         if( $this->uid > 0 ){
-            $this->user = User::getUser( $this->uid );
+            $GLOBALS['userinfo'] = $this->user = User::getUser( $this->uid );
+            $this->loadModel('Message.Message');
+            $messageModel = new MessageModel('message');
+            $GLOBALS['message_count'] = $messageModel->getMessageCount($this->uid);
         }
     }
     

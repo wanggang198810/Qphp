@@ -179,6 +179,15 @@ function qtag_url($tagname){
     return '/question/tag/'.$tagname;
 }
 
+function message_url($id, $msgid){
+    $msgid = intval($msgid);
+    if($msgid == 0){
+        return '/message/'.intval($id);
+    }else{
+        return '/message/'.$msgid . '#message-'.intval($id);
+    }
+}
+
 function filter_content($str){
     return htmlspecialchars_decode($str);
 }

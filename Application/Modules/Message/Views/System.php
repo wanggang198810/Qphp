@@ -50,35 +50,19 @@
         <?php load_view('Message.LeftSide');?>
         
         <div class="" style="width: 720px; float: right; margin-top: 0px;">
-            <div class="main_title">我的站内信</div>
-            <div class="mt20">
+            <div class="main_title">系统消息</div>
                 <?php
                     if(!empty($messages)){
                     foreach ($messages as $k => $message){
                 ?>
-                    <div style="color: #666; padding: 10px 0 15px; border-bottom: 1px dashed #eee; clear: both; min-height: 60px;">
-                        <div class="left">
-                            <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
-                                <img src="<?php echo avatar($message['fromuid']);?>"></a>
-                        </div>
-                        <div class="right" style="width: 655px;">
-                            <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
-                                <?php echo $message['fromuser']['username']?></a>：
-                            <?php echo mb_substr($message['content'], 0, 50)?>
-                            
-                            <div class="msg-bottom" style=" padding-top: 10px;">
-                                <div class="msg-time" style=" float: left; width: 100px; color: #999; font-size: 12px;"><?php echo dgmdate($message['time']);?></div>
-                                <div style="float: right;"><a href="<?php echo message_url($message['id'], $message['msgid'])?>">查看全部</a>  <a href="">删除</a></div>
-                            </div>
-                        </div>
-                    </div>
+                <div><?php echo mb_substr($message['content'], 0, 50)?></div>
                 <?php
                     }
                     }
                 ?>
-            </div>
+            
         </div>
-        
+                        
     </div>
     
     

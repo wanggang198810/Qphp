@@ -1,3 +1,7 @@
+<?php
+global $message_count;
+
+?>
 <div class="navbar">
     <div class="navbar-inverse navbar-fixed-top">
         <div class="navbar-inner ">
@@ -15,7 +19,10 @@
                 </ul>
                 <div class="pull-right">
                     <ul class="nav">
-                        <li><a href="/message/">消息</a></li>
+                        <li><a href="/message/">消息
+                            <?php if($message_count > 0){?>
+                                (<span><?php echo $message_count;?></span>)
+                            <?php }?></a></li>
                         <li><a href="/u/">我的帐号</a></li>
                         <li><a href="/user/logout">退出</a></li>
                       </ul>

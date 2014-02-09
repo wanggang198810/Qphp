@@ -186,7 +186,7 @@ textarea{ resize: none;}
 }
 
 .main-right{ width: 270px; float: right}
-.main_title, .main_title2, .group-title, .question-title{ 
+.main_title, .main_title2, .group-title, .question-title, .msg-title{ 
     font-size: 20px; 
     font-family: 微软雅黑; 
     color: #4ba733; 
@@ -196,6 +196,8 @@ textarea{ resize: none;}
 }
 .question-title{ border: 0;}
 .main_title2{ font-size: 15px; border: 0; padding-top: 10px;} 
+.msg-title{font-size: 17px; border: 0; padding-top: 10px;}
+.msg-btn{ margin-top: 10px;}
 
 .group-info-box{ border: 1px solid #eee; padding: 15px; margin-top: 30px; background: #F5F5F5}
 .group-title{ border-bottom: 1px dashed #ccc; padding-top: 10px;}
@@ -301,3 +303,18 @@ margin-bottom: 10px;}
 
 
 .ask-btn{padding: 9px 20px; background: #08c; display: block; color: #FFF; text-align: center;}
+
+.sendmsgbox{
+    position: absolute; left: 0; top: 0; z-index: 9999; background: #000;
+}
+
+.opacity-50{
+    filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.5; /*Firefox私有，透明度50%*/
+    opacity:0.5;/*其他，透明度50%*/
+}
+.opacity-90{
+    filter:alpha(opacity=90); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.9; /*Firefox私有，透明度50%*/
+    opacity:0.9;/*其他，透明度50%*/
+}

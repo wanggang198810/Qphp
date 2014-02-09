@@ -6,7 +6,7 @@
  */
 class Message {
     
-    public function sendMsg($to_uid, $from_uid, $content){
+    public function getMessage($uid){
         
     }
     

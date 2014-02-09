@@ -47,6 +47,13 @@ class UserModel extends Model{
         return $this->setColumField( $colum )->where( array('uid' => $uid))->fetch();
     }
     
+    public function getUsername($uid){
+        $uid = intval($uid);
+        $sql = " SELECT `username` FROM " .$this->table('user'). " WHERE `uid` = {$uid}" ;
+        $data = $this->fetch($sql);
+        return $data['username'];
+    }
+    
     /**
      * $colum = array('uid', 'username')
      */

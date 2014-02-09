@@ -189,21 +189,24 @@ class GroupController extends BaseController{
         $this->loadModel('Group.GroupUser');
         $groupuserModel = new GroupUserModel();
         $this->data['groups'] = $groupuserModel->getGroupInfoByUid($this->uid );
-        foreach($this->data['groups'] as $k => $v){
-            $groups[] = $v['id'];
-        }
+        if(!empty($this->data['groups'])){
+            foreach($this->data['groups'] as $k => $v){
+                $groups[] = $v['id'];
+            }
         
-        //$r = $this->groupModel->getGroupsByCreator($this->uid);
-        //hprint($r,1);
-        $this->loadModel('Topic.Topic');
-        $topicModel = new TopicModel();
-        $result = $topicModel->getTopicByGids( $groups, $page, 10);
-        $this->data['topics'] = $result['list'];
-        foreach($this->data['topics'] as $k => $v){
-            $this->data['topics'][$k]['group'] = $this->groupModel->getGroup($v['gid']);
+            //$r = $this->groupModel->getGroupsByCreator($this->uid);
+            //hprint($r,1);
+            $this->loadModel('Topic.Topic');
+            $topicModel = new TopicModel();
+            $result = $topicModel->getTopicByGids( $groups, $page, 10);
+            $this->data['topics'] = $result['list'];
+            if(!empty($this->data['topics'])){
+                foreach($this->data['topics'] as $k => $v){
+                    $this->data['topics'][$k]['group'] = $this->groupModel->getGroup($v['gid']);
+                }
+            }
+            $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
         }
-        
-        $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
         $this->render('Mine');
     }
     

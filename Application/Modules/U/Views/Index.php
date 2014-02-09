@@ -9,6 +9,7 @@
     <?php
         load_css('bootstrap');
         load_css('style');
+        load_js('jquery');
         //load_js('bootstrap');
     ?>
         <style>
@@ -50,8 +51,11 @@
         <div style="position: fixed; "></div>
         <div class="uside" style="position: fixed;">
             
-            <h2 style=" font-size: 35px; padding: 20px 0 5px; font-weight: normal;"><?php echo $user['username'];?></h2>
+            <h2 id="username" uid="<?php echo $user['uid'];?>" style=" font-size: 35px; padding: 20px 0 5px; font-weight: normal;"><?php echo $user['username'];?></h2>
             <div style=" background: #FFF; width: 198px; border: 1px solid #EEE; margin-bottom: 10px; text-align: center; padding: 10px 0; border-radius: 5px;"><img src="/Public/image/default_avatar.jpg"></div>
+            <div>
+                <a href="javascript:;" onclick="openSendMsgBox()">发私信</a>
+            </div>
             
             <!--  侧边栏 -->
             <div class="item">
@@ -129,7 +133,44 @@
         
         
     </div>
+<div id="sendmsglayer" style=" display: none; z-index: 9999;">
+    <div id="sendmsgbox" class="opacity-90 sendmsgbox">&nbsp;</div>
+    <div style="position: relative; padding: 20px 50px; width: 500px; height: 250px; left: 50%; top: 50%; margin-left: -300px; margin-top: 100px; background: #FFF; border: 1px solid #ccc; z-index: 999999">
+        <div class="msg-title" id="">给<span id="touser"></span>的私信</div>
+        <div>
+            <form>
+                <textarea id="msg-content" style=" width: 485px; height: 150px;"></textarea>
+                <input type="hidden" id="touid" value="0">
+                <a href="javascript:;" onclick="closeSendMsgBox()">关闭</a>
+                <input id="send-msg" type="button" class="btn btn-success msg-btn right" value="发送" />
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function openSendMsgBox(){
+        var w = $(document).width();
+        var h = $(document).height();
+        $("#touser").text( $("#username").text() );
+        $("#touid").val( $("#username").attr("uid") );
+        $("#sendmsgbox").css({"height":h, "width":w});
+        $("#sendmsglayer").show();
+    }
     
+    function closeSendMsgBox(){
+        $("#touser").text( $("#username").text() );
+        $("#touid").val("0");
+        $("#msg-content").val("");
+        $("#sendmsglayer").hide();
+    }
     
+    $("#send-msg").click(function(){
+        var uid = $("#touid").val();
+        var content = $("#msg-content").val();
+        $.post('/message/send/',{'uid': uid, 'content':content}, function(r){
+            closeSendMsgBox();
+        });
+    });
+</script>    
 </body>
 </html>
