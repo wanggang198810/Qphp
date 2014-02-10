@@ -19,18 +19,26 @@ class MessageController extends BaseController{
             $this->_getMessage($id);
             return;
         }
-        $this->_getMessageData(0,1);
+        $type = Request::getGet('type');
+        if($type === 'all'){
+            $type = -1;
+        }else{
+            $type = intval($type);
+        }
+        
+        $this->_getMessageData(0,$type);
         //hprint($this->data,1);
         $this->render('Home');
     }
     
     
     public function system(){
-        $this->_getMessageData(1,1);
+        $this->_getMessageData(1,-1);
         $this->render('System');
     }
     
     private function _getMessageData($system, $status){
+        
         $page = Request::getIntGet('page');
         $pageSize = Request::getIntGet('pageSize', 10);
         $total = Request::getIntGet('total');
@@ -56,10 +64,15 @@ class MessageController extends BaseController{
         $result = $this->MessageModel->getMessage($id, $this->uid);
         $this->loadModel('User.User');
         $userModel = new UserModel('user');
-        if(!empty($result)){
-            $result['fromuser'] = $userModel->getUser($result['fromuid']);
+        if(empty($result)){
+            $this->show_404();
+            return;
         }
-        $record = $this->MessageModel->getMessageRecord($id);
+        
+        $this->MessageModel->updateMessageStatus($id, $this->uid);
+        $result['fromuser'] = $userModel->getUser($result['fromuid']);
+        $record = $this->MessageModel->getMessage($result['msgid'], $result['fromuid']);
+        $record['fromuser'] = $this->user;
         $this->data['message'] = $result;
         $this->data['record'] = $record;
         $this->render('ViewMessage');

@@ -51,6 +51,30 @@
         
         <div class="" style="width: 720px; float: right; margin-top: 0px;">
             <div class="msg-title2" style=" padding-top: 30px; font-size: 17px; color: #666; font-family: 微软雅黑; border-bottom: 1px solid #ddd; line-height: 2;">我和<?php echo $message['fromuser']['username'];?>的对话</div>
+            
+            <?php 
+                if(!empty($record)){
+            ?>
+            <div class="mt20 opacity-30">
+               <div class="left">
+                    <a href="<?php echo user_space( $record['fromuser']['blogname'] );?>">
+                        <img src="<?php echo avatar($record['fromuid']);?>"></a>
+                </div>
+                <div class="right" style="width: 635px; background: #eee; padding: 10px; border: 1px solid #ccc;">
+                    <a href="<?php echo user_space( $record['fromuser']['blogname'] );?>">
+                        我</a>对<a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
+                        <?php echo $message['fromuser']['username']?></a>说：
+                    <?php echo mb_substr($record['content'], 0, 50)?>
+
+                    <div class="msg-bottom" style=" padding-top: 10px; clear: both;">
+                        <div class="msg-time" style=" float: left; width: 100px; color: #999; font-size: 12px;"><?php echo dgmdate($record['time']);?></div>
+                    </div>
+                </div>
+            </div>
+            <?php }?>
+            
+            <div style=" clear: both; width: 720px; font-size: 20px; color: #999; text-align: center; padding: 20px 0">历史对话</div>
+            
             <div class="mt20">
                <div class="left">
                     <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">

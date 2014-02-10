@@ -11,9 +11,9 @@ class MessageModel extends Model{
         $id = intval($id);
         $uid = intval($uid);
         if($id <= 0 || $uid <= 0){ return false;}
-        $sql = "SELECT * FROM ".$this->table('message') . " WHERE `id` = {$id} and ( touid = {$uid} or fromuid = {$uid})";
-        return $this->fetch($sql);
-        //return $this->where( array( 'id'=>$id, 'touid'=>$uid) )->fetch();
+        //$sql = "SELECT * FROM ".$this->table('message') . " WHERE `id` = {$id} and ( touid = {$uid} or fromuid = {$uid})";
+        //return $this->fetch($sql);
+        return $this->where( array( 'id'=>$id, 'touid'=>$uid) )->fetch();
     }
     
     public function getMessageRecord($id){
@@ -25,7 +25,10 @@ class MessageModel extends Model{
     public function getMessageList($uid, $system=0, $status=1, $page=1, $pageSize=20, $total=0){
         $uid = intval($uid);
         if($uid <= 0){ return false;}
-        $where = array('touid'=>$uid, 'status'=>$status, 'system'=>$system);
+        $where = array('touid'=>$uid, 'system'=>$system);
+        if($status != -1){
+            $where['status'] = $status;
+        }
         return $this->where($where)->order(" ORDER BY id DESC")->page($page, $pageSize, $total);
     }
     

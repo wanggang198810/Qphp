@@ -180,6 +180,7 @@ function qtag_url($tagname){
 }
 
 function message_url($id, $msgid){
+    return '/message/'.intval($id);
     $msgid = intval($msgid);
     if($msgid == 0){
         return '/message/'.intval($id);

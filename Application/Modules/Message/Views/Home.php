@@ -50,7 +50,12 @@
         <?php load_view('Message.LeftSide');?>
         
         <div class="" style="width: 720px; float: right; margin-top: 0px;">
-            <div class="main_title">我的站内信</div>
+            <div class="main_title">我的站内信</div> 
+            <div style="padding-top:10px;">
+                <span class="label label-inverse"><a href="/message/?type=all">全部</a></span> 
+                <span class="label label-warning"><a href="/message/?type=1">未读</a></span> 
+                <span class="label label-inverse"><a href="/message/?type=0">已读</a></div></span> 
+            
             <div class="mt20">
                 <?php
                     if(!empty($messages)){
