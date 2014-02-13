@@ -28,15 +28,16 @@ class UserModel extends Model{
     
     
     // 注册
-    public function register($username, $password){
+    public function register($username, $password, $blogname){
         if(empty($username) || empty($password)){
             return false;
         }
         if( $this->exist($username) ){
             return array(__LINE__, '用户名已被注册');
         }
-        $result = $this->insert( array('username'=>$username, 'password' => self::encryptPassword($password), 'time'=>time() ));
-        if($result){
+        $time = time();
+        $result = $this->insert( array('username'=>$username, 'password' => self::encryptPassword($password), 'blogname' => $blogname, 'time'=>$time, 'lastlogin' => $time ));
+        if($result){ 
             return $this->lastInsertId();
         }
         return false;

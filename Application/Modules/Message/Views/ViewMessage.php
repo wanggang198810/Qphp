@@ -64,16 +64,16 @@
                     <a href="<?php echo user_space( $record['fromuser']['blogname'] );?>">
                         我</a>对<a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
                         <?php echo $message['fromuser']['username']?></a>说：
-                    <?php echo mb_substr($record['content'], 0, 50)?>
+                    <?php echo $record['content'];?>
 
                     <div class="msg-bottom" style=" padding-top: 10px; clear: both;">
                         <div class="msg-time" style=" float: left; width: 100px; color: #999; font-size: 12px;"><?php echo dgmdate($record['time']);?></div>
                     </div>
                 </div>
             </div>
-            <?php }?>
             
             <div style=" clear: both; width: 720px; font-size: 20px; color: #999; text-align: center; padding: 20px 0">历史对话</div>
+            <?php }?>            
             
             <div class="mt20">
                <div class="left">
@@ -83,7 +83,7 @@
                 <div class="right" style="width: 635px; background: #eee; padding: 10px; border: 1px solid #ccc;">
                     <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
                         <?php echo $message['fromuser']['username']?></a>：
-                    <?php echo mb_substr($message['content'], 0, 50)?>
+                    <?php echo $message['content'];?>
 
                     <div class="msg-bottom" style=" padding-top: 10px; clear: both;">
                         <div class="msg-time" style=" float: left; width: 100px; color: #999; font-size: 12px;"><?php echo dgmdate($message['time']);?></div>
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <?php
-                if($message['system'] == 0){
+                if($message['system'] == 0 && $message['tempid'] == 0){
             ?>
             <div class="msg-reply" style="float: right; margin-top: 20px;">
                 <form method="post">

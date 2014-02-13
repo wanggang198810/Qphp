@@ -19,7 +19,7 @@ class MessageController extends BaseController{
             $this->_getMessage($id);
             return;
         }
-        $type = Request::getGet('type');
+        $type = Request::getGet('type', 'all');
         if($type === 'all'){
             $type = -1;
         }else{
@@ -38,7 +38,7 @@ class MessageController extends BaseController{
     }
     
     private function _getMessageData($system, $status){
-        
+        Q::import('String');
         $page = Request::getIntGet('page');
         $pageSize = Request::getIntGet('pageSize', 10);
         $total = Request::getIntGet('total');
@@ -47,6 +47,9 @@ class MessageController extends BaseController{
         $userModel = new UserModel('user');
         if(!empty($result['list'])){
             foreach($result['list'] as $k => $v){
+                if($v['tempid'] !=0){
+                     $result['list'][$k]['content'] = $this->MessageModel->getTemplate($v['tempid']);
+                }
                 $result['list'][$k]['fromuser'] = $userModel->getUser($v['fromuid']);
             }
         }
@@ -69,10 +72,16 @@ class MessageController extends BaseController{
             return;
         }
         
+        $result['content'] = $this->MessageModel->getTemplate($result['tempid']);
+        
         $this->MessageModel->updateMessageStatus($id, $this->uid);
         $result['fromuser'] = $userModel->getUser($result['fromuid']);
-        $record = $this->MessageModel->getMessage($result['msgid'], $result['fromuid']);
-        $record['fromuser'] = $this->user;
+        if($result['tempid'] == 0){
+            $record = $this->MessageModel->getMessage($result['msgid'], $result['fromuid']);
+            $record['fromuser'] = $this->user;
+        }else{
+            $record = array();
+        }
         $this->data['message'] = $result;
         $this->data['record'] = $record;
         $this->render('ViewMessage');

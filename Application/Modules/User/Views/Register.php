@@ -34,7 +34,7 @@
             </div>
             
             <div class="form-con">
-                <h2 class="form-heading">登录</h2>
+                <h2 class="form-heading">注册</h2>
                 <form class="form-horizontal" method="post">
                 <div class="control-group">
                   <label class="control-label" for="inputEmail">帐 号：</label>
@@ -48,6 +48,14 @@
                     <input type="password" id="password" name="password" placeholder="Password">
                   </div>
                 </div>
+                    
+                <div class="control-group">
+                  <label class="control-label" for="blogname">域 名：</label>
+                  <div class="controls">
+                    <input type="text" id="blogname" name="blogname" placeholder="Url">
+                  </div>
+                </div>
+                    
                 <div class="control-group">
                   <div class="controls">
                       <div class="left">

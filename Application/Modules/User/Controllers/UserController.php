@@ -60,13 +60,17 @@ class UserController extends BaseController{
         if(Request::isPostSubmit()){
             $username = trim($this->request->getPost('username'));
             $password = trim($this->request->getPost('password'));
+            $blogname = trim($this->request->getPost('blogname'));
 
             if(empty($username) || empty($password)){
                 return false;
             }
-            $result = $this->userModel->register($username, $password);
+            $result = $this->userModel->register($username, $password, $blogname);
 
             if($result){
+                $this->loadModel('Message.Message');
+                $messageModel = new MessageModel();
+                $r = $messageModel->sendMsg($result, 1, '', 0, 0, 100);
                 $this->signLogin($result);
                 $this->response->redirect('/user');
             }

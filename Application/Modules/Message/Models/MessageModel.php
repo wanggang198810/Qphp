@@ -51,13 +51,14 @@ class MessageModel extends Model{
     }
 
     
-    public function sendMsg($to_uid, $from_uid, $content, $msgid=0, $temp_id=0){
-        if(strlen($content) < 5){return false;}
+    public function sendMsg($to_uid, $from_uid, $content, $msgid=0, $system=0, $temp_id=0){
+        if($system == 0 && strlen($content) < 5){return false;}
         $data = array(
             'touid' => $to_uid,
             'fromuid' => $from_uid,
             'content' => $content,
             'msgid' => $msgid,
+            'system' => $system,
             'tempid' => $temp_id,
             'time' => time(),
         );
@@ -78,8 +79,7 @@ class MessageModel extends Model{
             default :
                 break;
         }
-        
-        
+        return $msg;
     }
     
     public function parseMsg($msg){

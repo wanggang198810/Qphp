@@ -69,7 +69,7 @@
                         <div class="right" style="width: 655px;">
                             <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
                                 <?php echo $message['fromuser']['username']?></a>：
-                            <?php echo mb_substr($message['content'], 0, 50)?>
+                            <?php echo String::cutstr($message['content'], 0, 50)?>
                             
                             <div class="msg-bottom" style=" padding-top: 10px;">
                                 <div class="msg-time" style=" float: left; width: 100px; color: #999; font-size: 12px;"><?php echo dgmdate($message['time']);?></div>
