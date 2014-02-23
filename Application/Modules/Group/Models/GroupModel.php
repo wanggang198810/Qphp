@@ -153,4 +153,8 @@ class GroupModel extends Model{
     }
     
     
+    public function isInGroup($id, $uid){
+        
+    }
+    
 }

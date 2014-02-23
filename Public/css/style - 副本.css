@@ -1,0 +1,326 @@
+/* 
+    Document   : style
+    Created on : 2013-12-29, 16:47:01
+    Author     : air
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+
+body {
+  background-color: #fefefe; font-size: 13px; /*font-family: 微软雅黑,宋体;*/
+  font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+  /*background: #DF5D5D;*/
+}
+.left{ float: left;}
+.right{ float: right;}
+.white-color{ color: #FFF;}
+.point{ cursor:pointer;}
+.h20{ line-height: 20px;}
+.mt20{ margin-top: 20px;}
+.mt50{ margin-top: 50px;}
+.mt40{ margin-top: 40px;}
+.mt30{ margin-top: 30px;}
+.pt20{ padding-top: 20px;}
+.pr10{ padding-right: 10px;}
+.pr20{ padding-right: 20px;}
+.radius-5{
+    -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.radius-2{
+    -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+.radius-3{
+    -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+.form-signin {
+  position: relative;
+  max-width: 700px;
+  height: 280px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  margin-top: 200px; 
+  background: #FFF;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.form-signin .form-con{
+    float: right;
+    height: 280px;
+    margin-right: 30px;
+   
+}
+
+.form-signin .form-info{
+    float: left;
+    width: 250px;
+    height: 280px;
+}
+
+.navbar-inner .brand{
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 20px;
+    float: right;
+    font-weight: bold;
+    color: #000;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+.navbar-inverse .navbar-inner{
+    border-color: #666;
+}
+
+.navbar {
+margin: 0;
+height: 41px;
+}
+.main{
+    width: 980px; margin: 0 auto;
+}
+a:hover{ text-decoration: none;}
+ul,li{ padding: 0; margin: 0; list-style: none;}
+img{padding: 0; margin: 0; vertical-align:baseline;}
+
+.jianb{ 
+   background: white; /* 为较旧的或者不支持的浏览器设置备用属性 */
+background: -moz-linear-gradient(top, #dedede, white 100%);
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
+}
+
+.sub-nav{ font-size: 14px;}
+.sub-nav li{ float: left;  margin-right: 16px; font-family: 微软雅黑; font-size: 16px;}
+.sub-nav li a{ float: left; line-height: 35px; width: 80px; text-align: center; color: #666;}
+.sub-nav li a.active{ color: #85C155; }
+.sub-nav li a:hover{ background: #85C155; color: #FFF;}
+           
+.uside{ width: 200px;  float: left;}
+.uside .item{box-shadow: 0px 0px 3px #d9d9d9;-webkit-box-shadow: 0px 1px 3px #d9d9d9;-moz-box-shadow: 0px 0px 3px #d9d9d9; border: 1px solid #eee; border-radius: 0px; overflow: hidden;}
+.uside .person_nav li{ background:#FCFCFC; color: #f69; width: 198px; height: 34px; line-height: 34px;   border-bottom: 1px solid #eee; overflow: hidden}
+.uside .person_nav li:hover{ background: #FFF;}
+.uside .person_nav a{ color: #858585; padding-left: 35px; width: 198px; display: block;}
+.uside .person_nav a:hover{ background: #FFF;}
+.uside .person_nav a.noborder{ border: 0px;}
+
+.user-info{ color: #666; background: #fff; padding: 10px;}
+.recomm-tag{ margin-top: 20px;}
+.recomm-tag a{ color: #FFF;}
+.recomm-tag span.badge{ margin-right: 10px; background-color: #B8B8B8;}
+.recomm-tag span.badge:hover{ background-color: #999;}
+
+.label-warning a{ color: #fff; font-weight: normal; }
+
+.main a{ }
+.label-warning a{ color: #fff; font-weight: normal; }
+
+.tag{ border: 1px solid #ccc; padding: 5px 8px; margin-right: 5px; -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;}
+
+.up, .down{ text-align: center; width: 38px; background: #eff6fa; cursor: pointer; padding-bottom: 2px;}
+.up{ margin-bottom: 5px;}
+.answer-item .active, .up:hover, .down:hover{background: #698ebf; color: #FFF;}
+
+.answer-box{ line-height: 1.7;}
+.answer-item{ font-size: 13px;}
+.answer-agree, .answer-agree a{ color: #999;}
+.answer-head{ background:#F0F7FF; padding-left: 5px;}
+.answer-head a{ color: #005580}
+.answer-head a:hover{ text-decoration: underline;}
+.answer-bottom{ color: #999; font-size: 13px; padding: 5px 0; padding-bottom: 25px; border-bottom: 1px solid #eee; margin-bottom: 20px;}
+.answer-bottom a{ color: #999; margin-right: 5px;}
+.answer-bottom a:hover{ color: #698ebf; text-decoration: underline;}
+textarea{ resize: none;}
+.sub-reply-box{padding:15px; border: 1px solid #ccc; margin: 10px 0; background: #f1f1f1; display: none;}
+.appear{ display: block;}
+.side270{ width: 270px;}
+
+.content-box{width: 650px; float: left; line-height: 2; font-size: 15px;  padding-bottom: 50px;}
+.content-white{min-height: 300px; background: #FFF; padding: 10px;}
+
+.reply-box{}
+.reply-box .reply-num{ font-size:12px; color:#999; padding-bottom: 5px;}
+.reply-textarea{ width: 636px; height: 70px;}
+
+.topic-user{}
+.topic-user .user-avatar img{border-radius:40px; width: 80px; height: 80px;}
+.topic-user .honorname{ font-size: 12px; color: #666;}
+.topic-user .blogname{ padding:10px 20px 5px;}
+.topic-user .reply-time{ font-size: 12px; color: #999; padding-top: 15px; border-top: 1px solid #ccc; margin-top: 25px;}
+.font12{ font-size: 12px;}
+.color666{ color: #666;}
+.color999{ color: #999;}
+
+.title-h1, .post-title-h1{ font-size: 30px; padding: 20px 0 5px; font-weight: normal;}
+.title-h1 a, .post-title-h1 a{color:#333;}
+.title-h3{ font-weight: normal; word-wrap: break-word;
+          padding: 0; margin: 0; font-size: 13px; line-height: 22px; float: left; width: 450px; margin-right: 20px; }
+
+.post-title-h1{ font-size: 20px; padding-top: 0px;}
+
+.topic-title{ padding:10px 0;}
+
+.main-left{
+    width: 650px; float: left;
+}
+
+.main-right{ width: 270px; float: right}
+.main_title, .main_title2, .group-title, .question-title, .msg-title{ 
+    font-size: 20px; 
+    font-family: 微软雅黑; 
+    color: #4ba733; 
+    padding: 30px 0 10px 0;
+    border-bottom: 1px solid #e4e4e4;
+    overflow: hidden; 
+}
+.question-title{ border: 0;}
+.main_title2{ font-size: 15px; border: 0; padding-top: 10px;} 
+.msg-title{font-size: 17px; border: 0; padding-top: 10px;}
+.msg-btn{ margin-top: 10px;}
+
+.group-info-box{ border: 1px solid #eee; padding: 15px; margin-top: 30px; background: #F5F5F5}
+.group-title{ border-bottom: 1px dashed #ccc; padding-top: 10px;}
+.group-title .group-logo{ float: left; margin-right: 20px;}
+.group-title2{ float: left; padding-top: 5px;}
+.group-num{ font-size: 12px; color: #999; margin-left: 15px;}
+.group-join-status{ float: right; color: #999; font-size: 13px; margin-top: 5px; line-height: 28px;}
+.group-join-status a.join-group{ background: #88c932; color: #FFF; padding: 5px 8px;}
+.group-join-status a.join-group:hover{background: #50a200; color: #FFF;}
+.group-info{ padding-top: 10px; color: #999;}
+.group-menu{ padding-bottom: 20px; border-bottom: 1px solid #ddd}
+.group-menu a{ padding: 5px 15px; background: #eee;}
+.group-menu a.active{ color: #88c932}
+.group-menu a.group-post-btn{ background: #88c932; color: #FFF;  float: right;}
+a.group-post-btn:hover{background: #50a200; color: #FFF;}
+ 
+.forum-list{}
+.forum-li{ width: 650px; overflow: hidden; padding: 10px 0; border-bottom: 1px dashed #ddd;}
+.forum-li a{ color: #0078b6}
+.forum-li a:hover{ text-decoration: underline;}
+.forum-author{ float: left;}
+.forum-reply-num{ float: right; }
+
+.member-list{ }
+.member-list li{ float: left; width: 50px; height: 80px; overflow: hidden; margin-right: 20px; text-align: center; margin-top: 20px;}
+.member-list li .mr0{ margin-right: 0;}
+.member-list li .member-avatar{ float: left; width: 50px; height: 50px;}
+.member-list li .member-avatar img{ width: 48px; height: 48px; margin: 0; padding: 0;}
+
+
+.post-user{ line-height:1; padding-bottom: 12px;}
+.post-avatar{width: 48px; height: 48px; float: left; margin-right: 12px; text-align: center; color: #ccc}
+.post-content{ width: 590px; overflow: hidden}
+
+.apply-group-title{
+    font-family: 微软雅黑; 
+    font-size: 22px;
+    height: 36px;
+    line-height: 36px;
+    color: #333;
+    font-weight: 500;
+}
+.apply-form-box{
+    color: #999;margin-bottom: 15px; margin-top: 25px;
+}
+.apply-form-left{display: block; float: left; width: 60px; margin-right: 14px; line-height: 30px;}
+.apply-form-right{
+    margin-left: 74px;line-height: 30px;
+}
+.apply-form-right label{display: inline; font-size: 12px; color: #333;float: none;}
+.group-name{ width: 300px;}
+.group-info{ width: 298px; height: 100px;}
+
+.active-member-box{}
+.active-member-box ul{}
+.active-member-box ul li{float: left; margin-right: 18px; width: 48px;  color: #999; font-size: 13px; text-align: center; margin-bottom: 20px;}
+.active-member-box ul li img{ border: 1px solid #EEE; padding: 1px; width: 48px; height: 48px;}
+.active-member-box ul li.mr0{ margin-right: 0px;}
+
+.sub-reply-content{ width: 547px; margin-bottom: 10px;}
+.question-reply .sub-reply-content{ width: 605px;}
+.reply-content{width: 650px;
+height: 70px;
+resize: none;
+margin-bottom: 20px;}
+blockquote {
+color: #999;
+line-height: 20px;
+border-left: 1px solid #d5d5d5;
+margin: 0 0 10px 5px;
+padding: 0 0 0 9px;
+}
+
+
+.top-container{ padding: 0 20px;}
+#totop{position:fixed;bottom:40px;right:10px;z-index:999;width:71px; cursor:pointer; display:none;}
+*html #totop{position:absolute;cursor:pointer;right:10px; display:none;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight)-112+"px")}
+#totop a{display:block;width:71px;height:24px;padding-top:48px;background:url(/Public/image/toTop.gif) no-repeat;text-align:center;color:#888}
+#totop a.cur{background-position:-88px 0;text-decoration:none;color:#3a9}
+
+.page{ margin: 30px 0; height: 30px; width: 650px; text-align: center;}
+.page a, .page span{ padding: 0 5px; margin: 0 10px;}
+.clear{ clear: both;}
+input, textarea{ margin: 0; }
+
+.reply-textarea{width: 650px;
+height: 70px;
+resize: none;
+margin-bottom: 20px;}
+
+.sub-reply-textarea{width: 545px;
+margin-bottom: 10px;}
+
+.new-question{}
+#questions-box  a { color: #666; font-size: 14px;}
+.hot-q-li{ overflow: hidden;padding: 10px 0;border-bottom: 1px dashed #ddd; white-space: nowrap;}
+.reply-time{ font-size: 12px; color: #999; padding-top: 15px; margin-top: 25px;}
+
+.form-item{ display: block; width: 500px; clear: both;}
+.item-label{ float: left; line-height: 30px; margin-right: 10px; width: 70px; font-size: 12px; color: #006600;}
+.text-right{ text-align: right;}
+.item-input{line-height: 30px;}
+
+
+.ask-btn{padding: 9px 20px; background: #08c; display: block; color: #FFF; text-align: center;}
+
+.sendmsgbox{
+    position: absolute; left: 0; top: 0; z-index: 9999; background: #000;
+}
+
+.opacity-30{
+    filter:alpha(opacity=30); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.3; /*Firefox私有，透明度50%*/
+    opacity:0.3;/*其他，透明度50%*/
+}
+
+.opacity-50{
+    filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.5; /*Firefox私有，透明度50%*/
+    opacity:0.5;/*其他，透明度50%*/
+}
+.opacity-90{
+    filter:alpha(opacity=90); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.9; /*Firefox私有，透明度50%*/
+    opacity:0.9;/*其他，透明度50%*/
+}

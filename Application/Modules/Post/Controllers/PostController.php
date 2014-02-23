@@ -76,9 +76,9 @@ class PostController extends BaseTopicController{
             $postModel = new TopicModel();
             
             
-            $data['title'] = trim(Request::getPost('title'));
-            $data['content'] = htmlspecialchars( Request::getPost('content') );
-            $data['shortcontent'] = substr(htmlspecialchars( Request::getPost('content') ), 0, 70);
+            $data['title'] = filter(Request::getPost('title'));
+            $data['content'] = filter( Request::getPost('content') );
+            $data['shortcontent'] = String::substr(htmlspecialchars( Request::getPost('content') ), 0, 70);
             $data['cid'] = Request::getIntPost('category');
             $data['gid'] = Request::getIntPost('groupid');
             $data['type'] = Request::getIntPost('type',1);

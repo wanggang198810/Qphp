@@ -116,10 +116,10 @@ class BaseTopicController extends BaseController{
         if(Request::isPostSubmit()){
             $this->loadModel('Topic');
             $postModel = new TopicModel();
-            
-            $data['title'] = trim(Request::getPost('title'));
+            import('String');
+            $data['title'] = filter(Request::getPost('title'));
             $data['content'] = htmlspecialchars( Request::getPost('content') );
-            $data['shortcontent'] = substr(htmlspecialchars( Request::getPost('content') ), 0, 256);
+            $data['shortcontent'] = String::substr(htmlspecialchars( Request::getPost('content') ), 0, 256);
             $data['cid'] = Request::getIntPost('category');
             $data['gid'] = Request::getIntPost('groupid');
             $data['tid'] = Request::getIntPost('tagid');

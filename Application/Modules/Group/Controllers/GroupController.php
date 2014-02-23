@@ -24,7 +24,7 @@ class GroupController extends BaseController{
         
         $this->data['group'] = $this->groupModel->getGroupByUrl($url);
         if(empty($this->data['group'])){
-            $this->response->redirect('/group');
+            $this->response->redirect('/group/');
         }
         
         $type = filter($type);
@@ -67,6 +67,10 @@ class GroupController extends BaseController{
         $this->render('List');
     }
     
+    
+    /**
+     * 群组首页逻辑
+     */
     private function _home(){
         $this->data['hot_groups'] = $this->groupModel->getHotGroups();
         $this->data['new_groups'] = $this->groupModel->getNewGroups();
@@ -109,7 +113,12 @@ class GroupController extends BaseController{
         if(Request::isPostSubmit('title') && Request::isPostSubmit('content')){
             return ;
         }
-        
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        if(!$groupuserModel->isInGroup($gid, $this->uid)){
+            $this->show_error('你没有权限', '/group/');
+            return ;
+        }
         $this->loadModel('Group.GroupTag');
         $grouptagModel = new GroupTagModel();
         $this->data['tags'] = $grouptagModel->getTagsByGid($gid);

@@ -26,7 +26,12 @@ class UController extends BaseController{
         $this->loadModel('User');
         $userModel = new UserModel();
         $this->view_user = $userModel->getUserByBlogname($id);
-
+        if($this->view_user['uid'] != $this->user['uid']){
+            $this->data['is_self'] = 0;
+        }else{
+            $this->data['is_self'] = 1;
+        }
+       
         switch($type){
             case 'archive':
                 $this->archive($id);

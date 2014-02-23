@@ -127,7 +127,7 @@ class Controller {
         }
     }
     
-    public function show_error($msg='Error, 页面跳转中', $url=''){
+    public function show_error($msg='Error, 页面跳转中', $url='/'){
         $this->data['url'] = $url;
         $this->data['msg'] = $msg;
         $this->render('Common.Error');
