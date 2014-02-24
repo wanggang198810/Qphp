@@ -20,14 +20,13 @@ class GroupController extends BaseController{
            $this->_home();
            return;
         }
-  
         
         $this->data['group'] = $this->groupModel->getGroupByUrl($url);
         if(empty($this->data['group'])){
             $this->response->redirect('/group/');
         }
         
-        $type = filter($type);
+        $type = strtolower(filter($type));
         if(!empty($type)){
             switch ($type){
                 case 'members':
@@ -41,6 +40,12 @@ class GroupController extends BaseController{
                     break;
                 case 'leave':
                     $this->_leave($this->data['group']['id']);
+                    break;
+                case 'kickmember':
+                    $this->_kickMember($this->data['group']['id']);
+                    break;
+                case 'manage':
+                    $this->_manage($this->data['group']);
                     break;
             }
             return;
@@ -241,6 +246,49 @@ class GroupController extends BaseController{
         $this->render('Rank');
     }
     
+    
+    
+    /**
+     * 群组管理
+     */
+    private function _manage($group){
+        if($this->uid != $this->data['group']['creator']){
+            $this->show_error('没有权限', '/group/');
+            return;
+        }
+        //hprint($this->data['group'],1);
+        $page = Request::getIntGet('page',1);
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $result = $groupuserModel->getGroupMembers($group['id'], $page, 20);
+       
+        $this->data['members'] = $result['list'];
+        $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
+        $this->render('Manage');
+    }
+    
+    
+    private function _kickMember($gid){
+        $this->checkLogin(1);
+        $gid2 = Request::getIntPost('gid');
+        $uid = Request::getIntPost('uid');
+        
+        $data = array('time'=> time(), 'success'=> 0);
+        if($gid != $gid2 || $this->uid != $this->data['group']['creator'] || $uid == $this->uid || $uid == $this->data['group']['creator']){
+            $data = array('time'=> time(), 'success'=> -1);
+            echo json_encode($data);
+            return;
+        }
+        
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $result = $groupuserModel->leave($gid, $uid);
+        if($result){
+            $data = array('time'=> time(), 'success'=> 1);
+        }
+        echo json_encode($data);
+        return;
+    }
     
     
     

@@ -324,3 +324,14 @@ margin-bottom: 10px;}
     -moz-opacity:0.9; /*Firefox私有，透明度50%*/
     opacity:0.9;/*其他，透明度50%*/
 }
+
+
+.manage-member-list{
+    
+}
+
+.manage-member-list li{
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+}

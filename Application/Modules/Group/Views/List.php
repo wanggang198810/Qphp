@@ -27,11 +27,15 @@
                     <div class="group-logo"><img src="<?php echo group_logo(0,$group['id']);?>" /></div>
                     <div class="group-title2"><?php echo $group['name'];?><span class="group-num"><?php echo $group['num'];?>人加入此小组</span></div>
                     <div class="group-join-status" id="group-join-status">
-                        <?php 
-                            if($is_in_group){
-                                echo '<a href="javascript:;" id="leave-group" groupurl = "'. $group['url']. '" groupid="' . $group['id'] .'" class="">已加入/退出</a>';
-                            }else{
-                        ?>
+                    <?php 
+                        if($user['uid'] == $group['creator']){
+                    ?>
+                        <a href="<?php echo group_url($group['url'], 'manage');?>" id="manage-group" groupurl = "<?php echo $group['url'];?>" groupid="<?php echo $group['id'];?>" class="">管理</a>
+                    <?php 
+                        }elseif($is_in_group){
+                            echo '<a href="javascript:;" id="leave-group" groupurl = "'. $group['url']. '" groupid="' . $group['id'] .'" class="">已加入/退出</a>';
+                        }else{
+                    ?>
                         <a href="javascript:;" id="join-group" groupurl="<?php echo $group['url'] ;?>/join" groupid="<?php echo $group['id']?>" class="join-group">加入</a>
                         <?php }?>
                     </div>
