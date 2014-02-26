@@ -5,12 +5,13 @@
         <group>
             <file>file:/E:/Air/Qphp/Application/Modules/Group/Controllers/GroupController.php</file>
             <file>file:/E:/Air/Qphp/Application/Modules/Group/Views/List.php</file>
+            <file>file:/E:/Air/Qphp/Application/Modules/Home/Controllers/HomeController.php</file>
             <file>file:/E:/Air/Qphp/Public/css/style.css</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Home/Controllers/HomeConroller.php</file>
             <file>file:/E:/Air/Qphp/Application/Modules/Group/Models/GroupModel.php</file>
             <file>file:/E:/Air/Qphp/Application/Modules/Group/Views/Manage.php</file>
             <file>file:/E:/Air/Qphp/Application/Modules/Group/Views/Edit.php</file>
             <file>file:/E:/Air/Qphp/Application/Modules/Topic/Controllers/TopicController.php</file>
+            <file>file:/E:/Air/Qphp/Application/Modules/Home/Views/Index.php</file>
             <file>file:/E:/Air/Qphp/Application/Modules/Question/Views/Home.php</file>
         </group>
     </open-files>

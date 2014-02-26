@@ -22,13 +22,21 @@
             
         </div>
         
-        
-        
-        
+        <div id="rgss-alert" style=" display: none;">
+            <div style=" position: absolute; width: 400px; height: 200px; background: #000; margin-top: -100px; margin-left: -200px; top: 50%; left: 50%; z-index: 998; border-radius: 5px;"></div>
+            <div style=" position: absolute; width: 380px; height: 180px; background: #ccc; margin-top: -90px; margin-left: -190px; top: 50%; left: 50%; z-index: 999; border-radius: 5px;"></div>
+        </div>
     </div>
     
 <script>
+window.onload = setTimeout('alert_msg()', 3000);
+function show_message(){
+    
+}
 
+function alert_msg(){
+    $('#rgss-alert').fadeIn();
+}
 </script>    
 </body>
 </html>
