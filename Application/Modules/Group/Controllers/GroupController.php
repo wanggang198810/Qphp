@@ -47,6 +47,9 @@ class GroupController extends BaseController{
                 case 'manage':
                     $this->_manage($this->data['group']);
                     break;
+                case 'edit':
+                    $this->_edit();
+                    break;
             }
             return;
         }
@@ -290,6 +293,25 @@ class GroupController extends BaseController{
         return;
     }
     
-    
+    private function _edit(){
+        if($this->uid != $this->data['group']['creator']){
+            $this->show_error('没有权限', '/group/');
+            return;
+        }
+        
+        if(Request::isPostSubmit()){
+            //$data['name'] = Request::getPost('name');
+            //$data['url'] = Request::getPost('url');
+            $data['info'] = Request::getPost('info');
+            $result = $this->groupModel->editGroup($this->data['group']['id'], $this->uid, $data);
+            if($result){
+                Response::redirect(group_url($this->data['group']['url'], 'edit'));
+            }else{
+                Response::redirect(group_url($this->data['group']['url'], 'manage'));
+            }
+        }
+        
+        $this->render('Edit');
+    }
     
 }

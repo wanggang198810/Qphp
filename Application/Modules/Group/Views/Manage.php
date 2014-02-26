@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>小组</title>
+    <title><?php echo $group['name'];?>小组管理</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
@@ -30,7 +30,7 @@
                     <?php 
                         if($user['uid'] == $group['creator']){
                     ?>
-                        <a href="<?php echo group_url($group['url'], 'manage');?>" id="manage-group" groupurl = "<?php echo $group['url'];?>" groupid="<?php echo $group['id'];?>" class="">管理</a>
+                        <a href="<?php echo group_url($group['url'], 'edit');?>" id="manage-group" groupurl = "<?php echo $group['url'];?>" groupid="<?php echo $group['id'];?>" class="">修改</a>
                     <?php 
                         }elseif($is_in_group){
                             echo '<a href="javascript:;" id="leave-group" groupurl = "'. $group['url']. '" groupid="' . $group['id'] .'" class="">已加入/退出</a>';
