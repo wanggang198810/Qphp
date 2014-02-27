@@ -138,17 +138,26 @@ class GroupController extends BaseController{
         $this->checkLogin(1);
         $gid2 = Request::getIntPost('gid');
         
-        $data = array('time'=> time(), 'success'=> 0);
+        $data = array('time'=> time(), 'success'=> 0, 'message' => '');
         if($gid != $gid2){
-            $data = array('time'=> time(), 'success'=> -1);
+            $data = array('time'=> time(), 'success'=> -1, 'message' => '');
             echo json_encode($data);
             return;
         }
         $this->loadModel('Group.GroupUser');
         $groupuserModel = new GroupUserModel();
-        $result = $groupuserModel->join($gid, $this->uid);
+        $in = $groupuserModel->isInGroup($gid, $this->uid);
+        if($in){
+            $data = array('time'=> time(), 'success'=> -2, 'message' => '已加入该群组');
+        }
+        //隐私租
+        if($this->data['group']['status'] == 2){
+            $result = $this->groupModel->applyJoin($gid, $this->uid);
+        }else{
+            $result = $groupuserModel->join($gid, $this->uid);
+        }
         if($result){
-            $data = array('time'=> time(), 'success'=> 1);
+            $data = array('time'=> time(), 'success'=> 1, 'message' => '');
         }
         echo json_encode($data);
         return;

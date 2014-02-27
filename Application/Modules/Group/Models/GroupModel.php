@@ -153,8 +153,10 @@ class GroupModel extends Model{
     }
     
     
-    public function isInGroup($id, $uid){
-        
+    public function applyJoin($id, $uid){
+        Q::loadModel('Message.Message');
+        $msgModel = new MessageModel();
+        hprint($msgModel,1);
     }
     
 }
