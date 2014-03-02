@@ -21,10 +21,11 @@
     <div  class="main">
         <div style="float:left; width: 650px;">
            
-            <form method="post" enctype="multipart/form-data" action="/upload/">
-                <input type="file" name="photo[]" /><br />
-                <input type="file" name="photo[]" /><br />
-                <input type="file" name="photo[]" /><br />
+            <form method="post" enctype="multipart/form-data" action="/upload/image">
+                <input type="file" name="photo" /><br />
+                <input type="file" name="photo1[]" /><br />
+                <input type="file" name="photo1[]" /><br />
+                <input type="hidden" name="uid" value="1" />
                 <input type="submit" value="提交" />
            </form>
             

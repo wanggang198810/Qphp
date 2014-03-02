@@ -8,7 +8,7 @@
 class Upload{
     
     private $savePath;
-    private $allowTypes;//
+    private $allowTypes = array('jpg' , 'jpeg' , 'gif', 'png' , 'txt' , 'zip', 'rar');//
     private $maxSize=2000; //单位kb
     public static $sizeType = array(
         '',
@@ -22,14 +22,38 @@ class Upload{
         
     }
     
+    //构建file信息
+    private function _buildFileInfo($name){
+        $tmp = $_FILES[$name];
+        hprint($tmp);
+        $file = array();
+        if(empty($tmp)){
+            return false;
+            /*
+            $imageType = pathinfo($url, PATHINFO_EXTENSION);
+            $file['ext'] = $imageType;
+            $file['size'] = filesize($url);
+            $file['name'] = $file['tmp_name'] = basename($url);*/
+        }
+        
+        $file['tmp_name'] = $tmp['tmp_name'];
+        $file['name'] = $tmp['name'];
+        $file['ext'] = $this->getExt($tmp['name']);
+        $file['size'] = $tmp['size'];
+        return $file;
+    }
+    
     
     // 上传文件   
-    public function save($oldfile, $savePath){
-        $file = $this->buildFileInfo($oldfile);
+    public function save($name){
+        //$name = (array)$name;
+        $file = $this->_buildFileInfo($name);
+        
+        $savePath = '';
         if(empty($savePath)){
             $savePath = $this->savePath;
         }
-      
+        $savePath = $this->getNewFilename($file['ext']);
         //检测图片
         if(!$this->checkExt($file['ext'])){
             return array('success' => -1, 'result' => $this->errorCode(-1));
@@ -37,7 +61,8 @@ class Upload{
         if(!$this->checkSize($file['ext'])){
             return array('success' => -2, 'result' => $this->errorCode(-2));
         }
-        
+        hprint($savePath);
+        hprint($file,1);
         // 根据uid 划分目录，模100
         $this->checkPath($savePath);
         
@@ -102,7 +127,7 @@ class Upload{
     
     // 检测文件大小
     public function checkSize($size){
-        if($size/1024 > $this->maxSize){
+        if($size / 1024 > $this->maxSize){
             return false;
         }
         return true;
@@ -152,12 +177,27 @@ class Upload{
         }
         return true;
     }
+    
+    
+    /**
+     * 创建新文件名，
+     */
+    public function getNewFilename($ext, $oldname = 0){
+        $path =  '/data/attachment/' .date('Y') . '/' . date('m') . '/' . date('d') . '/';
+        if(empty($oldname)){
+            $randkey = uniqid() . rand(1000,9999) . microtime();
+            $oldname = 'rgss_f' . md5($randkey) . '.'. $ext; //. '_' . date("Ymd")
+        }
+        $filename =  $path . $oldname;
+        return $filename;
+    }
+    
 
     //错误信息
     public function errorCode($key){
         $errorCode = array(
-            '-1' => '超过最大允许上传大小',
-            '-2' => '不允许图片类型',
+            '-1' => '不允许图片类型',
+            '-2' => '超过最大允许上传大小',
             '-3' => '非法上传图片',
             '0' => ' 系统繁忙',
         );

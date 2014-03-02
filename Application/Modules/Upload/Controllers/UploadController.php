@@ -9,8 +9,12 @@ require( APP_PATH ."Modules/Common/Controllers/BaseController.php" );
 class UploadController extends BaseController{
 
     public function index(){
-         hprint($_FILES);
+        //hprint($_FILES);
+    
         if(Request::isPostSubmit()){
+            if( empty($_FILES['photo']['name'])){
+                echo '==============为空';
+            }
             hprint($_FILES,1);
         }
         $this->render('Home');return;
@@ -19,18 +23,11 @@ class UploadController extends BaseController{
     }
     
     public function image(){
-        $files = $_FILES;
-        $imageInfo = getimagesize($files);
-        $imageType = pathinfo($url, PATHINFO_EXTENSION);
-        $imageSize = filesize($url);
-        
         // 载入图像库
         import('Upload');
         $uploadObj = new Upload();
-        
-        $savePath = self::getCommonPath($uid, 'avatar', 'ori');
-        $oriUrl = $savePath . $uid . '.jpg';   //. $imageType; // 这里统一图片格式来
-        $result = $uploadObj->save($url, $oriUrl);
+        $result = $uploadObj->save('photo');
+        hprint($result,1);
     }
     
     
