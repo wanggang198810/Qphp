@@ -21,7 +21,7 @@
     <div  class="main">
         <div style="float:left; width: 650px;">
            
-            <form method="post" enctype="multipart/form-data" action="/upload/image">
+            <form method="post" enctype="multipart/form-data" action="/upload/">
                 <input type="file" name="photo" /><br />
                 <input type="file" name="photo1[]" /><br />
                 <input type="file" name="photo1[]" /><br />

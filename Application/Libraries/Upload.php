@@ -27,7 +27,6 @@ class Upload{
     //构建file信息
     private function _buildFileInfo($name){
         $tmp = $_FILES[$name];
-        hprint($tmp);
         $file = array();
         if(empty($tmp)){
             return false;

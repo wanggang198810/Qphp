@@ -11,10 +11,11 @@ The FileProgress class is not part of SWFUpload.
    package.  They are part of my application.  Without these none
    of the actions SWFUpload makes will show up in my application.
    ********************** */
-function fileQueued(file) {
+ // 111
+function fileQueued(file) {//alert('fileQueued');
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("Pending...");
+		//progress.setStatus("Pending...");
 		progress.toggleCancel(true, this);
 
 	} catch (ex) {
@@ -58,8 +59,8 @@ function fileQueueError(file, errorCode, message) {
         this.debug(ex);
     }
 }
-
-function fileDialogComplete(numFilesSelected, numFilesQueued) {
+ // 222
+function fileDialogComplete(numFilesSelected, numFilesQueued) {//alert('fileDialogComplete');
 	try {
 		if (numFilesSelected > 0) {
 			document.getElementById(this.customSettings.cancelButtonId).disabled = false;
@@ -71,8 +72,8 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
         this.debug(ex);
 	}
 }
-
-function uploadStart(file) {
+// 333
+function uploadStart(file) {alert('uploadStart');
 	try {
 		/* I don't want to do any file validation or anything,  I'll just update the UI and
 		return true to indicate that the upload should start.
@@ -88,23 +89,27 @@ function uploadStart(file) {
 	return true;
 }
 
-function uploadProgress(file, bytesLoaded, bytesTotal) {
+//444 循环， 进度条
+function uploadProgress(file, bytesLoaded, bytesTotal) {alert('uploadProgress');
 	try {
 		var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
 
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setProgress(percent);
-		progress.setStatus("Uploading...");
+		//progress.setStatus("Uploading...");
 	} catch (ex) {
 		this.debug(ex);
 	}
 }
-
+// 555
 function uploadSuccess(file, serverData) {
 	try {
+        
+        serverData = eval( "("+ serverData +")");
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setComplete();
-		progress.setStatus("Complete.");
+        
+		progress.setComplete(serverData);
+		//progress.setStatus("Complete.");
 		progress.toggleCancel(false);
 
 	} catch (ex) {
@@ -112,7 +117,7 @@ function uploadSuccess(file, serverData) {
 	}
 }
 
-function uploadError(file, errorCode, message) {
+function uploadError(file, errorCode, message) {//alert('uploadError');
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setError();
@@ -164,14 +169,16 @@ function uploadError(file, errorCode, message) {
     }
 }
 
-function uploadComplete(file) {
+// 666
+function uploadComplete(file) {//alert('uploadComplete');
 	if (this.getStats().files_queued === 0) {
 		document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 	}
 }
 
+// 777
 // This event comes from the Queue Plugin
-function queueComplete(numFilesUploaded) {
+function queueComplete(numFilesUploaded) {//alert('queueComplete');
 	var status = document.getElementById("divStatus");
 	status.innerHTML = numFilesUploaded + " file" + (numFilesUploaded === 1 ? "" : "s") + " uploaded.";
 }

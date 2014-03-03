@@ -23,7 +23,7 @@
 			var settings = {
 				flash_url : "/Public/js/swfupload/swfupload.swf",
 				upload_url: "/upload/",
-				post_params: {"PHPSESSID" : "<?php echo session_id(); ?>"},
+				post_params: {"PHPSESSID" : "<?php echo $user['uid']; ?>"},
 				file_size_limit : "2 MB",
 				file_types : "*.*",
 				file_types_description : "All Files",
@@ -33,7 +33,7 @@
 					progressTarget : "fsUploadProgress",
 					cancelButtonId : "btnCancel"
 				},
-				debug: false,
+				debug: true,
 
 				// Button settings
 				button_image_url: "/Public/js/swfupload/TestImageNoText_65x29.png",

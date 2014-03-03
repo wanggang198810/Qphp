@@ -335,3 +335,7 @@ margin-bottom: 10px;}
     margin-bottom: 10px;
     border-bottom: 1px dashed #ccc;
 }
+
+.greenbg, .progressBarStatus{ background: green;}
+.progressWrapper{ margin-top: 10px; padding: 20px;
+background: #ccc; border-radius: 5px;}
