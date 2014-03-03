@@ -6,6 +6,7 @@
  */
 
 //定义框架目录
+define('ROOT_PATH', dirname(__FILE__));
 define('FRAMEWORK_PATH', './Framework/');
 define('APP_PATH', './Application/');
 

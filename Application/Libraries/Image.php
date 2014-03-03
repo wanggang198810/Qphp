@@ -38,8 +38,9 @@ class Image {
     public static $audioIntrUploadSize = 20;
     
     //头像尺寸
-    public static $avatarSize = array(
-        'small' => array('width'=>64,'height'=>64),
+    public static $imageSize = array(
+        'middel' => 275,
+        'large' => 650,
     );
     
     //背景图尺寸
@@ -190,7 +191,7 @@ class Image {
      * @param boolean $interlace 启用隔行扫描
      * @return void
      */
-    static function thumb($image, $thumbname, $type='', $maxWidth=200, $maxHeight=50, $interlace=true) {
+    static function thumb($image, $thumbname, $type='', $maxWidth=0, $maxHeight=0, $interlace=true) {
         // 获取原图信息
         $info = Image::getImageInfo($image);
         if ($info !== false) {
@@ -200,17 +201,29 @@ class Image {
             $type = strtolower($type);
             $interlace = $interlace ? 1 : 0;
             unset($info);
-            $scale = min($maxWidth / $srcWidth, $maxHeight / $srcHeight); // 计算缩放比例
-            if ($scale >= 1) {
-                // 超过原图大小不再缩略
-                $width = $srcWidth;
-                $height = $srcHeight;
-            } else {
-                // 缩略图尺寸
-                $width = (int) ($srcWidth * $scale);
-                $height = (int) ($srcHeight * $scale);
+            
+            if( $maxHeight == 0 && $maxWidth == 0){
+                $scale = min($maxWidth / $srcWidth, $maxHeight / $srcHeight); // 计算缩放比例
+                if ($scale >= 1) {
+                    // 超过原图大小不再缩略
+                    $width = $srcWidth;
+                    $height = $srcHeight;
+                } else {
+                    // 缩略图尺寸
+                    $width = (int) ($srcWidth * $scale);
+                    $height = (int) ($srcHeight * $scale);
+                }
+            }else{
+                $scale = $srcWidth / $srcHeight;
+                if($maxHeight == 0){
+                    $width = $maxWidth > $srcWidth ? $srcWidth : $maxWidth;
+                    $height = round($width / ($srcWidth / $srcHeight));
+                }elseif($maxWidth == 0){
+                    $height = $maxHeight > $srcHeight ? $srcHeight : $maxHeight;
+                    $width = round($height * ($srcWidth / $srcHeight));
+                }
             }
-
+            
             // 载入原图
             $createFun = 'ImageCreateFrom' . ($type == 'jpg' ? 'jpeg' : $type);
             if(!function_exists($createFun)) {

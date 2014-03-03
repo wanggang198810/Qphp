@@ -14,6 +14,8 @@ class Upload{
         '',
     );
     
+    private static $uploadPath = '/data/upload/';
+    
     /**
      * 
      */
@@ -48,12 +50,10 @@ class Upload{
     public function save($name){
         //$name = (array)$name;
         $file = $this->_buildFileInfo($name);
+
+        $newfilename = $this->getPath() . 'ori/';
+        $newfilename .= $this->getNewFilename($file['ext']);
         
-        $savePath = '';
-        if(empty($savePath)){
-            $savePath = $this->savePath;
-        }
-        $savePath = $this->getNewFilename($file['ext']);
         //检测图片
         if(!$this->checkExt($file['ext'])){
             return array('success' => -1, 'result' => $this->errorCode(-1));
@@ -61,13 +61,9 @@ class Upload{
         if(!$this->checkSize($file['ext'])){
             return array('success' => -2, 'result' => $this->errorCode(-2));
         }
-        hprint($savePath);
-        hprint($file,1);
-        // 根据uid 划分目录，模100
-        $this->checkPath($savePath);
         
+        $this->checkPath($newfilename);
         $ext = $this->getExt($file['name']);
-        $newfilename = $savePath;
         
         //$file['tmp_name'] 没上传，暂时copy
         //copy($oldfile, $newfilename);
@@ -79,11 +75,11 @@ class Upload{
         // 上传图片时，则生成缩略图
         if(in_array($ext, array('jpg', 'jpeg', 'gif', 'png'))){
             import('Image');
-            $imgObg = new Image();
-            foreach(Image::$avatarSize as $k => $v){
+            $imgObj = new Image();
+            foreach(Image::$imageSize as $k => $v){
                 $thumbname = str_replace('ori', $k, $newfilename);
                 $this->checkPath($thumbname);
-                $result = $imgObg->thumb($newfilename, $thumbname, '', Image::$avatarSize[$k]['width'], Image::$avatarSize[$k]['height']);
+                $result = $imgObj->thumb($newfilename, $thumbname, '', $v);
             }
             //暂不考虑多种尺寸的情况
             if($result){
@@ -161,13 +157,15 @@ class Upload{
     
     // 获取上传路径
     public function getPath(){
-        return $this->savePath;
+        $path = ROOT_PATH .self::$uploadPath .date('Y') . '/' . date('m') . '/' . date('d') . '/';
+        return !empty($this->savePath) ? $this->savePath : $path;
+        
     }
 
     //检测上传路径, 没有则创建目录
     public function checkPath($path){
         $path = pathinfo($path);
-        $pathArr = explode('/', trim($path['dirname']));
+        $pathArr = explode('/', trim($path['dirname'], '/'));
         $dir = '';
         foreach ($pathArr as $k => $v){
             $dir .= $v.'/';
@@ -183,12 +181,12 @@ class Upload{
      * 创建新文件名，
      */
     public function getNewFilename($ext, $oldname = 0){
-        $path =  '/data/attachment/' .date('Y') . '/' . date('m') . '/' . date('d') . '/';
+        
         if(empty($oldname)){
             $randkey = uniqid() . rand(1000,9999) . microtime();
-            $oldname = 'rgss_f' . md5($randkey) . '.'. $ext; //. '_' . date("Ymd")
+            $oldname = 'rs' . md5($randkey) . '.'. $ext; //. '_' . date("Ymd")
         }
-        $filename =  $path . $oldname;
+        $filename = $oldname;
         return $filename;
     }
     
