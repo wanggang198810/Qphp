@@ -14,7 +14,7 @@ function FileProgress(file, targetID) {
 	this.opacity = 100;
 	this.height = 0;
 	
-    alert(1);
+    //alert(1);
 	this.fileProgressWrapper = document.getElementById(this.fileProgressID);
 	if (!this.fileProgressWrapper) {
 		this.fileProgressWrapper = document.createElement("div");
@@ -30,9 +30,9 @@ function FileProgress(file, targetID) {
 		progressCancel.style.visibility = "hidden";
 		progressCancel.appendChild(document.createTextNode(" "));
 
-//		var progressText = document.createElement("div");
-//		progressText.className = "progressName";
-//		progressText.appendChild(document.createTextNode(file.name));
+		var progressText = document.createElement("div");
+		progressText.className = "progressName";
+		progressText.appendChild(document.createTextNode(file.name));
 
 		var progressBar = document.createElement("div");
 		progressBar.className = "progressBarInProgress";
@@ -42,14 +42,14 @@ function FileProgress(file, targetID) {
 		progressStatus.innerHTML = "&nbsp;";
 
 		this.fileProgressElement.appendChild(progressCancel);
-		//this.fileProgressElement.appendChild(progressText);
+		this.fileProgressElement.appendChild(progressText);
 		this.fileProgressElement.appendChild(progressStatus);
 		this.fileProgressElement.appendChild(progressBar);
 
 		this.fileProgressWrapper.appendChild(this.fileProgressElement);
 
 		document.getElementById(targetID).appendChild(this.fileProgressWrapper);
-	} else {alert(3);
+	} else {//alert(3);
 		this.fileProgressElement = this.fileProgressWrapper.firstChild;
 		this.reset();
 	}
@@ -70,8 +70,8 @@ FileProgress.prototype.getTimer = function (timer) {
 FileProgress.prototype.reset = function () {
 	this.fileProgressElement.className = "progressContainer";
 
-	//this.fileProgressElement.childNodes[2].innerHTML = "&nbsp;&nbsp;";
-	//this.fileProgressElement.childNodes[2].className = "progressBarStatus";
+	this.fileProgressElement.childNodes[2].innerHTML = "&nbsp;&nbsp;";
+	this.fileProgressElement.childNodes[2].className = "progressBarStatus";
 	
 	this.fileProgressElement.childNodes[3].className = "progressBarInProgress";
 	this.fileProgressElement.childNodes[3].style.width = "0%";

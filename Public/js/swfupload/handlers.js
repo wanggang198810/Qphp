@@ -81,10 +81,12 @@ function uploadStart(file) {alert('uploadStart');
 		we can do is say we are uploading.
 		 */
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("Uploading...");
+		progress.setStatus("上传中...");
 		progress.toggleCancel(true, this);
 	}
-	catch (ex) {}
+	catch (ex) {
+        alert('err_start');
+    }
 	
 	return true;
 }
@@ -94,10 +96,10 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {alert('uploadProgress');
 	try {
 		var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
 
-		var progress = new FileProgress(file, this.customSettings.progressTarget);
+		var progress = new FileProgress(file, this.customSettings.progressTarget);alert('pro');
 		progress.setProgress(percent);
 		//progress.setStatus("Uploading...");
-	} catch (ex) {
+	} catch (ex) {alert('er_pro');
 		this.debug(ex);
 	}
 }
@@ -107,12 +109,12 @@ function uploadSuccess(file, serverData) {
         
         serverData = eval( "("+ serverData +")");
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-        
+        alert('aaa');
 		progress.setComplete(serverData);
 		//progress.setStatus("Complete.");
 		progress.toggleCancel(false);
 
-	} catch (ex) {
+	} catch (ex) {alert('error_cc');
 		this.debug(ex);
 	}
 }
@@ -170,7 +172,7 @@ function uploadError(file, errorCode, message) {//alert('uploadError');
 }
 
 // 666
-function uploadComplete(file) {//alert('uploadComplete');
+function uploadComplete(file) {alert('uploadComplete');
 	if (this.getStats().files_queued === 0) {
 		document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 	}
