@@ -189,6 +189,11 @@ function message_url($id, $msgid){
     }
 }
 
+function game_url($id, $url = ''){
+    $url = !empty($url) ? '/'.$url : '';
+    return '/game/' . $id . $url; 
+}
+
 function filter_content($str){
     return htmlspecialchars_decode($str);
 }

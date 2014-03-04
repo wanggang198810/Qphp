@@ -118,18 +118,18 @@ class Model {
         if(!empty($sql)){
             $this->_sql = $sql;
         }else{
-            $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+            $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). " ". $this->db->getLimit();
         }
         return $this->db->fetchArray($this->_sql);
     }
     
     public function fetchCol(){
-        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). " ". $this->db->getLimit();
         return $this->db->fetchCol($this->_sql);
     }
     
     public function fetchLocateCol($field){
-        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). "". $this->db->getLimit();
+        $this->_sql = "select * from ".$this->db->table( $this->_table ) ." where ". $this->db->getWhere()." ".$this->db->getGroup()." ".$this->db->getHaving()." ".$this->db->getOrder(). " ". $this->db->getLimit();
         return $this->db->fetchLocateCol($this->_sql, $field);
     }
     
