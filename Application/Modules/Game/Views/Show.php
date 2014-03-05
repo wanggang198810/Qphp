@@ -12,10 +12,15 @@
         load_js('jquery');
         load_js('rgss.js');
     ?>
+        
+        <script type="text/javascript" src="/public/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="/public/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="/public/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
         <style>
            
         
         </style>
+    
 </head>
 <body>
 <?php
@@ -32,14 +37,14 @@
                 </h1>
             </div>
             
-            <div style=" margin-bottom: 20px;">
+            <div style=" margin-bottom: 20px; background: #eee; padding: 20px;">
                 <div>图集</div>
                 <div>
-                    <div style="padding: 20px;  width: 600px; height: 350px; overflow: hidden;"><img style=" width: 600px; height: 350px;" src="http://www.rgss.cn/<?php echo $game['cover']?>" /></div>
-                    <div>
-                        <img src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" />
-                        <img src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" />
-                        <img src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" />
+                    <div style="  width: 600px; height: 350px; overflow: hidden;"><img style=" width: 600px; height: 350px;" src="http://www.rgss.cn/<?php echo $game['cover']?>" /></div>
+                    <div id="game_photo">
+                        <a  rel="game_photo" title="" href="http://www.rgss.cn/<?php echo $game['cover']?>"><img alt="" src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" /></a>
+                        <a rel="game_photo" title="" href="http://www.rgss.cn/data/upload/201208040453041140.png"><img alt="" src="http://www.rgss.cn/data/upload/201208040453041140.png" width="100" /></a>
+                        <a rel="game_photo" title="" href="http://www.rgss.cn/<?php echo $game['cover']?>"><img alt="" src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" /></a>
                     </div>
                 </div>
             </div>
@@ -120,5 +125,15 @@
     </div>
     
 <?php load_view('Footer');?>     
+    <script>
+    $("a[rel=game_photo]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+    </script>
 </body>
 </html>
