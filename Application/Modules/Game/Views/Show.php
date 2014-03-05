@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><?php echo $game['title'];?></title>
+    <title><?php echo $game['name'];?> - 同能游戏</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
@@ -30,6 +30,18 @@
                 <h1 class="title-h1">
                     <a href="<?php echo game_url($game['id'], $game['url']);?>"><?php echo $game['name'];?></a>
                 </h1>
+            </div>
+            
+            <div style=" margin-bottom: 20px;">
+                <div>图集</div>
+                <div>
+                    <div style="padding: 20px;  width: 600px; height: 350px; overflow: hidden;"><img style=" width: 600px; height: 350px;" src="http://www.rgss.cn/<?php echo $game['cover']?>" /></div>
+                    <div>
+                        <img src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" />
+                        <img src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" />
+                        <img src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" />
+                    </div>
+                </div>
             </div>
 
             <div class="content-box">
