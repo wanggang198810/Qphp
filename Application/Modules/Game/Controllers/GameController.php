@@ -39,6 +39,12 @@ class GameController extends BaseController{
     }
     
     public function post(){
+        if(Request::isPostSubmit()){
+            hprint($_FILES);
+            hprint($_POST, 1);
+        }
+        $this->data['game_groups'] = $this->gameModel->getGameType(1);
+        $this->data['game_types'] = $this->gameModel->getGameType(0);
         $this->render('Post');
     }
 }

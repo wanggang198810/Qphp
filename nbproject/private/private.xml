@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Air/Qphp/Application/Libraries/Image.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Group/Controllers/GroupController.php</file>
+            <file>file:/E:/Air/Qphp/Application/Modules/Game/Views/Index.php</file>
             <file>file:/E:/Air/Qphp/Application/Modules/Game/Controllers/GameController.php</file>
-            <file>file:/E:/Air/Qphp/Public/js/swfupload/fileprogress.js</file>
-            <file>file:/E:/Air/Qphp/Public/js/swfupload/handlers.js</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Game/Views/Post.php</file>
-            <file>file:/E:/Air/Qphp/Application/Libraries/Upload.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Upload/Controllers/UploadController.php</file>
+            <file>file:/E:/Air/Qphp/Application/Modules/Game/Views/Show.php</file>
         </group>
     </open-files>
 </project-private>

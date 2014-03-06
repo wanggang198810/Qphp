@@ -28,7 +28,9 @@
 
 其它RPG游戏中的传统设定也都被战略游戏中的各种概念取代，将三国题材的SLG特点完美而合理的进行了RPG化。<Br />
         </div>
-        
+        <div>
+            <a href="/game/post/">提交游戏</a>
+        </div>
         <div style=" margin-top: 50px; line-height: 2; ">
             <ul class="game-list">
             <?php
