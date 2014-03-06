@@ -73,7 +73,7 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {//alert('fileDial
 	}
 }
 // 333
-function uploadStart(file) {alert('uploadStart');
+function uploadStart(file) {//alert('uploadStart');
 	try {
 		/* I don't want to do any file validation or anything,  I'll just update the UI and
 		return true to indicate that the upload should start.
@@ -92,14 +92,14 @@ function uploadStart(file) {alert('uploadStart');
 }
 
 //444 循环， 进度条
-function uploadProgress(file, bytesLoaded, bytesTotal) {alert('uploadProgress');
+function uploadProgress(file, bytesLoaded, bytesTotal) {//alert('uploadProgress');
 	try {
 		var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
 
-		var progress = new FileProgress(file, this.customSettings.progressTarget);alert('pro');
+		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setProgress(percent);
 		//progress.setStatus("Uploading...");
-	} catch (ex) {alert('er_pro');
+	} catch (ex) {
 		this.debug(ex);
 	}
 }
@@ -109,12 +109,12 @@ function uploadSuccess(file, serverData) {
         
         serverData = eval( "("+ serverData +")");
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-        alert('aaa');
+       
 		progress.setComplete(serverData);
 		//progress.setStatus("Complete.");
 		progress.toggleCancel(false);
 
-	} catch (ex) {alert('error_cc');
+	} catch (ex) {
 		this.debug(ex);
 	}
 }
@@ -172,7 +172,7 @@ function uploadError(file, errorCode, message) {//alert('uploadError');
 }
 
 // 666
-function uploadComplete(file) {alert('uploadComplete');
+function uploadComplete(file) {
 	if (this.getStats().files_queued === 0) {
 		document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 	}

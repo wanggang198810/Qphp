@@ -55,6 +55,55 @@
             font-size: 14px;
         }
     </style>
+    
+    <script type="text/javascript" src="/Public/js/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="/Public/js/swfupload/swfupload.queue.js"></script>
+<script type="text/javascript" src="/Public/js/swfupload/fileprogress.js"></script>
+<script type="text/javascript" src="/Public/js/swfupload/handlers.js"></script>
+<script type="text/javascript">
+		var swfu;
+
+		window.onload = function() {
+			var settings = {
+				flash_url : "/Public/js/swfupload/swfupload.swf",
+				upload_url: "/upload/",
+				post_params: {"PHPSESSID" : "<?php echo $user['uid']; ?>"},
+				file_size_limit : "2 MB",
+				file_types : "*.*",
+				file_types_description : "All Files",
+				file_upload_limit : 100,
+				file_queue_limit : 0,
+				custom_settings : {
+					progressTarget : "fsUploadProgress",
+					cancelButtonId : "btnCancel"
+				},
+				debug: true,
+
+				// Button settings
+				button_image_url: "/Public/js/swfupload/TestImageNoText_65x29.png",
+				button_width: "65",
+				button_height: "29",
+				button_placeholder_id: "spanButtonPlaceHolder",
+				button_text: '<span class="theFont">Hello</span>',
+				button_text_style: ".theFont { font-size: 16; }",
+				button_text_left_padding: 12,
+				button_text_top_padding: 3,
+				
+				// The event handler functions are defined in handlers.js
+				file_queued_handler : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				file_dialog_complete_handler : fileDialogComplete,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler : uploadSuccess,
+				upload_complete_handler : uploadComplete,
+				queue_complete_handler : queueComplete	// Queue plugin event
+			};
+
+			swfu = new SWFUpload(settings);
+	     };
+	</script>  
 </head>
 <body> 
 <?php
@@ -71,8 +120,18 @@
                 </div>
             
                 <div class="form-group" id="photo">
+                    <!--
                     <label for="title">图片 <a href="javascript:;" id="add-photo-item">添加图片</a></label> 
-                    <input type="file" class="photo" class="form-control" name="photo[]" />
+                    <input type="file" class="photo" class="form-control" name="photo[]" />-->
+                    <a href="javascript:;" id="get-r">结果</a>
+                    <div class="fieldset flash" id="fsUploadProgress">
+                    <span class="legend"></span>
+                    </div>
+                    <div id="divStatus">0 Files Uploaded</div>
+                    <div>
+                        <span id="spanButtonPlaceHolder"></span>
+                        <input id="btnCancel" type="button" value="Cancel All Uploads" onclick="swfu.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px;" />
+                    </div>
                 </div>
 
                 <div class="form-group mt20">
@@ -80,7 +139,7 @@
                     <textarea name="content" id="content" style="width:737px; height:500px; visibility:hidden;"></textarea>
                 </div>
                 <div class="form-group" style="padding:20px 0;">
-                <button type="submit" class="btn btn-default">保存</button>
+                <button type="button" id="submit-btn" class="btn btn-default">保存</button>
                 </div>
             
         </div>    
@@ -152,6 +211,27 @@ $(function(){
     $('#add-photo-item').click(function(){
         var html = '<input type="file" class="photo" class="form-control" name="photo[]" />';
         $('#photo').append(html);
+    });
+    
+    $('#submit-btn').click(function(){
+        var name = $('#name').val();
+        var content = $('#content').val();
+        var type = $('#type').val();
+        var gid = $('#groupid').val();
+        var url = $('#url').val();
+        var cover = '';
+        $('.progressWrapper').each(function(){
+            cover += $(this).attr('filepath') + '|||';
+        });
+        if(name=='' || content =='' || type == 0 || gid ==0 || cover ==''){
+            //alert('请填写完整的内容');
+            //return false;
+        }
+        var data = {'name':name, 'content':content, 'type':type, 'gid':gid, 'url':url, 'cover':cover};
+        $.post('/game/post/', data, function(r){
+            r = eval( "(" + r +")");
+            alert(r.success);
+        });
     });
 });   
 </script>
