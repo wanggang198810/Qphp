@@ -54,6 +54,7 @@
             height: 35px;
             font-size: 14px;
         }
+        #btnCancel,#divStatus{ display: none;}
     </style>
     
     <script type="text/javascript" src="/Public/js/swfupload/swfupload.js"></script>
@@ -69,22 +70,24 @@
 				upload_url: "/upload/",
 				post_params: {"PHPSESSID" : "<?php echo $user['uid']; ?>"},
 				file_size_limit : "2 MB",
-				file_types : "*.*",
+				file_types : "*.jpg;*.gif;*png;*.jpeg",
 				file_types_description : "All Files",
-				file_upload_limit : 100,
+				file_upload_limit : 5,
 				file_queue_limit : 0,
 				custom_settings : {
 					progressTarget : "fsUploadProgress",
 					cancelButtonId : "btnCancel"
 				},
 				debug: true,
+                
 
 				// Button settings
-				button_image_url: "/Public/js/swfupload/TestImageNoText_65x29.png",
-				button_width: "65",
-				button_height: "29",
+				//button_image_url: "/Public/js/swfupload/TestImageNoText_65x29.png",
+                button_image_url: "/Public/image/add-photo.png",
+				button_width: "100",
+				button_height: "39",
 				button_placeholder_id: "spanButtonPlaceHolder",
-				button_text: '<span class="theFont">Hello</span>',
+				//button_text: '<span class="theFont">Hello</span>',
 				button_text_style: ".theFont { font-size: 16; }",
 				button_text_left_padding: 12,
 				button_text_top_padding: 3,
@@ -128,7 +131,7 @@
                     <span class="legend"></span>
                     </div>
                     <div id="divStatus">0 Files Uploaded</div>
-                    <div>
+                    <div class="mt20">
                         <span id="spanButtonPlaceHolder"></span>
                         <input id="btnCancel" type="button" value="Cancel All Uploads" onclick="swfu.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px;" />
                     </div>
@@ -138,6 +141,18 @@
                     <label for="content">内容</label>
                     <textarea name="content" id="content" style="width:737px; height:500px; visibility:hidden;"></textarea>
                 </div>
+                
+                <div class="form-group mt20" id="down-address">
+                    <label for="down">下载地址 <a href="javascript:;" id="add-down-address">增加下载链接</a></label> 
+                    <div class="down-address-item">
+                        <input type="text" style=" width: 120px; padding: 7px 9px;" class="form-control" name="downname[]" placeholder="下载名称" />
+                        <input type="text" style=" width: 520px; padding: 7px 9px;" class="form-control " name="down[]" placeholder="下载链接">
+                            <a href="javascript:;" class="delete-down">删除</a></div>
+                    </div>
+                </div>
+            
+            
+            
                 <div class="form-group" style="padding:20px 0;">
                 <button type="button" id="submit-btn" class="btn btn-default">保存</button>
                 </div>
@@ -185,8 +200,19 @@
                 <label for="url">url</label>
                 <input style="width:155px;" id="url" name="url" type="text" placeholder="hello-url">
 
-                <label for="tag">标签</label>
-                <input style="width:155px;" id="tag" name="tag" type="text" placeholder="tag">
+                <label for="filesize">游戏大小</label>
+                <input style="width:155px;" id="filesize" name="filesize" type="text" placeholder="单位为M">
+            </div>
+            
+            <div style="margin-top:20px;">
+                <label for="url">游戏语言</label>
+                <select name="lang" id="lang" style="width:169px">
+                    <option value="1">简体中文</option>
+                    <option value="2">繁体中文</option>
+                    <option value="3">英文</option>
+                    <option value="4">日文</option>
+                    <option value="5">其他</option>
+                </select>
             </div>
         </div>
         
@@ -213,6 +239,17 @@ $(function(){
         $('#photo').append(html);
     });
     
+    $('#add-down-address').click(function(){
+        var html = '<div class="down-address-item"><input type="text" style=" width: 120px; padding: 7px 9px;" class="form-control" name="downname[]" placeholder="下载名称" /> <input type="text" style=" width: 520px; padding: 7px 9px;" class="form-control " name="down[]" placeholder="下载链接"> <a href="javascript:;" class="delete-down">删除</a></div>';
+        $('#down-address').append(html);
+    });
+    
+    
+    
+    $('#down-address').on('click','.delete-down', function(){
+        $(this).parent('.down-address-item').remove();
+    });
+    
     $('#submit-btn').click(function(){
         var name = $('#name').val();
         var content = $('#content').val();
@@ -229,6 +266,7 @@ $(function(){
         }
         var data = {'name':name, 'content':content, 'type':type, 'gid':gid, 'url':url, 'cover':cover};
         $.post('/game/post/', data, function(r){
+            alert(r);
             r = eval( "(" + r +")");
             alert(r.success);
         });

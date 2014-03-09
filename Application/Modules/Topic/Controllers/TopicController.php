@@ -22,8 +22,15 @@ class TopicController extends BaseTopicController {
             $this->home();
             return;
         }
-        $this->view($id,$type);
-        $this->render();
+        //$this->view($id,$type);
+        $is_ok = $this->view($id, $type);
+        if($is_ok){
+            Q::import('Helpers.Topic', 'Topic/');
+            $this->render();
+            return;
+        }else{
+            Response::redirect('/group');
+        }
     }
     
     

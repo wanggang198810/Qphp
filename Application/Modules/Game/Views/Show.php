@@ -11,15 +11,12 @@
         load_css('style');
         load_js('jquery');
         load_js('rgss.js');
+        load_js('fancybox/jquery.mousewheel-3.0.4.pack.js');
+        load_js('fancybox/jquery.fancybox-1.3.4.pack.js');
+        load_css('../js/fancybox/jquery.fancybox-1.3.4.css');
     ?>
         
-        <script type="text/javascript" src="/public/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-	<script type="text/javascript" src="/public/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	<link rel="stylesheet" type="text/css" href="/public/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-        <style>
-           
-        
-        </style>
+
     
 </head>
 <body>

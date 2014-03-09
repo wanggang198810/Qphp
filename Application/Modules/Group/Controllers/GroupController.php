@@ -189,8 +189,8 @@ class GroupController extends BaseController{
         $this->checkLogin(1);
         $permission = $this->groupModel->createPermission($this->uid);
         if(!$permission){
-            $this->show_success();
-            echo '没有权限';exit;
+            $this->show_error('没有权限', '/group/');
+            return ;
         }
         
         if(Request::isPostSubmit('group_name') && Request::isPostSubmit('group_info') && Request::isPostSubmit('group_url')){

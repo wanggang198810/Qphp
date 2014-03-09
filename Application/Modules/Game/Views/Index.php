@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><?php echo $topic['title'];?></title>
+    <title>同能游戏_同能网</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
@@ -40,7 +40,9 @@
                     $class=  $i%5 == 0 ? ' class="fright"' : '';
             ?>
                 <li <?php echo $class;?>>
-                    <img src="http://www.rgss.cn/<?php echo $v['cover'];?>" width="170" height="135" />
+                    <a style=" font-size: 14px;" href="<?php echo game_url($v['id'], $v['url']);?>">
+                        <img src="http://www.rgss.cn/<?php echo $v['cover'];?>" width="170" height="135" />
+                    </a>
                     <div class="li-bottom">
                         <a style=" font-size: 14px;" href="<?php echo game_url($v['id'], $v['url']);?>"><?php echo $v['name'];?></a>
                         <div>中文 / 20M</div>

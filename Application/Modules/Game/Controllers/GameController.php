@@ -41,8 +41,8 @@ class GameController extends BaseController{
     public function post(){
         if(Request::isPostSubmit()){
             $data['cover'] = Request::getPost('cover', 1);
-            $data['gid'] = Request::getPost('groupid', 1);
-            $data['type'] = Request::getPost('type', 1);
+            $data['groupid'] = Request::getPost('groupid', 1);
+            $data['typeid'] = Request::getPost('type', 1);
             $data['name'] = Request::getPost('name', 1);
             $data['content'] = Request::getPost('content', 1);
             //$data['tag'] = Request::getPost('name', 1);

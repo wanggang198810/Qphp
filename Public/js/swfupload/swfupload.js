@@ -82,8 +82,9 @@ SWFUpload.BUTTON_ACTION = {
 	START_UPLOAD : -120
 };
 SWFUpload.CURSOR = {
-	ARROW : -1,
-	HAND : -2
+    HAND : -1,
+	ARROW : -2
+	
 };
 SWFUpload.WINDOW_MODE = {
 	WINDOW : "window",
