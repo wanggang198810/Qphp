@@ -106,5 +106,40 @@ class PostController extends BaseTopicController{
         }
         $this->response->redirect('/post');
     }
+    
+    
+    public function delete($id){
+        $id = intval($id);
+        if($id <= 0){
+            $this->show_404();
+        }
+        
+        $this->data['topic'] = $this->topicModel->getTopic($id);
+        if(empty($this->data['topic'])){
+            $this->show_404();
+        }
+        $this->loadModel('Group.Group');
+        $this->loadModel('Group.GroupUser');
+        $groupModel = new GroupModel();
+        $groupuserModel = new GroupUserModel();
+        $this->data['group'] = $groupModel->getGroup($this->data['topic']['gid']);
+        $this->data['is_manager'] = $groupuserModel->isManager($this->data['topic']['gid'], $this->uid);
+        $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
+        $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : $this->data['is_manager'];
+        
+        $result =  $this->topicModel->deleteTopic($id);
+        if($result){
+            $this->show_success('', group_url($this->data['group']['url']) );
+        }else{
+            $this->show_error('删除失败', group_url($this->data['group']['url']));
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
 }
 

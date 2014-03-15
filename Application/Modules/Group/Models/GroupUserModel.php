@@ -42,7 +42,25 @@ class GroupUserModel extends Model{
         if($gid <= 0 || $uid <= 0){ return false;}
         
         $result = $this->where( array('uid'=>$uid, 'gid'=> $gid))->fetchLocateCol('id');
-        if(!empty($result)){ return true;}
+        if(!empty($result)){ 
+            if($result['manager'] > 0){
+                return 2;
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public function isManager($gid, $uid){
+        $gid = intval($gid);
+        $uid = intval($uid);
+        if($gid <= 0 || $uid <= 0){ return false;}
+        
+        $result = $this->where( array('uid'=>$uid, 'gid'=> $gid, 'manager' => 1))->fetchLocateCol('id');
+        if(!empty($result)){ 
+            return true;
+        }
         return false;
     }
     

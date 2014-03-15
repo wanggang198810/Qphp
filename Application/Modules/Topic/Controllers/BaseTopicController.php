@@ -17,7 +17,7 @@ class BaseTopicController extends BaseController{
         
         $int_id = intval($id);
         list($id0) = explode('-', $id);
-        if($id0 != $int_id){ 
+        if($id0 != $int_id){
             $this->show_404();return;
         }
         
@@ -33,6 +33,20 @@ class BaseTopicController extends BaseController{
         }
         if($id != $this->data['topic']['id']. '-' . $this->data['topic']['url'] && $id != $this->data['topic']['id']){
             $this->show_404(); return;
+        }
+        
+        /**
+         * 小组帖子特殊处理
+         */
+        if($this->data['topic']['type'] == 3 && $this->data['topic']['gid'] > 0){
+            $this->loadModel('Group.Group');
+            $this->loadModel('Group.GroupUser');
+            $groupModel = new GroupModel();
+            $groupuserModel = new GroupUserModel();
+            $this->data['group'] = $groupModel->getGroup($this->data['topic']['gid']);
+            $this->data['is_in_group'] = $groupuserModel->isInGroup($this->data['topic']['gid'], $this->uid);
+            $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
+            $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : 0;
         }
         
         $this->loadModel('User');
@@ -153,6 +167,8 @@ class BaseTopicController extends BaseController{
     }
     
     public function postAnswer($id){
+        $result = $this->checkLogin(1);
+        if($result <= 0){ return false;}
         if( Request::isPostSubmit('topicid')){
             $data['topicid'] = Request::getIntPost('topicid');
             if( intval( $id ) != $data['topicid']){

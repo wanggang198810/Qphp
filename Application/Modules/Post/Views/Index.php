@@ -36,7 +36,13 @@
                     <a href="<?php echo topic_url($topic['id'], $topic['url'], 3);?>"><?php echo $topic['title'];?></a>
                 </h1>
             </div>
-
+            <div>
+                <?php 
+                    if($is_manager){
+                        echo '<a href="/post/delete/'.$topic['id'].'">删除</a> <a href="/post/edit/'.$topic['id'].'">编辑</a>';
+                    }
+                ?>
+            </div>
             <div class="content-box">
                 <div class="post-avatar"><img src="<?php echo avatar($topic['uid'])?>" /></div>
                 <div class="post-content">

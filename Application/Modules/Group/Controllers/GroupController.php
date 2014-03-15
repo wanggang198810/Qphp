@@ -56,6 +56,8 @@ class GroupController extends BaseController{
         $this->loadModel('Group.GroupUser');
         $groupuserModel = new GroupUserModel();
         $this->data['is_in_group'] = $groupuserModel->isInGroup($this->data['group']['id'], $this->uid);
+        $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
+        $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : 0;
         //$this->data['tags'] = $this->groupModel->getTagList($this->data['group']['id']);
         $page = Request::getIntGet('page',1);
         $this->loadModel('Topic.Topic');

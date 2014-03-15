@@ -28,7 +28,7 @@
                     <div class="group-title2"><?php echo $group['name'];?><span class="group-num"><?php echo $group['num'];?>人加入此小组</span></div>
                     <div class="group-join-status" id="group-join-status">
                     <?php 
-                        if($user['uid'] == $group['creator']){
+                        if($is_creator){
                     ?>
                         <a href="<?php echo group_url($group['url'], 'manage');?>" id="manage-group" groupurl = "<?php echo $group['url'];?>" groupid="<?php echo $group['id'];?>" class="">管理</a>
                     <?php 

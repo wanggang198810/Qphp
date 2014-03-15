@@ -148,6 +148,14 @@ class TopicModel extends Model{
         return false;
     }
     
+    public function deleteTopic($id){
+        //return $this->where(array('id'=> $id))->delete();
+        $id = intval($id);
+        if($id <= 0){ return false;}
+        $where = array('id' => $id);
+        $data = array('status' => 0);
+        return $this->where($where)->update($data);
+    }
     
 }
 
