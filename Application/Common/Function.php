@@ -150,7 +150,7 @@ function group_url($url, $type =''){
     return '/group/'.$url.'/';
 }
 
-function group_logo($url){
+function group_logo($url=''){
     if(empty($url)){
         return '/Public/image/default_group.png';
     }

@@ -22,18 +22,14 @@ class Application {
         $this->_response = Q_Response::getInstance();
         //初始化系统配置项
         $this->_config = Q::getConfig();
-        
-        
         date_default_timezone_set( $this->_config['timezone']);
-        
         //设置系统错误级别
         if($this->_config['debug']){
-            error_reporting(E_ERROR | E_WARNING | E_PARSE);
+            error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
         }else{
-            error_reporting(E_ERROR | E_WARNING | E_PARSE);
+            error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
             set_error_handler('q_error_handler');//自定义错误
         }
-        
     }
     
     

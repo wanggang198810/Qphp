@@ -27,7 +27,7 @@
     <div  class="main">
         <div style="float:left; width: 650px;">
             <div class="" style=" border-bottom: 1px solid #eee; padding: 25px 0 15px;">
-                <a href="/group">小组</a> > 
+                <a href="/group/">小组</a> > 
                 <a href="<?php echo group_url($group['url'])?>"><?php echo $group['name']?></a> > 
                 <a href="<?php echo topic_url($topic['id'], $topic['url'], 3);?>"><?php echo $topic['title'];?></a></div>
             
@@ -36,20 +36,24 @@
                     <a href="<?php echo topic_url($topic['id'], $topic['url'], 3);?>"><?php echo $topic['title'];?></a>
                 </h1>
             </div>
-            <div>
-                <?php 
-                    if($is_manager){
-                        echo '<a href="/post/delete/'.$topic['id'].'">删除</a> <a href="/post/edit/'.$topic['id'].'">编辑</a>';
-                    }
-                ?>
-            </div>
-            <div class="content-box">
+            
+            <div class="content-box" id="content-box">
                 <div class="post-avatar"><img src="<?php echo avatar($topic['uid'])?>" /></div>
                 <div class="post-content">
                     <div class="post-user">
                         <a href="<?php echo user_space($view_user['blogname']);?>"><?php echo $view_user['username']?>
                         </a> <span style="float:right; color:#999; font-size: 12px;"><?php echo dgmdate($topic['time']);?></span></div>
                     <?php echo filter_content($topic['content']) ;?>
+                </div>
+                
+                <div  style="">
+                    <div id="topic-manage" style="visibility:hidden">
+                    <?php 
+                        if($is_manager){
+                            echo '<a href="/post/delete/'.$topic['id'].'">删除</a> <a href="/post/edit/'.$topic['id'].'">编辑</a>';
+                        }
+                    ?>
+                    </div>
                 </div>
             </div>
             
@@ -90,7 +94,22 @@
         </div>
         
     </div>
+   
+<?php load_view('Footer');?>
+<script>
+$(function(){
+    $('#content-box').hover(
+        function(){
+            $("#topic-manage").css({ 'visibility':'visible'})
+        },
+        function(){
+            $("#topic-manage").css({ 'visibility':'hidden'})
+        }
+    );
     
-<?php load_view('Footer');?>  
+    
+});
+    
+</script>
 </body>
 </html>

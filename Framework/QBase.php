@@ -126,6 +126,10 @@ class QBase {
      * 导入模型文件
      */
     public static function loadModel($name){
+        global $_Q;
+        if(!isset($_Q['include_files'])){
+            $_Q['include_files'] = array();
+        }
         $module = $name . '/';
         if( false !== strpos($name, '.')){
             list($module, $name) = explode('.', $name);
@@ -142,8 +146,13 @@ class QBase {
         }else{
             $filename =  APP_PATH .'/Models/'.$module .$name;
         }
+        if(in_array($filename, $_Q['include_files'])){
+            return true;
+        }
+        
+        $_Q['include_files'][] = $filename;
         if(file_exists($filename)){
-            require_once ($filename);
+            include($filename);
         }
         return true;
     }
@@ -209,7 +218,7 @@ class QBase {
      * 获取HTTP 响应头， 同get_headers();
      */
     public static function getResonse(){
-        return $http_response_header;
+        return getallheaders();
     }
    
     /**

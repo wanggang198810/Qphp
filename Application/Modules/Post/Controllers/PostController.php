@@ -126,8 +126,11 @@ class PostController extends BaseTopicController{
         $this->data['is_manager'] = $groupuserModel->isManager($this->data['topic']['gid'], $this->uid);
         $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
         $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : $this->data['is_manager'];
-        
-        $result =  $this->topicModel->deleteTopic($id);
+        if(!$this->data['is_manager']){
+            $this->show_error('没有权限', group_url($this->data['group']['url']));
+        }
+
+        $result =  $this->topicModel->deleteTopic($id,$this->uid);
         if($result){
             $this->show_success('', group_url($this->data['group']['url']) );
         }else{

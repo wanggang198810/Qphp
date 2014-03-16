@@ -17,7 +17,7 @@ class TopicModel extends Model{
     
     
     public function getHotTopics($uid=0, $type=1, $limit = 5, $start=''){
-        $where = '';
+        $where = array('status' => 1);
         $type = intval($type);
         $uid = intval($uid);
         if( $type > 0 ){
@@ -37,7 +37,7 @@ class TopicModel extends Model{
     
     
     public function getRecomTopics($uid=0, $type=1, $limit = 5, $start=''){
-        $where = '`top` > 0';
+        $where = '`status` > 0  and `top` > 0';
         $type = intval($type);
         $uid = intval($uid);
         if( $type > 0 ){
@@ -57,7 +57,7 @@ class TopicModel extends Model{
     
     
     public function getTopics($uid=0, $type=1, $limit = 5, $start=''){
-        $where = '';
+        $where = array('status' => 1);
         $type = intval($type);
         $uid = intval($uid);
         if( $type > 0 ){
@@ -77,7 +77,7 @@ class TopicModel extends Model{
     
     
     public function getTopicList($uid=0, $type=1, $page = 1, $pageSize = 20 , $total = 0){
-        $where = '';
+        $where = array('status' => 1);
         $type = intval($type);
         $uid = intval($uid);
         if( $type > 0 ){
@@ -92,7 +92,7 @@ class TopicModel extends Model{
     
     
     public function getTopicByGid($gid , $page = 1, $pageSize = 20 , $total = 0){
-        return $this->where( array('gid'=>$gid) )->order(" ORDER BY id DESC")->page($page, $pageSize, $total);
+        return $this->where( array('status' => 1, 'gid'=>$gid) )->order(" ORDER BY id DESC")->page($page, $pageSize, $total);
     }
     
     public function getTopicByGids($gid , $page = 1, $pageSize = 20 , $total = 0){
@@ -103,7 +103,7 @@ class TopicModel extends Model{
     
     public function getTopic($id){
         if( intval($id) <= 0 ){ return false; }
-        return $this->where( array('id' => intval($id) ) )->fetch();
+        return $this->where( array('status' => 1,'id' => intval($id) ) )->fetch();
     }
     
     
@@ -125,15 +125,21 @@ class TopicModel extends Model{
     /**
      * 删除
      */
-    public function deleteTopic($id, $uid) {
+    public function deleteTopic($id, $uid, $real=0) {
         $id = intval($id);
         if($id <= 0){
             return false;
         }
         if(!$this->hasPermission($id, $uid)){
-            return false;
+            //return false;
         }
-        $this->where( array('id' => $id) )->delete();
+        
+        if($real){
+            return $this->where( array('id' => $id) )->delete();
+        }else{
+            return $this->where( array('id' => $id) )->update(array('status'=>0));
+        }
+        
     }
     
     
@@ -148,14 +154,7 @@ class TopicModel extends Model{
         return false;
     }
     
-    public function deleteTopic($id){
-        //return $this->where(array('id'=> $id))->delete();
-        $id = intval($id);
-        if($id <= 0){ return false;}
-        $where = array('id' => $id);
-        $data = array('status' => 0);
-        return $this->where($where)->update($data);
-    }
+   
     
 }
 
