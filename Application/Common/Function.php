@@ -195,7 +195,7 @@ function game_url($id, $url = ''){
 }
 
 function filter_content($str){
-    return htmlspecialchars_decode($str);
+    return htmlspecialchars_decode( htmlspecialchars( $str) );
 }
 
 
