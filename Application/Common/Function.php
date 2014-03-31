@@ -78,7 +78,7 @@ EOD;
 
 
 //分页，页码
-function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
+function to_page_html2( $page, $totalPage=1, $col=20, $param ='page'){
 	if($totalPage <= 1){
 		return '';
 	}
@@ -129,6 +129,61 @@ function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
 	return $html;
 }
 
+
+
+//分页，页码
+function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
+    if($totalPage <= 0){
+        return '';
+    }
+    $html = '<div style="padding: 10px 0">';
+    if($page >= $totalPage){
+        $page = $totalPage;
+    }
+    if($page <= 0){
+        $page = 1;
+    }
+
+    $start = floor( $page / $col ) * $col + 1;
+    $end = $start + $col - 1;
+    if($totalPage < $end){
+        $end = $totalPage;
+    }
+
+    $url = $_SERVER['REQUEST_URI'];
+    $url  = parse_url($url);
+    parse_str($url['query'], $par);
+    if(isset($par[$param])){
+        unset($par[$param]);
+    }
+    if(isset($par['header_tips'])){
+        unset($par['header_tips']);
+    }
+    $url_str = http_build_query($par);
+
+    $pre_page = ($page - 1) <= 0 ? 1: $page-1;
+    $pre_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $pre_page;
+    $first_url = $url['path'] . '?' .$url_str .'&'. $param. '=1' ;
+    $last_url = $url['path'] . '?' .$url_str .'&'. $param. '='.$totalPage ;
+    $html .= '<a href="'.$first_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1;">首页</a>';
+    $html .= '<a href="'.$pre_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1; margin:0 5px;">上一页</a>';
+
+    for ($i = $start; $i <= $end; $i++){
+        $a_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $i;
+        if($i==$page){
+            $html .= '<span style="font-weight:bold; padding:0 5px;">'.$i.'</span>';
+        }else{
+            $html .= '<a href="' . $a_url . '" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1; margin:0 5px;">'.$i.'</a>';
+        }
+    }
+
+    $next_page = ($page+1) > $totalPage ? $totalPage: $page+1;
+    $next_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $next_page;
+    $html .= '<a href="'.$next_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1; margin:0 5px;">下一页</a>';
+    $html .= '<a href="'.$last_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1;">尾页</a>';
+    $html .= '</div>';
+    return $html;
+}
 
 function user_space( $url , $type = '' ){
     if(!empty($type)){
