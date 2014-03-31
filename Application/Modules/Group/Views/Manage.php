@@ -54,8 +54,13 @@
                     $i = 1;
             ?>
                 <li id="member-li-<?php echo $v['uid']?>">
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
-                    <a class="kickMember right" href="javascript:;" uid="<?php echo $v['uid']?>" id="member-<?php echo $v['uid']?>">删除</a> 
+                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a>
+                    <a class="kickMember right" href="javascript:;" uid="<?php echo $v['uid']?>" id="member-<?php echo $v['uid']?>">删除</a>
+                    <?php if($v['manager'] == 1){?>
+                        <a class="del-manage right" style=" margin-right: 5px;" href="javascript:;" uid="<?php echo $v['uid']?>" id="del-manage-<?php echo $v['uid']?>">取消管理员</a>
+                    <?php }else{?>
+                        <a class="add-manage right" style=" margin-right: 5px;" href="javascript:;" uid="<?php echo $v['uid']?>" id="add-manage-<?php echo $v['uid']?>">设置管理员</a>
+                    <?php }?>
                 </li>
             
             <?php   $i ++ ; }?>
@@ -118,6 +123,22 @@
             var gid = $('#manage-member-list').attr('groupid');
             var groupurl = $('#manage-member-list').attr('groupurl');
             var url = '/group/' + groupurl + '/kickMember/';
+            $.post(url, {'uid':uid, 'gid':gid}, function(r){
+                result = eval("(" + r + ")");
+                if(result.success == 1){
+                    $('#member-li-' + uid).remove();
+                }else{
+                    alert('未知错误.');
+                }
+            });
+        });
+
+        //设置管理员
+        $('.add-manage').live('click', function(){
+            var uid = $(this).attr('uid');
+            var gid = $('#manage-member-list').attr('groupid');
+            var groupurl = $('#manage-member-list').attr('groupurl');
+            var url = '/group/' + groupurl + '/addManage/';
             $.post(url, {'uid':uid, 'gid':gid}, function(r){
                 result = eval("(" + r + ")");
                 if(result.success == 1){

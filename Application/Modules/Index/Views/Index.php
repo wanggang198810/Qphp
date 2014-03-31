@@ -9,7 +9,7 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('bootstrap');
+        //load_js('bootstrap');
     ?>
     <style>
        body{ background: #f1f5f8; margin: 0;}
@@ -79,6 +79,6 @@
             </div>-->
         </div>
     </div>
-    
+    <script src="http://www.rgss.cn/rgssadv.min.js"></script>
 </body>
 </html>

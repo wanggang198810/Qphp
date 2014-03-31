@@ -324,5 +324,33 @@ class GroupController extends BaseController{
         
         $this->render('Edit');
     }
+
+
+    public function addManage($gid){
+        $this->checkLogin(1);
+        if($this->uid != $this->data['group']['creator']){
+            $this->show_error('没有权限', '/group/');
+            return;
+        }
+
+        $gid2 = Request::getIntPost('gid');
+        $uid = Request::getIntPost('uid');
+
+        $data = array('time'=> time(), 'success'=> 0);
+        if($gid != $gid2 || $this->uid != $this->data['group']['creator'] || $uid == $this->uid || $uid == $this->data['group']['creator']){
+            $data = array('time'=> time(), 'success'=> -1);
+            echo json_encode($data);
+            return;
+        }
+
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $result = $groupuserModel->leave($gid, $uid);
+        if($result){
+            $data = array('time'=> time(), 'success'=> 1);
+        }
+        echo json_encode($data);
+        return;
+    }
     
 }

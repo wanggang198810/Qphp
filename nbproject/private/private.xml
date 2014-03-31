@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/E:/Air/Qphp/Application/Modules/Group/Controllers/GroupController.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Topic/Controllers/BaseTopicController.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Group/Views/List.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Group/Models/GroupUserModel.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Group/Models/GroupModel.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Topic/Models/TopicModel.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Post/Controllers/PostController.php</file>
-            <file>file:/E:/Air/Qphp/Framework/Core/Controller.php</file>
-            <file>file:/E:/Air/Qphp/Application/Modules/Post/Views/Index.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
