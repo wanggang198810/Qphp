@@ -132,8 +132,8 @@ class BaseTopicController extends BaseController{
             $postModel = new TopicModel();
             import('String');
             $data['title'] = filter(Request::getPost('title'));
-            $data['content'] =  Request::getPost('content') ;
-            $data['shortcontent'] = String::substr( Request::getPost('content') , 0, 256);
+            $data['content'] =  Request::getPost('content');
+            $data['shortcontent'] = String::substr( strip_tags(Request::getPost('content')) , 0, 256);
             $data['cid'] = Request::getIntPost('category');
             $data['gid'] = Request::getIntPost('groupid');
             $data['tid'] = Request::getIntPost('tagid');
