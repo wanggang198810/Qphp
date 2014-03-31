@@ -72,5 +72,6 @@
     </div>
     
 <?php load_view('Footer');?>        
+<script src="http://www.rgss.cn/api/js/rgsscnadv.js"></script>
 </body>
 </html>
