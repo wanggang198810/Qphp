@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><?php echo $topic['title'];?></title>
+    <title>发现 - <?php echo APP_NAME;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
@@ -53,7 +53,7 @@
                 </div>
             <?php } }?>
             
-            <?php echo $page_html;?>
+            <div class="page"><?php echo $page_html;?></div>
         </div>
         
         

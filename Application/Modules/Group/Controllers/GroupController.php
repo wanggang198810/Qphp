@@ -7,6 +7,9 @@
 require( APP_PATH ."Modules/Common/Controllers/BaseController.php" );
 class GroupController extends BaseController{
     
+    private $groupUrl;
+
+
     public function __construct() {
         parent::__construct();
         $this->groupModel = new GroupModel();
@@ -15,7 +18,7 @@ class GroupController extends BaseController{
     public function index($url = '', $type=''){
         //$this->groupModel = new GroupModel();
         
-        $url = filter($url);
+        $this->groupUrl = $url = filter($url);
         if(empty($url) ){
            $this->_home();
            return;
@@ -49,6 +52,9 @@ class GroupController extends BaseController{
                     break;
                 case 'edit':
                     $this->_edit();
+                    break;
+                case 'tag';
+                    $this->_tag();
                     break;
             }
             return;
@@ -328,15 +334,16 @@ class GroupController extends BaseController{
 
     public function addManage($gid){
         $this->checkLogin(1);
+        $data = array('time'=> time(), 'success'=> 0);
         if($this->uid != $this->data['group']['creator']){
-            $this->show_error('没有权限', '/group/');
+            echo json_encode($data);
             return;
         }
 
         $gid2 = Request::getIntPost('gid');
         $uid = Request::getIntPost('uid');
 
-        $data = array('time'=> time(), 'success'=> 0);
+        
         if($gid != $gid2 || $this->uid != $this->data['group']['creator'] || $uid == $this->uid || $uid == $this->data['group']['creator']){
             $data = array('time'=> time(), 'success'=> -1);
             echo json_encode($data);
@@ -352,5 +359,34 @@ class GroupController extends BaseController{
         echo json_encode($data);
         return;
     }
+    
+    //标签
+    private function _tag(){
+        
+        $url = $this->groupUrl;
+        $this->getGroupInfoByUrl($url);
+        
+        $this->render('Tag');
+    }
+    
+    private function _addTag(){
+        
+    }
+    
+    
+    private function getGroupInfoByUrl($url){
+        $url = filter($url);
+        
+        $this->data['group'] = $this->groupModel->getGroupByUrl($url);
+        
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $this->data['is_in_group'] = $groupuserModel->isInGroup($this->data['group']['id'], $this->uid);
+        $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
+        $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : 0;
+    }
+    
+    
+    
     
 }

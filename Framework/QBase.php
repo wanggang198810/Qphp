@@ -82,12 +82,12 @@ class QBase {
             $filename .= '.php';
         }
         
-        if($config['hmvc'] && false === strpos($type, 'Libraries')){
+        if($config['hmvc'] && !in_array(strtolower(trim($type, '/')) , array( 'libraries', 'extends'))){ // && false === strpos($type, 'Libraries')
             $filepath = APP_PATH . self::checkPath( $config['hmvc_dir'] ) .self::checkPath( $modules ) . $type . $filename ;
         }else{
             $filepath = APP_PATH . $type . $filename;
         }
-        
+
         if( file_exists( $filepath ) ){
             require_once ( $filepath );
         }elseif( file_exists( FRAMEWORK_PATH . $type . $filename) ){

@@ -28,7 +28,7 @@ class Application {
             error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
         }else{
             error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-            set_error_handler('q_error_handler');//自定义错误
+           // set_error_handler('q_error_handler');//自定义错误
         }
     }
     
@@ -119,7 +119,7 @@ class Application {
             $this->_action = $this->_config['default_action'];
             $router['param'] = array_merge( array($action), $router['param']);
         }
-
+        $controller->_action = $action = $this->_action;
         if( !method_exists($controller, $this->_action) ){
             if($this->_config['record_log']){
                 Q_Log::set( Q_Error::getError( Q_Error::$errorType['noaction'] ).': '.$this->_action );
@@ -194,7 +194,7 @@ class Application {
             }
         }
         $className = $this->_controller.self::CONTROLLER_SUFFIX;
-        $controller = new $className() ;
+        $controller = new $className($this->_action) ;
         
         //初始化controller
         $controller->init();

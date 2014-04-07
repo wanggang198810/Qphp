@@ -7,15 +7,23 @@
 require( APP_PATH ."Modules/Common/Controllers/BaseController.php" );
 class UController extends BaseController{
     
+    public function __construct() {
+        parent::__construct();
+    }
+
+
     private $view_user;
         
-    public function index($id, $type=''){
+    public function index($id='', $type=''){
         $this->checkLogin(1);
         $id = filter($id);
         $type = filter($type);
         
         if(empty($id)){
             if($this->uid > 0){
+                if( empty($this->user['blogname'])){
+                    return ;
+                }
                 $id = $this->user['blogname'];
                 $this->response->redirect('/u/'.$id);
             }else{

@@ -140,6 +140,7 @@
             var groupurl = $('#manage-member-list').attr('groupurl');
             var url = '/group/' + groupurl + '/addManage/';
             $.post(url, {'uid':uid, 'gid':gid}, function(r){
+                alert(r);
                 result = eval("(" + r + ")");
                 if(result.success == 1){
                     $('#member-li-' + uid).remove();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><?php echo $title;?></title>
+    <title>用户注册 - <?php echo APP_NAME;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
@@ -9,7 +9,7 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('bootstrap');
+        load_js('jquery');
     ?>
     <style>
         .form-heading{ color:#4BC071; padding-bottom: 15px;}
@@ -22,12 +22,12 @@
         .litle-green{ color: #39814D}
     </style>
 </head>
-<body>
+<body style="background:#226B1F">
     <?php
-        load_view ('Common.header');
+        //load_view ('Common.header');
     ?> 
     <div class="container">
-        <div class="form-signin">
+        <div class="form-signin" style=" height: 370px;">
             
             <div class="form-info">
                 <img src="/Public/image/liblogo.png" style="margin-top:50px; margin-left:50px;" />
@@ -40,6 +40,12 @@
                   <label class="control-label" for="inputEmail">帐 号：</label>
                   <div class="controls">
                     <input type="text" id="username" name="username" placeholder="Username">
+                  </div>
+                </div>
+                    <div class="control-group">
+                  <label class="control-label" for="inputEmail">邮 箱：</label>
+                  <div class="controls">
+                        <input type="text" id="userEmail" name="email" placeholder="Email">
                   </div>
                 </div>
                 <div class="control-group">
@@ -68,7 +74,7 @@
                 </div>
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn btn-success">登 陆</button> &nbsp;&nbsp;<a href="/user/login" class="litle-green" >已有帐号，马上登录</a></div>
+                            <button type="submit" class="btn btn-success">注 册</button> &nbsp;&nbsp;<a href="/user/login" class="litle-green" >已有帐号，马上登录</a></div>
                     </div>
               </form>
             </div>

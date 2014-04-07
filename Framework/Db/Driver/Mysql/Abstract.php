@@ -44,6 +44,8 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
     //order 分组
     protected $_order;
     
+    protected $_limit;
+    
     
     /**
      * 初始化数据库信息

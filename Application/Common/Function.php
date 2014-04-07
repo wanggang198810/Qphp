@@ -22,6 +22,11 @@ function load_css($filename){
 }
 
 
+function load_uc(){
+    include '/UC_API/config.inc.php';
+    include '/UC_API/uc_client/client.php';
+}
+
 function load_view($filename){
     $type = 'Common/';
     
@@ -152,7 +157,10 @@ function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
 
     $url = $_SERVER['REQUEST_URI'];
     $url  = parse_url($url);
-    parse_str($url['query'], $par);
+    $par = array();
+    if(isset($url['query'])){
+        parse_str($url['query'], $par);
+    }
     if(isset($par[$param])){
         unset($par[$param]);
     }
@@ -160,27 +168,28 @@ function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
         unset($par['header_tips']);
     }
     $url_str = http_build_query($par);
-
+    $url_str = empty($url_str) ? '' : $url_str. '&';
+    
     $pre_page = ($page - 1) <= 0 ? 1: $page-1;
-    $pre_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $pre_page;
-    $first_url = $url['path'] . '?' .$url_str .'&'. $param. '=1' ;
-    $last_url = $url['path'] . '?' .$url_str .'&'. $param. '='.$totalPage ;
-    $html .= '<a href="'.$first_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1;">首页</a>';
-    $html .= '<a href="'.$pre_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1; margin:0 5px;">上一页</a>';
+    $pre_url = $url['path'] . '?' .$url_str .$param. '=' . $pre_page;
+    $first_url = $url['path'] . '?' .$url_str . $param. '=1' ;
+    $last_url = $url['path'] . '?' .$url_str .$param. '='.$totalPage ;
+    $html .= '<a href="'.$first_url.'">首页</a>';
+    $html .= '<a href="'.$pre_url.'" >上一页</a>';
 
     for ($i = $start; $i <= $end; $i++){
-        $a_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $i;
+        $a_url = $url['path'] . '?' .$url_str . $param. '=' . $i;
         if($i==$page){
             $html .= '<span style="font-weight:bold; padding:0 5px;">'.$i.'</span>';
         }else{
-            $html .= '<a href="' . $a_url . '" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1; margin:0 5px;">'.$i.'</a>';
+            $html .= '<a href="' . $a_url . '" >'.$i.'</a>';
         }
     }
 
     $next_page = ($page+1) > $totalPage ? $totalPage: $page+1;
-    $next_url = $url['path'] . '?' .$url_str .'&'. $param. '=' . $next_page;
-    $html .= '<a href="'.$next_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1; margin:0 5px;">下一页</a>';
-    $html .= '<a href="'.$last_url.'" style = "padding: 0 5px; border: 1px solid #ccc; background: #f1f1f1;">尾页</a>';
+    $next_url = $url['path'] . '?' .$url_str .$param. '=' . $next_page;
+    $html .= '<a href="'.$next_url.'" >下一页</a>';
+    $html .= '<a href="'.$last_url.'" >尾页</a>';
     $html .= '</div>';
     return $html;
 }

@@ -85,11 +85,11 @@ class BaseTopicController extends BaseController{
         
         $this->data['view_user'] = $userModel->getUser($this->data['topic']['uid']);
         
-        if($this->data['topic']['type'] == 3){
-            $this->loadModel('Group.Group');
-            $groupModel = new GroupModel();
-            $this->data['group'] = $groupModel->getGroup($this->data['topic']['gid']);
-        }
+//        if($this->data['topic']['type'] == 3){
+//            $this->loadModel('Group.Group');
+//            $groupModel = new GroupModel();
+//            $this->data['group'] = $groupModel->getGroup($this->data['topic']['gid']);
+//        }
         
         if(empty( $this->data['topic'])){
             $this->show_404(); return;

@@ -117,8 +117,9 @@ class Controller {
         $this->render('Common.404');
     }
     
-    public function show_success( $type='', $url=''){
+    public function show_success( $msg='操作成功', $url=''){
         $this->data['url'] = $url;
+        $this->data['msg'] = $msg;
         $this->render('Common.Success');
         return;
         sleep(3);

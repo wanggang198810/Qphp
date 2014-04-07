@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><?php echo $title;?></title>
+    <title>密码修改 - <?php echo APP_NAME?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
@@ -9,7 +9,7 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('bootstrap');
+        load_js('jquery');
     ?>
         <style>
            

@@ -9,6 +9,7 @@
 define('ROOT_PATH', dirname(__FILE__));
 define('FRAMEWORK_PATH', './Framework/');
 define('APP_PATH', './Application/');
+define('APP_NAME' , '同能网');
 
 //载入框架核心类库
 require(FRAMEWORK_PATH.'/Q.php');

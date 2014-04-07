@@ -9,7 +9,8 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('bootstrap');
+        load_js('jquery');
+        load_js('rgss');
     ?>
 </head>
 <body>

@@ -34,6 +34,7 @@ class UserController extends BaseController{
             $this->response->redirect('/u/'.$this->user['blogname']);
         }
         if(Request::isPostSubmit()){
+            
             $username = trim($this->request->getPost('username'));
             $password = trim($this->request->getPost('password'));
 
@@ -41,7 +42,39 @@ class UserController extends BaseController{
                 $this->render('Login');
                 return false;
             }
+            
+            load_uc();
+            $uc_uid = uc_user_login($username, $password);
+            /**-1:用户不存在，或者被删除
+                -2:密码错
+                -3:安全提问错
+             */
+            $notice = array(
+                -1 => '用户不存在，或者被删除',
+                -2 => '密码错误',
+                -3 => '安全提问错误',
+            );
+
+            if(!$uc_uid || $uc_uid[0] <= 0){
+                $this->show_error( $notice[$uc_uid[0]], '/user/login/');
+                return ;
+            }
+            
             $result = $this->userModel->login($username, $password);
+            if($result < 0){
+                $ip = get_ip();
+                $result = $this->userModel->register($username, '', $password, '', $uc_uid[0], $ip);
+                if($result > 0){
+                    $this->signLogin($result);
+                    Response::redirect('/user/bind/');
+                }
+                return;
+            }
+            if($result <= 0){
+                $this->show_error('密码错误', '/user/login/');
+                return;
+            }
+            
             if($result > 0){
                 $this->signLogin($result);
                 $this->response->redirect('/user');
@@ -53,31 +86,105 @@ class UserController extends BaseController{
     
     // 注册
     public function register(){
+        
         if($this->uid > 0){
             $this->response->redirect('/u/'.$this->user['blogname']);
         }
         
         if(Request::isPostSubmit()){
+             load_uc();
             $username = trim($this->request->getPost('username'));
             $password = trim($this->request->getPost('password'));
             $blogname = trim($this->request->getPost('blogname'));
-
-            if(empty($username) || empty($password)){
+            $email = trim($this->request->getPost('email'));
+            $ip = get_ip();
+            
+            if(empty($username) || empty($password) || empty($blogname) || empty($email)){
+                $this->show_error('请填写完整资料', '/user/register/');
                 return false;
             }
-            $result = $this->userModel->register($username, $password, $blogname);
+            
+            $uc_uid = uc_user_register($username, $password, $email, '', '' , $ip);
+            if($uc_uid <= 0){
+                /**
+                 * -1:用户名不合法
+                    -2:包含不允许注册的词语
+                    -3:用户名已经存在
+                    -4:Email 格式有误
+                    -5:Email 不允许注册
+                    -6:该 Email 已经被注册
+                 */
+                $failure_notice = array(
+                    -1 => '用户名不合法',
+                    -2 => '包含不允许注册的词语',
+                    -3 => '用户名已经存在',
+                    -4 => 'Email 格式有误',
+                    -5 => 'Email 不允许注册',
+                    -6 => '该 Email 已经被注册',
+                ); 
+                $this->show_error('注册失败：'. $failure_notice[$uc_uid], '/user/register/');
+                return ;
+            }
+            
+            $result = $this->userModel->register($username, $email, $password, $blogname, $uc_uid);
 
             if($result){
                 $this->loadModel('Message.Message');
                 $messageModel = new MessageModel();
                 $r = $messageModel->sendMsg($result, 1, '', 0, 0, 100);
                 $this->signLogin($result);
-                $this->response->redirect('/user');
+                $this->show_success('注册成功', '/u/' . $blogname . '/');
+                return;
+                //$this->response->redirect('/user');
             }
         }
         $this->render('Register');
     }
 
+    
+    /**
+     * 绑定帐号
+     */
+    public function bind(){
+        $this->checkLogin(1);
+        if(Request::isPostSubmit()){
+            $blogname = trim($this->request->getPost('blogname'));
+            $email = trim($this->request->getPost('email'));
+            $uc_uid = Request::getIntPost('ucuid');
+            
+             if(empty($uc_uid) || empty($blogname) || empty($email)){
+                $this->show_error('请填写完整资料', '/user/bind/');
+                return false;
+            }
+            $result = $this->userModel->bind($uc_uid, $blogname, $email);
+           
+            switch ($result){
+                case 0:
+                    $error_msg = '要绑定的用户不存在.';
+                    break;
+                case -1:
+                    $error_msg = '该用户已绑定了资料.';
+                    break;
+                case -2:
+                    $error_msg = '该邮箱已注册.';
+                    break;
+                case -3:
+                    $error_msg = '该域名已注册.';
+                    break;
+            }
+            
+            if($result <= 0){
+                $this->show_error($error_msg, '/user/login/');
+                return;
+            }
+            
+            $this->show_success('绑定成功', '/user/' . $blogname . '/');
+            return;
+        }
+        //hprint($this->user, 1);
+        $this->data['ucuid'] = $this->user['ucuid'];
+        $this->render();
+    }
     
     // 登录，记录cookie
     public function signLogin($uid){
