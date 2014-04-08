@@ -13,6 +13,7 @@ global $message_count;
                   <li><a href="/question/">问题</a></li>
                   <li><a href="/game/">游戏</a></li>
                   <li><a href="/explode/">发现</a></li>
+                  <li><a href="/sanguo/general/">三国</a></li>
                   <li><a href="http://bbs.rgss.cn" target="_blank">论坛</a></li>
                   <li><a href="http://baike.rgss.cn" target="_blank">百科</a></li>
                   <li><a href="http://rgss.cn" target="_blank">资讯</a></li>

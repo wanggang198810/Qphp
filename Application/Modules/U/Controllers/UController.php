@@ -105,7 +105,7 @@ class UController extends BaseController{
         $this->data['user'] = $this->view_user;
        
         $this->data['topics'] = $topics['list'];
-        $this->data['page_html'] = to_page_html($page, $questions['pageinfo']['totalPage']);
+        $this->data['page_html'] = to_page_html($page, $topics['pageinfo']['totalPage']);
     }
     
 }
