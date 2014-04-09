@@ -16,4 +16,8 @@ class UserController extends Controller{
     }
     
     
+    public function add(){
+        echo 'add';
+    }
+    
 }

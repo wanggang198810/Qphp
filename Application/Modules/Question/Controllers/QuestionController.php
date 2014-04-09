@@ -72,7 +72,7 @@ class QuestionController  extends BaseTopicController{
             }
             return ;
         }
-        
+        $gid =1;
         $this->loadModel('Group.GroupTag');
         $grouptagModel = new GroupTagModel();
         $this->data['tags'] = $grouptagModel->getTagsByGid($gid);

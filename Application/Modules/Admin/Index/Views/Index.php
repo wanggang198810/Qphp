@@ -17,13 +17,13 @@
     load_view ('Common.header');
 ?> 
 
-    <div  class="" style="width: 100%;">
-        <div style=" width: 250px;">
-            <iframe src="/Admin/Common/Left" frameborder="0"></iframe>
+    <div  class="" style="width: 100%; height: 100%;">
+        <div style="float:left; width: 165px; height: 100%;">
+            <iframe src="/Admin/Common/Left" frameborder="0" width="205" height="100%"></iframe>
         </div>
         
-        <div style=" float: left; width: 100%;">
-            <iframe name="content-iframe" width="100%" src="/Admin/Common/Home" frameborder="0"></iframe>
+        <div style=" margin-left: 205px !important; margin-left: 202px;">
+            <iframe width="100%" name="content-iframe" src="/Admin/Common/Home" frameborder="0"></iframe>
         </div>
         
         

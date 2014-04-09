@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>问答标签 - <?php echo APP_NAME;?></title>
+    <title><?php echo $topic['title'];?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
@@ -9,22 +9,22 @@
     <?php
         load_css('bootstrap');
         load_css('style');
-        load_js('jquery');
+        load_js('bootstrap');
     ?>
 </head>
 <body>
 <?php
     load_view ('Common.header');
+    load_view ('SubMenu');
 ?> 
 
-    <div  class="" style="width: 100%;">
-        <div style=" width: 250px;">
-            <iframe src="/Admin/Common/Left" frameborder="0"></iframe>
+    <div  class="main">
+        <div style="float:left; width: 650px;">
+           
+           
+            
         </div>
         
-        <div style=" float: left; width: 100%;">
-            <iframe name="content-iframe" width="100%" src="/Admin/Common/Home" frameborder="0"></iframe>
-        </div>
         
         
         

@@ -9,9 +9,9 @@ class AdminBaseController extends Controller{
     public function __construct() {
         parent::__construct();
         Q::import('Helpers.User', 'User');
-        $this->adminId = User::getUserId();
-        if( $this->adminId > 0 ){
-            $this->data['admin_user'] = $this->user = User::getUser( $this->uid );
+        $this->adminid = User::getUserId();
+        if( $this->adminid > 0 ){
+            $this->data['admin_user'] = $this->user = User::getUser( $this->adminid );
         }
     }
     
@@ -26,6 +26,18 @@ class AdminBaseController extends Controller{
         }else{
             return $this->adminId;
         }
+    }
+    
+    public function left(){
+        $this->view('Left');
+    }
+    
+    
+    public function view($file=''){
+        if(empty($file)){
+            $file = $this->_action;
+        }
+        $this->render( 'Admin/' . $this->_controller. '.' . $file);
     }
     
     

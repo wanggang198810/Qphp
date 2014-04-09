@@ -83,7 +83,6 @@
             <div>
                 <label for="tagid">小组标签</label>
                 <div class="btn-group">
-                    <input type="hidden" name="groupid" id="groupid"  value="<?php echo $group['id'];?>"/>
                     <input type="hidden" name="tagid" id="tagid"  value="0"/>
                     <button style="width:170px; padding: 5px 9px;" class="btn dropdown-toggle" data-toggle="dropdown"><span id="tag-name">默认分类</span> <span class="caret"></span></button>
                     <ul class="dropdown-menu" style="min-width: 167px;">
