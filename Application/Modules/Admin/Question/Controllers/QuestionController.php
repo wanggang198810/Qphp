@@ -15,7 +15,12 @@ class QuestionController extends AdminBaseController{
     
     
     public function index(){
-        
+        $page = Request::getIntGet('page');
+        $this->loadModel('Topic.Topic');
+        $topicModel = new TopicModel();
+        $result = $topicModel->getTopicList(0, 3, $page);
+        $this->data['topics'] = $result['list'];
+        $this->view();
     }
     
     public function tag(){

@@ -22,8 +22,8 @@
             <iframe src="/Admin/Common/Left" frameborder="0" width="205" height="100%"></iframe>
         </div>
         
-        <div style=" margin-left: 205px !important; margin-left: 202px;">
-            <iframe width="100%" name="content-iframe" src="/Admin/Common/Home" frameborder="0"></iframe>
+        <div style=" margin-left: 205px !important; margin-left: 202px; padding: 10px;">
+            <iframe width="100%" height="100%" name="content-iframe" src="/Admin/Common/Home" frameborder="0"></iframe>
         </div>
         
         

@@ -22,7 +22,7 @@
             <iframe src="/Admin/Common/Left" frameborder="0"></iframe>
         </div>
         
-        <div style=" float: left; width: 100%;">
+        <div style=" float: left; width: 100%; height: 600px; ">
             <iframe name="content-iframe" width="100%" src="/Admin/Common/Home" frameborder="0"></iframe>
         </div>
         

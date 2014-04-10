@@ -21,7 +21,7 @@
     
     <div>
         <ul>
-            <li><a href="/admin/question/tag" target="content-iframe">问答管理</a></li>
+            <li><a href="/admin/question/" target="content-iframe">问答列表</a></li>
             <li><a href="/admin/question/tag" target="content-iframe">问答管理</a></li>
         </ul>
     </div>
