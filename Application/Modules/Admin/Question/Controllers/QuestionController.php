@@ -26,6 +26,15 @@ class QuestionController extends AdminBaseController{
     public function tag(){
         $this->view('Tag');
     }
-    
+
+
+    public function edit($id){
+        hprint($id);
+    }
+
+
+    public function delete($id){
+        hprint($id);
+    }
     
 }

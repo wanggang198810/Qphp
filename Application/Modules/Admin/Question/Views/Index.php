@@ -26,6 +26,7 @@
         <td class="id">uid</td>
         <td class="time">发布时间</td>
         <td class="id">状态</td>
+        <td class="time">操作</td>
     </tr>
 
     <?php
@@ -38,6 +39,10 @@
             <td><?php echo $v['uid'];?></td>
             <td><?php echo $v['time'];?></td>
             <td><?php echo $v['status'];?></td>
+            <td>
+                <a href="/admin/question/edit/<?php echo $v['id'];?>" target="_self">编辑</a>
+                <a href="/admin/question/delete/<?php echo $v['id'];?>">删除</a>
+            </td>
         </tr>
     <?php
             }
