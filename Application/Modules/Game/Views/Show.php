@@ -55,12 +55,13 @@
             <div class="reply-box">
                 
                 <div style="font-size:12px; color:#999; padding-bottom: 5px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                    <?php echo $pageinfo['total'];?>个评论
+                    <?php echo @$pageinfo['total'];?>个评论
                 </div>
                 
                 <div style="position: relative">
                     <!-- 回复列表 -->
                     <?php
+                    if(!empty($replys)){
                         foreach($replys as $k => $reply){
                     ?>
                         <div class="answer-item" replyid="<?php echo $reply['id'];?>" gameid="<?php echo $reply['gameid'];?>">
@@ -91,6 +92,7 @@
                             </div>
                         </div>
                     <?php
+                        }
                         }
                     ?>
                     <!-- 回复列表 -->

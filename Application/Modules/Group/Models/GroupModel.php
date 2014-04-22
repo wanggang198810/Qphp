@@ -46,7 +46,19 @@ class GroupModel extends Model{
         if(!$this->createPermission($creator)){
             return false;
         }
-        return $this->insert( array('name' => trim( $name ), 'info'=> trim( $info ), 'creator' => intval($creator), 'status' => $status , 'time' => $time , 'url'=> $url ,'logo' => $logo) , 1);
+        $result = $this->insert( array('name' => trim( $name ), 'info'=> trim( $info ), 'creator' => intval($creator), 'status' => $status , 'time' => $time , 'url'=> $url ,'logo' => $logo) , 1);
+        if($result){
+            $gid = $this->lastInsertId();
+            $this->setTable('groupuser');
+            $data = array( 
+                'gid'=>$gid, 
+                'uid'=> $creator,
+                'manager' => 2, // 创始人
+            );
+            return $this->insert($data);
+        }
+        
+        return false;
     }
     
     

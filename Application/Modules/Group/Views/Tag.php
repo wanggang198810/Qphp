@@ -52,22 +52,34 @@
                 <?php }?>
             </div>
             
-            <ul class="forum-list">
+            <div style=" ">
+            <ul class="tag-list">
             <?php
-                foreach ($topics as $k => $v){
+                foreach ($tags as $k => $v){
             ?>
-                <li class="forum-li">
-                    <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
-                    <div class="forum-author">
-                        <a href="<?php echo user_space($v['author']['blogname']);?>"><?php echo $v['author']['username'];?></a>
-                    </div>
-                    <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
+                <li class="tag-li">
+                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?></a>
+                </li>
+                
+                <li class="tag-li">
+                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?></a>
+                </li>
+                
+                <li class="tag-li">
+                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?></a>
+                </li>
+                <li class="tag-li">
+                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?>啊啊</a>
+                </li>
+                <li class="tag-li">
+                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?>的</a>
                 </li>
             
             <?php }?>
             </ul>
+            </div>
             
-            <div class="page"><?php echo $page_html;?></div>
+            <div class="page"></div>
             
             
         </div>
@@ -75,25 +87,8 @@
         
         <div class="main-right">
             <div class="main_title2 mt20">活跃的小组成员</div>
-            <div class="active-member-box" style=" margin-top: 10px;">
-            <ul>
-                <?php
-                    foreach($members as $k => $v){
-                        $i = 1;
-                        $class = ($i%4 == 0) ? 'class="mr0"' : '';
-                ?>
-                <li <?php echo $class;?>>
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
-                </li>
-                <?php 
-                    $i ++ ;
-                }?>
-                <div class="clear"></div>
-            </ul>        
-            </div>
             
-            <div class="mt20">
+            <div class="main_title2 mt20">
                 <p><a href="/group/<?php echo $group['url']?>/members/">查看所有小组成员</a></p>
                 <p><a href="/group/<?php echo $group['url']?>/members/">邀请好友加入</a></p>
             </div>

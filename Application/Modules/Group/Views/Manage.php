@@ -55,10 +55,13 @@
             ?>
                 <li id="member-li-<?php echo $v['uid']?>">
                     <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a>
-                    <a class="kickMember right" href="javascript:;" uid="<?php echo $v['uid']?>" id="member-<?php echo $v['uid']?>">删除</a>
-                    <?php if($v['manager'] == 1){?>
+                    <?php if($v['manager'] > 1){?>
+                        <a class="right" href="javascript:;" uid="<?php echo $v['uid']?>">创始人</a>
+                    <?php }elseif($v['manager'] >= 1){?>
+                        <a class="kickMember right" href="javascript:;" uid="<?php echo $v['uid']?>" id="member-<?php echo $v['uid']?>">删除</a>
                         <a class="del-manage right" style=" margin-right: 5px;" href="javascript:;" uid="<?php echo $v['uid']?>" id="del-manage-<?php echo $v['uid']?>">取消管理员</a>
                     <?php }else{?>
+                        <a class="kickMember right" href="javascript:;" uid="<?php echo $v['uid']?>" id="member-<?php echo $v['uid']?>">删除</a>
                         <a class="add-manage right" style=" margin-right: 5px;" href="javascript:;" uid="<?php echo $v['uid']?>" id="add-manage-<?php echo $v['uid']?>">设置管理员</a>
                     <?php }?>
                 </li>
@@ -81,6 +84,7 @@
             <div class="mt20">
                 <p><a href="/group/<?php echo $group['url']?>/members/">查看所有小组成员</a></p>
                 <p><a href="/group/<?php echo $group['url']?>/members/">邀请好友加入</a></p>
+                <p><a href="/group/<?php echo $group['url']?>/tag/">小组标签</a></p>
             </div>
             
         </div>

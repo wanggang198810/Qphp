@@ -185,14 +185,14 @@ class Model {
         return $this->db->page($this->_sql, $page, $pageSize, $total);
     }
     
-    public function add($data, $lastInsert){
+    public function add($data, $lastInsert=false){
         if(empty($data)){
             return false;
         }
         return $this->db->insert($this->_table,$data, $lastInsert);
     }
     
-    public function insert($data, $lastInsert){
+    public function insert($data, $lastInsert=false){
         return $this->add($data, $lastInsert);
     }
     

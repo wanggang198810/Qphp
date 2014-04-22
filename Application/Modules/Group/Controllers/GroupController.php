@@ -26,7 +26,19 @@ class GroupController extends BaseController{
         
         $this->data['group'] = $this->groupModel->getGroupByUrl($url);
         if(empty($this->data['group'])){
-            $this->response->redirect('/group/');
+            Response::redirect('/group/');
+        }
+        
+        $this->loadModel('Group.GroupUser');
+        $groupuserModel = new GroupUserModel();
+        $managers = $groupuserModel->getGroupManager( $this->data['group']['id'] );
+        $this->data['group_managers'] = $managers;
+        if($this->uid > 0){
+            $this->data['is_in_group'] = $groupuserModel->isInGroup($this->data['group']['id'], $this->uid);
+            $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid']  ? 1 : 0;
+            $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : 0;
+        }else{
+            $this->data['is_in_group'] = $this->data['is_creator'] = $this->data['is_manager'] = 0;
         }
         
         $type = strtolower(filter($type));
@@ -59,12 +71,9 @@ class GroupController extends BaseController{
             }
             return;
         }
-        $this->loadModel('Group.GroupUser');
-        $groupuserModel = new GroupUserModel();
-        $this->data['is_in_group'] = $groupuserModel->isInGroup($this->data['group']['id'], $this->uid);
-        $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
-        $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : 0;
+        
         //$this->data['tags'] = $this->groupModel->getTagList($this->data['group']['id']);
+        
         $page = Request::getIntGet('page',1);
         $this->loadModel('Topic.Topic');
         $topicModel = new TopicModel();
@@ -363,9 +372,11 @@ class GroupController extends BaseController{
     //标签
     private function _tag(){
         
-        $url = $this->groupUrl;
-        $this->getGroupInfoByUrl($url);
-        
+        $this->loadModel('Group.GroupTag');
+        $groupTagModel = new GroupTagModel();
+        $result = $groupTagModel->getTagsByGid( $this->data['group']['id'] );
+
+        $this->data['tags'] = $result;
         $this->render('Tag');
     }
     
@@ -387,6 +398,9 @@ class GroupController extends BaseController{
     }
     
     
+    public function tag($tagname=''){
+        hprint($tagname);
+    }
     
     
 }

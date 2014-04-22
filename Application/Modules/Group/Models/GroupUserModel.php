@@ -32,8 +32,19 @@ class GroupUserModel extends Model{
     public function getGroupMembers($gid, $page=1, $pageSize=20, $total=0){
         $gid = intval($gid);
         if($gid <= 0){ return false;}
-        $sql = "select b.uid, b.username, b.blogname from groupuser a LEFT JOIN user b on a.uid = b.uid where gid = {$gid} order by id desc";
+        $sql = "select b.uid, b.username, b.blogname, a.manager from groupuser a LEFT JOIN user b on a.uid = b.uid where gid = {$gid} order by id desc";
         return $this->page($page, $pageSize, $total, $sql);
+    }
+    
+    
+    /**
+     * 获取群组管理员
+     */
+    public function getGroupManager($gid){
+        $gid = intval($gid);
+        if($gid <= 0){ return false;}
+        $sql = "select b.uid, b.username, b.blogname from groupuser a LEFT JOIN user b on a.uid = b.uid where gid = {$gid} AND manager > 0  order by id desc";
+        return $this->fetchArray($sql);
     }
     
     public function isInGroup($gid, $uid){
@@ -41,15 +52,15 @@ class GroupUserModel extends Model{
         $uid = intval($uid);
         if($gid <= 0 || $uid <= 0){ return false;}
         
-        $result = $this->where( array('uid'=>$uid, 'gid'=> $gid))->fetchLocateCol('id');
+        $result = $this->where( array('uid'=>$uid, 'gid'=> $gid))->fetch();
         if(!empty($result)){ 
             if($result['manager'] > 0){
                 return 2;
             }else{
-                return true;
+                return 1;
             }
         }
-        return false;
+        return 0;
     }
     
     public function isManager($gid, $uid){
@@ -79,4 +90,4 @@ class GroupUserModel extends Model{
     }
 }
 
-?>
+

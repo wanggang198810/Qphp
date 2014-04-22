@@ -372,3 +372,9 @@ background: #ccc; border-radius: 5px;}
 #game_photo a img.last {
 	margin-right: 0;	
 }
+
+
+.tag-list{ padding-bottom: 30px;}
+.tag-list .tag-li { float: left; margin-right: 10px; font-weight: bold; background: #eee; margin-top: 20px; border-radius: 5px; border: 1px #ddd solid; padding:5px 15px; text-align: center; }
+.tag-list .tag-li:hover{ background: #FFF;}
+.tag-list .tag-li a{ color: #666;}

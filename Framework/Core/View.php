@@ -28,6 +28,7 @@ class View {
     public function render($file=''){
         if(empty($file)){ $file = 'Index';}
         if( false !== strpos($file, '.')){
+            
             list($controller, $file) = explode('.', $file);
             $this->controller = $controller;
             $file = str_replace('.', '/', $file);
