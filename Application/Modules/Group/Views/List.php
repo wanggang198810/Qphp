@@ -78,6 +78,7 @@
             <div class="active-member-box" style=" margin-top: 10px;">
             <ul>
                 <?php
+                if(!empty($members)){
                     foreach($members as $k => $v){
                         $i = 1;
                         $class = ($i%4 == 0) ? 'class="mr0"' : '';
@@ -88,6 +89,7 @@
                 </li>
                 <?php 
                     $i ++ ;
+                    }
                 }?>
                 <div class="clear"></div>
             </ul>        
@@ -95,7 +97,7 @@
             
             <div class="mt20">
                 <p><a href="/group/<?php echo $group['url']?>/members/">查看所有小组成员</a></p>
-                <p><a href="/group/<?php echo $group['url']?>/members/">邀请好友加入</a></p>
+                <p><a href="/group/<?php echo $group['url']?>/taglist/">小组标签</a></p>
             </div>
             
         </div>

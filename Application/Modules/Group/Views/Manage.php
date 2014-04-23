@@ -84,7 +84,7 @@
             <div class="mt20">
                 <p><a href="/group/<?php echo $group['url']?>/members/">查看所有小组成员</a></p>
                 <p><a href="/group/<?php echo $group['url']?>/members/">邀请好友加入</a></p>
-                <p><a href="/group/<?php echo $group['url']?>/tag/">小组标签</a></p>
+                <p><a href="/group/<?php echo $group['url']?>/taglist/">小组标签</a></p>
             </div>
             
         </div>

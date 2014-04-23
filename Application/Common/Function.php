@@ -221,6 +221,10 @@ function group_logo($url=''){
     return $url;
 }
 
+function group_tag($url, $tagname){
+    return '/group/tag/' . $url . '/' . $tagname .'/';
+}
+
 function topic_url($id, $url='', $type = 1){
     switch ($type){
         case 2:

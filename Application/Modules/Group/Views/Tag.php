@@ -58,23 +58,8 @@
                 foreach ($tags as $k => $v){
             ?>
                 <li class="tag-li">
-                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?></a>
+                        <a href="<?php echo group_tag($group['url'], $v['name']);?>"><?php echo $v['name'];?></a>
                 </li>
-                
-                <li class="tag-li">
-                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?></a>
-                </li>
-                
-                <li class="tag-li">
-                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?></a>
-                </li>
-                <li class="tag-li">
-                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?>啊啊</a>
-                </li>
-                <li class="tag-li">
-                        <a href="<?php echo user_space($v['name']);?>"><?php echo $v['name'];?>的</a>
-                </li>
-            
             <?php }?>
             </ul>
             </div>
@@ -88,9 +73,8 @@
         <div class="main-right">
             <div class="main_title2 mt20">活跃的小组成员</div>
             
-            <div class="main_title2 mt20">
+            <div class=" mt20">
                 <p><a href="/group/<?php echo $group['url']?>/members/">查看所有小组成员</a></p>
-                <p><a href="/group/<?php echo $group['url']?>/members/">邀请好友加入</a></p>
             </div>
             
         </div>

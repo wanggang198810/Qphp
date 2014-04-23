@@ -65,8 +65,8 @@ class GroupController extends BaseController{
                 case 'edit':
                     $this->_edit();
                     break;
-                case 'tag';
-                    $this->_tag();
+                case 'taglist';
+                    $this->_taglist();
                     break;
                 case 'addtag':
                     $this->_addTag();
@@ -373,7 +373,7 @@ class GroupController extends BaseController{
     }
     
     //标签
-    private function _tag(){
+    private function _taglist(){
         
         $this->loadModel('Group.GroupTag');
         $groupTagModel = new GroupTagModel();
@@ -395,10 +395,14 @@ class GroupController extends BaseController{
             $this->loadModel('Group.GroupTag');
             $groupTagModel = new GroupTagModel();
             $result = $groupTagModel->addTag($this->uid , $gid, $tagname);
+            if($result == -1){
+                $this->show_error('标签已存在', group_url($this->groupUrl, 'tag'));
+                return;
+            }
             if($result){
                 $this->show_success('添加成功', group_url($this->groupUrl,'tag'));
             }else{
-                $this->show_error('添加失败', group_url($this->groupUrl));
+                $this->show_error('添加失败', group_url($this->groupUrl, 'tag'));
             }
             return ;
         }
@@ -419,7 +423,7 @@ class GroupController extends BaseController{
     }
     
     
-    public function tag($tagname=''){
+    public function tag($url, $tagname=''){
         hprint($tagname);
     }
     
