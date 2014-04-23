@@ -68,6 +68,9 @@ class GroupController extends BaseController{
                 case 'tag';
                     $this->_tag();
                     break;
+                case 'addtag':
+                    $this->_addTag();
+                    break;
             }
             return;
         }
@@ -381,7 +384,25 @@ class GroupController extends BaseController{
     }
     
     private function _addTag(){
-        
+        $this->checkLogin(1);
+        if(Request::isPostSubmit('tagname')){
+            if(!$this->data['is_manager']){
+                $this->show_error('没有权限', '/group/'. $this->groupUrl . '/');
+                return;
+            }
+            $tagname = Request::getPost('tagname');
+            $gid = $this->data['group']['id'];
+            $this->loadModel('Group.GroupTag');
+            $groupTagModel = new GroupTagModel();
+            $result = $groupTagModel->addTag($this->uid , $gid, $tagname);
+            if($result){
+                $this->show_success('添加成功', group_url($this->groupUrl,'tag'));
+            }else{
+                $this->show_error('添加失败', group_url($this->groupUrl));
+            }
+            return ;
+        }
+        $this->render('AddTag');
     }
     
     

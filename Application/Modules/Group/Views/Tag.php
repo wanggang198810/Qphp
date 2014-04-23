@@ -48,7 +48,7 @@
             <div class="group-menu mt30">
                 <a class="active" href="">全部标签</a>  <!--<a href="">精华</a>-->
                 <?php if($is_manager){?>
-                <a class="group-post-btn" href="<?php echo group_url($group['url'], 'post');?>">添加标签</a>
+                <a class="group-post-btn" href="<?php echo group_url($group['url'], 'addtag');?>">添加标签</a>
                 <?php }?>
             </div>
             
