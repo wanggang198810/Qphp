@@ -227,6 +227,12 @@ class usermodel2 {
 	function quescrypt($questionid, $answer) {
 		return $questionid > 0 && $answer != '' ? substr(md5($answer.md5($questionid)), 16, 8) : '';
 	}
+    
+        function get_credit($uid, $credit){
+            $uid = intval($uid);
+            $credit = intval($credit);
+            return $this->db->result_first("SELECT extcredits$credit FROM members WHERE uid='$uid'");
+        }
 
 }
 

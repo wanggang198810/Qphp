@@ -163,6 +163,19 @@ class usercontrol extends base {
 			return 0;
 		}
 	}
+    
+        function onget_credit1(){
+            $this->init_input();
+            $uid = $this->input('uid');
+            $credit = $this->input('credit');
+            $status = $_ENV['user']->get_credit($uid, $credit);
+            
+            if($status) {
+                return $status;
+            } else {
+                return 0;
+            }
+        }
 
 
 	function ongetprotected() {
