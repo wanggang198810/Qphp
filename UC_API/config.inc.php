@@ -1,33 +1,34 @@
 <?php
 
-define('UC_CONNECT', 'mysql');				// Á¬½Ó UCenter µÄ·½Ê½: mysql/NULL, Ä¬ÈÏÎª¿ÕÊ±Îª fscoketopen()
-							// mysql ÊÇÖ±½ÓÁ¬½ÓµÄÊý¾Ý¿â, ÎªÁËÐ§ÂÊ, ½¨Òé²ÉÓÃ mysql
+define('UC_CONNECT', 'mysql');				// ï¿½ï¿½ï¿½ï¿½ UCenter ï¿½Ä·ï¿½Ê½: mysql/NULL, Ä¬ï¿½ï¿½Îªï¿½ï¿½Ê±Îª fscoketopen()
+							// mysql ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½Ý¿ï¿½, Îªï¿½ï¿½Ð§ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ mysql
 
-//Êý¾Ý¿âÏà¹Ø (mysql Á¬½ÓÊ±, ²¢ÇÒÃ»ÓÐÉèÖÃ UC_DBLINK Ê±, ÐèÒªÅäÖÃÒÔÏÂ±äÁ¿)
-define('UC_DBHOST', 'localhost');			// UCenter Êý¾Ý¿âÖ÷»ú
-define('UC_DBUSER', 'root');				// UCenter Êý¾Ý¿âÓÃ»§Ãû
-define('UC_DBPW', '');					// UCenter Êý¾Ý¿âÃÜÂë
-define('UC_DBNAME', 'qphpbbs');				// UCenter Êý¾Ý¿âÃû³Æ
-define('UC_DBCHARSET', 'utf8');				// UCenter Êý¾Ý¿â×Ö·û¼¯
-define('UC_DBTABLEPRE', '`qphpbbs`.smlip_ucenter_');			// UCenter Êý¾Ý¿â±íÇ°×º
+//ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ (mysql ï¿½ï¿½ï¿½ï¿½Ê±, ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UC_DBLINK Ê±, ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½)
+define('UC_DBHOST', 'localhost');			// UCenter ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+define('UC_DBUSER', 'root');				// UCenter ï¿½ï¿½Ý¿ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+define('UC_DBPW', '');					// UCenter ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+define('UC_DBNAME', 'qphpbbs');				// UCenter ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½
+define('UC_DBCHARSET', 'utf8');				// UCenter ï¿½ï¿½Ý¿ï¿½ï¿½Ö·ï¿½
+define('UC_DBTABLEPRE', '`qphpbbs`.smlip_ucenter_');			// UCenter ï¿½ï¿½Ý¿ï¿½ï¿½Ç°×º
+define('UC_BBS_DBTABLEPRE', '`qphpbbs`.smlip_');
 
-//Í¨ÐÅÏà¹Ø
-define('UC_KEY', 'gdbnyasdezuhaj9sfbo26yo5b31yz2yo');				// Óë UCenter µÄÍ¨ÐÅÃÜÔ¿, ÒªÓë UCenter ±£³ÖÒ»ÖÂ
-define('UC_API', 'http://bbs.q.com/uc_server');	// UCenter µÄ URL µØÖ·, ÔÚµ÷ÓÃÍ·ÏñÊ±ÒÀÀµ´Ë³£Á¿
-define('UC_CHARSET', 'utf-8');				// UCenter µÄ×Ö·û¼¯
-define('UC_IP', '127.0.0.29');					// UCenter µÄ IP, µ± UC_CONNECT Îª·Ç mysql ·½Ê½Ê±, ²¢ÇÒµ±Ç°Ó¦ÓÃ·þÎñÆ÷½âÎöÓòÃûÓÐÎÊÌâÊ±, ÇëÉèÖÃ´ËÖµ
-define('UC_APPID', 2);					// µ±Ç°Ó¦ÓÃµÄ ID
+//Í¨ï¿½ï¿½ï¿½ï¿½ï¿½
+define('UC_KEY', 'gdbnyasdezuhaj9sfbo26yo5b31yz2yo');				// ï¿½ï¿½ UCenter ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ô¿, Òªï¿½ï¿½ UCenter ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+define('UC_API', 'http://bbs.q.com/uc_server');	// UCenter ï¿½ï¿½ URL ï¿½ï¿½Ö·, ï¿½Úµï¿½ï¿½ï¿½Í·ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½
+define('UC_CHARSET', 'utf-8');				// UCenter ï¿½ï¿½ï¿½Ö·ï¿½
+define('UC_IP', '127.0.0.29');					// UCenter ï¿½ï¿½ IP, ï¿½ï¿½ UC_CONNECT Îªï¿½ï¿½ mysql ï¿½ï¿½Ê½Ê±, ï¿½ï¿½ï¿½Òµï¿½Ç°Ó¦ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±, ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½Öµ
+define('UC_APPID', 2);					// ï¿½ï¿½Ç°Ó¦ï¿½Ãµï¿½ ID
 define('UC_PPP', '20');
 
-//ucexample_2.php ÓÃµ½µÄÓ¦ÓÃ³ÌÐòÊý¾Ý¿âÁ¬½Ó²ÎÊý
-$dbhost = 'localhost';			// Êý¾Ý¿â·þÎñÆ÷
-$dbuser = 'root';			// Êý¾Ý¿âÓÃ»§Ãû
-$dbpw = '';				// Êý¾Ý¿âÃÜÂë
-$dbname = 'qphpbbs';			// Êý¾Ý¿âÃû
-$pconnect = 0;				// Êý¾Ý¿â³Ö¾ÃÁ¬½Ó 0=¹Ø±Õ, 1=´ò¿ª
-$tablepre = '`qphpbbs`.smlip_ucenter_';   		// ±íÃûÇ°×º, Í¬Ò»Êý¾Ý¿â°²×°¶à¸öÂÛÌ³ÇëÐÞ¸Ä´Ë´¦
-$dbcharset = 'utf8';			// MySQL ×Ö·û¼¯, ¿ÉÑ¡ 'gbk', 'big5', 'utf8', 'latin1', Áô¿ÕÎª°´ÕÕÂÛÌ³×Ö·û¼¯Éè¶¨
+//ucexample_2.php ï¿½Ãµï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½
+$dbhost = 'localhost';			// ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+$dbuser = 'root';			// ï¿½ï¿½Ý¿ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+$dbpw = '';				// ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+$dbname = 'qphpbbs';			// ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½
+$pconnect = 0;				// ï¿½ï¿½Ý¿ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ 0=ï¿½Ø±ï¿½, 1=ï¿½ï¿½
+$tablepre = '`qphpbbs`.smlip_ucenter_';   		// ï¿½ï¿½ï¿½ï¿½Ç°×º, Í¬Ò»ï¿½ï¿½Ý¿â°²×°ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½Þ¸Ä´Ë´ï¿½
+$dbcharset = 'utf8';			// MySQL ï¿½Ö·ï¿½, ï¿½ï¿½Ñ¡ 'gbk', 'big5', 'utf8', 'latin1', ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½Ö·ï¿½ï¿½è¶¨
 
-//Í¬²½µÇÂ¼ Cookie ÉèÖÃ
-$cookiedomain = ''; 			// cookie ×÷ÓÃÓò
-$cookiepath = '/';			// cookie ×÷ÓÃÂ·¾¶
+//Í¬ï¿½ï¿½ï¿½ï¿½Â¼ Cookie ï¿½ï¿½ï¿½ï¿½
+$cookiedomain = ''; 			// cookie ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+$cookiepath = '/';			// cookie ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½

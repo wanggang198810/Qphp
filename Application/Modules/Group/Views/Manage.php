@@ -54,7 +54,7 @@
                     $i = 1;
             ?>
                 <li id="member-li-<?php echo $v['uid']?>">
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a>
+                    <a href="<?php echo user_space($v['uid']);?>"><?php echo $v['username'];?></a>
                     <?php if($v['manager'] > 1){?>
                         <a class="right" href="javascript:;" uid="<?php echo $v['uid']?>">创始人</a>
                     <?php }elseif($v['manager'] >= 1){?>

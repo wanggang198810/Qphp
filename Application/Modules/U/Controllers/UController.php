@@ -22,10 +22,10 @@ class UController extends BaseController{
         if(empty($id)){
             if($this->uid > 0){
                 if( empty($this->user['blogname'])){
-                    return ;
+                    //return ;
                 }
-                $id = $this->user['blogname'];
-                $this->response->redirect('/u/'.$id);
+                $id = $this->user['uid'];
+                Response::redirect(user_space($this->user['uid']));
             }else{
                 $this->checkLogin(1);
             }
@@ -33,7 +33,7 @@ class UController extends BaseController{
         
         $this->loadModel('User');
         $userModel = new UserModel();
-        $this->view_user = $userModel->getUserByBlogname($id);
+        $this->view_user = $userModel->getUserById($id);
         if($this->view_user['uid'] != $this->user['uid']){
             $this->data['is_self'] = 0;
         }else{

@@ -29,9 +29,9 @@
                     $i = 1;
             ?>
                 <li>
-                    <div class="member-avatar"><a href="<?php echo user_space($v['blogname']);?>"><img width="30" height="30" src="<?php echo avatar($v['uid']);?>" /></a> </div>
+                    <div class="member-avatar"><a href="<?php echo user_space($v['uid']);?>"><img width="30" height="30" src="<?php echo avatar($v['uid']);?>" /></a> </div>
                     <div class="member-author">
-                        <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
+                        <a href="<?php echo user_space($v['uid']);?>"><?php echo $v['username'];?></a> 
                     </div>
                 </li>
             
@@ -54,8 +54,8 @@
                         $class = ($i%4 == 0) ? 'class="mr0"' : '';
                 ?>
                 <li <?php echo $class;?>>
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
+                    <a href="<?php echo user_space($v['uid']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
+                    <a href="<?php echo user_space($v['uid']);?>"><?php echo $v['username'];?></a> 
                 </li>
                 
                 

@@ -168,7 +168,7 @@ class GroupModel extends Model{
     public function applyJoin($id, $uid){
         Q::loadModel('Message.Message');
         $msgModel = new MessageModel();
-        hprint($msgModel,1);
+        //hprint($msgModel,1);
     }
     
 }

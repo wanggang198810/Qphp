@@ -231,7 +231,12 @@ class usermodel2 {
         function get_credit($uid, $credit){
             $uid = intval($uid);
             $credit = intval($credit);
-            return $this->db->result_first("SELECT extcredits$credit FROM members WHERE uid='$uid'");
+            if($credit <= 0){
+                $colums = '*';
+            }else{
+                $colums = 'extcredits' . $credit;
+            }
+            return $this->db->fetch_first("SELECT {$colums} FROM ".UC_BBS_DBTABLEPRE."common_member_count WHERE uid='$uid'");
         }
 
 }

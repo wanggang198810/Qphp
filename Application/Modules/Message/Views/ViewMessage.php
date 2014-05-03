@@ -57,12 +57,12 @@
             ?>
             <div class="mt20 opacity-30">
                <div class="left">
-                    <a href="<?php echo user_space( $record['fromuser']['blogname'] );?>">
+                    <a href="<?php echo user_space( $record['fromuser']['uid'] );?>">
                         <img src="<?php echo avatar($record['fromuid']);?>"></a>
                 </div>
                 <div class="right" style="width: 635px; background: #eee; padding: 10px; border: 1px solid #ccc;">
-                    <a href="<?php echo user_space( $record['fromuser']['blogname'] );?>">
-                        我</a>对<a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
+                    <a href="<?php echo user_space( $record['fromuser']['uid'] );?>">
+                        我</a>对<a href="<?php echo user_space( $message['fromuser']['uid'] );?>">
                         <?php echo $message['fromuser']['username']?></a>说：
                     <?php echo $record['content'];?>
 
@@ -77,11 +77,11 @@
             
             <div class="mt20">
                <div class="left">
-                    <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
+                    <a href="<?php echo user_space( $message['fromuser']['uid'] );?>">
                         <img src="<?php echo avatar($message['fromuid']);?>"></a>
                 </div>
                 <div class="right" style="width: 635px; background: #eee; padding: 10px; border: 1px solid #ccc;">
-                    <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
+                    <a href="<?php echo user_space( $message['fromuser']['uid'] );?>">
                         <?php echo $message['fromuser']['username']?></a>：
                     <?php echo $message['content'];?>
 

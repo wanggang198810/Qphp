@@ -7,7 +7,7 @@
             <div class="post-avatar"><img src="<?php echo avatar($topic['uid'])?>" /></div>
             <div class="post-content">
                 <div class="post-user">
-                    <a href="<?php echo user_space($reply['reply_user']['url']);?>"><?php echo $reply['reply_user']['username'];?></a>
+                    <a href="<?php echo user_space($reply['reply_user']['uid']);?>"><?php echo $reply['reply_user']['username'];?></a>
                     <?php echo '，' , $reply['reply_user']['info']?>
                 </div>
 

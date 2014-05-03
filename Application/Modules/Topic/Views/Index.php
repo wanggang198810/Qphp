@@ -66,10 +66,10 @@
         
         <div class="right side270 mt30">
             <div class="topic-user">
-                <a class="user-avatar" href="<?php echo user_space($view_user['blogname'])?>">
+                <a class="user-avatar" href="<?php echo user_space($view_user['uid'])?>">
                     <img src="http://www.q.com/Public/image/default_avatar.jpg" />
                 </a>
-                <div class="blogname" style=""><a href="<?php echo user_space($view_user['blogname'])?>"><?php echo $view_user['username']?></a></div>
+                <div class="blogname" style=""><a href="<?php echo user_space($view_user['uid'])?>"><?php echo $view_user['username']?></a></div>
                 <div class="honorname"><?php echo $view_user['honorname']?></div>
                 <div class="reply-time">发表于<br><?php echo date( "Y-m-d H:i" , $topic['time']);?></div>
             </div>

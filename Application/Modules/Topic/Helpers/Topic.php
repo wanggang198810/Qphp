@@ -22,16 +22,16 @@ class Topic {
         foreach($replys as $k => $reply){
             $html .= '<div class="answer-item" replyid="'.$reply['id'].'" topicid="<?php echo '.$reply['topicid'].'">
                             <div class="post-avatar">
-                             <a href="'.user_space($reply['reply_user']['blogname']).'"><img src="'.avatar($topic['uid']).'" /></a><br>'.$_i.'楼
+                             <a href="'.user_space($reply['reply_user']['uid']).'"><img src="'.avatar($topic['uid']).'" /></a><br>'.$_i.'楼
                             </div>';
             
             $html .= '<div class="post-content">';
             
             $html .= '<div class="post-user">
-                        <a href="'.user_space($reply['reply_user']['blogname']).'">'. $reply['reply_user']['username'].'</a>，'. $reply['reply_user']['honorname'].'</div><div class="answer-head"></div><div class="answer-agree"></div>';
+                        <a href="'.user_space($reply['reply_user']['uid']).'">'. $reply['reply_user']['username'].'</a>，'. $reply['reply_user']['honorname'].'</div><div class="answer-head"></div><div class="answer-agree"></div>';
             
             if(isset( $reply['reply'] )){
-                $html .= '<blockquote>引用<a href="'.  user_space($reply['reply_user']['blogname']) .'">@' . $reply['reply_user']['username'].'</a>的话：' . $reply['reply']['content'].'</blockquote>';
+                $html .= '<blockquote>引用<a href="'.  user_space($reply['reply_user']['uid']) .'">@' . $reply['reply_user']['username'].'</a>的话：' . $reply['reply']['content'].'</blockquote>';
             }
             
             $html .= '<div class="answer-con">'.filter_content( $reply['content'] ).'</div>';
@@ -74,12 +74,12 @@ class Topic {
                     ?>
                         <div class="answer-item" replyid="<?php echo $reply['id'];?>" topicid="<?php echo $reply['topicid'];?>">
                             <div class="post-avatar">
-                                <a href="<?php echo user_space($reply['reply_user']['blogname']);?>"><img src="<?php echo avatar($topic['uid'])?>" /></a><br>
+                                <a href="<?php echo user_space($reply['reply_user']['uid']);?>"><img src="<?php echo avatar($topic['uid'])?>" /></a><br>
                                 <?php echo $_i;?>楼
                             </div>
                             <div class="post-content">
                                 <div class="post-user">
-                                    <a href="<?php echo user_space($reply['reply_user']['blogname']);?>"><?php echo $reply['reply_user']['username'];?></a>
+                                    <a href="<?php echo user_space($reply['reply_user']['uid']);?>"><?php echo $reply['reply_user']['username'];?></a>
                                     <?php echo '，' , $reply['reply_user']['honorname']?>
                                 </div>
                                 

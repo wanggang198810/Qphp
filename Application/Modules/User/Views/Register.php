@@ -54,13 +54,13 @@
                     <input type="password" id="password" name="password" placeholder="Password">
                   </div>
                 </div>
-                    
+                <!--    
                 <div class="control-group">
                   <label class="control-label" for="blogname">域 名：</label>
                   <div class="controls">
                     <input type="text" id="blogname" name="blogname" placeholder="Url">
                   </div>
-                </div>
+                </div>-->
                     
                 <div class="control-group">
                   <div class="controls">

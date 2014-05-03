@@ -59,7 +59,7 @@
                 <li class="forum-li">
                     <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
                     <div class="forum-author">
-                        <a href="<?php echo user_space($v['author']['blogname']);?>"><?php echo $v['author']['username'];?></a>
+                        <a href="<?php echo user_space($v['author']['uid']);?>"><?php echo $v['author']['username'];?></a>
                     </div>
                     <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
@@ -84,8 +84,8 @@
                         $class = ($i%4 == 0) ? 'class="mr0"' : '';
                 ?>
                 <li <?php echo $class;?>>
-                    <a href="<?php echo user_space($v['blogname']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
-                    <a href="<?php echo user_space($v['blogname']);?>"><?php echo $v['username'];?></a> 
+                    <a href="<?php echo user_space($v['uid']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
+                    <a href="<?php echo user_space($v['uid']);?>"><?php echo $v['username'];?></a> 
                 </li>
                 <?php 
                     $i ++ ;

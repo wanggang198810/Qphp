@@ -18,8 +18,8 @@ class BaseController extends Controller{
             $GLOBALS['userinfo'] = $this->data['user'] = $this->user = User::getUser( $this->uid );
             $this->curUrl = strtolower( Request::currentUrl() );
             if( ( empty( $this->user['blogname'] ) ||  empty( $this->user['email'] ) ) && false === strpos($this->curUrl, 'bind')){
-                Response::redirect('/user/bind/');
-                return ;
+                //Response::redirect('/user/bind/');
+                //return ;
             }
             $this->loadModel('Message.Message');
             $messageModel = new MessageModel('message');

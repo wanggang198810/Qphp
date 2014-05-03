@@ -64,7 +64,7 @@ class PostController extends BaseTopicController{
             $url = parse_url( $url );
             $url = explode('/', trim($url['path'], '/'));
             $group_url = $url[1];
-            $this->show_success('', group_url($group_url));
+            $this->show_success('发表成功', group_url($group_url));
         }else{
             $this->show_error('', '/');
         }
@@ -100,23 +100,26 @@ class PostController extends BaseTopicController{
                     $tagModel = new TagModel('Tag'); 
                     $result = $tagModel->addTag($result, $data['tag']);
                 }
-                $this->response->redirect(user_space($this->user['blogname']));
+                Response::redirect(user_space($this->user['uid']));
                 return;
             }
         }
-        $this->response->redirect('/post');
+        Response::redirect('/post/');
     }
     
     
     public function delete($id){
+        $this->checkLogin(1);
         $id = intval($id);
         if($id <= 0){
             $this->show_404();
+            return;
         }
         
         $this->data['topic'] = $this->topicModel->getTopic($id);
         if(empty($this->data['topic'])){
             $this->show_404();
+            return;
         }
         $this->loadModel('Group.Group');
         $this->loadModel('Group.GroupUser');
@@ -125,14 +128,15 @@ class PostController extends BaseTopicController{
         $this->data['group'] = $groupModel->getGroup($this->data['topic']['gid']);
         $this->data['is_manager'] = $groupuserModel->isManager($this->data['topic']['gid'], $this->uid);
         $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
-        $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : $this->data['is_manager'];
-        if(!$this->data['is_manager']){
+        //$this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : $this->data['is_manager'];
+        if(!$this->data['is_manager'] && $this->user['uid'] != $this->data['topic']['uid']){
             $this->show_error('没有权限', group_url($this->data['group']['url']));
+            return;
         }
-
+        
         $result =  $this->topicModel->deleteTopic($id,$this->uid);
         if($result){
-            $this->show_success('', group_url($this->data['group']['url']) );
+            $this->show_success('删除成功', group_url($this->data['group']['url']) );
         }else{
             $this->show_error('删除失败', group_url($this->data['group']['url']));
         }

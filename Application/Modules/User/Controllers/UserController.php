@@ -19,7 +19,7 @@ class UserController extends BaseController{
     
     public function index(){
         $this->checkLogin(1);
-        $this->response->redirect('/u');
+        $this->response->redirect('/u/');
     }    
     
     public function setting(){
@@ -31,12 +31,12 @@ class UserController extends BaseController{
     function login(){
         //echo date('YW N w o c z' , strtotime('2013-12-31T00:00:00+00:00'));exit;
         if($this->uid > 0){
-            $this->response->redirect('/u/'.$this->user['blogname']);
+            Response::redirect('/u/'.$this->user['uid']);
         }
         if(Request::isPostSubmit()){
             
-            $username = trim($this->request->getPost('username'));
-            $password = trim($this->request->getPost('password'));
+            $username = addslashes( trim( Request::getPost('username') ) );
+            $password = addslashes( trim( Request::getPost('password') ) );
 
             if(empty($username) || empty($password)){
                 $this->render('Login');
@@ -59,14 +59,16 @@ class UserController extends BaseController{
                 $this->show_error( $notice[$uc_uid[0]], '/user/login/');
                 return ;
             }
-            
+
             $result = $this->userModel->login($username, $password);
             if($result < 0){
+                $email = $uc_uid[3];
                 $ip = get_ip();
-                $result = $this->userModel->register($username, '', $password, '', $uc_uid[0], $ip);
+                $result = $this->userModel->register($username, $email, $password, '', $uc_uid[0], $ip);
                 if($result > 0){
                     $this->signLogin($result);
-                    Response::redirect('/user/bind/');
+                    //Response::redirect('/user/bind/');
+                    Response::redirect(user_space($result));
                 }
                 return;
             }
@@ -77,7 +79,7 @@ class UserController extends BaseController{
             
             if($result > 0){
                 $this->signLogin($result);
-                $this->response->redirect('/user');
+                $this->response->redirect('/user/');
             }
         }
         $this->render('Login');
@@ -99,7 +101,7 @@ class UserController extends BaseController{
             $email = trim($this->request->getPost('email'));
             $ip = get_ip();
             
-            if(empty($username) || empty($password) || empty($blogname) || empty($email)){
+            if(empty($username) || empty($password) ||  empty($email)){ //empty($blogname) ||
                 $this->show_error('请填写完整资料', '/user/register/');
                 return false;
             }
@@ -133,7 +135,7 @@ class UserController extends BaseController{
                 $messageModel = new MessageModel();
                 $r = $messageModel->sendMsg($result, 1, '', 0, 0, 100);
                 $this->signLogin($result);
-                $this->show_success('注册成功', '/u/' . $blogname . '/');
+                $this->show_success('注册成功', user_space( $result ));
                 return;
                 //$this->response->redirect('/user');
             }

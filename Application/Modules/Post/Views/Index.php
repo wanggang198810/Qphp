@@ -41,7 +41,7 @@
                 <div class="post-avatar"><img src="<?php echo avatar($topic['uid'])?>" /></div>
                 <div class="post-content">
                     <div class="post-user">
-                        <a href="<?php echo user_space($view_user['blogname']);?>"><?php echo $view_user['username']?>
+                        <a href="<?php echo user_space($view_user['uid']);?>"><?php echo $view_user['username']?>
                         </a> <span style="float:right; color:#999; font-size: 12px;"><?php echo dgmdate($topic['time']);?></span></div>
                     <?php echo filter_content($topic['content']) ;?>
                 </div>
@@ -49,7 +49,7 @@
                 <div  style="">
                     <div id="topic-manage" style="visibility:hidden">
                     <?php 
-                        if($is_manager){
+                        if($is_manager ||  (isset($user['uid']) && $user['uid'] == $topic['uid'] ) ){
                             echo '<a href="/post/delete/'.$topic['id'].'">删除</a> <a href="/post/edit/'.$topic['id'].'">编辑</a>';
                         }
                     ?>
@@ -84,10 +84,10 @@
         
         <div class="right side270 mt30">
             <div class="topic-user">
-                <a class="user-avatar" href="<?php echo user_space($view_user['blogname'])?>">
+                <a class="user-avatar" href="<?php echo user_space($view_user['uid'])?>">
                     <img src="http://www.q.com/Public/image/default_avatar.jpg" />
                 </a>
-                <div class="blogname" style=""><a href="<?php echo user_space($view_user['blogname'])?>"><?php echo $view_user['username']?></a></div>
+                <div class="blogname" style=""><a href="<?php echo user_space($view_user['uid'])?>"><?php echo $view_user['username']?></a></div>
                 <div class="honorname"><?php echo $view_user['honorname']?></div>
                 <div class="reply-time">发表于<br><?php echo date( "Y-m-d H:i" , $topic['time']);?></div>
             </div>

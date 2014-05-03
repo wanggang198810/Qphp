@@ -376,6 +376,10 @@ function uc_user_merge_remove($username) {
 	return call_user_func(UC_API_FUNC, 'user', 'merge_remove', array('username'=>$username));
 }
 
+function uc_user_getcredit2($appid, $uid, $credit) {
+        return call_user_func(UC_API_FUNC, 'user', 'get_credit', array('appid'=>$appid, 'uid'=>$uid, 'credit'=>$credit));
+}
+
 function uc_user_getcredit($appid, $uid, $credit) {
 	return uc_api_post('user', 'getcredit', array('appid'=>$appid, 'uid'=>$uid, 'credit'=>$credit));
 }
@@ -579,5 +583,16 @@ function uc_check_version() {
 }
 
 
-
+function uc_get_avatar($uid, $size = 'middle', $type = '') {
+	$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
+	$uid = abs(intval($uid));
+	$uid = sprintf("%09d", $uid);
+	$dir1 = substr($uid, 0, 3);
+	$dir2 = substr($uid, 3, 2);
+	$dir3 = substr($uid, 5, 2);
+	$typeadd = $type == 'real' ? '_real' : '';
+	return $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
+}
+    
+    
 ?>

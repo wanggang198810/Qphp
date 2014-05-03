@@ -23,8 +23,8 @@ function load_css($filename){
 
 
 function load_uc(){
-    include '/UC_API/config.inc.php';
-    include '/UC_API/uc_client/client.php';
+    include ROOT_PATH . '/UC_API/config.inc.php';
+    include ROOT_PATH . '/UC_API/uc_client/client.php';
 }
 
 function load_view($filename){

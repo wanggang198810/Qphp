@@ -62,7 +62,7 @@ class TopicController extends BaseTopicController {
         if(Request::isPostSubmit()){
             $result = parent::save();
             if($result){
-                $this->show_success('分享文字成功', user_space($this->user['blogname'], 'topic'));
+                $this->show_success('分享文字成功', user_space($this->user['uid'], 'topic'));
             }else{
                 $this->show_error('系统繁忙', '/');
             }

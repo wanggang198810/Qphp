@@ -40,7 +40,7 @@
             <div class="" style="width: 650px; float: left; line-height: 2; font-size: 15px; margin-top: 20px; padding-bottom: 10px; margin-bottom: 30px; font-size: 13px; border-bottom: 1px dashed #ccc;">
                 <div class="content1 radius-51"><?php echo filter_content($topic['content']) ;?></div>
                 <div class="reply-time">提问于<?php echo dgmdate($topic['time']);?>
-                    <span class="right pr10"><a href="<?php echo user_space($view_user['blogname']);?>">
+                    <span class="right pr10"><a href="<?php echo user_space($view_user['uid']);?>">
                         <?php echo $view_user['username']?></a>
                     </span>
                 </div>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="answer-head">
-                                <a href="<?php echo user_space($reply['reply_user']['blogname']);?>">
+                                <a href="<?php echo user_space($reply['reply_user']['uid']);?>">
                                     <?php echo $reply['reply_user']['username'];?>
                                 </a>
                                 <?php echo ', ',$reply['reply_user']['honorname'];?>

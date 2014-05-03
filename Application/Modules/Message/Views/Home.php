@@ -63,11 +63,11 @@
                 ?>
                     <div style="color: #666; padding: 10px 0 15px; border-bottom: 1px dashed #eee; clear: both; min-height: 60px;">
                         <div class="left">
-                            <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
+                            <a href="<?php echo user_space( $message['fromuser']['uid'] );?>">
                                 <img src="<?php echo avatar($message['fromuid']);?>"></a>
                         </div>
                         <div class="right" style="width: 655px;">
-                            <a href="<?php echo user_space( $message['fromuser']['blogname'] );?>">
+                            <a href="<?php echo user_space( $message['fromuser']['uid'] );?>">
                                 <?php echo $message['fromuser']['username']?></a>：
                             <?php echo String::cutstr($message['content'], 0, 50)?>
                             

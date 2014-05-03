@@ -164,7 +164,7 @@ class usercontrol extends base {
 		}
 	}
     
-        function onget_credit1(){
+        function onget_credit(){
             $this->init_input();
             $uid = $this->input('uid');
             $credit = $this->input('credit');

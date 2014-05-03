@@ -45,7 +45,7 @@ class BaseTopicController extends BaseController{
             $groupuserModel = new GroupUserModel();
             $this->data['group'] = $groupModel->getGroup($this->data['topic']['gid']);
             $this->data['is_in_group'] = $groupuserModel->isInGroup($this->data['topic']['gid'], $this->uid);
-            $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid'] > 1 ? 1 : 0;
+            $this->data['is_creator'] = $this->data['group']['creator'] == $this->data['user']['uid']  ? 1 : 0;
             $this->data['is_manager'] = ($this->data['is_in_group'] > 1 || $this->data['is_creator']) ? 1 : 0;
         }
         
@@ -157,7 +157,7 @@ class BaseTopicController extends BaseController{
                     $tagModel = new TagModel('Tag'); 
                     $result = $tagModel->addTag($result, $data['tag']);
                 }
-                //$this->response->redirect(user_space($this->user['blogname']));
+                //$this->response->redirect(user_space($this->user['uid']));
                 return true;
             }else{
                 return false;
