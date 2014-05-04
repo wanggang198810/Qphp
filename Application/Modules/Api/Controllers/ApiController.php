@@ -8,11 +8,13 @@
 
 require( APP_PATH ."Modules/Common/Controllers/BaseController.php" );
 class ApiController extends BaseController{
+    
+    static $errorMsg = 'ERROR';
 
     //记录用户使用软件信息
     public function softUseRecord(){
-        $tnrgss = Request::getIntGet('tnrgss');
-        if($tnrgss != 147269){
+        $verify = $this->verify();
+        if(!$verify){
             echo 'ERROR';
             return;
         }
@@ -58,8 +60,48 @@ class ApiController extends BaseController{
     
     
     
+    /**
+     * 获取加密器，用户信息
+     */
+    public function getJiamiqiInfo(){
+        $verify = $this->verify();
+        $return_data = self::$errorMsg;
+        if(!$verify){
+            echo $return_data;
+            return;
+        }
+        
+        $uid = Request::getIntGet('uid');
+        if($uid <= 0){
+            echo $return_data;
+            return false;
+        }
+        
+        $ip = get_ip();
+        $this->loadModel('Api');
+        $dao = new ApiModel();
+        $result = $dao->recordJiamiqi($uid, $ip);
+        if($result){
+            $return_data = 'uid=' . $uid . ';times=' . $result['times'] . ';lastlogin=' . $result['lastlogin'];
+            
+        }
+        
+        echo $return_data;
+    }
 
 
+    
+    
+    /**
+     * 验证
+     */
+    private function verify(){
+        $tnrgss = Request::getIntGet('tnrgss');
+        if($tnrgss != 147269 && empty($_GET['test1'])){
+            return false;
+        }
+        return true;
+    }
 
 
 

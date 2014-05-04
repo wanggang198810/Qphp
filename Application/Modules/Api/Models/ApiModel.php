@@ -30,13 +30,48 @@ class ApiModel extends Model{
                 'lastlogin' => date('Y:m:d H:i:s'),
             );
             return $this->where( $where )->update($data);
+            
         }
 
-
-
-
-
+    }
+    
+    
+    
+    
+     // 记录加密器登录记录
+    public function recordJiamiqi($uid, $ip){
+        $this->setTable('jiamiqirecord');
+        $where = array('uid' => $uid );
+        $exist = $this->where( $where )->fetch();
+        if(empty($exist)){
+            $data = array(
+                'uid' => $uid,
+                'times' => 1,
+                'ip' => $ip,
+                'lastlogin' => date('Y:m:d H:i:s'),
+            );
+            $reulst = $this->insert($data);
+            if($reulst){
+                return $data;
+            }else{
+                return false;
+            }
+        }else{
+            $data = array(
+                'times' => $exist['times'] + 1,
+                'lastlogin' => date('Y:m:d H:i:s'),
+            );
+            $result = $this->where( $where )->update($data);
+            if($result){
+                $exist['times'] += 1;
+                return $exist;
+            }else{
+                return false;
+            }
+        }
 
     }
+    
+    
 
 } 
