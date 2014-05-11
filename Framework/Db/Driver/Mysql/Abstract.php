@@ -32,6 +32,9 @@ abstract class Db_Abstract extends Db_Base implements Db_Interface {
     protected $_query;
     
     protected $_sql;
+    
+    public static $_sqls;
+    
     //操作条件
     protected $_where;
     

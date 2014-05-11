@@ -46,28 +46,28 @@
             </div>
             
             <div class="group-menu mt30">
-                <a class="active" href="">全部标签</a>  <!--<a href="">精华</a>-->
-                <?php if($is_manager){?>
-                <a class="group-post-btn" href="<?php echo group_url($group['url'], 'addtag');?>">添加标签</a>
+                <a class="active" href="">全部帖子</a>  <!--<a href="">精华</a>-->
+                <?php if($is_in_group){?>
+                <a class="group-post-btn" href="<?php echo group_url($group['url'], 'post');?>">发帖</a>
                 <?php }?>
             </div>
             
-            <div style=" ">
-            <ul class="tag-list">
+            <ul class="forum-list">
             <?php
-                foreach ($tags as $k => $v){
+                foreach ($topics as $k => $v){
             ?>
-                <li class="tag-li" id="tag-li-<?php echo $v['id'];?>" style="position: relative;">
-                <?php if($is_creator){?>
-                        <a class="group-tag-delete" tagid ="<?php echo $v['id'];?>" href="#" style=" display: none; position: absolute; top: -12px; right: -4px;">x</a>
-                <?php }?>
-                        <a href="<?php echo group_tag($group['url'], $v['name']);?>"><?php echo $v['name'];?></a>
+                <li class="forum-li">
+                    <h3 class="title-h3"><a href="<?php echo topic_url($v['id'], $v['url'], 3);?>"><?php echo $v['title'];?></a></h3>
+                    <div class="forum-author">
+                        <a href="<?php echo user_space($v['uid']);?>"><?php echo $v['username'];?></a>
+                    </div>
+                    <div class="forum-reply-num"><?php echo dgmdate( $v['time'] );?></div>
                 </li>
+            
             <?php }?>
             </ul>
-            </div>
             
-            <div class="page"></div>
+            <div class="page"><?php echo $page_html;?></div>
             
             
         </div>
@@ -75,9 +75,29 @@
         
         <div class="main-right">
             <div class="main_title2 mt20">活跃的小组成员</div>
+            <div class="active-member-box" style=" margin-top: 10px;">
+            <ul>
+                <?php
+                if(!empty($members)){
+                    foreach($members as $k => $v){
+                        $i = 1;
+                        $class = ($i%4 == 0) ? 'class="mr0"' : '';
+                ?>
+                <li <?php echo $class;?>>
+                    <a href="<?php echo user_space($v['uid']);?>"><img src="<?php echo avatar($v['uid']);?>" /></a> 
+                    <a href="<?php echo user_space($v['uid']);?>"><?php echo $v['username'];?></a> 
+                </li>
+                <?php 
+                    $i ++ ;
+                    }
+                }?>
+                <div class="clear"></div>
+            </ul>        
+            </div>
             
-            <div class=" mt20">
+            <div class="mt20">
                 <p><a href="/group/<?php echo $group['url']?>/members/">查看所有小组成员</a></p>
+                <p><a href="/group/<?php echo $group['url']?>/taglist/">小组标签</a></p>
             </div>
             
         </div>
@@ -113,29 +133,6 @@
                     }
                 });
             });
-            
-            $('.group-tag-delete').click(function(){
-                var tagid = $(this).attr('tagid');
-                $.post('/group/<?php echo $group['url'];?>/deleteTag/', {'tagid': tagid, 'groupid' : <?php echo $group['id']?>}, function(r){
-                    r = eval( "(" + r + ")");
-                    alert(r.msg);
-                    if(r.success == 1){
-                        $('#tag-li-' + tagid).remove();
-                    }
-                    
-                });
-            });
-            
-            <?php if($is_creator){?>
-            $('.tag-li').hover(
-                function(){
-                    $(".group-tag-delete").css({ 'display':'block'})
-                },
-                function(){
-                    $(".group-tag-delete").css({ 'display':'none'})
-                }
-            );
-            <?php }?>
         });
     </script>
 </body>

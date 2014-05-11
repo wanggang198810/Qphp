@@ -34,7 +34,6 @@ class BaseTopicController extends BaseController{
         if($id != $this->data['topic']['id']. '-' . $this->data['topic']['url'] && $id != $this->data['topic']['id']){
             $this->show_404(); return;
         }
-        
         /**
          * 小组帖子特殊处理
          */
@@ -177,12 +176,16 @@ class BaseTopicController extends BaseController{
             }
             if( $data['topicid'] <= 0){
                 $this->show_error('哥！问题跑到火星上去了。', '/question/'.$id);
+                exit();
             }
+            
             $data['replyid'] = Request::getIntPost('replyid');
             $data['content'] = filter( Request::getPost('reply_content') ); 
             
-            if( strlen($data['content']) <= 6){
+            if( strlen($data['content']) < 6){
                 $this->show_error('哥！多写点东西吧。', '/question/'.$id);
+                exit();
+                return;
             }
             
             $data['type'] = $this->topictype;

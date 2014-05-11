@@ -101,6 +101,13 @@ class TopicModel extends Model{
     }
     
     
+    
+    public function getTopicsByTagid($tagid, $page = 1, $pageSize = 20 , $total = 0){
+        $sql = "select a.*, b.username from topic a left join user b on a.uid = b.uid  where  a.tid = {$tagid} order by id desc";
+        return $this->page($page, $pageSize, $total, $sql);
+    }
+    
+    
     public function getTopic($id){
         if( intval($id) <= 0 ){ return false; }
         return $this->where( array('status' => 1,'id' => intval($id) ) )->fetch();

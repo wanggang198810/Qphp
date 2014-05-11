@@ -15,7 +15,7 @@ class GroupController extends BaseController{
         $this->groupModel = new GroupModel();
     }
     
-    public function index($url = '', $type=''){
+    public function index($url = '', $type='', $param3= '' , $param4=''){
         //$this->groupModel = new GroupModel();
         
         $this->groupUrl = $url = filter($url);
@@ -70,6 +70,12 @@ class GroupController extends BaseController{
                     break;
                 case 'addtag':
                     $this->_addTag();
+                    break;
+                case 'deletetag':
+                    $this->_deleteTag();
+                    break;
+                case 'tag':
+                    $this->_tag($param3, $param4);
                     break;
             }
             return;
@@ -423,8 +429,56 @@ class GroupController extends BaseController{
     }
     
     
-    public function tag($url, $tagname=''){
-        hprint($tagname);
+    private function _tag($tagname='', $param=''){
+        
+        $page = Request::getIntGet('page');
+
+        $tagname = urldecode($tagname);
+        if(empty($tagname) ){
+            $this->show_error('哥，空标签啊', group_url($this->data['group']['url']));
+            return;
+        }
+        $this->loadModel('Group.GroupTag');
+        $groupTagModel = new GroupTagModel();
+        $tag = $groupTagModel->getTagByName($this->data['group']['id'], $tagname);
+        if(empty($tag) ){
+            $this->show_error('没有此标签', group_url($this->data['group']['url']));
+            return;
+        }
+
+        $this->loadModel('Topic.Topic');
+        $topicModel = new TopicModel();
+        $result = $topicModel->getTopicsByTagid($tag['id'], $page, 10);
+        $this->data['topics'] = $result['list'];
+        $this->data['page_html'] = to_page_html($page, $result['pageinfo']['totalPage']);
+        
+        $this->render('List2');
+    }
+    
+    private function _deleteTag(){
+        $this->checkLogin(1);
+        $data = array('success' => 0, 'msg' => '删除失败');
+        $tagid = Request::getIntPost('tagid');
+        $groupid = Request::getIntPost('groupid');
+        if($tagid <= 0 || $groupid <= 0){
+            echo json_encode($data);   
+            return;
+        }
+        if( !$this->data['is_creator']){
+            $data = array('success' => 0, 'msg' => '没有权限');
+            echo json_encode($data);
+            exit();
+        }
+        $this->loadModel('Group.GroupTag');
+        $groupTagModel = new GroupTagModel();
+        $result = $groupTagModel->deleteTag($tagid, $groupid);
+        if($result){
+            $data = array('success' => 1, 'msg' => '删除成功');
+            echo json_encode($data);
+        }else{
+            echo json_encode($data);
+        }
+        
     }
     
     

@@ -1,6 +1,6 @@
 <?php
 global $message_count;
-
+global $userinfo;
 ?>
 <div class="navbar">
     <div class="navbar-inverse navbar-fixed-top">
@@ -20,12 +20,19 @@ global $message_count;
                 </ul>
                 <div class="pull-right">
                     <ul class="nav">
+                    <?php
+                        if( !empty($userinfo) ){
+                    ?>    
                         <li><a href="/message/">消息
                             <?php if($message_count > 0){?>
                                 (<span><?php echo $message_count;?></span>)
                             <?php }?></a></li>
-                        <li><a href="/u/">我的帐号</a></li>
-                        <li><a href="/user/logout">退出</a></li>
+                        <li><a href="/u/<?php echo $userinfo['uid'];?>"><?php echo $userinfo['username'];?></a></li>
+                        <li><a href="/user/logout/">退出</a></li>
+                      <?php }else{?>
+                        <li><a href="/user/login/">登录</a></li>
+                        <li><a href="/user/regsiter/">注册</a></li>
+                      <?php }?>
                       </ul>
                 </div>
             </div>

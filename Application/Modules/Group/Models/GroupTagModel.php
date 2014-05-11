@@ -11,6 +11,14 @@ class GroupTagModel extends Model{
         if($gid <= 0){ return false;} 
         return $this->where( " `gid` = {$gid} AND status = 1")->fetchArray();
     }
+    
+    
+    /**
+     * 
+     */
+    public function getTagByName($gid, $tagname){
+        return $this->where( array('name' => $tagname, 'gid' => $gid, 'status' => 1) )->fetch();
+    }
 
 
     public function addTag($uid, $gid, $tagname){
@@ -41,6 +49,21 @@ class GroupTagModel extends Model{
             'name' => $tagname,
         );
         return $this->where( $data )->fetch();
+    }
+    
+    
+    /**
+     * 删除标签
+     */
+    public function deleteTag($tagid, $gid, $force=0){
+        if($force){
+            return $this->where( array('id' => $tagid, 'gid' => $gid) )->delete();
+        }else{
+            $data = array(
+                'status' => 0,
+            );
+            return $this->where( array('id' => $tagid, 'gid' => $gid, 'status' => 1) )->update($data);
+        }
     }
     
     

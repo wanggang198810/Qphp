@@ -138,7 +138,7 @@ function to_page_html2( $page, $totalPage=1, $col=20, $param ='page'){
 
 //分页，页码
 function to_page_html( $page, $totalPage=1, $col=20, $param ='page'){
-    if($totalPage <= 0){
+    if($totalPage <= 1){
         return '';
     }
     $html = '<div style="padding: 10px 0">';
@@ -198,7 +198,7 @@ function user_space( $url , $type = '' ){
     if(!empty($type)){
         $type = '/'.$type;
     }
-    return '/u/'.$url.$type.'/';
+    return '/u/'.$url.$type;
 }
 
 function avatar($uid){
@@ -222,7 +222,7 @@ function group_logo($url=''){
 }
 
 function group_tag($url, $tagname){
-    return '/group/tag/' . $url . '/' . $tagname .'/';
+    return '/group/' . $url . '/tag/' . $tagname .'/';
 }
 
 function topic_url($id, $url='', $type = 1){

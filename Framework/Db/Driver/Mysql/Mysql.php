@@ -45,6 +45,7 @@ class Mysql extends Db_Abstract{
 		// 函数执行一条 MySQL 查询。返回查询结果
 		//如果没有打开的连接，本函数会尝试无参数调用 mysql_connect() 函数来建立一个连接并使用之。
 		$func = $type == 'UNBUFFERED' && function_exists ( 'mysql_unbuffered_query' ) ? 'mysql_unbuffered_query' : 'mysql_query';
+        self::$_sqls[] = $sql;
         return $this->_query = $func($sql, $this->_link)or die(mysql_error());
     }
     
@@ -165,9 +166,9 @@ class Mysql extends Db_Abstract{
             $pageSize = 10;
         }
         if($total <= 0){
-            $tocalSql = preg_replace ( '{select\s+\*\s+from}i', 'select count(1) from ', $sql );
-			$tocalSql = preg_replace ( '{order\s+by\s+\w+(?:\s+(?:asc|desc))?}i', '', $tocalSql );
-			$total = $this->fetchFirstCol ( $tocalSql );
+            $tocalSql = preg_replace ( '{select\s+(.*?)\s+from}i', 'select count(1) from ', $sql );
+            $tocalSql = preg_replace ( '{order\s+by\s+\w+(?:\s+(?:asc|desc))?}i', '', $tocalSql );
+            $total = $this->fetchFirstCol ( $tocalSql );
         }
         if($total < 1){
 			$pageInfo = array ('success' => 1, 'page' => $page, 'totalPage' => 0, 'pageSize'=>$pageSize, 'total' => 0, 'message' => '无数据' );

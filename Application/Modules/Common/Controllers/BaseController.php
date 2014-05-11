@@ -33,6 +33,7 @@ class BaseController extends Controller{
             if($redirect == 1){
                 $backurl = base64_encode( $this->request->currentUrl());
                 $this->response->redirect("/user/login/?backurl={$backurl}");
+                exit();
             }else{
                 return false;
             }
