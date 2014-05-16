@@ -38,6 +38,15 @@ class TagController extends  BaseController{
     }
     
     
+    public function search(){
+        $data = array(
+            'xx', 'oo', 'xxoo',
+        );
+        
+        echo json_encode($data);
+    }
+    
+    
 }
 
 ?>
