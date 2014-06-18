@@ -39,16 +39,18 @@ class ApiModel extends Model{
     
     
      // 记录加密器登录记录
-    public function recordJiamiqi($uid, $ip){
+    public function setTnBoxInfo($uid, $ip, $times=0, $lastlogin=null, $thislogin=null){
         $this->setTable('jiamiqirecord');
         $where = array('uid' => $uid );
         $exist = $this->where( $where )->fetch();
         if(empty($exist)){
             $data = array(
                 'uid' => $uid,
-                'times' => 1,
+				'times' => 1,
+                'times2' => 1,
                 'ip' => $ip,
-                'lastlogin' => date('Y:m:d H:i:s'),
+                'lastlogin2' => date('Y:m:d H:i:s'),
+				'lastlogin' => date('Y:m:d H:i:s'),
             );
             $reulst = $this->insert($data);
             if($reulst){
@@ -58,9 +60,28 @@ class ApiModel extends Model{
             }
         }else{
             $data = array(
-                'times' => $exist['times'] + 1,
-                'lastlogin' => date('Y:m:d H:i:s'),
+                'times2' => $exist['times2'] + 1,
+                'lastlogin2' => date('Y:m:d H:i:s'),
             );
+			if(!empty($times) && intval($times) > 0){
+				$data['times'] = $times;
+			}else{
+				$data['times'] = $exist['times'] + 1;
+				
+			}
+			
+			if(!empty($lastlogin)){
+				$data['lastlogin'] = $lastlogin;
+			}else{
+				$data['lastlogin'] = $exist['thislogin'];
+			}
+			
+			if(!empty($thislogin)){
+				$data['thislogin'] = $thislogin;
+			}else{
+				$data['thislogin'] = date('Y:m:d H:i:s');
+			}
+			
             $result = $this->where( $where )->update($data);
             if($result){
                 $exist['times'] += 1;
@@ -72,6 +93,55 @@ class ApiModel extends Model{
 
     }
     
+    
+    public function getTnBoxInfo($uid){
+        $this->setTable('jiamiqirecord');
+        $where = array('uid' => $uid );
+        return $this->where( $where )->fetch();
+    }
+    
+	
+	
+	public function getTnGameInfo($uid, $gameid=0){
+		$this->setTable('gamepay');
+		$result = $this->where( array('uid' => $uid) )->fetch();
+		return $result;
+	}
+	
+	
+	/**
+	 * type 1 ka  2 vip
+	 */
+	public function setTnGameInfo($uid, $num, $gameid=0, $type=1){
+		$this->setTable('gamepaylog');
+		$insert_data = array(
+			'uid' => $uid,
+			'type' => $type,
+			'pay' => $num,
+			'gameid' => $gameid
+		);
+		$this->insert($insert_data);
+		
+		$exist = $this->getTnGameInfo($uid, $gameid);
+		if(empty($exist)){
+			return $this->insert($insert_data);
+		}else{
+			
+			$update_data = array(
+				'last_time' => date('Y-m-d H:i:s'),
+			);
+			
+			if($type == 1){
+				$update_data['total_pay_ka'] = $exist['total_pay_ka'] + $num;
+			}elseif($type == 2){
+				$update_data['total_pay_ok'] = $exist['total_pay_ok'] + $num;
+			}
+			
+			return $this->where( array('uid' => $uid) )->update($update_data);
+		}
+		
+	}
+	
     
 
 } 

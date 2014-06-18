@@ -228,16 +228,42 @@ class usermodel2 {
 		return $questionid > 0 && $answer != '' ? substr(md5($answer.md5($questionid)), 16, 8) : '';
 	}
     
-        function get_credit($uid, $credit){
-            $uid = intval($uid);
-            $credit = intval($credit);
-            if($credit <= 0){
-                $colums = '*';
-            }else{
-                $colums = 'extcredits' . $credit;
-            }
-            return $this->db->fetch_first("SELECT {$colums} FROM ".UC_BBS_DBTABLEPRE."common_member_count WHERE uid='$uid'");
-        }
+	function get_credit($uid, $credit){
+		$uid = intval($uid);
+		$credit = intval($credit);
+		if($credit <= 0){
+			$colums = '*';
+		}else{
+			$colums = 'extcredits' . $credit;
+		}
+		return $this->db->fetch_first("SELECT {$colums} FROM ".UC_BBS_DBTABLEPRE."common_member_count WHERE uid='$uid'");
+	}
+	
+	function sub_credit($uid, $credit, $num){
+		return $this->operate_credit($uid, $credit, $num, 0);
+	}
+	
+	function add_credit($uid, $credit, $num){
+		return $this->operate_credit($uid, $credit, $num, 1);
+	}
+	
+	function operate_credit($uid, $credit, $num, $add=1){
+		$uid = intval($uid);
+		$credit = intval($credit);
+		if($credit <= 0){
+			return false;//$colums = '*';
+		}else{
+			$colums = 'extcredits' . $credit;
+		}
+		
+		if($add){
+			$sql = "UPDATE " . UC_BBS_DBTABLEPRE."common_member_count set {$colums} = {$colums} + {$num} WHERE uid= $uid";
+		}else{
+			$sql = "UPDATE " . UC_BBS_DBTABLEPRE."common_member_count set {$colums} = {$colums} - {$num} WHERE uid= $uid";
+			
+		}
+		return $this->db->query($sql);
+	}
 
 }
 

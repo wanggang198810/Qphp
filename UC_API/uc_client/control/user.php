@@ -130,7 +130,7 @@ class usercontrol extends base {
 			$status = $user['uid'];
 		}
 		$merge = $status != -1 && !$isuid && $_ENV['user']->check_mergeuser($username) ? 1 : 0;
-		return array($status, $user['username'], $password, $user['email'], $merge);
+		return array($status, $user['username'], $password, $user['email'], $merge, $user['groupid']);
 	}
 
 	function oncheck_email() {
@@ -177,6 +177,19 @@ class usercontrol extends base {
             }
         }
 
+        function onoperate_credit(){
+        	$this->init_input();
+        	$uid = $this->input('uid');
+        	$credit = $this->input('credit');
+        	$num = $this->input('num');
+        	$add = $this->input('add');
+        	$status = $_ENV['user']->operate_credit($uid, $credit, $num, $add);
+        	if($status) {
+        		return $status;
+        	} else {
+        		return 0;
+        	}
+        }
 
 	function ongetprotected() {
 		$protectedmembers = $this->db->fetch_all("SELECT uid,username FROM ".UC_DBTABLEPRE."protectedmembers GROUP BY username");

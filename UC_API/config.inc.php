@@ -17,7 +17,7 @@ define('UC_KEY', 'gdbnyasdezuhaj9sfbo26yo5b31yz2yo');				// �� UCenter ��
 define('UC_API', 'http://bbs.q.com/uc_server');	// UCenter �� URL ��ַ, �ڵ���ͷ��ʱ�����˳���
 define('UC_CHARSET', 'utf-8');				// UCenter ���ַ�
 define('UC_IP', '127.0.0.29');					// UCenter �� IP, �� UC_CONNECT Ϊ�� mysql ��ʽʱ, ���ҵ�ǰӦ�÷�������������������ʱ, �����ô�ֵ
-define('UC_APPID', 2);					// ��ǰӦ�õ� ID
+define('UC_APPID', 11);					// ��ǰӦ�õ� ID
 define('UC_PPP', '20');
 
 //ucexample_2.php �õ���Ӧ�ó�����ݿ����Ӳ���

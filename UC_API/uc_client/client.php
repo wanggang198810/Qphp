@@ -380,6 +380,10 @@ function uc_user_getcredit2($appid, $uid, $credit) {
         return call_user_func(UC_API_FUNC, 'user', 'get_credit', array('appid'=>$appid, 'uid'=>$uid, 'credit'=>$credit));
 }
 
+function uc_operate_credit($appid, $uid, $credit, $num, $add=1) {
+	return call_user_func(UC_API_FUNC, 'user', 'operate_credit', array('appid'=>$appid, 'uid'=>$uid, 'credit'=>$credit, 'num' => $num, 'add'=>$add));
+}
+
 function uc_user_getcredit($appid, $uid, $credit) {
 	return uc_api_post('user', 'getcredit', array('appid'=>$appid, 'uid'=>$uid, 'credit'=>$credit));
 }
