@@ -17,27 +17,33 @@
     ?>
         
 
-    
+	<style>
+		
+	</style>    
 </head>
 <body>
 <?php
     load_view ('Common.header');
-    load_view ('SubMenu');
+    load_view ('SubGameMenu');
 ?> 
 
+<div id="page">
+	<div class="common-bg">
+		<a class="common-bg-link" href="#"></a>
+	</div>
 
-    <div  class="main">
-        <div style="float:left; width: 650px;">
+    <div  class="main" style="margin-top:50px">
+        <div style="float:left; width: 750px;">
             <div class="game-title">
                 <h1 class="title-h1">
                     <a href="<?php echo game_url($game['id'], $game['url']);?>"><?php echo $game['name'];?></a>
                 </h1>
             </div>
-            
+         <!--    
             <div style=" margin-bottom: 20px; background: #eee; padding: 20px;">
                 <div>图集</div>
                 <div>
-                    <div style="  width: 600px; height: 350px; overflow: hidden;"><img style=" width: 600px; height: 350px;" src="http://www.rgss.cn/<?php echo $game['cover']?>" /></div>
+                    <div style="  width: 700px; height: 350px; overflow: hidden;"><img style=" width: 600px; height: 350px;" src="http://www.rgss.cn/<?php echo $game['cover']?>" /></div>
                     <div id="game_photo">
                         <a  rel="game_photo" title="" href="http://www.rgss.cn/<?php echo $game['cover']?>"><img alt="" src="http://www.rgss.cn/<?php echo $game['cover']?>" width="100" /></a>
                         <a rel="game_photo" title="" href="http://www.rgss.cn/data/upload/201208040453041140.png"><img alt="" src="http://www.rgss.cn/data/upload/201208040453041140.png" width="100" /></a>
@@ -45,10 +51,11 @@
                     </div>
                 </div>
             </div>
-
+ -->
             <div class="content-box">
                 <div class="content">
                     <?php echo filter_content($game['content']) ;?>
+                    <div class="clear"></div>
                 </div>
             </div>
             
@@ -107,6 +114,7 @@
                     <button type="submit" class="btn btn-success" style="float: right;">回复</button>
                 </form>
             </div>
+            
         </div>
         
         
@@ -121,11 +129,15 @@
                 <div class="reply-time">发表于<br><?php echo date( "Y-m-d H:i" , $game['time']);?></div>-->
             </div>
         </div>
+        <div class="clear"></div>
         
     </div>
     
 <?php load_view('Footer');?>     
-    <script>
+
+
+</div>
+	<script>
     $("a[rel=game_photo]").fancybox({
 				'transitionIn'		: 'none',
 				'transitionOut'		: 'none',

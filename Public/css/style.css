@@ -16,7 +16,7 @@ body {
   font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
   /*background: #DF5D5D;*/
 }
-.left{ float: left;}
+.left{ float: left; }
 .right{ float: right;}
 .white-color{ color: #FFF;}
 .point{ cursor:pointer;}
@@ -92,13 +92,22 @@ body {
     border-color: #666;
 }
 
-.navbar {
-margin: 0;
-height: 41px;
+.navbar {  margin: 0; height: 41px; }
+
+#page{
+	
 }
 .main{
-    width: 980px; margin: 0 auto;
+   width: 1100px; margin: 0 auto; padding:20px; background: #FFF; z-index: 2; position: relative; clear:both;
 }
+.common-nav{
+    width: 1140px; margin: 0 auto;  position: relative; clear:both;
+}
+
+.common-bg{background: url(/public/image/bg1.jpg) no-repeat 50% 0; display: block; width: 100%; height: 800px; position: absolute; z-index: 1; margin-top:-50px;}
+
+.common-bg-link { 	margin: 0 auto; position: absolute; top: 0; width: 100%;  height: 100%; z-index: 1; }
+
 a:hover{ text-decoration: none;}
 ul,li{ padding: 0; margin: 0; list-style: none;}
 img{padding: 0; margin: 0; vertical-align:baseline;}
@@ -115,6 +124,18 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), to(white));
 .sub-nav li a.active{ color: #85C155; }
 .sub-nav li a:hover{ background: #85C155; color: #FFF;}
            
+.sub-game-nav{ font-size: 14px; margin:0}
+.sub-game-nav li{ float: left; font-family: 微软雅黑; font-size: 14px;}
+.sub-game-nav li a{ float: left; padding:10px 15px; text-align: center; color: #000;}
+.sub-game-nav li a.active{ color: #85C155; }
+.sub-game-nav li a:hover{ background: #85C155; color: #FFF;}           
+.sub-game-nav input { margin-bottom:0; }
+.mb0{ margin-bottom:0; }
+.sub-game-nav-box { width: 100%; height: 72px; position:relative; background: #eee; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; padding: 10px; }
+.sub-game-logo { width: 142px; height: 35px; line-height: 35px; float: left; margin-top:15px; }
+.sub-game-search-box {  width: 900px; margin-left:15px; border-bottom:1px solid #ccc; height: 30px;  position: relative;   padding-bottom:12px;}
+.sub-game-search { margin-top:3px;  margin-bottom:0; /*float:right*/}
+
 .uside{ width: 200px;  float: left;}
 .uside .item{box-shadow: 0px 0px 3px #d9d9d9;-webkit-box-shadow: 0px 1px 3px #d9d9d9;-moz-box-shadow: 0px 0px 3px #d9d9d9; border: 1px solid #eee; border-radius: 0px; overflow: hidden;}
 .uside .person_nav li{ background:#FCFCFC; color: #f69; width: 198px; height: 34px; line-height: 34px;   border-bottom: 1px solid #eee; overflow: hidden}
@@ -156,7 +177,8 @@ textarea{ resize: none;}
 .appear{ display: block;}
 .side270{ width: 270px;}
 
-.content-box{width: 650px; float: left; line-height: 2; font-size: 15px;  padding-bottom: 50px;}
+.content-box{width: 750px; float: left; line-height: 2; font-size: 15px;  padding-bottom: 50px;}
+.content-box img{margin: auto; display: block;}
 .content-white{min-height: 300px; background: #FFF; padding: 10px;}
 
 .reply-box{}
@@ -326,6 +348,13 @@ margin-bottom: 10px;}
     opacity:0.9;/*其他，透明度50%*/
 }
 
+.box-shadow1{ -moz-box-shadow:1px 1px 1px #999;              
+    -webkit-box-shadow:1px 1px 1px #999;           
+    box-shadow:1px 1px 1px #999;   }
+    .box-shadow1{ -moz-box-shadow:1px 1px 2px #999;              
+    -webkit-box-shadow:1px 1px 2px #999;           
+    box-shadow:1px 1px 2px #999;   }
+
 
 .manage-member-list{
     
@@ -378,3 +407,4 @@ background: #ccc; border-radius: 5px;}
 .tag-list .tag-li { float: left; margin-right: 10px; font-weight: bold; background: #eee; margin-top: 20px; border-radius: 5px; border: 1px #ddd solid; padding:5px 15px; text-align: center; }
 .tag-list .tag-li:hover{ background: #FFF;}
 .tag-list .tag-li a{ color: #666;}
+

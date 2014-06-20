@@ -1,5 +1,5 @@
 <div style=" width: 100%; height: 35px; background: #eee; border-bottom: 1px solid #ddd;  padding: 25px 0 25px 0;">
-    <div class="main">
+    <div class="common-nav">
         <div class="">
             <div style="padding:0; margin:0; width: 142px; height: 35px; line-height: 35px; float: left; margin-right: 20px;">
                 <a href="" href="/"><img src="/Public/image/logo-2.png" /></a></div>
