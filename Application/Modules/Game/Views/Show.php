@@ -23,16 +23,17 @@
 </head>
 <body>
 <?php
-    load_view ('Common.header');
-    load_view ('SubGameMenu');
+    //load_view ('Common.header');
+	load_view ('SubGameMenu');
 ?> 
+
 
 <div id="page">
 	<div class="common-bg">
 		<a class="common-bg-link" href="#"></a>
 	</div>
 
-    <div  class="main" style="margin-top:50px">
+    <div  class="content-main" style="margin-top:65px">
         <div style="float:left; width: 750px;">
             <div class="game-title">
                 <h1 class="title-h1">
@@ -118,7 +119,16 @@
         </div>
         
         
-        <div class="right side270 mt30">
+        <div class="right side300 mt30">
+        	
+        	<div class="game-right-item mb20">
+        		<a href=""><img src="/Public/image/ad1.jpg"></a>
+        	</div>
+        
+        	<div class="game-right-item mb20">
+        		<a href=""><img src="/Public/image/ad2.jpg"></a>
+        	</div>
+        	
             <div class="game-user">
                 <!--
                 <a class="user-avatar" href="<?php echo user_space($view_user['uid'])?>">

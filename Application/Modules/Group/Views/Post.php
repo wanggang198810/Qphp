@@ -106,7 +106,7 @@
                 <input style="width:155px;" id="tag" name="tag" type="text" placeholder="tag">
             </div>
         </div>
-        
+        <div class="clear"></div>
     </form>
 </div>
 

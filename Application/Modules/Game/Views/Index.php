@@ -14,7 +14,7 @@
     
     <style>
     	body{ background:#fcfcfc}
-    	#game-main { margin:auto; width:1250px; }
+    	#game-main { margin:auto; max-width:1250px; z-index: 2; padding:15px; position: relative; background: #FFF; margin-top: 50px;}
     	#game-recom-side {float: left; width:230px;  position:fixed; }
     	.game-recom-side-item { padding:10px; width:210px; border:1px solid #C6F0B6; border-left:1px solid #C6F0B6; border-top:3px solid #4BC71A; height:200px; background:#FFF; margin-top:30px;}
     	.game-recom-title {  line-height:1.2; color: #078036; font-size:18px;  padding-bottom: 10px;}
@@ -22,16 +22,20 @@
     	.game-recom-list {}
     	.game-recom-item { padding:10px 0;}
     	
-    	#game_con { float: right; width:1000px;}
+    	#game_con { float: right; width:978px;}
     	
     </style>
 </head>
 <body>
 <?php
-    load_view ('Common.header');
-    load_view ('SubMenu');
+    //load_view ('Common.header');
+    load_view ('SubGameMenu');
 ?> 
-
+<div id="page">
+	<div class="common-bg">
+		<a class="common-bg-link" href="#"></a>
+	</div>
+	
     <div id="game-main">
     
     	<div id="game-recom-side">
@@ -99,9 +103,11 @@
         
         </div>
         
-        
+        <div class="clear"></div>
     </div>
     
-    
+</div>  
+
+<?php load_view('Footer');?>    
 </body>
 </html>

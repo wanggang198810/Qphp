@@ -6,3 +6,8 @@
         });
     });
 </script>  
+
+
+<div id="footer" style=" height:200px; background: #222;">
+	
+</div>

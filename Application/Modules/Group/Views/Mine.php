@@ -68,7 +68,7 @@
             
         </div>
         
-        
+        <div class="clear"></div>
     </div>
     
 <?php load_view('Footer');?>      

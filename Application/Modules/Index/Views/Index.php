@@ -19,7 +19,7 @@
        .bottom{
            width: 100%;
        }
-       .main{
+       .index-main{
            width: 750px;
            margin-right: auto;
            margin-left: auto;
@@ -41,7 +41,7 @@
 </head>
 <body> 
     <div class="top">
-        <div class="main">
+        <div class="index-main">
             <div class="left" style="font-size: 80px; margin-top: 50px;">
                 <img src="/Public/image/logo-info.png"><br>
                         <!--<img src="/Public/image/logo-troop.png">-->

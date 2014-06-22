@@ -1,9 +1,7 @@
+<!--
 
-<div class="ad-a" style=" text-align: center; margin: 20px 0">
-<img src="http://jp.appgame.com/wp-content/uploads/sites/6/2014/05/cc-show.jpg">
-</div>
-
-<div class="sub-game-nav-box">
+-->
+<div class="sub-game-nav-box" style="position: fixed; z-index:999">
     
     <div class="common-nav">
         <div class="">
@@ -39,6 +37,11 @@
         </div>
     </div>
     <div class="clear"></div>
+</div>
+
+
+<div class="ad-a" style=" text-align: center; margin: 20px 0">
+<img src="http://jp.appgame.com/wp-content/uploads/sites/6/2014/05/cc-show.jpg">
 </div>
 <script>
 $(function(){
