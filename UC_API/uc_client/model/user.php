@@ -24,17 +24,18 @@ class usermodel2 {
 	}
 
 	function get_user_by_uid($uid) {
-		$arr = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members WHERE uid='$uid'");
+		$arr = $this->db->fetch_first("SELECT a.*,b.groupid as groupid FROM ".UC_DBTABLEPRE."members a inner join ". UC_BBS_DBTABLEPRE ."common_member b on a.uid = b.uid and a.uid='$uid'");
 		return $arr;
 	}
 
 	function get_user_by_username($username) {
-		$arr = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members WHERE username='$username'");
+		$arr = $this->db->fetch_first("SELECT a.*, b.groupid as groupid FROM ".UC_DBTABLEPRE."members a inner join ". UC_BBS_DBTABLEPRE ."common_member b on a.uid = b.uid and a.username='$username'");
+		//hprint($arr, 1);
 		return $arr;
 	}
 
 	function get_user_by_email($email) {
-		$arr = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members WHERE email='$email'");
+		$arr = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members  a inner join ". UC_BBS_DBTABLEPRE ."common_member b on a.uid = b.uid and email='$email'");
 		return $arr;
 	}
 
