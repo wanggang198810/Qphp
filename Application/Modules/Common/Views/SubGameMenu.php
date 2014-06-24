@@ -39,10 +39,11 @@
     <div class="clear"></div>
 </div>
 
-
-<div class="ad-a" style=" text-align: center; margin: 20px 0">
+<Div>
+<div class="ad-a" style=" text-align: center; margin:  0">
 <img src="http://jp.appgame.com/wp-content/uploads/sites/6/2014/05/cc-show.jpg">
 </div>
+</Div>
 <script>
 $(function(){
     $('#tag-submit').click(function(){
