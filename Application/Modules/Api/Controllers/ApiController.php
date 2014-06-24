@@ -29,17 +29,19 @@ class ApiController extends BaseController{
         //$gameid = Request::getIntGet('game_id');
         $username = addslashes( urldecode( Request::getGet('username') ) );
         $password = addslashes( Request::getGet('password') );
-
+        $isuid = Request::getIntGet('isuid');
+        if($isuid > 2 || $isuid < 0){$isuid = 0;}
+        
         $return_data = __LINE__. ' :ERROR';
         if(  empty($username) || empty($password) ){
-            echo $return_data;
+            echo __LINE__. ' :ERROR';
             return;
         }
 
         load_uc();
-        $uc_info = uc_user_login($username, $password);
+        $uc_info = uc_user_login($username, $password, $isuid);
         if($uc_info[0] <= 0){
-            echo $return_data;
+            echo __LINE__. ' :ERROR';
             return;
         }
 
@@ -58,16 +60,24 @@ class ApiController extends BaseController{
 
         $count = uc_user_getcredit2(11, $uc_info[0], 0);
         $avatar = uc_get_avatar( intval ($uc_info['0']) , 'small');
+        //hprint($avatar, 1);
+        //http://bbs.rgss.cn/uc_server/data/avatar/000/00/00/01_avatar_small.jpg
+        //000/00/00/01_avatar_small.jpg
         $avatar = '/data/avatar/'.  $avatar;
-        if( !file_exists('/home/wwwroot/air/bbs2014/uc_server' . $avatar) ){
-            $avatar = 'http://bbs.rgss.cn/uc_server/images/noavatar_small.gif';
-        }else{
-            $avatar = UC_API. '/data/avatar/'.  $avatar;
-        }
-        //$file = file_get_contents( $avatar);
-//        if(!$file){
-//            $avatar = 'http://bbs.rgss.cn/uc_server/images/noavatar_small.gif';
-//        }
+        //$realpath = '/home/wwwroot/air/bbs2014/uc_server' . $avatar;
+        
+//         if( !file_exists($realpath) ){
+//         	echo '/home/wwwroot/air/bbs2014/uc_server' . $avatar;die();
+//             $avatar = 'http://bbs.rgss.cn/uc_server/images/noavatar_small.gif';
+//         }else{
+//             $avatar = UC_API . $avatar;
+//         }
+        
+		$avatar = UC_API . $avatar;
+       	$file = file_get_contents( $avatar);
+       	if(!$file){
+			$avatar = 'http://bbs.rgss.cn/uc_server/images/noavatar_small.gif';
+       	}
         $groupid = $uc_info[5];
         $count['credits'] = 0;
         
@@ -79,7 +89,7 @@ class ApiController extends BaseController{
             25 => 'QQ游客',
         );
         $level  = isset($levels[$groupid]) ? $levels[$groupid] : '同能会员';
-        $return_data = 'username='.$uc_info[1].';avatar='.$avatar .';ok='.$count['extcredits1'].';ka='.$count['extcredits2'].';vip='.$count['extcredits3'].';point='.$count['credits'] . ';uid=' . $uc_info[0]. ';signpic=';
+        $return_data = 'username='.$uc_info[1].';avatar='.$avatar .';ok='.$count['extcredits1'].';ka='.$count['extcredits2'].';vip='.$count['extcredits3'].';point='.$count['credits'] . ';uid=' . $uc_info[0]. ';group='. $level .';signpic=';
 
         echo $return_data;
         return;
@@ -118,7 +128,7 @@ class ApiController extends BaseController{
             25 => 'QQ游客',
         );
         $level  = isset($levels[$groupid]) ? $levels[$groupid] : '同能会员';
-        $return_data = 'firstlogin='.$boxinfo['writetime'].';times='.$boxinfo['times'].';lastlogin='.$boxinfo['lastlogin'] . ';status=1' . ';level=' . $level . ';thislogin='.$boxinfo['thislogin'];
+        $return_data = 'firstlogin='.$boxinfo['writetime'].';times='.$boxinfo['times'].';lastlogin='.$boxinfo['lastlogin'] . ';status='. $boxinfo['level'] . ';level=' . $boxinfo['level'] . ';thislogin='.$boxinfo['thislogin'];
 
         echo $return_data;
 		
@@ -140,6 +150,8 @@ class ApiController extends BaseController{
 		$times = Request::getIntGet('times');
 		$lastlogin = Request::getGet('lastlogin');
 		$thislogin = Request::getGet('thislogin');
+		$status = Request::getIntGet('status');
+		$level = Request::getIntGet('level');
 		
         if($uid <= 0){
             echo $return_data;
@@ -149,7 +161,7 @@ class ApiController extends BaseController{
         $ip = get_ip();
         $this->loadModel('Api');
         $dao = new ApiModel();
-        $result = $dao->setTnBoxInfo($uid, $ip, $times, $lastlogin, $thislogin);
+        $result = $dao->setTnBoxInfo($uid, $ip, $times, $lastlogin, $thislogin, $status, $level);
         if($result){
             echo 'SUCCESS';
         }else{

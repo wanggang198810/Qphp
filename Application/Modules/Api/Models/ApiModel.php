@@ -39,7 +39,7 @@ class ApiModel extends Model{
     
     
      // 记录加密器登录记录
-    public function setTnBoxInfo($uid, $ip, $times=0, $lastlogin=null, $thislogin=null){
+    public function setTnBoxInfo($uid, $ip, $times=0, $lastlogin=null, $thislogin=null, $status=null, $level=null){
         $this->setTable('jiamiqirecord');
         $where = array('uid' => $uid );
         $exist = $this->where( $where )->fetch();
@@ -51,6 +51,8 @@ class ApiModel extends Model{
                 'ip' => $ip,
                 'lastlogin2' => date('Y:m:d H:i:s'),
 				'lastlogin' => date('Y:m:d H:i:s'),
+            	'status' => $status,
+            	'level' => $level,
             );
             $reulst = $this->insert($data);
             if($reulst){
@@ -80,6 +82,14 @@ class ApiModel extends Model{
 				$data['thislogin'] = $thislogin;
 			}else{
 				$data['thislogin'] = date('Y:m:d H:i:s');
+			}
+			
+			if($status !== null ){
+				$data['status'] = $status;
+			}
+			
+			if($level !== null ){
+				$data['level'] = $level;
 			}
 			
             $result = $this->where( $where )->update($data);
